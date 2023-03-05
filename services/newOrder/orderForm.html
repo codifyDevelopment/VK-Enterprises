@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" href="orderForm.css">
+
+    
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    
+</head>
+
+<body>
+    <div class="container">
+        <header>Order Form</header>
+
+        <form action="#">
+            <div class="form first">
+                <div class="details personal">
+                   
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Order Id</label>
+                            <input type="text" placeholder="Enter your Order Id" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Order Status</label>
+                            <select required>
+                                <option disabled selected>Select Order Status</option>
+                                <option>Open</option>
+                                <option>Completed</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Order Date</label>
+                            <input type="date" placeholder="Enter Date" required>
+                        </div>
+
+
+                        <div class="input-field">
+                            <label>Order No</label>
+                            <input type="number" placeholder="Enter Order number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>PCB Name</label>
+                            <input type="text" placeholder="Enter PCB Name">
+                           
+                        </div>
+
+                        <div class="input-field">
+                            <label>PCB Type</label>
+                            <select required>
+                                <option disabled selected>Select PCB Type</option>
+                                <option>LEDs/MCPCBs</option>
+                                <option>Single Layer / Side</option>
+                                <option>Double Layer / Side</option>
+                                <option>Multilayer PCB</option>
+                                <option>Schamatic To PCB</option>
+                                <option>Stencile</option>
+                                <option>CAM/Panelization</option>
+                                <option>Update</option>
+                                <option>Urgent/Instaneous</option>
+                                <option>Bill Of Material</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details ID">
+                    
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>PCB Size</label>
+                            <select required>
+                                <option disabled selected>PCB size</option>
+                                <option>Know</option>
+                                <option>As Per Yours</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>X-Dimensions(in MM)</label>
+                            <input type="number" placeholder="0.00" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Y-Dimensions(in MM)</label>
+                            <input type="number" placeholder="0.00" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>SQCM PRICE</label>
+                            <input type="number" placeholder="Rs.0.00" required>
+                        </div>
+
+                    </div>
+                    <div class=>
+                        <label>Carefully Once check All Fill Details Before Save. 
+                            (After Designing A Simple Changes Charges Will Be A Extra)
+                            (*300Rs. + Depends On Changes Rate)*
+
+                        </label>
+                        <input type="button"  value="YES" class="inputBtn" required>
+                    </div>
+
+                    <div class=>
+                        <label>*All Designs Are For Sammples only. Never Work For Quatities.
+                            **Not Responsible For Quatities.(After No Further Argument Will Be Heard).
+                            **Also, Check All The Designs Then Proceed.*
+                        </label>
+                        <input type="button"   value="Yes" class="inputBtn" required>
+                    </div>
+
+                </div>
+            </div>
+
+        <div class="buttons">
+            <div class="backBtn">
+                <i class="uil uil-navigator"></i>
+                <span class="btnText">Back</span>
+            </div>
+
+                        <button class="sumbit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="orderForm.js"></script>
+</body>
+
+</html>
