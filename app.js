@@ -1,17 +1,18 @@
-const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const container = document.querySelector(".container");
-const login = document.getElementById("login");
+var express = require("express");
+var path = require("path");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
 
-sign_up_btn.addEventListener("click", () => {
-  container.classList.add("sign-up-mode");
-});
+var indexRouter = require("./routes/index");
 
-sign_in_btn.addEventListener("click", () => {
-  container.classList.remove("sign-up-mode");
-});
+var app = express();
 
-login.addEventListener("click", () =>  {
-  console.log('clicked')
-  
-});
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use("/", indexRouter);
+
+module.exports = app;

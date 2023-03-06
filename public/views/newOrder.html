@@ -6,31 +6,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    
-    <link rel="stylesheet" href="orderForm.css">
-
-    
+    <link rel="stylesheet" href="../css/newOrder.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-    
 </head>
 
 <body>
     <div class="container">
         <header>Order Form</header>
-
         <form action="#">
             <div class="form first">
                 <div class="details personal">
-                   
-
                     <div class="fields">
                         <div class="input-field">
                             <label>Order Id</label>
-                            <input type="text" placeholder="Enter your Order Id" required>
+                            <input type="text" placeholder="Enter your Order Id" id="orderId" required disabled>
                         </div>
-
                         <div class="input-field">
                             <label>Order Status</label>
                             <select required>
@@ -44,19 +34,14 @@
                             <label>Order Date</label>
                             <input type="date" placeholder="Enter Date" required>
                         </div>
-
-
                         <div class="input-field">
                             <label>Order No</label>
                             <input type="number" placeholder="Enter Order number" required>
                         </div>
-
                         <div class="input-field">
                             <label>PCB Name</label>
                             <input type="text" placeholder="Enter PCB Name">
-                           
                         </div>
-
                         <div class="input-field">
                             <label>PCB Type</label>
                             <select required>
@@ -75,10 +60,7 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="details ID">
-                    
-
                     <div class="fields">
                         <div class="input-field">
                             <label>PCB Size</label>
@@ -88,32 +70,26 @@
                                 <option>As Per Yours</option>
                             </select>
                         </div>
-
                         <div class="input-field">
                             <label>X-Dimensions(in MM)</label>
                             <input type="number" placeholder="0.00" required>
                         </div>
-
                         <div class="input-field">
                             <label>Y-Dimensions(in MM)</label>
                             <input type="number" placeholder="0.00" required>
                         </div>
-
                         <div class="input-field">
                             <label>SQCM PRICE</label>
                             <input type="number" placeholder="Rs.0.00" required>
                         </div>
-
                     </div>
                     <div class=>
                         <label>Carefully Once check All Fill Details Before Save. 
                             (After Designing A Simple Changes Charges Will Be A Extra)
                             (*300Rs. + Depends On Changes Rate)*
-
                         </label>
                         <input type="button"  value="YES" class="inputBtn" required>
                     </div>
-
                     <div class=>
                         <label>*All Designs Are For Sammples only. Never Work For Quatities.
                             **Not Responsible For Quatities.(After No Further Argument Will Be Heard).
@@ -121,16 +97,13 @@
                         </label>
                         <input type="button"   value="Yes" class="inputBtn" required>
                     </div>
-
                 </div>
             </div>
-
         <div class="buttons">
             <div class="backBtn">
                 <i class="uil uil-navigator"></i>
                 <span class="btnText">Back</span>
             </div>
-
                         <button class="sumbit">
                             <span class="btnText">Submit</span>
                             <i class="uil uil-navigator"></i>
@@ -140,7 +113,7 @@
             </div>
         </form>
     </div>
-    <script src="orderForm.js"></script>
+    <script src="../js/newOrder.js"></script>
 </body>
 
 </html>
