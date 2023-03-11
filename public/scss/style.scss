@@ -1,0 +1,154 @@
+*,
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.navbar {
+    // background: #fff;
+    // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    // .navbar-brand {
+    //     font-weight: 700;
+    //     font-size: 1.5rem;
+    //     color: #333;
+    //     &:hover {
+    //         color: #0d6efd;
+    //     }
+    // }
+    // .navbar-nav {
+    //     .nav-link {
+    //         font-weight: 500;
+    //         font-size: 1rem;
+    //         color: #333;
+    //         &:hover {
+    //             color: #0d6efd;
+    //         }
+    //     }
+    // }
+}
+
+// .background {
+//     background: url("../img/Asset\ 1.svg");
+//     background-repeat: no-repeat;
+//     background-position: right;
+//     background-size: cover;
+//     height: 100vh;
+//     width: 100%;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     z-index: -1;
+
+//     @media screen and (max-width: 768px) {
+//         display: none;
+//     }
+// }
+
+a {
+    text-decoration: none;
+}
+
+.form-login {
+    max-width: 1080px;
+    margin: 0 auto;
+    // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+        display: block;
+        box-shadow: none;
+    }
+
+    form {
+        width: 45%;
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+    }
+
+    .background {
+        background: url("../img/umberto-jXd2FSvcRr8-unsplash.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 45%;
+
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    #loginTogglePassword {
+        cursor: pointer;
+    }
+
+    a {
+        i {
+            color: #0d6efd;
+        }
+
+        &:hover {
+            i {
+                color: #0a58ca;
+            }
+        }
+    }
+}
+
+.form-register {
+    max-width: 1080px;
+    margin: 0 auto;
+    // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+        display: block;
+        box-shadow: none;
+    }
+
+    form {
+        width: 45%;
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+    }
+
+    .background {
+        background: url("../img/vishnu-mohanan-pfR18JNEMv8-unsplash.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 45%;
+
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    #registerTogglePassword,
+    #registerToggleConfirmPassword {
+        cursor: pointer;
+    }
+
+    a {
+        i {
+            color: #0d6efd;
+        }
+
+        &:hover {
+            i {
+                color: #0a58ca;
+            }
+        }
+    }
+}

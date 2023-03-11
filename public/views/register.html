@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Register - VK enterprise</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+        />
+        <link rel="stylesheet" href="../css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../css/style.min.css" />
+    </head>
+
+    <body>
+        <div class="background"></div>
+        <nav class="navbar navbar-expand-lg bg-body-emphasis border-bottom">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="../img/logo.svg" alt="Bootstrap" height="35" />
+                </a>
+            </div>
+        </nav>
+
+        <div class="container mt-5 form-register bg-white p-4 rounded">
+            <div class="background p-3 rounded-4"></div>
+            <form>
+                <div class="mb-4">
+                    <h1 class="h3 fw-bold">Register</h1>
+                    <p>Hi, Welcome to VK Enterprises 👋</p>
+                </div>
+                <div class="google-login mb-1">
+                    <button
+                        class="btn btn-lg border-primary border-1 w-100 d-flex align-items-center justify-content-center mb-3"
+                        type="button"
+                    >
+                        <img
+                            src="https://img.icons8.com/color/48/null/google-logo.png"
+                            alt="Google"
+                            height="20"
+                        />
+                        &nbsp;
+                        <p class="m-0">Register with Google</p>
+                    </button>
+                    <p class="w-100 text-center text-black-50 p-0 m-0">
+                        or, Register with email
+                    </p>
+                </div>
+                <div class="mb-3">
+                    <div
+                        class="form-text text-danger text-center"
+                        style="visibility: hidden"
+                        id="registerEmailError"
+                    >
+                        User already exists
+                    </div>
+                    <label for="registerInputEmail" class="form-label"
+                        >Email</label
+                    >
+                    <div class="input-group">
+                        <input
+                            type="email"
+                            id="registerInputEmail"
+                            class="form-control"
+                            placeholder="E.g. johndoe@gmail.com"
+                            required
+                            autofocus
+                        />
+                    </div>
+                </div>
+                <label for="registerInputPassword" class="form-label"
+                    >Password</label
+                >
+                <div class="input-group mb-3">
+                    <input
+                        type="password"
+                        id="registerInputPassword"
+                        class="form-control"
+                        placeholder="Enter your password"
+                        required
+                        autofocus
+                    />
+                    <i
+                        class="bi bi-eye-slash input-group-text"
+                        id="registerTogglePassword"
+                    ></i>
+                </div>
+                <div class="mb-3">
+                    <label for="registerInputConfirmPassword" class="form-label"
+                        >Confirm Password</label
+                    >
+                    <div class="input-group">
+                        <input
+                            type="password"
+                            id="registerInputConfirmPassword"
+                            class="form-control"
+                            placeholder="Confirm your password"
+                            required
+                            autofocus
+                        />
+                        <i
+                            class="bi bi-eye-slash input-group-text"
+                            id="registerToggleConfirmPassword"
+                        ></i>
+                    </div>
+                    <div
+                        class="form-text text-danger"
+                        id="registerConfirmPasswordError"
+                        style="visibility: hidden"
+                    >
+                        Passwords do not match
+                    </div>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">
+                    Register
+                </button>
+                <p class="mt-4 mb-0 text-center">
+                    Already have an account?
+                    <a href="/login"
+                        >Login
+                        <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                </p>
+            </form>
+        </div>
+    </body>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/script.js"></script>
+</html>
