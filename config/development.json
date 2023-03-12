@@ -7,6 +7,7 @@
             "user": "support@luckindiamini.in",
             "pass": "Codify@123"
         }
+
     },
     "db": {
         "database": "codify",
@@ -17,4 +18,5 @@
     },
     "adminEmail": "sudiptapradhan58271@gmail.com",
     "jwtSecret": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDeQ79rhRVDOKybYxPm91ADFkY8FvNSn8AnS74hPl/ee/zr3MPWVVUDrcP8Cr5aSYIK3KmIM5HfUKBY44BFwHs5OzF16hLUbNcOIO3yWtvm1KEa95xgHg55flnH3DProgaaoiFfkVe3AIPdnB4yl5J/H2y3bgbesA/xVhSYloVAqpko97VM/j7evUBdt39Np5PowU4PRKpdWZmIZqjOHVwB7M2MAqdq+HgKEdxdrad7Z8H3ZyHFDHymuMRvjDyft2cfuLReu+6VtkSAI40q82+4Zg4WlAL6vS5q8gkvXV5HOrL1MCc93CDhwvY6kRvKPGNpQSNrnHKpVbhUljYJVV5"
+    }
 }
