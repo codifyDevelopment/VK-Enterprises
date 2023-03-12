@@ -1,4 +1,6 @@
 var express = require("express");
+const isUserAuthenticated = require("../middleware/auth");
+const User = require("../models/user");
 var router = express.Router();
 
 /* GET home page. */
@@ -16,6 +18,27 @@ router.get("/register", async (req, res, next) => {
 
 router.get("/wait-for-approval", async (req, res, next) => {
     res.sendFile("wait-for-approval.html", { root: "public/views" });
+});
+
+router.get("/dashboard", isUserAuthenticated, async (req, res, next) => {
+    if (req.role === "pending") {
+        return res.redirect("/wait-for-approval");
+    }
+    if (req.role === "admin") {
+        return res.sendFile("admin-dashboard-home.html", {
+            root: "public/views",
+        });
+    }
+    if (req.role === "platinum") {
+        return res.sendFile("platinum-dashboard-home.html", {
+            root: "public/views",
+        });
+    }
+    if (req.role === "gold") {
+        return res.sendFile("gold-dashboard-home.html", {
+            root: "public/views",
+        });
+    }
 });
 
 module.exports = router;
