@@ -13,7 +13,7 @@ const isUserAuthenticated = async (req, res, next) => {
         if (!user) {
             return res.redirect("/login");
         }
-        req.user = user;
+        req.user = user.toJSON();
         next();
     } catch (err) {
         console.log(err);

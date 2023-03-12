@@ -8,6 +8,8 @@
             "pass": "Codify@123"
         }
     },
+    "googleClientID": "432044080011-ghplrl9qml4vp9plemelq1l2kn2n568i.apps.googleusercontent.com",
+    "googleClientSecret": "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",
     "db": {
         "database": "codify",
         "username": "codify",

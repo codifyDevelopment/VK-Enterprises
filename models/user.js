@@ -52,14 +52,15 @@ User.prototype.toJSON = function () {
     return values;
 };
 
-User.prototype.getSignedJwtToken = function () {
-    return jwt.sign(
+User.prototype.getSignedJwtToken = async function () {
+    const token = await jwt.sign(
         { email: this.email, role: this.role },
         config.get("jwtSecret"),
         {
             expiresIn: "1d",
         }
     );
+    return token;
 };
 
 module.exports = User;

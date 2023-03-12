@@ -21,24 +21,29 @@ router.get("/wait-for-approval", async (req, res, next) => {
 });
 
 router.get("/dashboard", isUserAuthenticated, async (req, res, next) => {
-    if (req.role === "pending") {
+    console.log(req.user);
+    if (req.user.role === "pending") {
         return res.redirect("/wait-for-approval");
     }
-    if (req.role === "admin") {
+    if (req.user.role === "admin") {
         return res.sendFile("admin-dashboard-home.html", {
             root: "public/views",
         });
     }
-    if (req.role === "platinum") {
+    if (req.user.role === "platinum") {
         return res.sendFile("platinum-dashboard-home.html", {
             root: "public/views",
         });
     }
-    if (req.role === "gold") {
+    if (req.user.role === "gold") {
         return res.sendFile("gold-dashboard-home.html", {
             root: "public/views",
         });
     }
+});
+
+router.get("/redirect", async (req, res, next) => {
+    return res.sendFile("redirect.html", { root: "public/views" });
 });
 
 module.exports = router;

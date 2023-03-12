@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const passport = require("passport");
+const session = require("express-session");
 
 const indexRouter = require("./routes/index");
 
@@ -29,9 +31,24 @@ app.use(
         sameSite: "strict",
     })
 );
+app.use(
+    session({
+        secret: "thisisthesecretkey",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24, // 1 day
+            httpOnly: true,
+            secure: false,
+            sameSite: "strict",
+        },
+    })
+);
+app.use(passport.initialize());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/auth", require("./routes/auth"));
 app.use("/api/user", require("./routes/api/user"));
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "public/views/404.html"));
