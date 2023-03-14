@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
-const User = require("../models/User");
+const User = require("../models/user");
 
 const isAdmin = async (req, res, next) => {
     const token = req.cookies["token"] || req.headers["authorization"];
