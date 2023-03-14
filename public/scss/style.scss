@@ -57,6 +57,7 @@ a {
 .form-login {
     max-width: 1080px;
     margin: 0 auto;
+    // min-height: 80vh;
     // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-between;
@@ -80,6 +81,7 @@ a {
         background-position: center;
         background-size: cover;
         width: 45%;
+        // height: 100%;
 
         @media screen and (max-width: 768px) {
             display: none;
@@ -106,6 +108,7 @@ a {
 .form-register {
     max-width: 1080px;
     margin: 0 auto;
+    // min-height: 80vh;
     // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-between;

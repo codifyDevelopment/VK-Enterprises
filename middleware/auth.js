@@ -4,6 +4,7 @@ const User = require("../models/user");
 
 const isUserAuthenticated = async (req, res, next) => {
     const token = req.cookies["token"];
+    // const token = req.header("x-auth-token");
     if (!token) {
         return res.redirect("/login");
     }

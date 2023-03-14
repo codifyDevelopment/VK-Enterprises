@@ -33,7 +33,9 @@ const registerController = async (req, res, next) => {
             to: email,
             subject:
                 "We're in the process of verifying your account. Sit back and relax for a bit!",
-            text: "You're one step closer! You've created an account with us, but we need to verify your account and identity. It may take up to 24 hours, but we'll get back to you as soon as possible. Thank you for your patience and loyalty. If you have any questions, please contact us at support@example.com or 1-800-123-4567.",
+            text: `You're one step closer! You've created an account with us, but we need to verify your account and identity. It may take up to 24 hours, but we'll get back to you as soon as possible. Thank you for your patience and loyalty. If you have any questions, please contact us at ${config.get(
+                "adminEmail"
+            )} or 1-800-123-4567.`,
         };
         await transporter.sendMail(ClientMailOptions);
         const AdminMailOptions = {
@@ -83,7 +85,7 @@ const loginController = async (req, res, next) => {
                 message: "Invalid credentials",
             });
         }
-        const token = user.getSignedJwtToken();
+        const token = await user.getSignedJwtToken();
         res.cookie("token", token, {
             expires: new Date(Date.now() + 86400000), // 1 day
             httpOnly: true,
@@ -91,6 +93,7 @@ const loginController = async (req, res, next) => {
         return res.status(200).json({
             success: true,
             data: user.toJSON(),
+            token,
         });
     } catch (err) {
         console.log(err);

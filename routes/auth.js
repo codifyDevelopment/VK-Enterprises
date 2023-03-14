@@ -31,9 +31,10 @@ passport.use(
             const ClientMailOptions = {
                 from: config.get("nodemailer").auth.user,
                 to: newUser.email,
-                subject:
-                    "We're in the process of verifying your account. Sit back and relax for a bit!",
-                text: "You're one step closer! You've created an account with us, but we need to verify your account and identity. It may take up to 24 hours, but we'll get back to you as soon as possible. Thank you for your patience and loyalty. If you have any questions, please contact us at support@example.com or 1-800-123-4567.",
+                subject: `We're in the process of verifying your account. Sit back and relax for a bit!",
+                text: "You're one step closer! You've created an account with us, but we need to verify your account and identity. It may take up to 24 hours, but we'll get back to you as soon as possible. Thank you for your patience and loyalty. If you have any questions, please contact us at ${config.get(
+                    "adminEmail"
+                )} or 1-800-123-4567.`,
             };
             await transporter.sendMail(ClientMailOptions);
             const AdminMailOptions = {

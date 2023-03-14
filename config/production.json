@@ -1,0 +1,19 @@
+{
+    "nodemailer": {
+        "host": "mail.vktech.info",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "support@vktech.info",
+            "pass": "codify@123"
+        }
+    },
+    "db": {
+        "database": "vktechin_vkenterprise",
+        "username": "vktechin_admin",
+        "password": "codify@123",
+        "host": "localhost",
+        "dialect": "mariadb"
+    },
+    "adminEmail": "admin@vktech.info"
+}
