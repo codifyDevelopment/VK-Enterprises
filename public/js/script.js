@@ -14,6 +14,9 @@ let registerConfirmPasswordError = document.getElementById(
 let loginEmailError = document.getElementById("loginEmailError");
 let registerEmailError = document.getElementById("registerEmailError");
 
+let menuToggler = document.getElementById("menu-toggler");
+let menu = document.getElementById("menu");
+
 loginTogglePassword &&
     loginTogglePassword.addEventListener("click", function (e) {
         // toggle the type attribute
@@ -87,3 +90,8 @@ let submitLoginForm = function (e) {
     //     });
     console.log(data);
 };
+
+menuToggler &&
+    menuToggler.addEventListener("click", function (e) {
+        menu.classList.toggle("active");
+    });
