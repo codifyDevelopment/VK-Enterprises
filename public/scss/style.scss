@@ -81,6 +81,26 @@ a {
             }
         }
     }
+
+    .loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.25rem;
+        }
+    }
 }
 
 .form-register {
@@ -132,6 +152,26 @@ a {
             }
         }
     }
+
+    .loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.25rem;
+        }
+    }
 }
 
 .dashboard {
@@ -139,6 +179,10 @@ a {
         z-index: 999;
         height: 4rem;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        position: fixed !important;
+        width: 100%;
+        top: 0;
+        left: 0;
 
         .navbar-header {
             button {
@@ -184,7 +228,7 @@ a {
         padding: 20px 0;
         top: 4rem;
         left: 0;
-        width: 63px;
+        width: 66px;
         height: calc(100vh - 4rem);
         overflow: hidden;
         box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
@@ -209,7 +253,7 @@ a {
                     display: flex;
                     padding: 12px 20px;
                     align-items: center;
-                    gap: 22px;
+                    gap: 27px;
                     border: none;
                     transition: inherit;
                     color: #333;
@@ -239,7 +283,7 @@ a {
                 display: flex;
                 padding: 12px 20px;
                 align-items: center;
-                gap: 22px;
+                gap: 30px;
                 width: 100%;
                 border: none;
                 transition: inherit;
@@ -256,20 +300,30 @@ a {
     &_content {
         position: absolute;
         top: 4rem;
-        left: 63px;
+        left: 65px;
         padding-top: 20px;
-        width: calc(100% - 63px);
+        width: calc(100% - 65px);
 
         .users-table {
-            max-height: 55vh;
+            // max-height: 55vh;
+        }
+
+        .table {
+
+            th,
+            td {
+                vertical-align: middle;
+                white-space: nowrap;
+                text-align: center;
+            }
         }
 
         .area {
             box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
 
-            &::-webkit-scrollbar {
-                display: none;
-            }
+            // &::-webkit-scrollbar {
+            //     display: none;
+            // }
         }
 
         #search-user-btn {

@@ -14,6 +14,9 @@ const isUserAuthenticated = async (req, res, next) => {
         if (!user) {
             return res.redirect("/login");
         }
+        if (user.role === "pending") {
+            return res.redirect("/wait-for-approval");
+        }
         req.user = user.toJSON();
         next();
     } catch (err) {

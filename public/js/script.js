@@ -66,32 +66,78 @@ registerInputConfirmPassword &&
         }
     });
 
-let submitLoginForm = function (e) {
+let submitLoginForm = async function (e) {
     e.preventDefault();
     let email = document.getElementById("loginInputEmail").value;
     let password = document.getElementById("loginInputPassword").value;
+    let loading = document.getElementById("loginLoading");
     let data = {
         email,
         password,
     };
-    // fetch("/api/user/login", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    // })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         console.log("Success:", data);
-    //     })
-    //     .catch((error) => {
-    //         console.error("Error:", error);
-    //     });
-    console.log(data);
+    try {
+        loading.style.visibility = "visible";
+        let response = await axios.post("/api/user/login", data);
+        if (response.data.success) {
+            window.location.href = "/dashboard";
+        }
+    } catch (error) {
+        loading.style.visibility = "hidden";
+        if (!error.response.data.success) {
+            loginEmailError.innerHTML = error.response.data.message;
+            loginEmailError.style.visibility = "visible";
+        }
+    }
+};
+
+let submitRegisterForm = async function (e) {
+    e.preventDefault();
+    let email = document.getElementById("registerInputEmail").value;
+    let password = document.getElementById("registerInputPassword").value;
+    let confirmPassword = document.getElementById(
+        "registerInputConfirmPassword"
+    ).value;
+    let loading = document.getElementById("registerLoading");
+    if (password !== confirmPassword) {
+        registerConfirmPasswordError.style.visibility = "visible";
+        return;
+    }
+    let data = {
+        email,
+        password,
+    };
+    try {
+        loading.style.visibility = "visible";
+        let response = await axios.post("/api/user/register", data);
+        if (response.data.success) {
+            window.location.href = "/wait-for-approval";
+        }
+    } catch (error) {
+        loading.style.visibility = "hidden";
+        if (!error.response.data.success) {
+            registerEmailError.innerHTML = error.response.data.message;
+            registerEmailError.style.visibility = "visible";
+        }
+    }
 };
 
 menuToggler &&
     menuToggler.addEventListener("click", function (e) {
         menu.classList.toggle("active");
     });
+
+const loadOrderDetails = function (e) {
+    document.title = "Order Details";
+};
+
+let logout = async function (e) {
+    e.preventDefault();
+    try {
+        let response = await axios.get("/api/user/logout");
+        if (response.data.success) {
+            window.location.href = "/";
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
