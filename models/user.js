@@ -36,9 +36,9 @@ User.beforeCreate(async (user, options) => {
     user.password = await user.hashPassword(user.password);
 });
 
-User.beforeUpdate(async (user, options) => {
-    user.password = await user.hashPassword(user.password);
-});
+// User.beforeUpdate(async (user, options) => {
+//     user.password = await user.hashPassword(user.password);
+// });
 
 User.prototype.toJSON = function () {
     const values = Object.assign({}, this.get());
