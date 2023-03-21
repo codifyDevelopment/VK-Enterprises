@@ -71,6 +71,7 @@ app.use("/", indexRouter);
 // app.use("/auth", require("./routes/auth"));
 app.use("/api/user", require("./routes/api/user"));
 app.use("/api/admin", require("./routes/api/admin"));
+app.use("/api/products", require("./routes/api/products"));
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "public/views/404.html"));
 });

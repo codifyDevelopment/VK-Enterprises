@@ -4,30 +4,24 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
-const User = db.define(
-    "User",
-    {
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            primaryKey: true,
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            required: true,
-        },
-        role: {
-            type: DataTypes.ENUM("gold", "platinum", "admin", "pending"),
-            allowNull: false,
-            defaultValue: "pending",
-        },
+const User = db.define("User", {
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        primaryKey: true,
     },
-    {
-        timestamps: false,
-    }
-);
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        required: true,
+    },
+    role: {
+        type: DataTypes.ENUM("gold", "platinum", "admin", "pending"),
+        allowNull: false,
+        defaultValue: "pending",
+    },
+});
 
 User.prototype.hashPassword = async (password) => {
     const salt = await bcrypt.genSalt(10);
@@ -49,6 +43,8 @@ User.beforeUpdate(async (user, options) => {
 User.prototype.toJSON = function () {
     const values = Object.assign({}, this.get());
     delete values.password;
+    delete values.createdAt;
+    delete values.updatedAt;
     return values;
 };
 

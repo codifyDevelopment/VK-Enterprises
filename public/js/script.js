@@ -141,3 +141,154 @@ let logout = async function (e) {
         console.log(error);
     }
 };
+
+let usersList;
+
+const getUserList = async function () {
+    try {
+        let response = await axios.get("/api/admin/get-users-list");
+        if (response.data.success) {
+            // return response.data.data;
+            usersList = response.data.data;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const showUsersInTable = function (users) {
+    let userListTable = document.getElementById("userListTable");
+    userListTable.innerHTML = "";
+    if (users.length === 0) {
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td colspan="5" class="text-center">No users found</td>
+        `;
+        userListTable.appendChild(tr);
+        return;
+    }
+    users.forEach((user, index) => {
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+            <th scope="row">${index + 1}</th>
+            <td>${user.email}</td>
+            <td>${user.role}</td>
+            <td>${user.role === "pending" ? "N/A" : "₹5000"}</td>
+            <td>
+                ${
+                    user.role !== "pending"
+                        ? `<button class="btn btn-danger" onclick="resetUser(event, '${user.email}')">Reset</button>`
+                        : `
+                        <button class="btn btn-primary" onclick="verifyAsGold(event, '${user.email}')">
+                            Gold
+                        </button>
+                        <button class="btn btn-success" onclick="verifyAsPlatinum(event, '${user.email}')">
+                            Platinum
+                        </button>
+                    `
+                }
+            </td>
+        `;
+        userListTable.appendChild(tr);
+    });
+};
+
+const showUserList = async function () {
+    try {
+        let usersLoading = document.getElementById("usersLoading");
+        usersLoading.style.visibility = "visible";
+        await getUserList();
+        showUsersInTable(usersList);
+        usersLoading.style.visibility = "hidden";
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const showOnlyPendingUsers = function (e) {
+    e.preventDefault();
+    let pendingUsers = usersList.filter((user) => user.role === "pending");
+    showUsersInTable(pendingUsers);
+};
+
+const showOnlyGoldUsers = function (e) {
+    e.preventDefault();
+    let goldUsers = usersList.filter((user) => user.role === "gold");
+    showUsersInTable(goldUsers);
+};
+
+const showOnlyPlatinumUsers = function (e) {
+    e.preventDefault();
+    let platinumUsers = usersList.filter((user) => user.role === "platinum");
+    showUsersInTable(platinumUsers);
+};
+
+const showAllUsers = function (e) {
+    e.preventDefault();
+    showUsersInTable(usersList);
+};
+
+const searchForUser = function (e) {
+    e.preventDefault();
+    let searchInput = document.getElementById("search-user-input").value;
+    let filteredUsers = usersList.filter((user) =>
+        user.email.includes(searchInput)
+    );
+    showUsersInTable(filteredUsers);
+};
+
+const verifyAsGold = async function (e, email) {
+    e.preventDefault();
+    try {
+        let usersLoading = document.getElementById("usersLoading");
+        usersLoading.style.visibility = "visible";
+
+        let response = await axios.post("/api/admin/verify-user", {
+            email,
+            role: "gold",
+        });
+        if (response.data.success) {
+            // window.location.reload();
+            await showUserList();
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const verifyAsPlatinum = async function (e, email) {
+    e.preventDefault();
+    try {
+        let usersLoading = document.getElementById("usersLoading");
+        usersLoading.style.visibility = "visible";
+
+        let response = await axios.post("/api/admin/verify-user", {
+            email,
+            role: "platinum",
+        });
+        if (response.data.success) {
+            // window.location.reload();
+            await showUserList();
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const resetUser = async function (e, email) {
+    e.preventDefault();
+    try {
+        let usersLoading = document.getElementById("usersLoading");
+        usersLoading.style.visibility = "visible";
+
+        let response = await axios.post("/api/admin/reset-user", {
+            email,
+        });
+        if (response.data.success) {
+            // window.location.reload();
+            await showUserList();
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};

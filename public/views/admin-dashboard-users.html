@@ -95,11 +95,13 @@
                                 placeholder="Enter email address"
                                 aria-label="Enter email address"
                                 aria-describedby="button-addon2"
+                                id="search-user-input"
                             />
                             <button
                                 class="btn btn-outline-primary"
                                 type="button"
                                 id="search-user-btn"
+                                onclick="searchForUser(event)"
                             >
                                 <i class="fa-solid fa-search"></i>
                             </button>
@@ -107,14 +109,33 @@
                     </div>
                     <div class="col-md-5 my-1">
                         <div class="row w-100 gap-1 mx-auto">
-                            <button type="button" class="btn btn-primary col">
+                            <button
+                                type="button"
+                                class="btn btn-primary col"
+                                onclick="showOnlyPendingUsers(event)"
+                            >
                                 Pending
                             </button>
-                            <button type="button" class="btn btn-primary col">
+                            <button
+                                type="button"
+                                class="btn btn-primary col"
+                                onclick="showOnlyGoldUsers(event)"
+                            >
                                 Gold
                             </button>
-                            <button type="button" class="btn btn-primary col">
+                            <button
+                                type="button"
+                                class="btn btn-primary col"
+                                onclick="showOnlyPlatinumUsers(event)"
+                            >
                                 Platinum
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-primary col"
+                                onclick="showAllUsers(event)"
+                            >
+                                All
                             </button>
                         </div>
                     </div>
@@ -153,11 +174,11 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Due</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="userListTable">
+                            <!-- <tr>
                                 <th scope="row">1</th>
                                 <td>sudiptapradhan58271@gmail.com</td>
                                 <td>Platinum</td>
@@ -177,9 +198,14 @@
                                         Platinum
                                     </button>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
+                </div>
+                <div class="loading" id="usersLoading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -188,5 +214,8 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/axios.min.js"></script>
         <script src="../js/script.js"></script>
+        <script>
+            window.onload = showUserList;
+        </script>
     </body>
 </html>

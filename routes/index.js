@@ -15,13 +15,17 @@ router.get(
     "/login",
     async (req, res, next) => {
         const token = req.cookies["token"];
-        try {
-            const decoded = jwt.verify(token, config.get("jwtSecret"));
-            if (decoded) {
-                return res.redirect("/dashboard");
+        if (token) {
+            try {
+                const decoded = jwt.verify(token, config.get("jwtSecret"));
+                if (decoded) {
+                    return res.redirect("/dashboard");
+                }
+            } catch (err) {
+                console.log(err);
+                return next();
             }
-        } catch (err) {
-            console.log(err);
+        } else {
             return next();
         }
     },
@@ -79,7 +83,7 @@ router.get(
 );
 
 router.get("/dashboard", isUserAuthenticated, async (req, res, next) => {
-    console.log(req.user);
+    // console.log(req.user);
     if (req.user.role === "pending") {
         return res.redirect("/wait-for-approval");
     }
@@ -103,6 +107,7 @@ router.get("/dashboard", isUserAuthenticated, async (req, res, next) => {
 router.get("/users", isAdmin, async (req, res, next) => {
     res.sendFile("admin-dashboard-users.html", { root: "public/views" });
 });
+
 router.get("/orders", isUserAuthenticated, async (req, res, next) => {
     if (req.user.role === "admin") {
         return res.sendFile("admin-dashboard-orders.html", {
@@ -118,6 +123,26 @@ router.get("/orders", isUserAuthenticated, async (req, res, next) => {
         return res.sendFile("gold-dashboard-orders.html", {
             root: "public/views",
         });
+    }
+});
+
+router.get("/orders/:id", isUserAuthenticated, async (req, res, next) => {
+    if (req.user.role === "admin") {
+        return res.sendFile("admin-dashboard-order-details.html", {
+            root: "public/views",
+        });
+    }
+    if (req.user.role === "platinum") {
+        return res.sendFile("platinum-dashboard-order-details.html", {
+            root: "public/views",
+        });
+    }
+    if (req.user.role === "gold") {
+        return res.sendFile("gold-dashboard-order-details.html", {
+            root: "public/views",
+        });
+    } else {
+        return res.redirect("/dashboard");
     }
 });
 
