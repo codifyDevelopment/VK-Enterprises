@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const config = require("config");
 const nodemailer = require("nodemailer");
+const Notifications = require("../models/notifications");
 
 const registerController = async (req, res, next) => {
     const { email, password } = req.body;
@@ -21,10 +22,6 @@ const registerController = async (req, res, next) => {
                 message: "User already exists",
             });
         }
-        const user = await User.create({
-            email,
-            password,
-        });
         if (
             process.env.NODE_ENV === "production" ||
             process.env.env === "production"
@@ -50,6 +47,15 @@ const registerController = async (req, res, next) => {
             };
             await transporter.sendMail(AdminMailOptions);
         }
+        const user = await User.create({
+            email,
+            password,
+        });
+        await Notifications.create({
+            notificationFor: config.get("adminEmail"),
+            notificationText: `A new user has registered with the email ${email}`,
+            type: "user",
+        });
         return res.status(201).json({
             success: true,
             data: user.toJSON(),

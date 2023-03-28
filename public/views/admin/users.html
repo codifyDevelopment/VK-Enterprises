@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin - Dashboard Home</title>
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        />
+        <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
+    </head>
+    <body>
+        <nav class="navbar bg-white border-bottom dashboard_header">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center navbar-header">
+                    <button class="menu-icon" id="menu-toggler">
+                        <i
+                            class="fa-solid fa-bars text-black text-secondary"
+                        ></i>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img
+                            src="../img/logo.svg"
+                            alt="logo"
+                            class="logo"
+                            height="35"
+                        />
+                    </a>
+                </div>
+                <div
+                    class="d-flex align-items-center justify-content-center gap-3"
+                >
+                    <div class="">
+                        <button
+                            class="btn notification-icon"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            onclick="markNotificationAsRead()"
+                        >
+                            <i class="fa-solid fa-bell text-black"></i>
+                            <span
+                                class="badge badge-danger bg-danger"
+                                id="notification-count"
+                                >0</span
+                            >
+                        </button>
+                        <ul class="dropdown-menu" id="notifications">
+                            <!-- <li class="border-bottom">
+                                <a class="dropdown-item text-wrap" href="#"
+                                    >Action</a
+                                >
+                            </li> -->
+                        </ul>
+                    </div>
+                    <button
+                        style="width: 30px; height: 30px"
+                        class="btn bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center"
+                    >
+                        <i class="fa-solid fa-user text-black"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="bashboard_main"> -->
+        <!-- sidebar -->
+        <div
+            class="bg-white border-end d-flex flex-column justify-content-between align-items-center dashboard_sidebar"
+            id="menu"
+        >
+            <ul>
+                <li>
+                    <a href="/dashboard">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/inquiries">
+                        <i class="fa-solid fa-circle-question"></i>
+                        Inquiries
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/users">
+                        <i class="fa-solid fa-user"></i>
+                        Users
+                    </a>
+                </li>
+                <li>
+                    <a href="/orders">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="/transactions">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                        Transactions
+                    </a>
+                </li>
+            </ul>
+            <div class="logout-btn">
+                <button onclick="logout(event)">
+                    <i class="fa-solid fa-sign-out"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+        <!-- main content -->
+        <div class="dashboard_content">
+            <div class="container">
+                <h1>Users</h1>
+                <p>Welcome to the users dashboard.</p>
+                <div class="row py-2 rounded w-100 m-auto area">
+                    <div class="col-md-4 my-1">
+                        <div class="input-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter email address"
+                                aria-label="Enter email address"
+                                aria-describedby="button-addon2"
+                                id="search-user-input"
+                            />
+                            <button
+                                class="btn btn-outline-primary"
+                                type="button"
+                                id="search-user-btn"
+                                onclick="searchForUser(event)"
+                            >
+                                <i class="fa-solid fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-5 my-1">
+                        <div
+                            class="row row-cols-2 row-cols-lg-4 row-cols-md-2 w-100 g-1 mx-auto"
+                        >
+                            <div class="col">
+                                <button
+                                    type="button"
+                                    class="btn btn-primary w-100"
+                                    onclick="showOnlyPendingUsers(event)"
+                                >
+                                    Pending
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button
+                                    type="button"
+                                    class="btn btn-primary w-100"
+                                    onclick="showOnlyGoldUsers(event)"
+                                >
+                                    Gold
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button
+                                    type="button"
+                                    class="btn btn-primary w-100"
+                                    onclick="showOnlyPlatinumUsers(event)"
+                                >
+                                    Platinum
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button
+                                    type="button"
+                                    class="btn btn-primary w-100"
+                                    onclick="showAllUsers(event)"
+                                >
+                                    All
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 my-1 dropdown">
+                        <div class="row row-cols-1 row-cols-md-2 g-1">
+                            <div class="col">
+                                <button
+                                    type="button"
+                                    class="btn btn-success w-100"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#add-user-modal"
+                                >
+                                    <i
+                                        class="fa-solid fa-user-plus text-white me-1"
+                                    ></i
+                                    >Add
+                                </button>
+                                <div
+                                    class="modal fade"
+                                    id="add-user-modal"
+                                    data-bs-backdrop="static"
+                                    data-bs-keyboard="false"
+                                    tabindex="-1"
+                                    aria-labelledby="add-user-modal-label"
+                                    aria-hidden="true"
+                                >
+                                    <div class="modal-dialog">
+                                        <form class="modal-content">
+                                            <div class="modal-header">
+                                                <h1
+                                                    class="modal-title fs-5"
+                                                    id="add-user-modal-label"
+                                                >
+                                                    Add User
+                                                </h1>
+                                                <button
+                                                    type="button"
+                                                    class="btn-close"
+                                                    data-bs-dismiss="modal"
+                                                    aria-label="Close"
+                                                    onclick="resetAddUserModal(event)"
+                                                ></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label
+                                                        for="add-user-email-input"
+                                                        class="form-label"
+                                                        >Email address</label
+                                                    >
+                                                    <div
+                                                        class="input-group flex-nowrap"
+                                                    >
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="Enter email address"
+                                                            aria-label="Enter email address"
+                                                            id="add-user-email-input"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label
+                                                        for="add-user-password-input"
+                                                        class="form-label"
+                                                        >Role</label
+                                                    >
+                                                    <div class="form-check">
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="add-user-role-input"
+                                                            id="add-user-role-input-gold"
+                                                            value="gold"
+                                                            checked
+                                                        />
+                                                        <label
+                                                            class="form-check-label"
+                                                            for="add-user-role-input-gold"
+                                                        >
+                                                            Gold
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            name="add-user-role-input"
+                                                            id="add-user-role-input-platinum"
+                                                            value="platinum"
+                                                        />
+                                                        <label
+                                                            class="form-check-label"
+                                                            for="add-user-role-input-platinum"
+                                                        >
+                                                            Platinum
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-secondary"
+                                                    data-bs-dismiss="modal"
+                                                    onclick="resetAddUserModal(event)"
+                                                >
+                                                    Close
+                                                </button>
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-success"
+                                                    onclick="addUser(event)"
+                                                >
+                                                    <i
+                                                        class="fa-solid fa-user-plus text-white me-1"
+                                                    ></i
+                                                    >Add
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary w-100"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    <i
+                                        class="fa-solid fa-arrow-down-wide-short text-white me-1"
+                                    ></i>
+                                    Sort
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" href="#">
+                                            Due Amount
+                                            <i
+                                                class="fa-solid fa-arrow-down"
+                                            ></i>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" href="#">
+                                            Due Amount
+                                            <i class="fa-solid fa-arrow-up"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="text-secondary mt-3">Users</h5>
+                <div class="mt-3 p-2 rounded users-table overflow-x-auto area">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Due</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userListTable">
+                            <!-- <tr>
+                                <th scope="row">1</th>
+                                <td>sudiptapradhan58271@gmail.com</td>
+                                <td>Platinum</td>
+                                <td>₹5000</td>
+                                <td>Verified</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>sudiptapradhan58271@gmail.com</td>
+                                <td>Pending</td>
+                                <td>N/A</td>
+                                <td class="d-flex gap-2 justify-content-center">
+                                    <button class="btn btn-primary">
+                                        Gold
+                                    </button>
+                                    <button class="btn btn-success">
+                                        Platinum
+                                    </button>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="loading" id="usersLoading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/popper.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/axios.min.js"></script>
+        <script src="../../js/script.js"></script>
+        <script>
+            window.onload = showUserList;
+        </script>
+        <script></script>
+    </body>
+</html>

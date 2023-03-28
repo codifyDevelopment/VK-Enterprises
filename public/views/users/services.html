@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin - Dashboard Home</title>
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        />
+        <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
+    </head>
+    <body>
+        <nav class="navbar bg-white border-bottom dashboard_header">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center navbar-header">
+                    <button class="menu-icon" id="menu-toggler">
+                        <i
+                            class="fa-solid fa-bars text-black text-secondary"
+                        ></i>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img
+                            src="../img/logo.svg"
+                            alt="logo"
+                            class="logo"
+                            height="35"
+                        />
+                    </a>
+                </div>
+                <div
+                    class="d-flex align-items-center justify-content-center gap-3"
+                >
+                    <div class="">
+                        <button
+                            class="btn notification-icon"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            onclick="markNotificationAsRead()"
+                        >
+                            <i class="fa-solid fa-bell text-black"></i>
+                            <span
+                                class="badge badge-danger bg-danger"
+                                id="notification-count"
+                                >0</span
+                            >
+                        </button>
+                        <ul class="dropdown-menu" id="notifications">
+                            <!-- <li class="border-bottom">
+                                <a class="dropdown-item text-wrap" href="#"
+                                    >Action</a
+                                >
+                            </li> -->
+                        </ul>
+                    </div>
+                    <button
+                        style="width: 30px; height: 30px"
+                        class="btn bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center"
+                    >
+                        <i class="fa-solid fa-user text-black"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="bashboard_main"> -->
+        <!-- sidebar -->
+        <div
+            class="bg-white border-end d-flex flex-column justify-content-between align-items-center dashboard_sidebar"
+            id="menu"
+        >
+            <ul>
+                <li>
+                    <a href="/dashboard">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/services">
+                        <i class="fa-solid fa-toolbox"></i>
+                        Services
+                    </a>
+                </li>
+                <li>
+                    <a href="/orders">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="/transactions">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                        Transactions
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/inquiries">
+                        <i class="fa-solid fa-circle-question"></i>
+                        Inquiries
+                    </a>
+                </li>
+            </ul>
+            <div class="logout-btn">
+                <button onclick="logout(event)">
+                    <i class="fa-solid fa-sign-out"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+        <!-- main content -->
+        <div class="dashboard_content">
+            <div class="container">
+                <h1 class="mb-3">All Services</h1>
+                <!-- <p>Welcome to the dashboard.</p> -->
+                <div
+                    class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-1 mb-3"
+                    id="user-services"
+                >
+                    <!-- <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="text-secondary">Product ID:</span>
+                                <span class="fw-bold">xxxxxx</span>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title text-center">Title</h4>
+                                <p class="card-text">
+                                    Some quick example text to build on the card
+                                    title and make up the bulk of the card's
+                                    content.
+                                </p>
+                                <p>
+                                    <span class="text-secondary"
+                                        >Price ( ₹ / cm<sup>2</sup> ):</span
+                                    >
+                                    <span class="text-success fw-bold"
+                                        >xxxxxx</span
+                                    >
+                                </p>
+                                <p>
+                                    <span class="text-secondary"
+                                        >Minimum Price ( ₹ ):</span
+                                    >
+                                    <span class="text-success fw-bold"
+                                        >xxxxxx</span
+                                    >
+                                </p>
+                                <p>
+                                    <span class="text-secondary"
+                                        >Designing Time :</span
+                                    >
+                                    <span class="text-success fw-bold"
+                                        >xxxxxx</span
+                                    >
+                                </p>
+                                <button class="btn btn-primary w-100">
+                                    Order Now
+                                </button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <script src="../../js/popper.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/axios.min.js"></script>
+        <script src="../../js/script.js"></script>
+        <script>
+            window.onload = showServices();
+        </script>
+    </body>
+</html>

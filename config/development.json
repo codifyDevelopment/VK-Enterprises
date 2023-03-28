@@ -15,5 +15,7 @@
         "host": "127.0.0.1",
         "dialect": "mariadb"
     },
-    "adminEmail": "admin@vktech.info"
+    "adminEmail": "sudiptapradhan58271@gmail.com",
+    "stripe_public_key": "pk_test_51MqGGWSGwrq6Pb3IVPbnSrJwAwQzt379mf1dp6zRrgzbyR0uOac2bNwdgGo66jemarsNDeGgXuML1F7PclTBwdzZ00eQvwwsjL",
+    "strip_secret_key": "sk_test_51MqGGWSGwrq6Pb3I1OvC4gBKEXazVIgKKQNG3kYzdxz2PdqogxRYpNEYJwv5Gu3hBBhhk67VWgubr9GDnzCOyTUw00qtd5f1AO"
 }

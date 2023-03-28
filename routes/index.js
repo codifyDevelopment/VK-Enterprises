@@ -88,61 +88,73 @@ router.get("/dashboard", isUserAuthenticated, async (req, res, next) => {
         return res.redirect("/wait-for-approval");
     }
     if (req.user.role === "admin") {
-        return res.sendFile("admin-dashboard-home.html", {
-            root: "public/views",
+        return res.sendFile("home.html", {
+            root: "public/views/admin",
         });
-    }
-    if (req.user.role === "platinum") {
-        return res.sendFile("platinum-dashboard-home.html", {
-            root: "public/views",
-        });
-    }
-    if (req.user.role === "gold") {
-        return res.sendFile("gold-dashboard-home.html", {
-            root: "public/views",
+    } else {
+        return res.sendFile("home.html", {
+            root: "public/views/users",
         });
     }
 });
 
 router.get("/users", isAdmin, async (req, res, next) => {
-    res.sendFile("admin-dashboard-users.html", { root: "public/views" });
+    res.sendFile("users.html", { root: "public/views/admin" });
 });
 
 router.get("/orders", isUserAuthenticated, async (req, res, next) => {
     if (req.user.role === "admin") {
-        return res.sendFile("admin-dashboard-orders.html", {
-            root: "public/views",
+        return res.sendFile("orders.html", {
+            root: "public/views/admin",
         });
-    }
-    if (req.user.role === "platinum") {
-        return res.sendFile("platinum-dashboard-orders.html", {
-            root: "public/views",
-        });
-    }
-    if (req.user.role === "gold") {
-        return res.sendFile("gold-dashboard-orders.html", {
-            root: "public/views",
+    } else {
+        return res.sendFile("orders.html", {
+            root: "public/views/users",
         });
     }
 });
 
 router.get("/orders/:id", isUserAuthenticated, async (req, res, next) => {
     if (req.user.role === "admin") {
-        return res.sendFile("admin-dashboard-order-details.html", {
-            root: "public/views",
+        return res.sendFile("order-details.html", {
+            root: "public/views/admin",
         });
     }
     if (req.user.role === "platinum") {
-        return res.sendFile("platinum-dashboard-order-details.html", {
-            root: "public/views",
+        return res.sendFile("order-details.html", {
+            root: "public/views/platinum",
         });
     }
     if (req.user.role === "gold") {
-        return res.sendFile("gold-dashboard-order-details.html", {
-            root: "public/views",
+        return res.sendFile("order-details.html", {
+            root: "public/views/gold",
         });
     } else {
         return res.redirect("/dashboard");
+    }
+});
+
+router.get("/services", isUserAuthenticated, async (req, res, next) => {
+    if (req.user.role === "admin") {
+        return res.sendFile("services.html", {
+            root: "public/views/admin",
+        });
+    } else {
+        return res.sendFile("services.html", {
+            root: "public/views/users",
+        });
+    }
+});
+
+router.get("/inquiries", isUserAuthenticated, async (req, res, next) => {
+    if (req.user.role === "admin") {
+        return res.sendFile("inquiries.html", {
+            root: "public/views/admin",
+        });
+    } else {
+        return res.sendFile("inquiries.html", {
+            root: "public/views/users",
+        });
     }
 });
 

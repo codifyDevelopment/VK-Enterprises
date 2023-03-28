@@ -117,8 +117,68 @@ const resetUser = async (req, res) => {
     }
 };
 
+const addUser = async (req, res) => {
+    try {
+        const { email, role } = req.body;
+        if (!email || !role) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid data",
+            });
+        }
+        if (role !== "gold" && role !== "platinum") {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid role",
+            });
+        }
+        const user = await User.findByPk(email);
+        if (user) {
+            return res.status(400).json({
+                success: false,
+                message: "User already exists",
+            });
+        }
+        const password = Math.random().toString(36).slice(-8);
+        if (
+            process.env.NODE_ENV === "production" ||
+            process.env.env === "production"
+        ) {
+            const transporter = nodemailer.createTransport(
+                config.get("nodemailer")
+            );
+            const ClientMailOptions = {
+                from: config.get("nodemailer").auth.user,
+                to: email,
+                subject: "Your account has been created - VK ENTERPRISES",
+                text: `your account has been created, you can now go to https://vktech.info and login to your account. Your password is ${password}. Thank you for your patience and loyalty. If you have any questions, please contact us at ${config.get(
+                    "adminEmail"
+                )} or 1-800-123-4567.`,
+            };
+            await transporter.sendMail(ClientMailOptions);
+        }
+        await User.create({
+            email,
+            password,
+            role,
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "User added",
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send({
+            success: false,
+            message: "Server Error",
+        });
+    }
+};
+
 module.exports = {
     getUsers,
     verifyUser,
     resetUser,
+    addUser,
 };

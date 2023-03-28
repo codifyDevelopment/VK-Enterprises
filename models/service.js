@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
 
-const Product = db.define(
-    "product",
+const Services = db.define(
+    "Services",
     {
         id: {
             type: DataTypes.STRING,
@@ -12,39 +12,43 @@ const Product = db.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         pricePerUnitForGoldUser: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: true,
-        },
-        pricePerUnitForPlatinumUser: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-        minimumPriceForGoldUser: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        minimumPriceForPlatinumUser: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+            defaultValue: null,
         },
         minimumSquareCmForGoldUser: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: true,
+            defaultValue: null,
         },
-        minimumSquareCmForPlatinumUser: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
+        minimumPriceForGoldUser: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
         },
         timeToDeliverForGoldUser: {
             type: DataTypes.STRING,
+            allowNull: false,
+        },
+        pricePerUnitForPlatinumUser: {
+            type: DataTypes.FLOAT,
             allowNull: true,
+            defaultValue: null,
+        },
+        minimumSquareCmForPlatinumUser: {
+            type: DataTypes.FLOAT,
+            allowNull: true,
+            defaultValue: null,
+        },
+        minimumPriceForPlatinumUser: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
         },
         timeToDeliverForPlatinumUser: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -54,4 +58,4 @@ const Product = db.define(
     }
 );
 
-module.exports = Product;
+module.exports = Services;

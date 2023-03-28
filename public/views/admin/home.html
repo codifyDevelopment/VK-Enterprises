@@ -5,12 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Admin - Dashboard Home</title>
-        <link rel="stylesheet" href="../css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         />
-        <link rel="stylesheet" type="text/css" href="../css/style.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
     </head>
     <body>
         <nav class="navbar bg-white border-bottom dashboard_header">
@@ -30,10 +30,38 @@
                         />
                     </a>
                 </div>
-                <button class="btn notification">
-                    <i class="fa-solid fa-bell text-black"></i>
-                    <span class="badge badge-danger bg-danger">5</span>
-                </button>
+                <div
+                    class="d-flex align-items-center justify-content-center gap-3"
+                >
+                    <div class="">
+                        <button
+                            class="btn notification-icon"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            onclick="markNotificationAsRead()"
+                        >
+                            <i class="fa-solid fa-bell text-black"></i>
+                            <span
+                                class="badge badge-danger bg-danger"
+                                id="notification-count"
+                                >0</span
+                            >
+                        </button>
+                        <ul class="dropdown-menu" id="notifications">
+                            <!-- <li class="border-bottom">
+                                <a class="dropdown-item text-wrap" href="#"
+                                    >Action</a
+                                >
+                            </li> -->
+                        </ul>
+                    </div>
+                    <button
+                        style="width: 30px; height: 30px"
+                        class="btn bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center"
+                    >
+                        <i class="fa-solid fa-user text-black"></i>
+                    </button>
+                </div>
             </div>
         </nav>
         <!-- <div class="bashboard_main"> -->
@@ -50,9 +78,15 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="/services">
-                        <i class="fa-solid fa-toolbox"></i>
-                        Services
+                    <a href="/inquiries">
+                        <i class="fa-solid fa-circle-question"></i>
+                        Inquiries
+                    </a>
+                </li>
+                <li>
+                    <a href="/users">
+                        <i class="fa-solid fa-user"></i>
+                        Users
                     </a>
                 </li>
                 <li>
@@ -67,12 +101,6 @@
                         Transactions
                     </a>
                 </li>
-                <li class="">
-                    <a href="/inquries">
-                        <i class="fa-solid fa-circle-question"></i>
-                        Inquiries
-                    </a>
-                </li>
             </ul>
             <div class="logout-btn">
                 <button onclick="logout(event)">
@@ -81,6 +109,7 @@
                 </button>
             </div>
         </div>
+        <!-- end sidebar -->
         <!-- main content -->
         <div class="dashboard_content">
             <div class="container">
@@ -90,40 +119,52 @@
                     class="row row-cols-1 row-cols-lg-4 g-2 gx-lg-3 w-100 m-auto"
                 >
                     <div class="col">
-                        <a
-                            href="#"
-                            class="bg-primary m-0 link-light d-flex align-items-center p-3 gap-3 justify-content-center rounded"
-                        >
-                            <i class="fa-solid fa-toolbox h2 m-0"></i>
-                            All Services
-                        </a>
+                        <div class="card bg-primary">
+                            <div class="card-body text-center">
+                                <h1 class="card-title text-white">500</h1>
+                                <h6
+                                    class="card-subtitle mb-2 text-muted text-white-50"
+                                >
+                                    Total Users
+                                </h6>
+                            </div>
+                        </div>
                     </div>
                     <div class="col">
-                        <a
-                            href="#"
-                            class="bg-primary m-0 link-light d-flex align-items-center p-3 gap-3 justify-content-center rounded"
-                        >
-                            <i class="fa-solid fa-cart-plus h2 m-0"></i>
-                            New Order
-                        </a>
+                        <div class="card bg-primary">
+                            <div class="card-body text-center">
+                                <h1 class="card-title text-white">500</h1>
+                                <h6
+                                    class="card-subtitle mb-2 text-muted text-white-50"
+                                >
+                                    Orders under process
+                                </h6>
+                            </div>
+                        </div>
                     </div>
                     <div class="col">
-                        <a
-                            href="#"
-                            class="bg-primary m-0 link-light d-flex align-items-center p-3 gap-3 justify-content-center rounded"
-                        >
-                            <i class="fa-solid fa-pen-to-square h2 m-0"></i>
-                            Update Order
-                        </a>
+                        <div class="card bg-primary">
+                            <div class="card-body text-center">
+                                <h1 class="card-title text-white">500</h1>
+                                <h6
+                                    class="card-subtitle mb-2 text-muted text-white-50"
+                                >
+                                    Inquiries
+                                </h6>
+                            </div>
+                        </div>
                     </div>
                     <div class="col">
-                        <a
-                            href="#"
-                            class="bg-primary m-0 link-light d-flex align-items-center p-3 gap-3 justify-content-center rounded"
-                        >
-                            <i class="fa-solid fa-comment h2 m-0"></i>
-                            New Inquiry
-                        </a>
+                        <div class="card bg-primary">
+                            <div class="card-body text-center">
+                                <h1 class="card-title text-white">500</h1>
+                                <h6
+                                    class="card-subtitle mb-2 text-muted text-white-50"
+                                >
+                                    Pending Transactions
+                                </h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <h5 class="text-secondary mt-3">Recent Orders</h5>
@@ -175,7 +216,7 @@
                                 <td>sudiptapradhan58271@gmail.com</td>
                                 <td>Pending Completion</td>
                                 <td class="d-flex gap-2">
-                                    <button class="btn btn-danger w-100">
+                                    <button class="btn btn-warning w-100">
                                         Completed
                                     </button>
                                 </td>
@@ -213,9 +254,12 @@
             </div>
         </div>
         <!-- </div> -->
-        <script src="../js/popper.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/axios.min.js"></script>
-        <script src="../js/script.js"></script>
+        <script src="../../js/popper.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/axios.min.js"></script>
+        <script src="../../js/script.js"></script>
+        <script>
+            window.onload = getNotification();
+        </script>
     </body>
 </html>
