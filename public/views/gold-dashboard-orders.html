@@ -1,10 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Orders - VK Enterprise</title>
-    </head>
-    <body></body>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Dashboard Orders</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.min.css" />
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+        }
+    
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+            /* border: 1px solid black; */
+        }
+    
+        th {
+            /* background-color: #4070f4; */
+            color: black;
+        }
+    
+        tr:last-child {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar bg-white border-bottom dashboard_header">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center navbar-header">
+                <button class="menu-icon" id="menu-toggler">
+                    <i class="fa-solid fa-bars text-black text-secondary"></i>
+                </button>
+                <a href="/" class="navbar-brand">
+                    <img src="../img/logo.svg" alt="logo" class="logo" height="35" />
+                </a>
+            </div>
+            <button class="btn notification">
+                <i class="fa-solid fa-bell text-black"></i>
+                <span class="badge badge-danger bg-danger">5</span>
+            </button>
+        </div>
+    </nav>
+    <!-- <div class="bashboard_main"> -->
+    <!-- sidebar -->
+    <div class="bg-white border-end d-flex flex-column justify-content-between align-items-center dashboard_sidebar"
+        id="menu">
+        <ul>
+            <li>
+                <a href="/dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+            </li>
+            <li class="">
+                <a href="/inquries">
+                    <i class="fa-solid fa-circle-question"></i>
+                    Inquiries
+                </a>
+            </li>
+            <li>
+                <a href="/users">
+                    <i class="fa-solid fa-user"></i>
+                    Users
+                </a>
+            </li>
+            <li class="active">
+                <a href="/orders">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Orders
+                </a>
+            </li>
+            <li>
+                <a href="/transactions">
+                    <i class="fa-solid fa-money-bill-transfer"></i>
+                    Transactions
+                </a>
+            </li>
+        </ul>
+        <div class="logout-btn">
+            <button onclick="logout(event)">
+                <i class="fa-solid fa-sign-out"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+    <!-- main content -->
+    <div class="container">
+        <div class="box box-1">
+
+        
+        <header>Order Form</header>
+    
+        <form action="#">
+            <div class="form first">
+                <div class="details personal">
+    
+    
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Order Id</label>
+                            <input type="text" placeholder="Enter your Order Id" required>
+                        </div>
+    
+                        <div class="input-field">
+                            <label>Order Status</label>
+                            <select required>
+                                <option disabled selected>Select Order Status</option>
+                                <option>Open</option>
+                                <option>Completed</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Order Date</label>
+                            <input type="date" placeholder="Enter Date" required>
+                        </div>
+    
+    
+                        <div class="input-field">
+                            <label>Order No</label>
+                            <input type="number" placeholder="Enter Order number" required>
+                        </div>
+    
+                        <div class="input-field">
+                            <label>PCB Name</label>
+                            <input type="text" placeholder="Enter PCB Name">
+    
+                        </div>
+    
+                        <div class="input-field">
+                            <label>PCB Type</label>
+                            <select required>
+                                <option disabled selected>Select PCB Type</option>
+                                <option>LEDs/MCPCBs</option>
+                                <option>Single Layer / Side</option>
+                                <option>Double Layer / Side</option>
+                                <option>Multilayer PCB</option>
+                                <option>Schamatic To PCB</option>
+                                <option>Stencile</option>
+                                <option>CAM/Panelization</option>
+                                <option>Update</option>
+                                <option>Urgent/Instaneous</option>
+                                <option>Bill Of Material</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="details ID">
+    
+    
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>PCB Size</label>
+                            <select required>
+                                <option disabled selected>PCB size</option>
+                                <option>Know</option>
+                                <option>As Per Yours</option>
+                            </select>
+                        </div>
+    
+                        <div class="input-field">
+                            <label>X-Dimensions(in MM)</label>
+                            <input type="number" placeholder="0.00" required>
+                        </div>
+    
+                        <div class="input-field">
+                            <label>Y-Dimensions(in MM)</label>
+                            <input type="number" placeholder="0.00" required>
+                        </div>
+    
+                        <div class="input-field">
+                            <label>SQCM PRICE</label>
+                            <input type="number" placeholder="Rs.0.00" required>
+                        </div>
+    
+                    </div>
+                    <div>
+                        <label>Carefully Once check All Fill Details Before Save.
+                            (After Designing A Simple Changes Charges Will Be A Extra)
+                            (*300Rs. + Depends On Changes Rate)*
+    
+                        </label>
+                        <input type="button" value="YES" class="inputBtn" required>
+                    </div>
+    
+                    <div class=>
+                        <label>*All Designs Are For Sammples only. Never Work For Quatities.
+                            **Not Responsible For Quatities.(After No Further Argument Will Be Heard).
+                            **Also, Check All The Designs Then Proceed.*
+                        </label>
+                        <input type="button" value="Yes" class="inputBtn" required>
+                    </div>
+    
+                </div>
+            </div>
+    
+            <div class="buttons">
+                <div class="backBtn">
+                    <i class="uil uil-navigator"></i>
+                    <span class="btnText">Back</span>
+                </div>
+    
+                <button class="submit">
+                    <span class="btnText">Submit</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
+            </div>
+    
+        </form>
+             <div class="box box-2">
+
+        
+        <header>Live Price</header>
+            <table>
+                <tr>
+                        <th>Name</th>
+                        <td>PCB1</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>Single</td>
+                    </tr>
+                    <tr>
+                        <th>Size</th>
+                        <td>100x80mm</td>
+                    </tr>
+                    <tr>
+                        <th>Comment</th>
+                        <td>Gold plated</td>
+                    </tr>
+                    <tr>
+                        <th>Total Price</th>
+                        <td>$10 </td>
+                    </tr>
+                    
+            
+            </table>
+        </div>
+    </div>
+    
+
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+
 </html>
