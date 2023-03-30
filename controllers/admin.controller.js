@@ -4,10 +4,10 @@ const config = require("config");
 
 const getUsers = async (req, res) => {
     try {
-        const users = await User.findAll({
-            order: [["createdAt", "DESC"]],
+        const users = await User.findAll();
+        users.sort((a, b) => {
+            return new Date(b.createdAt) - new Date(a.createdAt);
         });
-
         res.status(200).json({
             success: true,
             data: users.filter((user) => user.role !== "admin"),

@@ -78,9 +78,9 @@ let submitLoginForm = async function (e) {
     try {
         loading.style.visibility = "visible";
         let response = await axios.post("/api/user/login", data);
-        if (response.data.success) {
-            window.location.href = "/dashboard";
-        }
+        // if (response.data.success) {
+        window.location.href = "/dashboard";
+        // }
     } catch (error) {
         loading.style.visibility = "hidden";
         if (!error.response.data.success) {
@@ -109,9 +109,9 @@ let submitRegisterForm = async function (e) {
     try {
         loading.style.visibility = "visible";
         let response = await axios.post("/api/user/register", data);
-        if (response.data.success) {
-            window.location.href = "/wait-for-approval";
-        }
+        // if (response.data.success) {
+        window.location.href = "/wait-for-approval";
+        // }
     } catch (error) {
         loading.style.visibility = "hidden";
         if (!error.response.data.success) {
@@ -134,9 +134,9 @@ let logout = async function (e) {
     e.preventDefault();
     try {
         let response = await axios.get("/api/user/logout");
-        if (response.data.success) {
-            window.location.href = "/";
-        }
+        // if (response.data.success) {
+        window.location.href = "/";
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -148,17 +148,17 @@ const getNotification = async function () {
     notifications.innerHTML = "";
     try {
         let response = await axios.get("/api/notification/get-all");
-        if (response.data.success) {
-            notificationCount.innerHTML =
-                response.data.unreadNotificationsCount;
-            if (response.data.unreadNotificationsCount === 0) {
-                notifications.innerHTML = `
+        // if (response.data.success) {
+        notificationCount.innerHTML = response.data.unreadNotificationsCount;
+        if (response.data.notifications.length === 0) {
+            notifications.innerHTML = `
                     <li class="border-bottom text-center">
                         <a href="#" class="mb-0 dropdown-item text-wrap">
                             No new notifications
                         </a>
                     </li>`;
-            }
+        } else {
+            notifications.innerHTML = "";
             response.data.notifications.forEach((notification) => {
                 const notificationElement = document.createElement("li");
                 notificationElement.classList.add("border-bottom");
@@ -170,6 +170,8 @@ const getNotification = async function () {
                             ? "/orders"
                             : notification.type === "transaction"
                             ? "/transactions"
+                            : notification.type === "inquiry"
+                            ? "/inquiries"
                             : "/dashboard"
                     }" class="mb-0 dropdown-item text-wrap">
                         ${notification.notificationText}
@@ -178,6 +180,7 @@ const getNotification = async function () {
                 notifications.appendChild(notificationElement);
             });
         }
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -186,9 +189,9 @@ const getNotification = async function () {
 const markNotificationAsRead = async function (e) {
     try {
         let response = await axios.get("/api/notification/mark-as-read");
-        if (response.data.success) {
-            await getNotification();
-        }
+        // if (response.data.success) {
+        await getNotification();
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -200,10 +203,10 @@ let usersList;
 const getUserList = async function () {
     try {
         let response = await axios.get("/api/admin/get-users-list");
-        if (response.data.success) {
-            // return response.data.data;
-            usersList = response.data.data;
-        }
+        // if (response.data.success) {
+        // return response.data.data;
+        usersList = response.data.data;
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -308,10 +311,10 @@ const addUser = async function (e) {
         let usersLoading = document.getElementById("usersLoading");
         usersLoading.style.visibility = "visible";
         let response = await axios.post("/api/admin/add-user", data);
-        if (response.data.success) {
-            // window.location.reload();
-            await showUserList();
-        }
+        // if (response.data.success) {
+        // window.location.reload();
+        await showUserList();
+        // }
     } catch (error) {
         if (error.response.data.message === "User already exists") {
             alert("User already exists");
@@ -341,10 +344,10 @@ const verifyAsGold = async function (e, email) {
             email,
             role: "gold",
         });
-        if (response.data.success) {
-            // window.location.reload();
-            await showUserList();
-        }
+        // if (response.data.success) {
+        // window.location.reload();
+        await showUserList();
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -360,10 +363,10 @@ const verifyAsPlatinum = async function (e, email) {
             email,
             role: "platinum",
         });
-        if (response.data.success) {
-            // window.location.reload();
-            await showUserList();
-        }
+        // if (response.data.success) {
+        // window.location.reload();
+        await showUserList();
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -378,10 +381,10 @@ const resetUser = async function (e, email) {
         let response = await axios.post("/api/admin/reset-user", {
             email,
         });
-        if (response.data.success) {
-            // window.location.reload();
-            await showUserList();
-        }
+        // if (response.data.success) {
+        // window.location.reload();
+        await showUserList();
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -391,9 +394,10 @@ const resetUser = async function (e, email) {
 const fetchAllServices = async function () {
     try {
         let response = await axios.get("/api/services/get-all-services");
-        if (response.data.success) {
-            return response.data.data;
-        }
+        // if (response.data.success) {
+        console.log(response.data.data);
+        return response.data.data;
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -405,35 +409,35 @@ const showServices = async function () {
     services.innerHTML = "";
     const allServices = await fetchAllServices();
     // sort allServices by id like [MCPCB,SS,DS,MS,S2P,STN,CP,SSUP,DSUP,S2PUP,URG,BOM]
-    let newAllServices = [];
-    allServices.forEach((service) => {
-        if (service.id === "MCPCB") {
-            newAllServices[0] = service;
-        } else if (service.id === "SS") {
-            newAllServices[1] = service;
-        } else if (service.id === "DS") {
-            newAllServices[2] = service;
-        } else if (service.id === "MS") {
-            newAllServices[3] = service;
-        } else if (service.id === "S2P") {
-            newAllServices[4] = service;
-        } else if (service.id === "STN") {
-            newAllServices[5] = service;
-        } else if (service.id === "CP") {
-            newAllServices[6] = service;
-        } else if (service.id === "SSUP") {
-            newAllServices[7] = service;
-        } else if (service.id === "DSUP") {
-            newAllServices[8] = service;
-        } else if (service.id === "S2PUP") {
-            newAllServices[9] = service;
-        } else if (service.id === "URG") {
-            newAllServices[10] = service;
-        } else if (service.id === "BOM") {
-            newAllServices[11] = service;
-        }
-    });
-    newAllServices.forEach((service, index) => {
+    // let newAllServices = [];
+    // allServices.forEach((service) => {
+    //     if (service.id === "MCPCB") {
+    //         newAllServices[0] = service;
+    //     } else if (service.id === "SS") {
+    //         newAllServices[1] = service;
+    //     } else if (service.id === "DS") {
+    //         newAllServices[2] = service;
+    //     } else if (service.id === "MS") {
+    //         newAllServices[3] = service;
+    //     } else if (service.id === "S2P") {
+    //         newAllServices[4] = service;
+    //     } else if (service.id === "STN") {
+    //         newAllServices[5] = service;
+    //     } else if (service.id === "CP") {
+    //         newAllServices[6] = service;
+    //     } else if (service.id === "SSUP") {
+    //         newAllServices[7] = service;
+    //     } else if (service.id === "DSUP") {
+    //         newAllServices[8] = service;
+    //     } else if (service.id === "S2PUP") {
+    //         newAllServices[9] = service;
+    //     } else if (service.id === "URG") {
+    //         newAllServices[10] = service;
+    //     } else if (service.id === "BOM") {
+    //         newAllServices[11] = service;
+    //     }
+    // });
+    allServices.forEach((service, index) => {
         let col = document.createElement("div");
         col.classList.add("col", "d-flex");
         col.innerHTML = `
@@ -496,12 +500,14 @@ const showServices = async function () {
 };
 
 // --------------------- Inquiries ---------------------
+let allInquiries;
 const fetchAllInquiries = async function () {
     try {
         let response = await axios.get("/api/inquiries/get-inquiries");
-        if (response.data.success) {
-            return response.data.inquiries;
-        }
+        // if (response.data.success) {
+        // return response.data.inquiries;
+        allInquiries = response.data.inquiries;
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -513,15 +519,26 @@ const showInquiries = async function () {
     let loading = document.getElementById("inquiry-loading");
     loading.style.visibility = "visible";
     inquiries.innerHTML = "";
-    const allInquiries = await fetchAllInquiries();
-    allInquiries.forEach((inquiry) => {
+    await fetchAllInquiries();
+    if (allInquiries.length === 0) {
         let row = document.createElement("tr");
         row.innerHTML = `
+            <td colspan="6" class="text-center">
+                No inquiries found
+            </td>
+        `;
+        inquiries.appendChild(row);
+    } else {
+        allInquiries.forEach((inquiry) => {
+            let row = document.createElement("tr");
+            row.innerHTML = `
             <th scope="row">${inquiry.id}</th>
             <td>${new Date(inquiry.createdAt).toLocaleDateString()}</td>
             <td>${inquiry.inquiryAbout}</td>
             <td>${
-                inquiry.inquiryText ? inquiry.inquiryText.slice(0, 20) : "N/A"
+                inquiry.inquiryText
+                    ? inquiry.inquiryText.slice(0, 20) + "..."
+                    : "N/A"
             }</td>
             <td class="text-center">${
                 inquiry.inquiryStatus === "opened"
@@ -540,7 +557,472 @@ const showInquiries = async function () {
                 </button>
             </td>
             `;
-        inquiries.appendChild(row);
-    });
+            inquiries.appendChild(row);
+        });
+    }
     loading.style.visibility = "hidden";
+};
+
+const showInquiryDetails = async function (id) {
+    let inquiryDetailsModalBody = document.getElementById(
+        "inquiry-details-modal-body"
+    );
+    let inquiryDetailsAbout = document.getElementById("inquiry-details-about");
+    let inquiryDetailsText = document.getElementById("inquiry-details-text");
+    let inquiryDetailsDate = document.getElementById("inquiry-details-date");
+    let inquiryDetailsId = document.getElementById("inquiry-details-id");
+    let inquiryDetailsReply = document.getElementById("inquiry-details-reply");
+
+    let inquiry = allInquiries.find((inquiry) => inquiry.id === parseInt(id));
+    inquiryDetailsAbout.innerHTML = "Inquiry About: " + inquiry.inquiryAbout;
+    inquiryDetailsText.innerHTML = inquiry.inquiryText;
+    inquiryDetailsDate.innerHTML =
+        "Inquiry Date: " + new Date(inquiry.createdAt).toLocaleDateString();
+    inquiryDetailsId.innerHTML = "Inquiry ID: " + inquiry.id;
+    if (inquiry.reply.length === 0) {
+        inquiryDetailsReply.innerHTML = `
+            <div class="col">
+                <div class="card bg-danger-subtle">
+                    <div class="card-body">
+                        No reply found
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        inquiryDetailsReply.innerHTML = "";
+        inquiry.reply.forEach((reply) => {
+            let col = document.createElement("div");
+            col.classList.add("col");
+            col.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div
+                                class="flex-grow-1"
+                            >
+                                <h6
+                                    class="mb-0"
+                                >
+                                    ${
+                                        inquiry.createdBy === reply.replyBy
+                                            ? "You"
+                                            : "Admin"
+                                    }
+                                </h6>
+                                <small
+                                    class="text-secondary"
+                                    >
+                                    ${
+                                        new Date(
+                                            reply.replyAt
+                                        ).toLocaleDateString() +
+                                        " " +
+                                        new Date(
+                                            reply.replyAt
+                                        ).toLocaleTimeString()
+                                    }
+                                    </small
+                                >
+                            </div>
+                        </div>
+                        <p
+                            class="text-dark my-3"
+                        >
+                            ${reply.reply}
+                        </p>
+                    </div>
+                </div>
+            `;
+            inquiryDetailsReply.appendChild(col);
+        });
+    }
+    const inquiryReplyForm = document.getElementById(
+        "inquiry-details-reply-input"
+    );
+    // console.log(inquiry.inquiryStatus);
+    if (inquiry.inquiryStatus === "closed") {
+        //! BUG INQUIRY REPLY FORM
+
+        inquiryReplyForm.innerHTML = `
+        <div
+            class="card bg-danger-subtle"
+            id="inquiry-details-reply-not-allowed"
+        >
+            <div class="card-body">
+                This inquiry is closed
+            </div>
+        </div>`;
+    } else {
+        //! BUG INQUIRY REPLY FORM
+        inquiryReplyForm.innerHTML = `
+        <div class="mb-3">
+            <label
+                for="reply-message"
+                class="form-label"
+                >Reply Message</label
+            >
+            <textarea
+                class="form-control"
+                id="inquiry-details-reply-text"
+                rows="3"
+                required
+            ></textarea>
+        </div>
+        <button
+            class="btn btn-primary float-end"
+            id="inquiry-details-reply-btn"
+        >
+            <i
+                class="fa-solid fa-reply text-white me-1"
+            ></i>
+            Reply
+        </button>
+        <button
+            type="button"
+            class="btn btn-danger float-end me-2"
+            id="close-inquiry-btn"
+        >
+            Close Inquiry
+        </button>`;
+        const replyBtn = document.getElementById("inquiry-details-reply-btn");
+        replyBtn.addEventListener("click", async function (e) {
+            e.preventDefault();
+            const reply = document.getElementById(
+                "inquiry-details-reply-text"
+            ).value;
+            if (reply) {
+                try {
+                    $("#inquiry-details-modal").modal("hide");
+                    let loading = document.getElementById("inquiry-loading");
+                    loading.style.visibility = "visible";
+                    await axios.post("/api/inquiries/reply", {
+                        id: inquiry.id,
+                        reply,
+                    });
+                    document.getElementById(
+                        "inquiry-details-reply-text"
+                    ).value = "";
+                    $("#inquiry-details-modal").modal("hide");
+                    await fetchAllInquiries();
+                    await showInquiries();
+                    // await showInquiryDetails(id);
+                    // showNotification("Inquiry replied successfully", "success");
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        });
+        const closeInquiryBtn = document.getElementById("close-inquiry-btn");
+        closeInquiryBtn.addEventListener("click", async function (e) {
+            e.preventDefault();
+            try {
+                $("#inquiry-details-modal").modal("hide");
+                let loading = document.getElementById("inquiry-loading");
+                loading.style.visibility = "visible";
+                await axios.post("/api/inquiries/close-inquiry", {
+                    id: inquiry.id,
+                    // inquiryStatus: "closed",
+                });
+                await showInquiries();
+                // await showInquiryDetails(id);
+                // showNotification("Inquiry closed successfully", "success");
+            } catch (error) {
+                console.log(error);
+            }
+        });
+    }
+};
+
+const createInquiry = async function (e) {
+    e.preventDefault();
+    const inquiryAbout = document.getElementById("inquiry-about").value;
+    const inquiryText = document.getElementById("inquiry-text").value;
+    if (inquiryAbout && inquiryText) {
+        try {
+            $("#create-inquiry-modal").modal("hide");
+            let loading = document.getElementById("inquiry-loading");
+            loading.style.visibility = "visible";
+            await axios.post("/api/inquiries/create-inquiry", {
+                inquiryAbout,
+                inquiryText,
+            });
+            $("#create-inquiry-modal").modal("hide");
+            await showInquiries();
+            document.getElementById("inquiry-about").value = "";
+            document.getElementById("inquiry-text").value = "";
+            // showNotification("Inquiry created successfully", "success");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+};
+
+const showInquiriesInTable = async function (data) {
+    let inquiries = document.getElementById("inquiry-table-body");
+    let loading = document.getElementById("inquiry-loading");
+    loading.style.visibility = "visible";
+    inquiries.innerHTML = "";
+    if (data.length === 0) {
+        let row = document.createElement("tr");
+        row.innerHTML = `
+            <td colspan="6" class="text-center">
+                No inquiries found
+            </td>
+        `;
+        inquiries.appendChild(row);
+    } else {
+        data.forEach((inquiry) => {
+            let row = document.createElement("tr");
+            row.innerHTML = `
+            <th scope="row">${inquiry.id}</th>
+            <td>${new Date(inquiry.createdAt).toLocaleDateString()}</td>
+            <td>${inquiry.inquiryAbout}</td>
+            <td>${inquiry.createdBy}</td>
+            <td class="text-center">${
+                inquiry.inquiryStatus === "opened"
+                    ? "<span class='badge bg-danger'>Opened</span>"
+                    : inquiry.inquiryStatus === "closed"
+                    ? "<span class='badge bg-success'>Closed</span>"
+                    : "<span class='badge bg-warning'>Replied</span>"
+            }</td>
+            <td class="text-center">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#inquiry-details-modal" onclick="showInquiryDetailsAdmin('${
+                    inquiry.id
+                }')">
+                    <i
+                        class="fa-solid fa-eye text-white"
+                    ></i>
+                </button>
+            </td>
+            `;
+            inquiries.appendChild(row);
+        });
+    }
+    loading.style.visibility = "hidden";
+};
+
+const showInquiriesAdmin = async function () {
+    try {
+        let loading = document.getElementById("inquiry-loading");
+        loading.style.visibility = "visible";
+        await getNotification();
+        await fetchAllInquiries();
+        await showInquiriesInTable(allInquiries);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const showInquiryDetailsAdmin = async function (id) {
+    let inquiryDetailsModalBody = document.getElementById(
+        "inquiry-details-modal-body"
+    );
+    let inquiryDetailsAbout = document.getElementById("inquiry-details-about");
+    let inquiryDetailsText = document.getElementById("inquiry-details-text");
+    let inquiryDetailsDate = document.getElementById("inquiry-details-date");
+    let inquiryDetailsId = document.getElementById("inquiry-details-id");
+    let inquiryDetailsUser = document.getElementById("inquiry-details-user");
+    let inquiryDetailsReply = document.getElementById("inquiry-details-reply");
+
+    let inquiry = allInquiries.find((inquiry) => inquiry.id === parseInt(id));
+    inquiryDetailsAbout.innerHTML = "Inquiry About: " + inquiry.inquiryAbout;
+    inquiryDetailsText.innerHTML = inquiry.inquiryText;
+    inquiryDetailsDate.innerHTML =
+        "Inquiry Date: " + new Date(inquiry.createdAt).toLocaleDateString();
+    inquiryDetailsId.innerHTML = "Inquiry ID: " + inquiry.id;
+    inquiryDetailsUser.innerHTML = "Inquiry By: " + inquiry.createdBy;
+    if (inquiry.reply.length === 0) {
+        inquiryDetailsReply.innerHTML = `
+            <div class="col">
+                <div class="card bg-danger-subtle">
+                    <div class="card-body">
+                        No reply found
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        inquiryDetailsReply.innerHTML = "";
+        inquiry.reply.forEach((reply) => {
+            let col = document.createElement("div");
+            col.classList.add("col");
+            col.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div
+                                class="flex-grow-1"
+                            >
+                                <h6
+                                    class="mb-0"
+                                >
+                                    ${
+                                        inquiry.createdBy === reply.replyBy
+                                            ? reply.replyBy
+                                            : "You"
+                                    }
+                                </h6>
+                                <small
+                                    class="text-secondary"
+                                    >
+                                    ${
+                                        new Date(
+                                            reply.replyAt
+                                        ).toLocaleDateString() +
+                                        " " +
+                                        new Date(
+                                            reply.replyAt
+                                        ).toLocaleTimeString()
+                                    }
+                                    </small
+                                >
+                            </div>
+                        </div>
+                        <p
+                            class="text-dark my-3"
+                        >
+                            ${reply.reply}
+                        </p>
+                    </div>
+                </div>
+            `;
+            inquiryDetailsReply.appendChild(col);
+        });
+    }
+    const inquiryReplyForm = document.getElementById(
+        "inquiry-details-reply-input"
+    );
+    // console.log(inquiry.inquiryStatus);
+    if (inquiry.inquiryStatus === "closed") {
+        inquiryReplyForm.innerHTML = `
+            <div class="card bg-danger-subtle">
+                <div class="card-body">
+                    This inquiry is closed
+                </div>
+            </div>
+        `;
+    } else {
+        inquiryReplyForm.innerHTML = `
+        <div class="mb-3">
+            <label
+                for="reply-message"
+                class="form-label"
+                >Reply Message</label
+            >
+            <textarea
+                class="form-control"
+                id="inquiry-details-reply-text"
+                rows="3"
+                required
+            ></textarea>
+        </div>
+        <button
+            class="btn btn-primary float-end"
+            id="inquiry-details-reply-btn"
+        >
+            <i
+                class="fa-solid fa-reply text-white me-1"
+            ></i>
+            Reply
+        </button>
+        <button
+            type="button"
+            class="btn btn-danger float-end me-2"
+            id="close-inquiry-btn"
+        >
+            Close Inquiry
+        </button>`;
+        const replyBtn = document.getElementById("inquiry-details-reply-btn");
+        replyBtn.addEventListener("click", async function (e) {
+            e.preventDefault();
+
+            const reply = document.getElementById(
+                "inquiry-details-reply-text"
+            ).value;
+            if (reply) {
+                try {
+                    $("#inquiry-details-modal").modal("hide");
+                    let loading = document.getElementById("inquiry-loading");
+                    loading.style.visibility = "visible";
+                    await axios.post("/api/inquiries/reply", {
+                        id: inquiry.id,
+                        reply,
+                    });
+                    document.getElementById(
+                        "inquiry-details-reply-text"
+                    ).value = "";
+                    $("#inquiry-details-modal").modal("hide");
+                    await showInquiriesAdmin();
+                    // await showInquiryDetails(id);
+                    // showNotification("Inquiry replied successfully", "success");
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        });
+        const closeInquiryBtn = document.getElementById("close-inquiry-btn");
+        closeInquiryBtn.addEventListener("click", async function (e) {
+            e.preventDefault();
+            try {
+                $("#inquiry-details-modal").modal("hide");
+                let loading = document.getElementById("inquiry-loading");
+                loading.style.visibility = "visible";
+                await axios.post("/api/inquiries/close-inquiry", {
+                    id: inquiry.id,
+                    // inquiryStatus: "closed",
+                });
+                await showInquiries();
+                // await showInquiryDetails(id);
+                // showNotification("Inquiry closed successfully", "success");
+            } catch (error) {
+                console.log(error);
+            }
+        });
+    }
+};
+
+const searchForInquiry = async function (e) {
+    e.preventDefault();
+    let searchInput = document.getElementById("search-inquiry-input").value;
+    if (searchInput) {
+        let filteredInquiries = allInquiries.filter((inquiry) => {
+            return inquiry.createdBy.toLowerCase().includes(searchInput);
+        });
+        await showInquiriesInTable(filteredInquiries);
+    } else {
+        await showInquiriesInTable(allInquiries);
+    }
+};
+
+const showOnlyOpenedInquiries = async function (e) {
+    e.preventDefault();
+    let filteredInquiries = allInquiries.filter(
+        (inquiry) =>
+            inquiry.inquiryStatus === "opened" ||
+            inquiry.inquiryStatus === "replied"
+    );
+    await showInquiriesInTable(filteredInquiries);
+};
+
+const showOnlyClosedInquiries = async function (e) {
+    e.preventDefault();
+    let filteredInquiries = allInquiries.filter(
+        (inquiry) => inquiry.inquiryStatus === "closed"
+    );
+    console.log(filteredInquiries.length);
+    await showInquiriesInTable(filteredInquiries);
+};
+
+const showOnlyRepliedInquiries = async function (e) {
+    e.preventDefault();
+    let filteredInquiries = allInquiries.filter(
+        (inquiry) => inquiry.inquiryStatus === "replied"
+    );
+    await showInquiriesInTable(filteredInquiries);
+};
+
+const showAllInquiries = async function (e) {
+    e.preventDefault();
+    await showInquiriesInTable(allInquiries);
 };

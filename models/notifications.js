@@ -23,7 +23,7 @@ const Notifications = db.define(
             defaultValue: false,
         },
         type: {
-            type: DataTypes.ENUM("user", "order", "transaction"),
+            type: DataTypes.ENUM("user", "order", "transaction", "inquiry"),
             allowNull: false,
         },
     },

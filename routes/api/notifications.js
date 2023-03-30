@@ -6,18 +6,16 @@ const Notifications = require("../../models/notifications");
 
 router.get("/get-all", isUserAuthenticated, async (req, res) => {
     try {
-        const notifications = await Notifications.findAll(
-            {
-                where: {
-                    notificationFor: req.user.email,
-                },
+        const notifications = await Notifications.findAll({
+            where: {
+                notificationFor: req.user.email,
             },
-            {
-                order: [["createdAt", "ASC"]],
-            }
-        );
+        });
 
         // count unread notifications
+        notifications.sort((a, b) => {
+            return new Date(b.createdAt) - new Date(a.createdAt);
+        });
         const unreadNotificationsCount = await Notifications.count({
             where: {
                 notificationFor: req.user.email,
