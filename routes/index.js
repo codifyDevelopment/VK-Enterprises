@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const User = require("../models/user");
 const isAdmin = require("../middleware/isAdmin");
+const stripe = require("stripe")(config.get("strip_secret_key"));
+
 var router = express.Router();
 
 /* GET home page. */
@@ -39,6 +41,9 @@ router.get(
     async (req, res, next) => {
         const token = req.cookies["token"];
         try {
+            if (!token) {
+                return next();
+            }
             const decoded = jwt.verify(token, config.get("jwtSecret"));
             if (decoded) {
                 return res.redirect("/dashboard");
@@ -153,6 +158,18 @@ router.get("/inquiries", isUserAuthenticated, async (req, res, next) => {
         });
     } else {
         return res.sendFile("inquiries.html", {
+            root: "public/views/users",
+        });
+    }
+});
+
+router.get("/new-order", isUserAuthenticated, async (req, res, next) => {
+    if (req.user.role === "admin") {
+        return res.sendFile("404.html", {
+            root: "public/views",
+        });
+    } else {
+        return res.sendFile("new-order.html", {
             root: "public/views/users",
         });
     }

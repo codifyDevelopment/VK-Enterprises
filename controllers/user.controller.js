@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const Notifications = require("../models/notifications");
 
 const registerController = async (req, res, next) => {
-    const { email, password } = req.body;
+    const { email, password, company } = req.body;
     if (!email)
         return res
             .status(400)
@@ -13,6 +13,10 @@ const registerController = async (req, res, next) => {
         return res
             .status(400)
             .json({ success: false, message: "Please provide a password" });
+    if (!company)
+        return res
+            .status(400)
+            .json({ success: false, message: "Please provide a company" });
 
     try {
         const doesUserExist = await User.findByPk(email);
@@ -50,6 +54,7 @@ const registerController = async (req, res, next) => {
         const user = await User.create({
             email,
             password,
+            company,
         });
         await Notifications.create({
             notificationFor: config.get("adminEmail"),

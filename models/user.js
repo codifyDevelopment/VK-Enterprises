@@ -21,6 +21,10 @@ const User = db.define("User", {
         allowNull: false,
         defaultValue: "pending",
     },
+    company: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
 });
 
 User.prototype.hashPassword = async (password) => {

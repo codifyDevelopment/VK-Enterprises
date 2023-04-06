@@ -6,7 +6,6 @@ const { Sequelize } = require("sequelize");
 
 router.get("/get-all-services", isUserAuthenticated, async (req, res) => {
     try {
-        console.log(req.user.role);
         if (req.user.role === "gold") {
             const services = await Service.findAll({
                 attributes: [

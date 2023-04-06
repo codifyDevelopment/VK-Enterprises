@@ -372,3 +372,15 @@ a {
         }
     }
 }
+
+.new-order-form {
+    input[type="file"] {
+        &::-webkit-file-upload-button {
+            display: none;
+        }
+
+        &::file-selector-button {
+            display: none;
+        }
+    }
+}
