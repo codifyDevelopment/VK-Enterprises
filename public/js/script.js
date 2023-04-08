@@ -140,4 +140,140 @@ let logout = async function (e) {
   }
 };
 
-let findusers;
+var myButton = document.querySelectorAll(".inputBtn");
+
+myButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    console.log("clicked");
+    button.style.backgroundColor = "green";
+  });
+});
+// for pcb size
+const pcbSize = document.getElementById("pcbSize");
+const knowField = document.getElementById("knowFields")
+
+pcbSize.addEventListener('change',(e)=>{
+  if(e.target.value === "know"){
+    knowField.style.display = "block";
+  }else{
+    knowField.style.display = "none";
+  }
+});
+
+var selectedOption = document.getElementById("selected-option");
+
+pcbType.addEventListener("change", function () {
+  selectedOption.textContent = this.value;
+});
+// for pcb types
+function showFields() {
+  var pcbType = document.getElementById("pcbType").value;
+  
+
+  // Hide all the dynamic fields
+  var dynamicFields = document.querySelectorAll(".dynamic-fields");
+  for (var i = 0; i < dynamicFields.length; i++) {
+    dynamicFields[i].style.display = "none";
+  }
+
+  // Show the dynamic fields for the selected PCB type
+  if (pcbType === "LED") {
+    document.getElementById("LEDFields").style.display = "block";
+    
+  } else if (pcbType === "single") {
+    document.getElementById("singleFields").style.display = "block";
+  } else if (pcbType === "multi") {
+    document.getElementById("multiFields").style.display = "block";
+  }
+}
+
+//Led PcB functions
+
+function showOldRef(){
+  let oldRef = document.getElementById("old-Ref");
+  let oldRefYes = document.getElementById("old-RefYes");
+
+  if(oldRef.value === "yes"){
+    oldRefYes.style.display = "block";
+  } else{
+    oldRefYes.style.display = "none";
+  }
+}
+
+function showSample(){
+ let oldRef = document.getElementById("sample-body");
+ let oldRefYes = document.getElementById("sample-bodyField");
+
+ if (oldRef.value === "yes") {
+   oldRefYes.style.display = "block";
+ } else {
+   oldRefYes.style.display = "none";
+ }
+};
+
+function showOtherThick() {
+  let oldRef = document.getElementById("singleLayerThickness");
+  let oldRefYes = document.getElementById("other-led");
+
+  if (oldRef.value === "other") {
+    oldRefYes.style.display = "block";
+  } else {
+    oldRefYes.style.display = "none";
+  }
+};
+
+function showLedPlacement(){
+
+  let ledPlacement = document.getElementById("led-placement");
+  let addLens = document.getElementById("add-lens");
+
+  if(ledPlacement.value === "lens"){
+    addLens.style.display = "block";
+  } else {
+    addLens.style.display = "none";
+  }
+};
+
+function showRequireFields(){
+   let oldRef = document.getElementById("silk-layer");
+  let oldRefYes = document.getElementById("print-require");
+
+  if (oldRef.value === "printRequire") {
+    oldRefYes.style.display = "block";
+  } else {
+    oldRefYes.style.display = "none";
+  }
+};
+
+function showCompanyLogo(){
+  let printRequireOptions = document.getElementById("print-require-options");
+  let companyLogo = document.getElementById("company-logo");
+  
+  if(printRequireOptions.value ==="companyLogo"){
+    companyLogo.style.display = "block";
+  } else {
+    companyLogo.style.display = "none";
+  }
+};
+
+function showSolderLogo(){
+  let solderLayer = document.getElementById("solder-layer");
+  let solderCompanyLogo = document.getElementById("solder-company-logo");
+
+  if(solderLayer.value === "companyLogo"){
+    solderCompanyLogo.style.display = "block";
+  } else {
+    solderCompanyLogo.style.display = "none";
+  }
+};
+
+function showDesignQueries(){
+  let designQueries = document.getElementById("design-queries");
+  let designYes = document.getElementById("design-yes");
+
+  if(designQueries.value === "yes"){
+    designYes.style.display = "block";
+  } else {
+    designYes.style.display = "none";
+  }
+};

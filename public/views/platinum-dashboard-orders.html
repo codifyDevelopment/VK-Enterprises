@@ -33,6 +33,10 @@
             background-color: #f2f2f2;
             font-weight: bold;
         }
+        
+    .dynamic-fields {
+      display: none;
+    }
     </style>
 </head>
 
@@ -106,8 +110,6 @@
             <form action="#">
                 <div class="form first">
                     <div class="details personal">
-
-
                         <div class="fields">
                             <div class="input-field">
                                 <label>Order Id</label>
@@ -142,61 +144,221 @@
 
                             <div class="input-field">
                                 <label>PCB Type</label>
-                                <select required>
+                                <select id="pcbType" name="pcbType" onchange="showFields()" required>
                                     <option disabled selected>Select PCB Type</option>
-                                    <option>LEDs/MCPCBs</option>
-                                    <option>Single Layer / Side</option>
-                                    <option>Double Layer / Side</option>
-                                    <option>Multilayer PCB</option>
-                                    <option>Schamatic To PCB</option>
-                                    <option>Stencile</option>
-                                    <option>CAM/Panelization</option>
+                                    <option value="LED">LEDs/MCPCBs</option>
+                                    <option value="single">Single Layer / Side</option>
+                                    <option value="double">Double Layer / Side</option>
+                                    <option value="multi">Multilayer PCB</option>
+                                    <option value="schematic">Schamatic To PCB</option>
+                                    <option value="stencile">Stencile</option>
+                                    <option value="cam">CAM/Panelization</option>
                                     <option>Update</option>
                                     <option>Urgent/Instaneous</option>
                                     <option>Bill Of Material</option>
                                 </select>
                             </div>
+                            <div class="input-field">
+                                <label>PCB Size</label>
+                                <select id="pcbSize" name="pcbSize" onchange="showQuery()" required>
+                                    <option disabled selected>PCB size</option>
+                                    <option value="know">Know</option>
+                                    <option value = "as">As Per Yours</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div id="knowFields" style = "display: none">
+                            <div class="fields">
+                            <div class="input-field">
+                                    <label>X-Dimensions(in MM)</label>
+                                    <input type="number" placeholder="0.00" required>
+                            </div>
+                                
+                            <div class="input-field">
+                                    <label>Y-Dimensions(in MM)</label>
+                                    <input type="number" placeholder="0.00" required>
+                            </div>
+                                
+                            <div class="input-field">
+                                    <label>SQCM PRICE</label>
+                                    <input type="number" placeholder="Rs.0.00" required>
+                            </div>
+                        </div>
+                        </div>
+                        <header id="selected-option"></header>
+                        <div id="LEDFields" class="dynamic-fields">
+                            <div class="fields">
+
+                                <div class="input-field">
+                                    <label for="">Any Old/Reference PCB Name/File</label>
+                                    <select id="old-Ref" name="oldRef" onchange="showOldRef()">
+                                        <option disabled selected>--Select--</option>
+                                        <option value="yes">YES</option>
+                                        <option value="">NO</option>
+                                    </select>
+                                </div>
+                                <div id="old-RefYes" class="input-field" style="display: none;">
+                                    <label for="">Attach Reference File</label>
+                                    <input type="file" name="" id="">
+                                </div>
+                        
+                                <div class="input-field">
+                                    <label for="">Available Any Sample/Body</label>
+                                    <select name="sample-body" id="sample-body" onchange="showSample()">
+                                        <option disabled selected>--Select--</option>
+                                        <option value="yes">YES</option>
+                                        <option value="">NO</option>
+                                    </select>
+                                </div>
+                                <div class="input-field" id="sample-bodyField" style="display: none;">
+                                    <label for="camera-input">Take a photo:</label>
+                                    <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                </div>
+                        
+                                <div class="input-field">
+                                    <label>MCPCBs Order Detail Id</label>
+                                    <input type="text" placeholder="Enter MCPCBs order ID">
+                                </div>
+                                <div class="input-field">
+                                    <label for="">Order ID</label>
+                                    <input type="text" placeholder="">
+                                </div>
+                                <div class="input-field">
+                                    <label>LED Package</label>
+                                    <select id="singleLayerThickness" name="singleLayerThickness" onchange="showOtherThick()">
+                                        <option disabled selected>-- Select --</option>
+                                        <option value="">2835L SMD</option>
+                                        <option value="">2835L SAME PAD</option>
+                                        <option value="">3030L SMD</option>
+                                        <option value="">3535L SMD</option>
+                                        <option value="">5050L SMD</option>
+                                        <option>3030/2835 SMD MIX PAD</option>
+                                        <option value="other">OTHER LED</option>
+                                    </select>
+                                </div>
+                                <div class="input-field" id="other-led" style="display: none;">
+                                    <label for="">Attach Other LED</label>
+                                    <input type="file" name="" id="">
+                                </div>
+                                <div class="input-field">
+                                    <label for="">Total LEDs</label>
+                                    <input type="number" placeholder="Enter Total LED">
+                                </div>
+                                <div class="input-field">
+                                    <label for="">Designs WATTs</label>
+                                    <input type="number" placeholder="Enter WATTs">
+                                </div>
+                                <div class="input-field">
+                                    <label for="">Design Connections</label>
+                                    <div class="input-field">
+
+                                        <label for="">Series</label>
+                                        <input type="number" >
+                                        <label for="">Parellel</label>
+                                        <input type="number">
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <label for="">LED Placement</label>
+                                    <select id="led-placement" name="led-placement" onchange="showLedPlacement()">
+                                        <option disabled selected>-- Select --</option>
+                                        <option value="">Same Direction</option>
+                                        <option value="">Round</option>
+                                        <option value="lens">Lens</option>
+                                    </select>
+                                </div>
+                                <div class="input-field" id="add-lens" style="display: none;">
+                                    <label for="Lens">Add Lens File</label>
+                                    <input type="file" id="file" name="file">
+                                </div>
+                        
+                                <div class="input-field">
+                                    <label for="">Silk/Legend Layer</label>
+                                    <select id="silk-layer" onchange="showRequireFields()">
+                                        <option disabled selected>-- Select --</option>
+                                        <option value="printRequire">Print Require</option>
+                                        <option value="">Print Not Require</option>
+                                    </select>
+                                </div>
+                                <div id="print-require" class="input-field" style="display:none;">
+                                    <label for="">Select Print Require</label>
+                                    <select name="" id="print-require-options" onchange="showCompanyLogo()">
+                                        <option disabled selected>-- Select --</option>
+                                        <option value="">PCB Name</option>
+                                        <option value="">Powered By OSRAM</option>
+                                        <option value="">Make In India</option>
+                                        <option value="">CE/RoHS</option>
+                                        <option value="">Lion Logo</option>
+                                        <option value="companyLogo">Company Logo</option>
+                                    </select>
+                        
+                                    <div id="company-logo" style="display: none;">
+                                        <label for="Lens">Add Company Logo</label>
+                                        <input type="file">
+                                        <label for="">Enter Company name</label>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <label for="">Solder/Mask Layer</label>
+                                    <select name="solder-layer" id="solder-layer" onchange="showSolderLogo()">
+                                        <option disabled selected>-- Select --</option>
+                                        <option value="">PCB Name</option>
+                                        <option value="">Powered By OSRAM</option>
+                                        <option value="">Make In India</option>
+                                        <option value="">CE/RoHS</option>
+                                        <option value="">Lion Logo</option>
+                                        <option value="companyLogo">Company Logo</option>
+                                    </select>
+                                </div>
+                                <div id="solder-company-logo" class="input-field" style="display: none;">
+                                    <label for="Lens">Add Company Logo</label>
+                                    <input type="file">
+                                    <input type="text" placeholder="Enter Company Name">
+                                </div>
+                                <div class="input-field">
+                                    <label for="">Copper Layer Info</label>
+                                    <input type="text" placeholder="Enter Copper info">
+                                </div>
+                                <div class="input-field">
+                                    <label for="">For Any Copper Layer Informatics</label>
+                                    <input type="text" placeholder="Enter Copper layer info">
+                                    <input type="file">
+                                </div>
+                                <div class="input-field">
+                                    <label for="">For Any Solder/Mask Layer Informatics</label>
+                                    <input type="text" placeholder="Enter Solder layer info">
+                                    <input type="file">
+                                </div>
+                                <div class="input-field">
+                                    <label for="">Any Design Relating Note/queries</label>
+                                    <select name="design-queries" id="design-queries" onchange="showDesignQueries()">
+                                        <option disabled selected>-- Select --</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="">NO</option>
+                                    </select>
+                                </div>
+                                <div id="design-yes" class="input-field" style="display: none;" >
+                                    <input type="text">
+                                    <input type="file">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    
+                    
+                    
+                    
                     <div class="details ID">
-
-
-                        <div class="fields">
-                            <div class="input-field">
-                                <label>PCB Size</label>
-                                <select required>
-                                    <option disabled selected>PCB size</option>
-                                    <option>Know</option>
-                                    <option>As Per Yours</option>
-                                </select>
-                            </div>
-
-                            <div class="input-field">
-                                <label>X-Dimensions(in MM)</label>
-                                <input type="number" placeholder="0.00" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Y-Dimensions(in MM)</label>
-                                <input type="number" placeholder="0.00" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>SQCM PRICE</label>
-                                <input type="number" placeholder="Rs.0.00" required>
-                            </div>
-
-                        </div>
                         <div>
                             <label>Carefully Once check All Fill Details Before Save.
                                 (After Designing A Simple Changes Charges Will Be A Extra)
                                 (*300Rs. + Depends On Changes Rate)*
-
                             </label>
                             <input type="button" value="YES" class="inputBtn" required>
                         </div>
-
                         <div class=>
                             <label>*All Designs Are For Sammples only. Never Work For Quatities.
                                 **Not Responsible For Quatities.(After No Further Argument Will Be Heard).
@@ -204,7 +366,6 @@
                             </label>
                             <input type="button" value="Yes" class="inputBtn" required>
                         </div>
-
                     </div>
                 </div>
 
@@ -219,9 +380,9 @@
                         <i class="uil uil-navigator"></i>
                     </button>
                 </div>
-        </div>
+            </div>
 
-        </form>
+            </form>
         <div class="box box-2">
 
 
