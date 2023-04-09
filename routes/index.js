@@ -163,17 +163,30 @@ router.get("/inquiries", isUserAuthenticated, async (req, res, next) => {
     }
 });
 
-router.get("/new-order", isUserAuthenticated, async (req, res, next) => {
-    if (req.user.role === "admin") {
-        return res.sendFile("404.html", {
-            root: "public/views",
-        });
-    } else {
-        return res.sendFile("new-order.html", {
-            root: "public/views/users",
-        });
+router.get(
+    "/new-order/:serviceId",
+    isUserAuthenticated,
+    async (req, res, next) => {
+        if (req.user.role === "admin") {
+            return res.sendFile("404.html", {
+                root: "public/views",
+            });
+        } else {
+            // if last 2 characters of serviceId are up then 404
+            if (req.params["serviceId"].toLowerCase().slice(-2) === "up") {
+                return res.sendFile("404.html", {
+                    root: "public/views",
+                });
+            }
+            return res.sendFile(
+                `${req.params["serviceId"].toLowerCase()}-new-order.html`,
+                {
+                    root: "public/views/users",
+                }
+            );
+        }
     }
-});
+);
 
 router.get("/redirect", async (req, res, next) => {
     return res.sendFile("redirect.html", { root: "public/views" });

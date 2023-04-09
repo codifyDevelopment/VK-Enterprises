@@ -154,7 +154,12 @@
                                         id="pcb-type-input"
                                         class="form-select"
                                         required
-                                    ></select>
+                                        disabled
+                                    >
+                                        <option value="MCPCB">
+                                            LEDs / MCPCBs
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col col-md-12" id="pcb-size">
@@ -194,6 +199,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col col-md-12" id="pcb-type-title">
+                                <h5 class="text-center text-secondary">
+                                    You are filling LEDs / MCPCBs order details
+                                </h5>
+                            </div>
                             <div class="col col-md-12" id="mcpcb-details">
                                 <div class="row row-cols-1 row-cols-md-2 g-3">
                                     <div class="col">
@@ -201,18 +211,26 @@
                                             for="mcpcb-old-pcb-name-input"
                                             class="form-label mb-2"
                                         >
-                                            Any Old/Reference PCB Name / File
+                                            Any Old/Reference/Dimension File
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="input-group">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter Your Old PCB Name"
-                                                name="mcpcb-old-pcb-name"
-                                                id="mcpcb-old-pcb-name-input"
+                                            <select
+                                                name="mcpcb-sample-old-file"
+                                                id="mcpcb-sample-old-file-input"
+                                                class="form-select"
                                                 required
-                                            />
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Select an option
+                                                </option>
+                                                <option value="yes">Yes</option>
+                                                <option value="no">No</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -264,23 +282,22 @@
                                                 >
                                                     Select an option
                                                 </option>
-                                                <option
-                                                    value="3030/2835 SMD MIX PAD"
-                                                >
-                                                    3030/2835 SMD MIX PAD
+                                                <option value="2828">
+                                                    2828
+                                                </option>
+                                                <option value="2835 SAME PAD">
+                                                    2835 SAME PAD
+                                                </option>
+                                                <option value="3030">
+                                                    3030
+                                                </option>
+                                                <option value="5050">
+                                                    5050
                                                 </option>
                                                 <option
-                                                    value="3030L SMD, 2835L SMD"
+                                                    value="2835/3030 MIX PAD"
                                                 >
-                                                    3030L SMD, 2835L SMD
-                                                </option>
-                                                <option
-                                                    value="5050L SMD,  2835L SAME PAD"
-                                                >
-                                                    5050L SMD, 2835L SAME PAD
-                                                </option>
-                                                <option value="3535L SMD">
-                                                    3535L SMD
+                                                    2835/3030 MIX PAD
                                                 </option>
                                                 <option value="other led">
                                                     Other LED (Data Sheet)
@@ -363,9 +380,28 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col" id="led-placement">
+                                    <div class="col">
                                         <label
-                                            for="led-placement-input"
+                                            for="mcpcb-using-driver-no-input"
+                                            class="form-label mb-2"
+                                        >
+                                            Using Driver No.
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                placeholder="Enter Using Driver No."
+                                                name="mcpcb-using-driver-no"
+                                                id="mcpcb-using-driver-no-input"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col" id="mcpcb-led-placement">
+                                        <label
+                                            for="mcpcb-led-placement-input"
                                             class="form-label mb-2"
                                         >
                                             Led Placement
@@ -374,7 +410,7 @@
                                         <div class="input-group">
                                             <select
                                                 name="led-placement"
-                                                id="led-placement-input"
+                                                id="mcpcb-led-placement-input"
                                                 class="form-select"
                                                 required
                                             >
@@ -648,8 +684,9 @@
         <script src="../../js/bootstrap.min.js"></script>
         <script src="../../js/axios.min.js"></script>
         <script src="../../js/script.js"></script>
+        <script src="../../js/mcpcb-order.js"></script>
         <script>
-            window.onload = newOrderFormChangeHandler();
+            window.onload = mcpcbNewOrderFormChangeHandler();
         </script>
     </body>
 </html>
