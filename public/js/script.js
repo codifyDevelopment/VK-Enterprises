@@ -1322,3 +1322,576 @@ const newOrderFormChangeHandler = async function () {
         $("#pcb-size-known").attr("checked", true).trigger("change");
     })();
 };
+
+
+
+new order//
+
+var myButton = document.querySelectorAll(".inputBtn");
+
+myButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    console.log("clicked");
+    button.style.backgroundColor = "green";
+  });
+});
+// for pcb size
+const pcbSize = document.getElementById("pcbSize");
+const knowField = document.getElementById("knowFields");
+
+pcbSize.addEventListener("change", (e) => {
+  if (e.target.value === "know") {
+    knowField.style.display = "block";
+  } else {
+    knowField.style.display = "none";
+  }
+});
+
+var selectedOption = document.getElementById("selected-option");
+
+pcbType.addEventListener("change", function () {
+  selectedOption.textContent = this.value;
+});
+// for pcb types
+function showFields() {
+  var pcbType = document.getElementById("pcbType").value;
+
+  // Hide all the dynamic fields
+  var dynamicFields = document.querySelectorAll(".dynamic-fields");
+  for (var i = 0; i < dynamicFields.length; i++) {
+    dynamicFields[i].style.display = "none";
+  }
+
+  // Show the dynamic fields for the selected PCB type
+  if (pcbType === "LED") {
+    document.getElementById("LEDFields").style.display = "block";
+  } else if (pcbType === "single") {
+    document.getElementById("singleFields").style.display = "block";
+  } else if (pcbType === "double") {
+    document.getElementById("doubleFields").style.display = "block";
+  } else if (pcbType === "multi") {
+    document.getElementById("multiFields").style.display = "block";
+  } else if (pcbType === "Schematic To PCB") {
+    document.getElementById("schematicFields").style.display = "block";
+  } else if (pcbType === "Stencile") {
+    document.getElementById("stencileFields").style.display = "block";
+  } else if (pcbType === "Cam/Panelization") {
+    document.getElementById("camFields").style.display = "block";
+  } else if (pcbType === "Bill Of Material") {
+    document.getElementById("billFields").style.display = "block";
+  }
+}
+
+//Led PcB functions
+
+function showOldRef() {
+  let oldRef = document.getElementById("old-Ref");
+  let oldRefYes = document.getElementById("old-RefYes");
+
+  if (oldRef.value === "yes") {
+    oldRefYes.style.display = "block";
+  } else {
+    oldRefYes.style.display = "none";
+  }
+}
+
+function showSample() {
+  let oldRef = document.getElementById("sample-body");
+  let oldRefYes = document.getElementById("sample-bodyField");
+
+  if (oldRef.value === "yes") {
+    oldRefYes.style.display = "block";
+  } else {
+    oldRefYes.style.display = "none";
+  }
+}
+
+function showOtherThick() {
+  let oldRef = document.getElementById("singleLayerThickness");
+  let oldRefYes = document.getElementById("other-led");
+
+  if (oldRef.value === "other") {
+    oldRefYes.style.display = "block";
+  } else {
+    oldRefYes.style.display = "none";
+  }
+}
+
+var clickCount = 0;
+
+function addInputFields() {
+  if (clickCount < 3) {
+    var form = document.getElementById("myForm");
+    var count = form.getElementsByTagName("input").length;
+
+    // Add two number input fields with labels for series and parallel
+    form.innerHTML +=
+      '<label for="input' +
+      (count + 1) +
+      '">Series:</label><input type="number" id="input' +
+      (count + 1) +
+      '" name="input' +
+      (count + 1) +
+      '"><br><label for="input' +
+      (count + 2) +
+      '">Parallel:</label><input type="number" id="input' +
+      (count + 2) +
+      '" name="input' +
+      (count + 2) +
+      '">';
+
+    clickCount++;
+  }
+}
+
+function showLedPlacement() {
+  let ledPlacement = document.getElementById("led-placement");
+  let addLens = document.getElementById("add-lens");
+
+  if (ledPlacement.value === "lens") {
+    addLens.style.display = "block";
+  } else {
+    addLens.style.display = "none";
+  }
+}
+
+function showRequireFields() {
+  let oldRef = document.getElementById("silk-layer");
+  let oldRefYes = document.getElementById("print-require");
+
+  if (oldRef.value === "printRequire") {
+    oldRefYes.style.display = "block";
+  } else {
+    oldRefYes.style.display = "none";
+  }
+}
+
+function showCompanyLogo() {
+  let printRequireOptions = document.getElementById("print-require-options");
+  let companyLogo = document.getElementById("company-logo");
+
+  if (printRequireOptions.value === "companyLogo") {
+    companyLogo.style.display = "block";
+  } else {
+    companyLogo.style.display = "none";
+  }
+}
+
+function showSolderFields() {
+  let oldRef = document.getElementById("solder-layer");
+  let oldRefYes = document.getElementById("solder-print-require");
+
+  if (oldRef.value === "printRequire") {
+    oldRefYes.style.display = "block";
+  } else {
+    oldRefYes.style.display = "none";
+  }
+}
+
+function showSolderLogo() {
+  let solderLayer = document.getElementById("print-solder-layer");
+  let solderCompanyLogo = document.getElementById("solder-company-logo");
+
+  if (solderLayer.value === "companyLogo") {
+    solderCompanyLogo.style.display = "block";
+  } else {
+    solderCompanyLogo.style.display = "none";
+  }
+}
+
+function showDesignQueries() {
+  let designQueries = document.getElementById("design-queries");
+  let designYes = document.getElementById("design-yes");
+
+  if (designQueries.value === "yes") {
+    designYes.style.display = "block";
+  } else {
+    designYes.style.display = "none";
+  }
+}
+
+// Single layer functions
+
+function showOldDim() {
+  let oldDim = document.getElementById("old-dim");
+  let oldDimYes = document.getElementById("old-DimYes");
+
+  if (oldDim.value === "yes") {
+    oldDimYes.style.display = "block";
+  } else {
+    oldDimYes.style.display = "none";
+  }
+}
+
+function showSingleSample() {
+  let singleBody = document.getElementById("single-sample-body");
+  let singleField = document.getElementById("single-bodyField");
+
+  if (singleBody.value === "yes") {
+    singleField.style.display = "block";
+  } else {
+    singleField.style.display = "none";
+  }
+}
+
+function showPCBDesignType() {
+  let PCBdesignType = document.getElementById("PCB-design-type");
+  let copyWithUpdate = document.getElementById("copy-with-update");
+
+  if (PCBdesignType.value === "update") {
+    copyWithUpdate.style.display = "block";
+  } else {
+    copyWithUpdate.style.display = "none";
+  }
+}
+
+function showUpdateCopper() {
+  let updateCopper = document.getElementById("update-Copper");
+  let copperClient = document.getElementById("copper-client");
+
+  if (updateCopper.value === "client") {
+    copperClient.style.display = "block";
+  } else {
+    copperClient.style.display = "none";
+  }
+}
+
+function showSingleRequireFields() {
+  let singleSilkLayer = document.getElementById("single-silk-layer");
+  let requiredFields = document.getElementById("requiredFields");
+
+  if (singleSilkLayer.value === "printRequire") {
+    requiredFields.style.display = "block";
+  } else {
+    requiredFields.style.display = "none";
+  }
+}
+
+function showBOMRequire() {
+  let BOM = document.getElementById("BOM");
+  let BOMRequire = document.getElementById("BOM-require");
+
+  if (BOM.value === "printRequire") {
+    BOMRequire.style.display = "block";
+  } else {
+    BOMRequire.style.display = "none";
+  }
+}
+
+function showPanelization() {
+  let Panelization = document.getElementById("Panelization");
+  let paneRequire = document.getElementById("Pane-require");
+
+  if (Panelization.value === "printRequire") {
+    paneRequire.style.display = "block";
+  } else {
+    paneRequire.style.display = "none";
+  }
+}
+
+function showSingleDesignQueries() {
+  let designQueries = document.getElementById("single-design-queries");
+  let designYes = document.getElementById("single-design-yes");
+
+  if (designQueries.value === "yes") {
+    designYes.style.display = "block";
+  } else {
+    designYes.style.display = "none";
+  }
+}
+
+// double layer functions
+
+function showDoubleOldDim() {
+  let oldDim = document.getElementById("double-old-dim");
+  let oldDimYes = document.getElementById("double-DimYes");
+
+  if (oldDim.value === "yes") {
+    oldDimYes.style.display = "block";
+  } else {
+    oldDimYes.style.display = "none";
+  }
+}
+
+function showDoubleSample() {
+  let singleBody = document.getElementById("double-sample-body");
+  let singleField = document.getElementById("double-bodyField");
+
+  if (singleBody.value === "yes") {
+    singleField.style.display = "block";
+  } else {
+    singleField.style.display = "none";
+  }
+}
+
+function showPCBDesignDouble() {
+  let PCBdesignType = document.getElementById("PCB-design-double");
+  let copyWithUpdate = document.getElementById("double-copy-with-update");
+
+  if (PCBdesignType.value === "update") {
+    copyWithUpdate.style.display = "block";
+  } else {
+    copyWithUpdate.style.display = "none";
+  }
+}
+
+function showDoubleUpdateCopper() {
+  let updateCopper = document.getElementById("double-update-Copper");
+  let copperClient = document.getElementById("double-copper-client");
+
+  if (updateCopper.value === "client") {
+    copperClient.style.display = "block";
+  } else {
+    copperClient.style.display = "none";
+  }
+}
+
+function showDoubleTopFields() {
+  let singleSilkLayer = document.getElementById("double-silk-layer");
+  let requiredFields = document.getElementById("doublerequiredFields");
+
+  if (singleSilkLayer.value === "printRequire") {
+    requiredFields.style.display = "block";
+  } else {
+    requiredFields.style.display = "none";
+  }
+}
+
+function showDoubleBottomFields() {
+  let singleSilkLayer = document.getElementById("double-bottom-silk-layer");
+  let requiredFields = document.getElementById("doubleBottomrequiredFields");
+
+  if (singleSilkLayer.value === "printRequire") {
+    requiredFields.style.display = "block";
+  } else {
+    requiredFields.style.display = "none";
+  }
+}
+
+function showdoubleBOMRequire() {
+  let BOM = document.getElementById("double-BOM");
+  let BOMRequire = document.getElementById("double-BOM-require");
+
+  if (BOM.value === "printRequire") {
+    BOMRequire.style.display = "block";
+  } else {
+    BOMRequire.style.display = "none";
+  }
+}
+
+function showDoublePanelization() {
+  let Panelization = document.getElementById("double-Panelization");
+  let paneRequire = document.getElementById("double-Pane-require");
+
+  if (Panelization.value === "printRequire") {
+    paneRequire.style.display = "block";
+  } else {
+    paneRequire.style.display = "none";
+  }
+}
+
+function showDoubleDesignQueries() {
+  let designQueries = document.getElementById("double-design-queries");
+  let designYes = document.getElementById("double-design-yes");
+
+  if (designQueries.value === "yes") {
+    designYes.style.display = "block";
+  } else {
+    designYes.style.display = "none";
+  }
+}
+
+// multi layer funMulti
+
+function showMultiOldDim() {
+  let oldDim = document.getElementById("Multi-old-dim");
+  let oldDimYes = document.getElementById("Multi-DimYes");
+
+  if (oldDim.value === "yes") {
+    oldDimYes.style.display = "block";
+  } else {
+    oldDimYes.style.display = "none";
+  }
+}
+
+function showMultiSample() {
+  let singleBody = document.getElementById("Multi-sample-body");
+  let singleField = document.getElementById("Multi-bodyField");
+
+  if (singleBody.value === "yes") {
+    singleField.style.display = "block";
+  } else {
+    singleField.style.display = "none";
+  }
+}
+
+function showPCBDesignMulti() {
+  let PCBdesignType = document.getElementById("PCB-design-Multi");
+  let copyWithUpdate = document.getElementById("Multi-copy-with-update");
+
+  if (PCBdesignType.value === "update") {
+    copyWithUpdate.style.display = "block";
+  } else {
+    copyWithUpdate.style.display = "none";
+  }
+}
+
+function showMultiUpdateCopper() {
+  let updateCopper = document.getElementById("Multi-update-Copper");
+  let copperClient = document.getElementById("Multi-copper-client");
+
+  if (updateCopper.value === "client") {
+    copperClient.style.display = "block";
+  } else {
+    copperClient.style.display = "none";
+  }
+}
+
+function showMultiTopFields() {
+  let singleSilkLayer = document.getElementById("Multi-silk-layer");
+  let requiredFields = document.getElementById("MultirequiredFields");
+
+  if (singleSilkLayer.value === "printRequire") {
+    requiredFields.style.display = "block";
+  } else {
+    requiredFields.style.display = "none";
+  }
+}
+
+function showMultiBottomFields() {
+  let singleSilkLayer = document.getElementById("Multi-bottom-silk-layer");
+  let requiredFields = document.getElementById("MultiBottomrequiredFields");
+
+  if (singleSilkLayer.value === "printRequire") {
+    requiredFields.style.display = "block";
+  } else {
+    requiredFields.style.display = "none";
+  }
+}
+
+function showMultiBOMRequire() {
+  let BOM = document.getElementById("Multi-BOM");
+  let BOMRequire = document.getElementById("Multi-BOM-require");
+
+  if (BOM.value === "printRequire") {
+    BOMRequire.style.display = "block";
+  } else {
+    BOMRequire.style.display = "none";
+  }
+}
+
+function showMultiPanelization() {
+  let Panelization = document.getElementById("Multi-Panelization");
+  let paneRequire = document.getElementById("Multi-Pane-require");
+
+  if (Panelization.value === "printRequire") {
+    paneRequire.style.display = "block";
+  } else {
+    paneRequire.style.display = "none";
+  }
+}
+
+function showMultiDesignQueries() {
+  let designQueries = document.getElementById("Multi-design-queries");
+  let designYes = document.getElementById("Multi-design-yes");
+
+  if (designQueries.value === "yes") {
+    designYes.style.display = "block";
+  } else {
+    designYes.style.display = "none";
+  }
+}
+
+//schematic fields
+
+function showSchematicOldDim() {
+  let oldDim = document.getElementById("Schematic-old-dim");
+  let oldDimYes = document.getElementById("Schematic-DimYes");
+
+  if (oldDim.value === "yes") {
+    oldDimYes.style.display = "block";
+  } else {
+    oldDimYes.style.display = "none";
+  }
+}
+
+function showSchematicSample() {
+  let singleBody = document.getElementById("Schematic-sample-body");
+  let singleField = document.getElementById("Schematic-bodyField");
+
+  if (singleBody.value === "yes") {
+    singleField.style.display = "block";
+  } else {
+    singleField.style.display = "none";
+  }
+}
+
+function showSchamticTrack() {
+  let oldDim = document.getElementById("Schamtic-track");
+  let oldDimYes = document.getElementById("Schamtic-TrackYes");
+
+  if (oldDim.value === "yes") {
+    oldDimYes.style.display = "block";
+  } else {
+    oldDimYes.style.display = "none";
+  }
+}
+
+function showSchamticLayers() {
+  let singleBody = document.getElementById("Schamtic-layers");
+  let singleField = document.getElementById("Schamtic-LayersYes");
+
+  if (singleBody.value === "yes") {
+    singleField.style.display = "block";
+  } else {
+    singleField.style.display = "none";
+  }
+}
+function showSchamticComment() {
+  let singleBody = document.getElementById("Schamtic-comment");
+  let singleField = document.getElementById("Schamtic-CommentYes");
+
+  if (singleBody.value === "yes") {
+    singleField.style.display = "block";
+  } else {
+    singleField.style.display = "none";
+  }
+}
+
+//Stencile
+
+function showStencileText() {
+  let singleBody = document.getElementById("stencile-text");
+  let singleField = document.getElementById("stencile-text-yes");
+
+  if (singleBody.value === "yes") {
+    singleField.style.display = "block";
+  } else {
+    singleField.style.display = "none";
+  }
+}
+
+// cam Fields
+
+function showCamText() {
+  let singleBody = document.getElementById("cam-text");
+  let singleField = document.getElementById("cam-text-yes");
+
+  if (singleBody.value === "yes") {
+    singleField.style.display = "block";
+  } else {
+    singleField.style.display = "none";
+  }
+}
+// bill Fields
+
+function showBillText() {
+  let singleBody = document.getElementById("bill-text");
+  let singleField = document.getElementById("bill-text-yes");
+
+  if (singleBody.value === "yes") {
+    singleField.style.display = "block";
+  } else {
+    singleField.style.display = "none";
+  }
+}
