@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign in - VK enterprise</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+        />
+        <link rel="stylesheet" href="../css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../css/style.min.css" />
+        <!-- <style>
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("../img/Asset\ 1.svg");
+            background-size: cover;
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+    </style> -->
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg bg-white border-bottom">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="../img/logo.svg" alt="Bootstrap" height="35" />
+                </a>
+            </div>
+        </nav>
+        <div class="container mt-5 form-login bg-white p-4 rounded">
+            <form onsubmit="submitLoginForm(event)">
+                <div class="mb-4">
+                    <h1 class="h3 fw-bold">Login</h1>
+                    <p>Hi, Welcome back 👋</p>
+                </div>
+                <!-- <div class="google-login mb-1">
+                    <button
+                        class="btn btn-lg border-primary border-1 w-100 d-flex align-items-center justify-content-center mb-3"
+                        type="button"
+                    >
+                        <img
+                            src="https://img.icons8.com/color/48/null/google-logo.png"
+                            alt="Google"
+                            height="20"
+                        />
+                        &nbsp;
+                        <p class="m-0">Login with Google</p>
+                    </button>
+                    <p class="w-100 text-center text-black-50 m-0">
+                        or, Login with email
+                    </p>
+                </div> -->
+                <div class="mb-3">
+                    <div
+                        class="form-text text-danger text-center"
+                        style="visibility: hidden"
+                        id="loginEmailError"
+                    >
+                        User does not exists
+                    </div>
+                    <label for="loginInputEmail" class="form-label"
+                        >Email</label
+                    >
+                    <div class="input-group">
+                        <input
+                            type="email"
+                            id="loginInputEmail"
+                            class="form-control"
+                            placeholder="E.g. johndoe@gmail.com"
+                            name="email"
+                            required
+                            autofocus
+                        />
+                    </div>
+                </div>
+                <label for="loginInputPassword" class="form-label"
+                    >Password</label
+                >
+                <div class="input-group mb-3">
+                    <input
+                        type="password"
+                        id="loginInputPassword"
+                        class="form-control"
+                        placeholder="Enter your password"
+                        name="password"
+                        required
+                        autofocus
+                    />
+                    <i
+                        class="bi bi-eye-slash input-group-text"
+                        id="loginTogglePassword"
+                    ></i>
+                </div>
+                <div class="d-flex mb-3 justify-content-between">
+                    <div class="input-group d-flex align-items-center">
+                        <div
+                            class="input-group-text bg-transparent border-0 p-0 me-2"
+                        >
+                            <input
+                                type="checkbox"
+                                class="form-check-input mt-0"
+                                id="loginRememberMe"
+                            />
+                        </div>
+                        <label class="form-check-label" for="loginRememberMe"
+                            >Remember me</label
+                        >
+                    </div>
+                    <a href="/forgot-password" class="text-nowrap"
+                        >Forgot password?</a
+                    >
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">
+                    Login
+                </button>
+                <p class="mt-4 mb-0 text-center">
+                    Not registered yet?
+                    <a href="/register"
+                        >Create an account
+                        <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                </p>
+            </form>
+            <div class="background p-3 rounded-4"></div>
+            <div class="loading" id="loginLoading">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/script.js"></script>
+</html>

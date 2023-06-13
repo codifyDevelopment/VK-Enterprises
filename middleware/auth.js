@@ -1,19 +1,28 @@
-const passport = require("../helpers/passport");
-const isAuthenticated = function (req, res, next) {
-    passport.authenticate("jwt", { session: false }, (err, user, info) => {
-        if (err) {
-            return res.redirect("/get-started");
-        }
+const jwt = require("jsonwebtoken");
+const config = require("config");
+const User = require("../models/user");
+
+const isUserAuthenticated = async (req, res, next) => {
+    const token = req.cookies["token"];
+    // const token = req.header("x-auth-token");
+    if (!token) {
+        return res.redirect("/login");
+    }
+    try {
+        const decoded = jwt.verify(token, config.get("jwtSecret"));
+        const user = await User.findByPk(decoded.email);
         if (!user) {
-            return res.redirect("/get-started");
+            return res.redirect("/login");
         }
-        req.logIn(user, (err) => {
-            if (err) {
-                return res.redirect("/get-started");
-            }
-            return next();
-        });
-    })(req, res, next);
+        if (user.role === "pending") {
+            return res.redirect("/wait-for-approval");
+        }
+        req.user = user.toJSON();
+        next();
+    } catch (err) {
+        console.log(err);
+        return res.redirect("/login");
+    }
 };
 
-module.exports = isAuthenticated;
+module.exports = isUserAuthenticated;
