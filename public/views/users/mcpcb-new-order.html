@@ -207,57 +207,42 @@
                             <div class="col col-md-12" id="mcpcb-details">
                                 <div class="row row-cols-1 row-cols-md-2 g-3">
                                     <div class="col">
-                                        <label
-                                            for="mcpcb-old-pcb-name-input"
-                                            class="form-label mb-2"
-                                        >
+                                        <label for="mcpcb-old-pcb-name-input" class="form-label mb-2">
                                             Any Old/Reference/Dimension File
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="input-group">
-                                            <select
-                                                name="mcpcb-sample-old-file"
-                                                id="mcpcb-sample-old-file-input"
-                                                class="form-select"
-                                                required
-                                            >
-                                                <option
-                                                    value=""
-                                                    disabled
-                                                    selected
-                                                >
-                                                    Select an option
-                                                </option>
+                                            <select name="mcpcb-sample-old-file" id="mcpcb-sample-old-file-input" class="form-select" required>
+                                                <option value="" disabled selected>Select an option</option>
                                                 <option value="yes">Yes</option>
                                                 <option value="no">No</option>
                                             </select>
                                         </div>
                                     </div>
+                                    <div id="mcpcb-sample-old-file-input-upload" style="display: none;">
+                                        <label for="formFile" class="form-label">Upload File</label>
+                                        <input class="form-control" type="file">
+                                    </div>                                    
                                     <div class="col">
-                                        <label
-                                            for="mcpcb-sample-body-input"
-                                            class="form-label mb-2"
-                                        >
+                                        <label for="mcpcb-sample-body-input" class="form-label mb-2">
                                             Available Any Sample / Body
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="input-group">
-                                            <select
-                                                name="mcpcb-sample-body"
-                                                id="mcpcb-sample-body-input"
-                                                class="form-select"
-                                                required
-                                            >
-                                                <option
-                                                    value=""
-                                                    disabled
-                                                    selected
-                                                >
-                                                    Select an option
-                                                </option>
+                                            <select name="mcpcb-sample-body" id="mcpcb-sample-body-input" class="form-select" required>
+                                                <option value="" disabled selected>Select an option</option>
                                                 <option value="yes">Yes</option>
                                                 <option value="no">No</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="mcpcb-picture-field" style="display: none;">
+                                        <div class="col">
+                                            <label for="mcpcb-picture-input" class="form-label mb-2">Take a Picture</label>
+                                            <div class="input-group">
+                                                <input type="file" accept="image/*" capture="camera" class="form-control" name="mcpcb-picture" id="mcpcb-picture-input" required>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col" id="mcpcb-led-package">
@@ -428,10 +413,7 @@
                                                     Vertical (Same Direction)
                                                 </option>
                                                 <option value="lens-file">
-                                                    Lens File
-                                                </option>
-                                                <option value="other">
-                                                    Other Reference File
+                                                    Lens
                                                 </option>
                                             </select>
                                         </div>
@@ -581,7 +563,7 @@
                                             for="mcpcb-quantity-input"
                                             class="form-label mb-2"
                                         >
-                                            Any Other Quires
+                                        ANY DESIGN RELETING NOTE/QUERIES*
                                         </label>
                                         <div class="input-group">
                                             <textarea

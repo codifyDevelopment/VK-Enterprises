@@ -189,34 +189,13 @@ const mcpcbNewOrderFormChangeHandler = async function () {
             }
         });
         $("#mcpcb-led-placement-input").on("change", function () {
-            if (this.value === "other")
+            if (this.value === "lens-file")
                 return $("#mcpcb-led-placement").after(`
                 <div class="col mcpcb-other-led-placement">
                     <label
                         class="form-label mb-2"
-                        for="mcpcb-led-placement-reference-1-input"
-                        >Other Reference File 1
-                        <span class="text-danger">*</span>
-                    </label>
-                    <div class="input-group">
-                        <i
-                            class="fas fa-file-upload input-group-text"
-                            style="font-size: 1.5rem"
-                        ></i>
-                        <input
-                            type="file"
-                            class="form-control"
-                            name="mcpcb-led-placement-reference-1"
-                            id="mcpcb-led-placement-reference-1-input"
-                            required
-                        />
-                    </div>
-                </div>
-                <div class="col mcpcb-other-led-placement">
-                    <label
-                        class="form-label mb-2"
                         for="mcpcb-led-placement-reference-2-input"
-                        >LED Package 2
+                        >LED Package
                     </label>
                     <div class="input-group">
                         <i
@@ -307,6 +286,20 @@ const mcpcbNewOrderFormChangeHandler = async function () {
             else $(".mcpcb-more-related-attachments-file").remove();
         });
 
+        $("#mcpcb-sample-old-file-input").on("change", function () {
+            if (this.value === "yes") {
+                $("#mcpcb-sample-old-file-input-upload").show(); // Show the upload div
+            } else {
+                $("#mcpcb-sample-old-file-input-upload").hide(); // Hide the upload div
+            }
+        });
+        $("#mcpcb-sample-body-input").on("change", function () {
+            if (this.value === "yes") {
+                $("#mcpcb-picture-field").show(); // Show the picture field
+            } else {
+                $("#mcpcb-picture-field").hide(); // Hide the picture field
+            }
+        });
         // if (new URLSearchParams(window.location.search).get("pcb-type")) {
         //     pcbType = new URLSearchParams(window.location.search).get(
         //         "pcb-type"
