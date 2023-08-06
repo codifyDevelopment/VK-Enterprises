@@ -9,9 +9,9 @@
         }
     },
     "db": {
-        "database": "codify",
-        "username": "codify",
-        "password": "codify@123",
+        "database": "vktech",
+        "username": "codifydev",
+        "password": "nihd-K8@6ydkDdEl",
         "host": "127.0.0.1",
         "dialect": "mariadb"
     },
