@@ -1,12 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>VK Enterprise</title>
-    </head>
-    <body>
-        site under construction s2p
-    </body>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Order - VK Enterprise</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
+</head>
+
+<body>
+    <nav class="navbar bg-white border-bottom dashboard_header">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center navbar-header">
+                <button class="menu-icon" id="menu-toggler">
+                    <i class="fa-solid fa-bars text-black text-secondary"></i>
+                </button>
+                <a href="/" class="navbar-brand">
+                    <img src="../img/logo.svg" alt="logo" class="logo" height="35" />
+                </a>
+            </div>
+            <div class="d-flex align-items-center justify-content-center gap-3">
+                <div class="">
+                    <button class="btn notification-icon" data-bs-toggle="dropdown" aria-expanded="false"
+                        onclick="markNotificationAsRead()">
+                        <i class="fa-solid fa-bell text-black"></i>
+                        <span class="badge badge-danger bg-danger" id="notification-count">0</span>
+                    </button>
+                    <ul class="dropdown-menu" id="notifications">
+                        <!-- <li class="border-bottom">
+                                <a class="dropdown-item text-wrap" href="#"
+                                    >Action</a
+                                >
+                            </li> -->
+                    </ul>
+                </div>
+                <button style="width: 30px; height: 30px"
+                    class="btn bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-user text-black"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- <div class="bashboard_main"> -->
+    <!-- sidebar -->
+    <div class="bg-white border-end d-flex flex-column justify-content-between align-items-center dashboard_sidebar"
+        id="menu">
+        <ul>
+            <li>
+                <a href="/dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/services">
+                    <i class="fa-solid fa-toolbox"></i>
+                    Services
+                </a>
+            </li>
+            <li>
+                <a href="/orders">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Orders
+                </a>
+            </li>
+            <li>
+                <a href="/transactions">
+                    <i class="fa-solid fa-money-bill-transfer"></i>
+                    Transactions
+                </a>
+            </li>
+            <li>
+                <a href="/inquiries">
+                    <i class="fa-solid fa-circle-question"></i>
+                    Inquiries
+                </a>
+            </li>
+        </ul>
+        <div class="logout-btn">
+            <button onclick="logout(event)">
+                <i class="fa-solid fa-sign-out"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+    <!-- main content -->
+    <div class="dashboard_content">
+        <div class="container new-order-form">
+            <form class="row row-cols-1 row-cols-lg-3 g-2 w-100 mb-4">
+                <div class="col col-lg-8 pe-lg-4">
+                    <h3 class="m-0 mb-3">Enter Order Details</h3>
+                    <p>
+                        (<span class="text-danger">*</span>) marked fields are required
+                    </p>
+
+                    <!-- ! form fields -->
+                    <div class="row row-cols-1 row-cols-md-2 mb-2 g-3">
+                        <div class="col">
+                            <label class="form-label mb-2" for="pcb-name-input">PCB Name
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Enter PCB Name" name="pcb-name"
+                                    id="pcb-name-input" required autofocus />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label class="form-label mb-2" for="pcb-type-input">PCB Type
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <select name="pcb-type" id="pcb-type-input" class="form-select" required disabled>
+                                    <option value="Schamatic-to-PCB-layer">LEDs / Schamatic-to-PCB-layers</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col col-md-12" id="pcb-size">
+                            <p class="form-label mb-2">PCB Size</p>
+                            <div class="row row-cols-1 row-cols-md-2 g-3">
+                                <div class="col">
+                                    <input type="radio" class="btn-check" id="pcb-size-known" name="pcb-size"
+                                        autocomplete="off" value="known" />
+                                    <label class="btn btn-outline-primary w-100" for="pcb-size-known">
+                                        known
+                                    </label>
+                                </div>
+                                <div class="col">
+                                    <input type="radio" class="btn-check" id="pcb-size-unknown" name="pcb-size"
+                                        value="unknown" autocomplete="off" />
+                                    <label class="btn btn-outline-primary w-100" for="pcb-size-unknown">
+                                        As Per Yours
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-md-12" id="pcb-type-title">
+                            <h5 class="text-center text-secondary">
+                                You are filling Schamatic To PCB order details
+                            </h5>
+                        </div>
+                        <div class="col col-md-12" id="Schamatic-to-PCB-layer-details">
+                            <div class="row row-cols-1 row-cols-md-2 g-3">
+                                <div class="col">
+                                    <label for="Schamatic-to-PCB-layer-old-pcb-name-input" class="form-label mb-2">
+                                        Any Old/Reference/Dimension File
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <select name="Schamatic-to-PCB-layer-sample-old-file"
+                                            id="Schamatic-to-PCB-layer-sample-old-file-input" class="form-select" required>
+                                            <option value="" disabled selected>
+                                                Select an option
+                                            </option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="Schamatic-to-PCB-layer-sample-old-file-input-upload" style="display: none">
+                                    <label for="formFile" class="form-label">Upload File</label>
+                                    <input class="form-control" type="file" />
+                                </div>
+                                <div class="col">
+                                    <label for="Schamatic-to-PCB-layer-sample-body-input" class="form-label mb-2">
+                                        Available Any Sample / Body
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <select name="Schamatic-to-PCB-layer-sample-body" id="Schamatic-to-PCB-layer-sample-body-input"
+                                            class="form-select" required>
+                                            <option value="" disabled selected>
+                                                Select an option
+                                            </option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="Schamatic-to-PCB-layer-picture-field" style="display: none">
+                                    <div class="col">
+                                        <label for="Schamatic-to-PCB-layer-picture-input" class="form-label mb-2">Take a
+                                            Picture</label>
+                                        <div class="input-group">
+                                            <input type="file" accept="image/*" capture="camera" class="form-control"
+                                                name="Schamatic-to-PCB-layer-picture" id="Schamatic-to-PCB-layer-picture-input" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="Pcb Name">PCB Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" required />
+                                </div>
+                                <div class="col">
+                                    <label for="Schamtic / Drawing File">Schamtic / Drawing File<span
+                                            class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" name="Schamtic-Drawing-input"
+                                            id="Schamtic-Drawing-input" required />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="Schamtic Bill Of Material">Schamtic Bill Of Material(BOM) File<span
+                                            class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" name="Schamtic-Bill-Of-Material"
+                                            id="Schamtic-Bill-Of-Material" required />
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <label for="trackRelated">TRACK RELATED COMMENTS /GUIDE<span
+                                            class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <select name="trackRelated-body-input" id="trackRelated-body-input"
+                                            class="form-select" required>
+                                            <option value="" disabled selected>Select an option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="text">TRACK RELATE TEXT</label>
+                                    <input type="text" class="form-control" required />
+                                </div>
+                                <div class="col">
+                                    <div class="input-group">
+                                        <label for="file upload">File Upload</label>
+                                    </div>
+                                    <input type="file" class="form-control" name="trackRelated-input"
+                                        id="trackRelated-input" required />
+                                </div>
+                                <div class="col">
+                                    <label for="layersRelated">LAYERS RELATED ANY COMMENTS/GUIDE<span
+                                            class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <select name="layersRelated-body-input" id="layersRelated-body-input"
+                                            class="form-select" required>
+                                            <option value="" disabled selected>Select an option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12">
+                                    <label for="Schamatic-to-PCB-layer-quantity-input" class="form-label mb-2">
+                                        ANY DESIGN RELETING NOTE/QUERIES*
+                                    </label>
+                                    <div class="input-group">
+                                        <textarea class="form-control" placeholder="Enter Any Other Quires"
+                                            name="Schamatic-to-PCB-layer-other-quires" id="Schamatic-to-PCB-layer-other-quires-input"
+                                            rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12">
+                                    <label for="Schamatic-to-PCB-layer-suggestion-input" class="form-label mb-2">
+                                        Suggestion
+                                    </label>
+                                    <div class="input-group">
+                                        <textarea class="form-control" placeholder="Enter any suggestion"
+                                            name="Schamatic-to-PCB-layer-suggestion" id="Schamatic-to-PCB-layer-suggestion-input"
+                                            rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100 d-flex flex-column justify-content-between p-3 bg-light rounded">
+                    <h3 class="text-center">Invoice Section</h3>
+                    <div class="my-5 text-danger">price details will appear here</div>
+                    <div class="">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success"></i>
+                                Please review all the filled details carefully before saving.
+                                Please note that if any minor changes are requested after the
+                                design has been completed, additional charges may apply.
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success"></i>
+                                Designs are for samples only and may not work for larger
+                                quantities. We are not responsible for quantity issues and
+                                cannot entertain arguments once designs are approved and
+                                produced.
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success"></i>
+                                Please ensure that you review all designs from your end before
+                                proceeding.
+                            </li>
+                        </ul>
+                        <p>
+                            Do You Agree With All Above Points?
+                            <span class="text-danger">*</span>
+                        </p>
+                        <input type="checkbox" class="btn-check" id="invoice-verify-all-details-input" required
+                            autocomplete="off" />
+                        <label class="btn btn-outline-primary w-100" for="invoice-verify-all-details-input">Yes</label>
+
+                        <button type="submit" class="btn btn-primary w-100 mt-3">
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
 </html>
