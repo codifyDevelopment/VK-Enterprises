@@ -313,3 +313,36 @@ const mcpcbNewOrderFormChangeHandler = async function () {
         $("#pcb-size-known").attr("checked", true).trigger("change");
     })();
 };
+
+
+//this is for directing payment page 
+document.getElementById("placeOrderButton").addEventListener("click", function() {
+    window.location.href = "/payment"; // Redirect to the /payment route
+});
+
+
+
+
+// this is for accept tearm and condition 
+const acceptTermsLabel = document.getElementById("acceptTermsLabel");
+const placeOrderButton = document.getElementById("placeOrderButton");
+
+let termsAccepted = false;
+
+acceptTermsLabel.addEventListener("click", () => {
+    termsAccepted = !termsAccepted;
+
+    if (termsAccepted) {
+        acceptTermsLabel.classList.add("active");
+        placeOrderButton.removeAttribute("disabled");
+    } else {
+        acceptTermsLabel.classList.remove("active");
+        placeOrderButton.setAttribute("disabled", "true");
+    }
+});
+
+
+
+
+
+

@@ -480,7 +480,7 @@ const fetchAllInquiries = async function () {
     try {
         let response = await axios.get("/api/inquiries/get-inquiries");
         // if (response.data.success) {
-        // return response.data.inquiries;
+        // return response.data.inquiries;   
         allInquiries = response.data.inquiries;
         // }
     } catch (error) {

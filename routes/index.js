@@ -119,6 +119,22 @@ router.get("/orders", isUserAuthenticated, async (req, res, next) => {
     }
 });
 
+
+// payment route 
+router.get("/payment", isUserAuthenticated, async (req, res, next) => {
+    if (req.user.role === "admin") {
+        return res.sendFile("orders.html", {
+            root: "public/views/admin",
+        });
+    } else {
+        return res.sendFile("user-payment.html", {
+            root: "public/views/users",
+        });
+    }
+});
+
+
+
 router.get("/orders/:id", isUserAuthenticated, async (req, res, next) => {
     if (req.user.role === "admin") {
         return res.sendFile("order-details.html", {
