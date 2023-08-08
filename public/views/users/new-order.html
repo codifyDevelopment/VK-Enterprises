@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>New Order - VK Enterprise</title>
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        />
+        <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                text-align: center;
+            }
+        
+            th,
+            td {
+                padding: 8px;
+                text-align: center;
+                /* border: 1px solid black; */
+            }
+        
+            th {
+                /* background-color: #4070f4; */
+                color: black;
+            }
+        
+            tr:last-child {
+                background-color: #f2f2f2;
+                font-weight: bold;
+            }
+        
+            .dynamic-fields {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar bg-white border-bottom dashboard_header">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center navbar-header">
+                    <button class="menu-icon" id="menu-toggler">
+                        <i
+                            class="fa-solid fa-bars text-black text-secondary"
+                        ></i>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img
+                            src="../img/logo.svg"
+                            alt="logo"
+                            class="logo"
+                            height="35"
+                        />
+                    </a>
+                </div>
+                <div
+                    class="d-flex align-items-center justify-content-center gap-3"
+                >
+                    <div class="">
+                        <button
+                            class="btn notification-icon"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            onclick="markNotificationAsRead()"
+                        >
+                            <i class="fa-solid fa-bell text-black"></i>
+                            <span
+                                class="badge badge-danger bg-danger"
+                                id="notification-count"
+                                >0</span
+                            >
+                        </button>
+                        <ul class="dropdown-menu" id="notifications">
+                            <!-- <li class="border-bottom">
+                                <a class="dropdown-item text-wrap" href="#"
+                                    >Action</a
+                                >
+                            </li> -->
+                        </ul>
+                    </div>
+                    <button
+                        style="width: 30px; height: 30px"
+                        class="btn bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center"
+                    >
+                        <i class="fa-solid fa-user text-black"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="bashboard_main"> -->
+        <!-- sidebar -->
+        <div
+            class="bg-white border-end d-flex flex-column justify-content-between align-items-center dashboard_sidebar"
+            id="menu"
+        >
+            <ul>
+                <li>
+                    <a href="/dashboard">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/services">
+                        <i class="fa-solid fa-toolbox"></i>
+                        Services
+                    </a>
+                </li>
+                <li>
+                    <a href="/orders">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="/transactions">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                        Transactions
+                    </a>
+                </li>
+                <li>
+                    <a href="/inquiries">
+                        <i class="fa-solid fa-circle-question"></i>
+                        Inquiries
+                    </a>
+                </li>
+            </ul>
+            <div class="logout-btn">
+                <button onclick="logout(event)">
+                    <i class="fa-solid fa-sign-out"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+        <!-- main content -->
+        <div class="dashboard_content">
+            <div class="container new-order-form">
+                <form class="row row-cols-1 row-cols-lg-3 g-2 w-100 mb-4">
+                    <div class="col col-lg-8 pe-lg-4">
+                        <h3 class="m-0 mb-3">Enter Order Details</h3>
+                        <p>
+                            (<span class="text-danger">*</span>) marked fields
+                            are required
+                        </p>
+
+                        <!-- ! form fields -->
+                                    <header>Order Form</header>
+                                    
+                                    <form action="#">
+                                        <div class="form first">
+                                            <div class="details personal">
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label>Order Id</label>
+                                                        <input type="text" placeholder="Enter your Order Id" required>
+                                                    </div>
+                                    
+                                                    <div class="input-field">
+                                                        <label>Order Status</label>
+                                                        <select required>
+                                                            <option disabled selected>Select Order Status</option>
+                                                            <option>Open</option>
+                                                            <option>Completed</option>
+                                                            <option>Others</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <label>Order Date</label>
+                                                        <input type="date" placeholder="Enter Date" required>
+                                                    </div>
+                                    
+                                    
+                                                    <div class="input-field">
+                                                        <label>Order No</label>
+                                                        <input type="number" placeholder="Enter Order number" required>
+                                                    </div>
+                                    
+                                                    <div class="input-field">
+                                                        <label>PCB Name</label>
+                                                        <input type="text" placeholder="Enter PCB Name">
+                                    
+                                                    </div>
+                                    
+                                                    <div class="input-field">
+                                                        <label>PCB Type</label>
+                                                        <select id="pcbType" name="pcbType" onchange="showFields()" required>
+                                                            <option disabled selected>Select PCB Type</option>
+                                                            <option value="LED">LEDs/MCPCBs</option>
+                                                            <option value="single">Single Layer / Side</option>
+                                                            <option value="double">Double Layer / Side</option>
+                                                            <option value="multi">Multilayer PCB</option>
+                                                            <option value="Schematic To PCB">Schamatic To PCB</option>
+                                                            <option value="Stencile">Stencile</option>
+                                                            <option value="Cam/Panelization">CAM/Panelization</option>
+                                                            <option value="Bill Of Material">Bill Of Material</option>
+                                                            <option>Update</option>
+                                                            <option>Urgent/Instaneous</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <label>PCB Size*</label>
+                                                        <select id="pcbSize" name="pcbSize" onchange="showQuery()" required>
+                                                            <option disabled selected>PCB size</option>
+                                                            <option value="know">Know</option>
+                                                            <option value="as">As Per Yours</option>
+                                                        </select>
+                                                    </div>
+                                    
+                                                </div>
+                                                <div id="knowFields" style="display: none">
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label>X-Dimensions(in MM)</label>
+                                                            <input type="number" placeholder="0.00" required>
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label>Y-Dimensions(in MM)</label>
+                                                            <input type="number" placeholder="0.00" required>
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label>SQCM PRICE</label>
+                                                            <input type="number" placeholder="Rs.0.00" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <header id="selected-option"></header>
+                                                <div id="LEDFields" class="dynamic-fields">
+                                                    <div class="fields">
+                                    
+                                                        <div class="input-field">
+                                                            <label for="">Any Old/Reference PCB Name/File*</label>
+                                                            <select id="old-Ref" name="oldRef" onchange="showOldRef()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="old-RefYes" class="input-field" style="display: none;">
+                                                            <label for="">Attach Reference File</label>
+                                                            <input type="file" name="" id="">
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label for="">Available Any Sample/Body*</label>
+                                                            <select name="sample-body" id="sample-body" onchange="showSample()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="sample-bodyField" style="display: none;">
+                                                            <label for="camera-input">Take a photo:</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label>LED Package*</label>
+                                                            <select id="singleLayerThickness" name="singleLayerThickness" onchange="showOtherThick()"
+                                                                required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="">2838</option>
+                                                                <option value="">2835 SAME PAD</option>
+                                                                <option value="">3030</option>
+                                                                <option value="">5050L SMD</option>
+                                                                <option>2835/3030 SMD MIX PAD</option>
+                                                                <option value="other">OTHER LED</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="other-led" style="display: none;">
+                                                            <label for="">Attach Other LED</label>
+                                                            <input type="file" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Total Number Of LEDs*</label>
+                                                            <input type="number" placeholder="Enter Total LED" required>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Designs WATTs</label>
+                                                            <input type="number" placeholder="Enter WATTs">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Design Connections*</label>
+                                                            <div class="input-field" id="myForm">
+                                    
+                                                                <label for="">Series</label>
+                                                                <input type="number" required>
+                                                                <label for="">Parellel</label>
+                                                                <input type="number" required>
+                                                            </div>
+                                                            <button onclick="addInputFields()">Add Fields</button>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Using Drivers Number*</label>
+                                                            <input type="number" required>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">LED Placement*</label>
+                                                            <select id="led-placement" name="led-placement" onchange="showLedPlacement()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="">Vertical(Same Direction)</option>
+                                                                <option value="">Round</option>
+                                                                <option value="lens">Lens</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="add-lens" style="display: none;">
+                                                            <label for="Lens">Add Lens File</label>
+                                                            <input type="file" id="file" name="file">
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label for="">Silk/Legend Layer*</label>
+                                                            <select id="silk-layer" onchange="showRequireFields()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Print Require</option>
+                                                                <option value="">Print Not Require</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="print-require" class="input-field" style="display:none;">
+                                                            <label for="">Select Print Require</label>
+                                                            <select name="" id="print-require-options" onchange="showCompanyLogo()">
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="">PCB Name</option>
+                                                                <option value="">Powered By OSRAM</option>
+                                                                <option value="">Make In India</option>
+                                                                <option value="">CE/RoHS</option>
+                                                                <option value="">Lion Logo</option>
+                                                                <option value="companyLogo">Company Logo</option>
+                                                            </select>
+                                    
+                                                            <div id="company-logo" style="display: none;">
+                                                                <label for="Lens">Add Company Logo</label>
+                                                                <input type="file">
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Solder/Mask Layer*</label>
+                                                            <select id="solder-layer" onchange="showSolderFields()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Print Require</option>
+                                                                <option value="">Print Not Require</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="solder-print-require" class="input-field" style="display: none;">
+                                                            <label for="">Solder Print Require</label>
+                                                            <select name="solder-layer" id="print-solder-layer" onchange="showSolderLogo()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="">PCB Name</option>
+                                                                <option value="">Powered By OSRAM</option>
+                                                                <option value="">Make In India</option>
+                                                                <option value="">CE/RoHS</option>
+                                                                <option value="">Lion Logo</option>
+                                                                <option value="companyLogo">Company Logo</option>
+                                                            </select>
+                                                            <div id="solder-company-logo" class="input-field" style="display: none;">
+                                                                <label for="Lens">Add Company Logo</label>
+                                                                <input type="file">
+                                                            </div>
+                                    
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">For Any Silk Legend Layer Informations</label>
+                                                            <input type="text" placeholder="Enter Copper info">
+                                                            <input type="file" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">For Any Solder/Mask Layer Informatics</label>
+                                                            <input type="text" placeholder="Enter Solder layer info">
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">For Any Copper Layer Informatics</label>
+                                                            <input type="text" placeholder="Enter Copper layer info">
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Any Design Relating Note/queries*</label>
+                                                            <select name="design-queries" id="design-queries" onchange="showDesignQueries()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="yes">Yes</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="design-yes" class="input-field" style="display: none;">
+                                                            <input type="text">
+                                                            <input type="file">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div id="singleFields" class="dynamic-fields">
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Any Old/Reference Dimension file*</label>
+                                                            <select id="old-dim" name="oldDim" onchange="showOldDim()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="old-DimYes" class="input-field" style="display: none;">
+                                                            <label for="">Attach Reference File</label>
+                                                            <input type="file" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Available Any Sample/Body*</label>
+                                                            <select name="single-sample-body" id="single-sample-body" onchange="showSingleSample()"
+                                                                required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="single-bodyField" style="display: none;">
+                                                            <label for="camera-input">Take a photo:</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">PCB Design Type*</label>
+                                                            <select id="PCB-design-type" name="design-type" onchange="showPCBDesignType()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="same">Same As Sample Copy</option>
+                                                                <option value="update">Sample Copy With Update</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div id="copy-with-update" style="display: none;">
+                                                        <div class="fields">
+                                                            <div class="input-field">
+                                    
+                                                                <label for="">PCB Design Update Description</label>
+                                                                <input type="text">
+                                                                <input type="file" name="" id="">
+                                                            </div>
+                                                            <div class="input-field">
+                                                                <label for="">Any Update In Copper Track Designing</label>
+                                                                <select id="update-Copper" name="Update-Copper" onchange="showUpdateCopper()">
+                                                                    <option disabled selected>--Select--</option>
+                                                                    <option value="client">As Per Client</option>
+                                                                    <option value="your">As Per Your</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="input-field" id="copper-client" style="display: none;">
+                                                                <label for="">Enter Client Information</label>
+                                                                <input type="text">
+                                                                <input type="file" name="" id="">
+                                    
+                                                            </div>
+                                                            <div class="input-field">
+                                                                <label for="">IN DESIGNING UPDATES NO. OF POINTS</label>
+                                                                <input type="number" name="" id="">
+                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Silk/Legend Layer*</label>
+                                                            <select id="single-silk-layer" onchange="showSingleRequireFields()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Print Require</option>
+                                                                <option value="">Print Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="requiredFields" class="input-field" style="display: none;">
+                                                            <label for="Lens">Add Required Print</label>
+                                                            <input type="text">
+                                                            <label for="">Print File</label>
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Solder/Mask Layer Information</label>
+                                                            <input type="text" required>
+                                                            <label for=""></label>
+                                                            <input type="file" required>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Copper Layer Information</label>
+                                                            <input type="text">
+                                                            <label for=""></label>
+                                                            <input type="file">
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label for="">Bill Of Material(BOM)</label>
+                                                            <select id="BOM" onchange="showBOMRequire()">
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Require</option>
+                                                                <option value=""> Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="BOM-require" class="input-field" style="display: none;">
+                                                            <label for="">Billing amount in add BOM Min Price</label>
+                                                            <input type="number">
+                                    
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label for="">Panelization/ CAM Work</label>
+                                                            <select id="Panelization" onchange="showPanelization()">
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Require</option>
+                                                                <option value=""> Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="Pane-require" class="input-field" style="display: none;">
+                                                            <label for="">Billing amount in add Panelization/Cam Min Price</label>
+                                                            <input type="number">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Any Design Relating Note/queries*</label>
+                                                            <select name="single-design-queries" id="single-design-queries"
+                                                                onchange="showSingleDesignQueries()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="yes">Yes</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="single-design-yes" class="input-field" style="display: none;">
+                                                            <input type="text">
+                                                            <input type="file">
+                                                        </div>
+                                                    </div>
+                                    
+                                                </div>
+                                                <div id="doubleFields" class="dynamic-fields">
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Any Old/Reference Dimension file*</label>
+                                                            <select id="double-old-dim" name="doubleoldDim" onchange="showDoubleOldDim()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="double-DimYes" class="input-field" style="display: none;">
+                                                            <label for="">Attach Reference File</label>
+                                                            <input type="file" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Available Any Sample/Body*</label>
+                                                            <select name="double-sample-body" id="double-sample-body" onchange="showDoubleSample()"
+                                                                required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="double-bodyField" style="display: none;">
+                                                            <label for="camera-input">Take a photo:</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">PCB Design Type*</label>
+                                                            <select id="PCB-design-double" name="design-type" onchange="showPCBDesignDouble()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="same">Same As Sample Copy</option>
+                                                                <option value="update">Sample Copy With Update</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div id="double-copy-with-update" style="display: none;">
+                                                        <div class="fields">
+                                                            <div class="input-field">
+                                    
+                                                                <label for="">PCB Design Update Description</label>
+                                                                <input type="text">
+                                                                <input type="file" name="" id="">
+                                                            </div>
+                                                            <div class="input-field">
+                                                                <label for="">Any Update In Copper Track Designing</label>
+                                                                <select id="double-update-Copper" name="Update-Copper" onchange="showDoubleUpdateCopper()">
+                                                                    <option disabled selected>--Select--</option>
+                                                                    <option value="client">As Per Client</option>
+                                                                    <option value="your">As Per Your</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="input-field" id="double-copper-client" style="display: none;">
+                                                                <label for="">Enter Client Information</label>
+                                                                <input type="text">
+                                                                <input type="file" name="" id="">
+                                    
+                                                            </div>
+                                                            <div class="input-field">
+                                                                <label for="">IN DESIGNING UPDATES NO. OF POINTS</label>
+                                                                <input type="number" name="" id="">
+                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Top Silk/Legend Layer*</label>
+                                                            <select id="double-silk-layer" onchange="showDoubleTopFields()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Print Require</option>
+                                                                <option value="">Print Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="doublerequiredFields" class="input-field" style="display: none;">
+                                                            <label for="Lens">Add Required Print</label>
+                                                            <input type="text">
+                                                            <label for="">Print File</label>
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Top Solder/Mask Layer Information</label>
+                                                            <input type="text" required>
+                                                            <label for=""></label>
+                                                            <input type="file" required>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Top Copper Layer Information</label>
+                                                            <input type="text">
+                                                            <label for=""></label>
+                                                            <input type="file">
+                                                        </div>
+                                    
+                                                    </div>
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Bottom Silk/Legend Layer*</label>
+                                                            <select id="double-bottom-silk-layer" onchange="showDoubleBottomFields()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Print Require</option>
+                                                                <option value="">Print Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="doubleBottomrequiredFields" class="input-field" style="display: none;">
+                                                            <label for="Lens">Add Required Print</label>
+                                                            <input type="text">
+                                                            <label for="">Print File</label>
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Bottom Solder/Mask Layer Information</label>
+                                                            <input type="text" required>
+                                                            <label for=""></label>
+                                                            <input type="file" required>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Bottom Copper Layer Information</label>
+                                                            <input type="text">
+                                                            <label for=""></label>
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Bill Of Material(BOM)</label>
+                                                            <select id="double-BOM" onchange="showdoubleBOMRequire()">
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Require</option>
+                                                                <option value=""> Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="double-BOM-require" class="input-field" style="display: none;">
+                                                            <label for="">Billing amount in add BOM Min Price</label>
+                                                            <input type="number">
+                                    
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label for="">Panelization/ CAM Work</label>
+                                                            <select id="double-Panelization" onchange="showDoublePanelization()">
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Require</option>
+                                                                <option value=""> Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="double-Pane-require" class="input-field" style="display: none;">
+                                                            <label for="">Billing amount in add Panelization/Cam Min Price</label>
+                                                            <input type="number">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Any Design Relating Note/queries*</label>
+                                                            <select name="double-design-queries" id="double-design-queries"
+                                                                onchange="showDoubleDesignQueries()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="yes">Yes</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="double-design-yes" class="input-field" style="display: none;">
+                                                            <input type="text">
+                                                            <input type="file">
+                                                        </div>
+                                    
+                                                    </div>
+                                    
+                                                </div>
+                                                <div id="multiFields" class="dynamic-fields">
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Any Old/Reference Dimension file*</label>
+                                                            <select id="Multi-old-dim" name="MultioldDim" onchange="showMultiOldDim()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="Multi-DimYes" class="input-field" style="display: none;">
+                                                            <label for="">Attach Reference File</label>
+                                                            <input type="file" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Available Any Sample/Body*</label>
+                                                            <select name="Multi-sample-body" id="Multi-sample-body" onchange="showMultiSample()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="Multi-bodyField" style="display: none;">
+                                                            <label for="camera-input">Take a photo:</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">PCB Design Type*</label>
+                                                            <select id="PCB-design-Multi" name="design-type" onchange="showPCBDesignMulti()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="same">Same As Sample Copy</option>
+                                                                <option value="update">Sample Copy With Update</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div id="Multi-copy-with-update" style="display: none;">
+                                                        <div class="fields">
+                                                            <div class="input-field">
+                                    
+                                                                <label for="">PCB Design Update Description</label>
+                                                                <input type="text">
+                                                                <input type="file" name="" id="">
+                                                            </div>
+                                                            <div class="input-field">
+                                                                <label for="">Any Update In Copper Track Designing</label>
+                                                                <select id="Multi-update-Copper" name="Update-Copper" onchange="showMultiUpdateCopper()">
+                                                                    <option disabled selected>--Select--</option>
+                                                                    <option value="client">As Per Client</option>
+                                                                    <option value="your">As Per Your</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="input-field" id="Multi-copper-client" style="display: none;">
+                                                                <label for="">Enter Client Information</label>
+                                                                <input type="text">
+                                                                <input type="file" name="" id="">
+                                    
+                                                            </div>
+                                                            <div class="input-field">
+                                                                <label for="">IN DESIGNING UPDATES NO. OF POINTS</label>
+                                                                <input type="number" name="" id="">
+                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Top Silk/Legend Layer*</label>
+                                                            <select id="Multi-silk-layer" onchange="showMultiTopFields()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Print Require</option>
+                                                                <option value="">Print Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="MultirequiredFields" class="input-field" style="display: none;">
+                                                            <label for="Lens">Add Required Print</label>
+                                                            <input type="text">
+                                                            <label for="">Print File</label>
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Top Solder/Mask Layer Information</label>
+                                                            <input type="text" required>
+                                                            <label for=""></label>
+                                                            <input type="file" required>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Top Copper Layer Information</label>
+                                                            <input type="text">
+                                                            <label for=""></label>
+                                                            <input type="file">
+                                                        </div>
+                                    
+                                                    </div>
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Bottom Silk/Legend Layer*</label>
+                                                            <select id="Multi-bottom-silk-layer" onchange="showMultiBottomFields()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Print Require</option>
+                                                                <option value="">Print Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="MultiBottomrequiredFields" class="input-field" style="display: none;">
+                                                            <label for="Lens">Add Required Print</label>
+                                                            <input type="text">
+                                                            <label for="">Print File</label>
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Bottom Solder/Mask Layer Information</label>
+                                                            <input type="text" required>
+                                                            <label for=""></label>
+                                                            <input type="file" required>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Bottom Copper Layer Information</label>
+                                                            <input type="text">
+                                                            <label for=""></label>
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="Lens">For Any Inners Copper Layers Information</label>
+                                                            <input type="text">
+                                                            <label for=""></label>
+                                                            <input type="file">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Bill Of Material(BOM)</label>
+                                                            <select id="double-BOM" onchange="showMultiBOMRequire()">
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Require</option>
+                                                                <option value=""> Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="Multi-BOM-require" class="input-field" style="display: none;">
+                                                            <label for="">Billing amount in add BOM Min Price</label>
+                                                            <input type="number">
+                                    
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label for="">Panelization/ CAM Work</label>
+                                                            <select id="Multi-Panelization" onchange="showMultiPanelization()">
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="printRequire">Require</option>
+                                                                <option value=""> Not Require</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <div id="Multi-Pane-require" class="input-field" style="display: none;">
+                                                            <label for="">Billing amount in add Panelization/Cam Min Price</label>
+                                                            <input type="number">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Any Design Relating Note/queries*</label>
+                                                            <select name="Multi-design-queries" id="Multi-design-queries"
+                                                                onchange="showMultiDesignQueries()" required>
+                                                                <option disabled selected>-- Select --</option>
+                                                                <option value="yes">Yes</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="Multi-design-yes" class="input-field" style="display: none;">
+                                                            <input type="text">
+                                                            <input type="file">
+                                                        </div>
+                                    
+                                                    </div>
+                                    
+                                                </div>
+                                                <div id="schematicFields" class="dynamic-fields">
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Any Old/Reference Dimension file*</label>
+                                                            <select id="Schematic-old-dim" name="SchematicoldDim" onchange="showSchematicOldDim()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="Schematic-DimYes" class="input-field" style="display: none;">
+                                                            <label for="">Attach Reference File</label>
+                                                            <input type="file" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Available Any Sample/Body*</label>
+                                                            <select name="Schematic-sample-body" id="Schematic-sample-body" onchange="showSchematicSample()"
+                                                                required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="Schematic-bodyField" style="display: none;">
+                                                            <label for="camera-input">Take a photo:</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">PCB Name*</label>
+                                                            <input type="text" required>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Schamtic/Drawing File*</label>
+                                                            <input type="file" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Schamtic Bill Of Material(BOM) File*</label>
+                                                            <input type="file" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Schamtic To PCB Layers*</label>
+                                                            <select required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="">(single layer/side)</option>
+                                                                <option value="">(double layer/side)</option>
+                                                                <option value="">(four layers)</option>
+                                                                <option value="">(six layers)</option>
+                                                                <option value="">(eight layers)</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">PCB Dimension File*</label>
+                                                            <label for="">X-Lenght(Dimension)-In MM</label>
+                                                            <input type="number" required>
+                                                            <label for="">Y-Width(Dimension)-In MM</label>
+                                                            <input type="number" required>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Track Related Comments/Guide*</label>
+                                                            <select id="Schamtic-track" name="Schamatic-track" onchange="showSchamticTrack()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="Schamtic-TrackYes" class="input-field" style="display: none;">
+                                                            <input type="text">
+                                                            <label for="camera-input">Take a photo:</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Layers Related Any</label>
+                                                            <select name="Schamtic-layers" id="Schamtic-layers" onchange="showSchamticLayers()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="Schamtic-LayersYes" style="display: none;">
+                                                            <input type="text">
+                                                            <!-- <label for="camera-input">Take a photo:</label> -->
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Any Layout/Referance/Arrangement File</label>
+                                                            <label for="file-input">Choose a file:</label>
+                                                            <input type="file" id="file-input" name="file" accept=".xls, .pdf, image/*">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Any Related Any Type Of Comment*</label>
+                                                            <select name="Schamtic-Comment" id="Schamtic-comment" onchange="showSchamticComment()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="Schamtic-CommentYes" style="display: none;">
+                                                            <input type="text">
+                                                            <label for="camera-input">Take a photo:</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                    
+                                                    </div>
+                                                    <h2>Order Amout According*</h2>
+                                                    <label for="">NOTE:-(THE COST OF DESIGN AS PER USED COMPONENTS PADS )</label>
+                                    
+                                                </div>
+                                                <div id="stencileFields" class="dynamic-fields">
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">Stencile File Name*</label>
+                                                            <label for="">Running Order To Filter</label>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Gerber File Attachement</label>
+                                                            <input type="file" id="file-input" name="file" accept=".rar, .zip">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Any Related Text*</label>
+                                                            <select name="" id="stencile-text" onchange="showStencileText()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="stencile-text-yes" style="display: none;">
+                                                            <input type="text">
+                                                        </div>
+                                    
+                                                    </div>
+                                                </div>
+                                                <div id="camFields" class="dynamic-fields">
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">CAM File Name*</label>
+                                                            <label for="">Running Order To Filter</label>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Gerber File Attachement</label>
+                                                            <input type="file" id="file-input" name="file" accept=".rar, .zip">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">PANELLIZATION /PANEL UP*(ACCORDING TO PROVIDED PDF)</label>
+                                                            <label for="">X-Width Side</label>
+                                                            <input type="number" name="" id="">
+                                                            <label for="">Y-Width Side</label>
+                                                            <input type="number" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">PCB Between Gap/Clearance*</label>
+                                                            <input type="number" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">In PCB Track To Track Clearance</label>
+                                                            <input type="number" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Any Related Text*</label>
+                                                            <select name="" id="cam-text" onchange="showCamText()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="cam-text-yes" style="display: none;">
+                                                            <input type="text">
+                                                            <label for="camera-input">Take a photo:</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="billFields" class="dynamic-fields">
+                                                    <div class="fields">
+                                                        <div class="input-field">
+                                                            <label for="">BOM File Name*</label>
+                                                            <label for="">Running Order To Filter</label>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">PCB Image*</label>
+                                                            <label for="">Top Side Image Attachement</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Bottom Side Image Attachement</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                    
+                                                        <div class="input-field">
+                                                            <label for="">Layers Type*</label>
+                                                            <input type="number" name="" id="">
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <label for="">Any Related Text*</label>
+                                                            <select name="" id="bill-text" onchange="showBillText()" required>
+                                                                <option disabled selected>--Select--</option>
+                                                                <option value="yes">YES</option>
+                                                                <option value="">NO</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-field" id="bill-text-yes" style="display: none;">
+                                                            <input type="text">
+                                                            <label for="camera-input">Take a photo:</label>
+                                                            <input type="file" id="camera-input" accept="image/*" capture="camera">
+                                                        </div>
+                                                    </div>
+                                                    <h2>
+                                                        <p>
+                                                            Note:- 1)IF POSSIBLE PROVIDE FRESH PCB/OLD PCB NOT CAPTURE PROPER COMPONENTS VALUE
+                                                        </p>
+                                                        <p> 2) BOM FILE ONLY FOR SAMPLE PURPOSE (NOT FOR QUANTITIES)</p>
+                                                    </h2>
+                                    
+                                                </div>
+                                    
+                                            </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                            <div class="details ID">
+                                                <div>
+                                                    <label>Carefully Once check All Fill Details Before Save.
+                                                        (After Designing A Simple Changes Charges Will Be A Extra)
+                                                        (*300Rs. + Depends On Changes Rate)*
+                                                    </label>
+                                                    <input type="button" value="YES" class="inputBtn" required>
+                                                </div>
+                                                <div class=>
+                                                    <label>*All Designs Are For Sammples only. Never Work For Quatities.
+                                                        **Not Responsible For Quatities.(After No Further Argument Will Be Heard).
+                                                        **Also, Check All The Designs Then Proceed.*
+                                                    </label>
+                                                    <input type="button" value="Yes" class="inputBtn" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="buttons">
+                                            <div class="backBtn">
+                                                <i class="uil uil-navigator"></i>
+                                                <span class="btnText">Back</span>
+                                            </div>
+                                    
+                                            <button class="submit">
+                                                <span class="btnText">Submit</span>
+                                                <i class="uil uil-navigator"></i>
+                                            </button>
+                                        </div>
+                                        </div>
+                                    
+                                    </form>
+                    </div>
+                    <div
+                        class="col h-100 d-flex flex-column justify-content-between p-3 bg-light rounded"
+                    >
+                        <h3 class="text-center">Invoice Section</h3>
+                        <div class="my-5 text-danger">
+                            price details will appear here
+                        </div>
+                        <div class="">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i
+                                        class="fas fa-check-circle text-success"
+                                    ></i>
+                                    Please review all the filled details
+                                    carefully before saving. Please note that if
+                                    any minor changes are requested after the
+                                    design has been completed, additional
+                                    charges may apply.
+                                </li>
+                                <li class="mb-2">
+                                    <i
+                                        class="fas fa-check-circle text-success"
+                                    ></i>
+                                    Designs are for samples only and may not
+                                    work for larger quantities. We are not
+                                    responsible for quantity issues and cannot
+                                    entertain arguments once designs are
+                                    approved and produced.
+                                </li>
+                                <li class="mb-2">
+                                    <i
+                                        class="fas fa-check-circle text-success"
+                                    ></i>
+                                    Please ensure that you review all designs
+                                    from your end before proceeding.
+                                </li>
+                            </ul>
+                            <p>
+                                Do You Agree With All Above Points?
+                                <span class="text-danger">*</span>
+                            </p>
+                            <input
+                                type="checkbox"
+                                class="btn-check"
+                                id="invoice-verify-all-details-input"
+                                required
+                                autocomplete="off"
+                            />
+                            <label
+                                class="btn btn-outline-primary w-100"
+                                for="invoice-verify-all-details-input"
+                                >Yes</label
+                            >
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary w-100 mt-3"
+                            >
+                                Place Order
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/popper.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/axios.min.js"></script>
+        <script src="../../js/script.js"></script>
+        <script>
+            window.onload = newOrderFormChangeHandler();
+        </script>
+    </body>
+</html>
