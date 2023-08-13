@@ -121,6 +121,15 @@ router.get("/orders", isUserAuthenticated, async (req, res, next) => {
 
 // payment route
 router.get("/payment", isUserAuthenticated, async (req, res, next) => {
+  if (req.user.role === "admin") {
+    return res.sendFile("orders.html", {
+      root: "public/views/admin",
+    });
+  } else {
+    return res.sendFile("user-payments.html", {
+      root: "public/views/users",
+    });
+  }
     if (req.user.role === "admin") {
         return res.sendFile("orders.html", {
             root: "public/views/admin",
