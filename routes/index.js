@@ -126,7 +126,7 @@ router.get("/payment", isUserAuthenticated, async (req, res, next) => {
       root: "public/views/admin",
     });
   } else {
-    return res.sendFile("user-payment.html", {
+    return res.sendFile("user-payments.html", {
       root: "public/views/users",
     });
   }
