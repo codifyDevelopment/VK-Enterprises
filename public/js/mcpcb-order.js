@@ -3,24 +3,6 @@ const mcpcbNewOrderFormChangeHandler = async function () {
     // const mpcbbody = document.getElementById("mpcb-body");
     await (async function () {
         let pcbSize, pcbType;
-        // let allServices = await fetchAllServices();
-        // $("#pcb-type-input").html(
-        //     `<option value="" disabled selected>Select an Option</option>`
-        // );
-        // allServices.forEach((service) => {
-        //     $("#pcb-type-input").append(
-        //         `<option value="${service.id}">${service.name}</option>`
-        //     );
-        // });
-        // $("#pcb-type-input").on("change", function () {
-        //     $("#pcb-type-title").html(
-        //         `<h5 class="text-center text-secondary">
-        //             You are filling ${$(
-        //                 "#pcb-type-input option:selected"
-        //             ).text()} order details
-        //         </h5>`
-        //     );
-        // });
         $("input[name=pcb-size]").on("change", function () {
             if (this.value === "known")
                 $("#pcb-size").after(`
@@ -284,6 +266,22 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                 </div>
                 `);
             else $(".mcpcb-more-related-attachments-file").remove();
+        });
+        // stencile-form
+        $("#StencileFormswitch").on("change", function() {
+            if ($(this).is(":checked")) {
+              $("#stencile-form").show(); // Show the content
+            } else {
+              $("#stencile-form").hide(); // Hide the content
+            }
+        });
+
+        $("#CAMPanelizationswitch").on("change", function (){
+            if ($(this).is(":checked")) {
+                $("#cam-panellization-div").show(); // Show the content
+              } else {
+                $("#cam-panellization-div").hide(); // Hide the content
+              }
         });
 
         $("#mcpcb-sample-old-file-input").on("change", function () {
