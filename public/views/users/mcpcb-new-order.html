@@ -457,11 +457,54 @@
                 <!-- Bill Of Material -->
                 <div class="col col-md-12 switchdiv">
                   <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="BillOfMaterialswitch">
-                    <label class="form-check-label" for="BillOfMaterialswitch">Required Bill Of Material</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="bomSwitch">
+                    <label class="form-check-label" for="bomSwitch">Required BOM</label>
                   </div>
-                  <!-- startformhere -->
+                  <div id="bom-div"  style="display: none;"> 
+                    <hr>
+                    <!-- PCB IMAGE -->
+                    <div class="form-group mt-3">
+                      <label for="pcbTopImage">TOP SIDE IMAGE ATTACHMENT</label>
+                      <input type="file" class="form-control" id="pcbTopImage">
+                    </div>
+                    
+                    <div class="form-group mt-3">
+                      <label for="pcbBottomImage">BOTTOM SIDE IMAGE ATTACHMENT</label>
+                      <input type="file" class="form-control" id="pcbBottomImage">
+                    </div>
+                    
+                    <!-- LAYERS TYPE -->
+                    <div class="form-group mt-3">
+                      <label for="layersType">LAYERS TYPE IN NUMBERS</label>
+                      <input type="number" class="form-control" id="layersType">
+                    </div>
+                    
+                    <!-- ANY RELATED TEXT -->
+                    <div class="form-group mt-3">
+                      <label for="relatedTextOption">ANY RELATED TEXT*</label>
+                      <select class="form-control" id="relatedTextOption">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                    
+                    <!-- LONG TEXT -->
+                    <div class="form-group mt-3">
+                      <label for="longText">LONG TEXT</label>
+                      <input class="form-control" id="longText" rows="3"/>
+                    </div>
+                    
+                    <!-- CAMERA SHOT -->
+                    <div class="form-group mt-3">
+                      <label for="cameraShot">CAMERA SHOT</label>
+                      <input type="file" class="form-control" id="cameraShot">
+                      <b class="form-text text-muted">
+                        1)- IF POSSIBLE PROVIDE FRESH PCB/OLD PCB NOT CAPTURE PROPER COMPONENTS VALUE<br>
+                        2)- BOM FILE ONLY FOR SAMPLE PURPOSE (NOT FOR QUANTITIES)</b>
+                    </div>
+                  </div>
                 </div>
+                
                 <div class="col col-md-12">
                   <label for="mcpcb-quantity-input" class="form-label mb-2">
                     ANY DESIGN RELETING NOTE/QUERIES*
