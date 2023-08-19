@@ -52,21 +52,55 @@ const mcpcbNewOrderFormChangeHandler = async function () {
             else $("#pcb-size-known-inputs").remove();
         });
 
-        // stencile-form
-        $("#StencileFormswitch").on("change", function() {
+        // single-layer-form
+        $("#single-layer-form-switch").on("change", function () {
             if ($(this).is(":checked")) {
-              $("#stencile-form").show(); // Show the content
+                $("#single-layer-form").show();
             } else {
-              $("#stencile-form").hide(); // Hide the content
+                $("#single-layer-form").hide();
+            }
+        });
+        $("#single-layer-text").hide();
+        $("#single-layer-form-text").on("change", function() {
+        if ($(this).val() === "yes") {
+            $("#single-layer-text").show();
+        } else {
+            $("#single-layer-text").hide();
+        }
+        });
+
+        // single-layer-CAMPanelizationswitch
+        $("#single-layer-CAMPanelizationswitch").on("change", function () {
+            if ($(this).is(":checked")) {
+                $("#single-layer-cam-panellization-div").show();
+            } else {
+                $("#single-layer-cam-panellization-div").hide();
+            }
+        });
+        $("#relatedText-cam-div").hide();
+        $("#relatedText-cam").on("change", function() {
+            if ($(this).val() === "yes") {
+                $("#relatedText-cam-div").show();
+            } else {
+                $("#relatedText-cam-div").hide();
             }
         });
 
-        $("#CAMPanelizationswitch").on("change", function (){
+        // bom-switch
+        $("#single-layer-bomSwitch").on("change", function () {
             if ($(this).is(":checked")) {
-                $("#cam-panellization-div").show(); // Show the content
-              } else {
-                $("#cam-panellization-div").hide(); // Hide the content
-              }
+                $("#bom-div").show();
+            } else {
+                $("#bom-div").hide();
+            }
+        });
+        $("#bom-text-div").hide();
+        $("#relatedTextOption-bom").on("change", function() {
+            if ($(this).val() === "yes") {
+                $("#bom-text-div").show();
+            } else {
+                $("#bom-text-div").hide();
+            }
         });
 
         $("#ss-sample-old-file-input").on("change", function () {
