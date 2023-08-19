@@ -199,15 +199,45 @@
               <div class="col col-md-12" id="schamatic-pcb-layer-details">
                 <div class="row row-cols-1 row-cols-md-2 g-3">
                   <!-- Old/Reference/Dimension File -->
+
                   <div class="col">
-                    <label for="old-pcb-file-input" class="form-label mb-2">
+                    <label for="ss-old-pcb-file-input" class="form-label mb-2">
                       Any Old/Reference/Dimension File
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <select
                         name="sample-old-file"
-                        id="old-pcb-file-input"
+                        id="ss-sample-old-file-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div
+                    id="ss-sample-old-file-input-upload"
+                    style="display: none"
+                  >
+                    <label for="formFile" class="form-label">Upload File</label>
+                    <input class="form-control" type="file" />
+                  </div>
+
+                  <!-- Available Sample / Body -->
+                  <div class="col">
+                    <label for="ss-sample-body-input" class="form-label mb-2">
+                      Available Any Sample / Body
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="sample-body"
+                        id="ss-sample-body-input"
                         class="form-select"
                         required
                       >
@@ -220,25 +250,22 @@
                     </div>
                   </div>
 
-                  <!-- Available Sample / Body -->
-                  <div class="col">
-                    <label for="sample-body-input" class="form-label mb-2">
-                      Available Any Sample / Body
-                      <span class="text-danger">*</span>
-                    </label>
-                    <div class="input-group">
-                      <select
-                        name="sample-body"
-                        id="sample-body-input"
-                        class="form-select"
-                        required
+                  <div id="ss-picture-field" style="display: none">
+                    <div class="col">
+                      <label for="ss-picture-input" class="form-label mb-2"
+                        >Take a Picture</label
                       >
-                        <option value="" disabled selected>
-                          Select an option
-                        </option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                      </select>
+                      <div class="input-group">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          capture="camera"
+                          class="form-control"
+                          name="ss-picture"
+                          id="ss-picture-input"
+                          required
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -307,7 +334,7 @@
                   <!-- Update in Copper Track Designing -->
                   <div class="col">
                     <label
-                      for="copper-track-designing-input"
+                      for="ss-copper-track-designing-input"
                       class="form-label mb-2"
                     >
                       Any update in copper track designing
@@ -315,40 +342,56 @@
                     <div class="input-group">
                       <select
                         name="copper-track-designing"
-                        id="copper-track-designing-input"
+                        id="ss-copper-track-designing-input"
                         class="form-select"
                         required
                       >
+                        <option disabled selected>Select an option</option>
                         <option value="client-request">As per client</option>
                         <option value="your-design">As per yours</option>
                       </select>
                     </div>
                   </div>
                   <!-- 
-                                Enter Details -->
-                  <!-- <div class="col">
-                                    <label class="form-label mb-2" for="enter-details-input">Enter Details
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Enter Details"
-                                            name="enter-details-input" id="enter-details-input" required>
-                                    </div>
-                                </div> -->
-
-                  <!-- Attached File -->
-                  <!-- <div class="col">
-                                    <label for="attached-file-input" class="form-label mb-2">Attached File</label>
-                                    <div class="input-group">
-                                        <input type="file" class="form-control" name="schamatic-pcb-layer-picture"
-                                            id="attached-file-input" required>
-                                    </div>
-                                </div> -->
+                             Update in Copper Track Designing fields-->
+                  <div
+                    id="ss-copper-track-designing-filed"
+                    style="display: none"
+                  >
+                    <div class="col">
+                      <label class="form-label mb-2" for="enter-details-input"
+                        >Copper track designing long Text
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter Details"
+                          name="enter-details-input"
+                          id="enter-details-input"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <!-- Attached File -->
+                    <div class="col">
+                      <label for="attached-file-input" class="form-label mb-2"
+                        >Copper track designing attached file</label
+                      >
+                      <div class="input-group">
+                        <input
+                          type="file"
+                          class="form-control"
+                          name="ss-pcb-layer-picture"
+                          id="attached-file-input"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
 
                   <!-- Design Updates Number of Points -->
-
-
-
 
                   <div class="col">
                     <label
@@ -378,42 +421,45 @@
                     <div class="input-group">
                       <select
                         name="silk-legend-layer"
-                        id="silk-legend-layer-input"
+                        id="ss-silk-legend-layer-input"
                         class="form-select"
                         required
                       >
+                        <option disabled selected>Select an option</option>
                         <option value="require">Require</option>
                         <option value="not-required">Not Required</option>
                       </select>
                     </div>
                   </div>
 
-                  <!-- Enter Silk/Legend Text -->
-                  <!-- <div class="col">
-                    <label for="silk-legend-text-input" class="form-label">
-                      Enter Silk/LEGEND Text
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter Silk/LEGEND Text"
-                      name="silk-legend-text-input"
-                      id="silk-legend-text-input"
-                    />
-                  </div> -->
+                  <div id="ss-silk-legend-layer-field" style="display: none">
+                    <!-- Enter Silk/Legend Text -->
+                    <div class="col">
+                      <label for="silk-legend-text-input" class="form-label">
+                        Enter Silk/LEGEND Text
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Silk/LEGEND Text"
+                        name="silk-legend-text-input"
+                        id="silk-legend-text-input"
+                      />
+                    </div>
 
-                  <!-- Upload Silk/Legend File -->
-                  <!-- <div class="col">
-                    <label for="silk-legend-file-input" class="form-label">
-                      Upload Silk/LEGEND File
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      name="silk-legend-file-input"
-                      id="silk-legend-file-input"
-                    />
-                  </div> -->
+                    <!-- Upload Silk/Legend File -->
+                    <div class="col">
+                      <label for="silk-legend-file-input" class="form-label">
+                        Upload Silk/LEGEND File
+                      </label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="silk-legend-file-input"
+                        id="silk-legend-file-input"
+                      />
+                    </div>
+                  </div>
 
                   <!-- SOLDER/MASK LAYER -->
                   <div class="col">
@@ -421,7 +467,7 @@
                       for="solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      SOLDER/MASK LAYER
+                      SOLDER/MASK LAYER Long Text
                     </label>
                     <input
                       type="text"
@@ -438,7 +484,7 @@
                       for="solder-mask-layer-file-input"
                       class="form-label"
                     >
-                      SOLDER/MASK LAYER File
+                      SOLDER/MASK LAYER file
                     </label>
                     <input
                       type="file"
@@ -451,7 +497,7 @@
                   <!-- COPPER LAYER -->
                   <div class="col">
                     <label for="copper-layer-text-input" class="form-label">
-                      COPPER LAYER
+                      COPPER LAYER Long Text
                     </label>
                     <input
                       type="text"
@@ -639,5 +685,14 @@
         </form>
       </div>
     </div>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/ss-order.js"></script>
+    <script>
+      window.onload = mcpcbNewOrderFormChangeHandler();
+    </script>
   </body>
 </html>

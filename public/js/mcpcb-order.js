@@ -51,6 +51,9 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                 </div>`);
             else $("#pcb-size-known-inputs").remove();
         });
+
+
+        
         $("#mcpcb-led-package-input").on("change", function () {
             // console.log(this.val());
             if (this.value === "other led") {
