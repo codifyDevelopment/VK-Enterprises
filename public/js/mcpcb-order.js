@@ -284,6 +284,14 @@ const mcpcbNewOrderFormChangeHandler = async function () {
               }
         });
 
+        $("#bomSwitch").on("change", function() {
+            if ($(this).is(":checked")) {
+                $("#bom-div").show();
+            } else {
+                $("#bom-div").hide();
+            }
+        });
+
         $("#mcpcb-sample-old-file-input").on("change", function () {
             if (this.value === "yes") {
                 $("#mcpcb-sample-old-file-input-upload").show(); // Show the upload div
