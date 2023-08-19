@@ -53,7 +53,7 @@ const mcpcbNewOrderFormChangeHandler = async function () {
         });
 
 
-        
+
         $("#mcpcb-led-package-input").on("change", function () {
             // console.log(this.val());
             if (this.value === "other led") {
@@ -271,53 +271,70 @@ const mcpcbNewOrderFormChangeHandler = async function () {
             else $(".mcpcb-more-related-attachments-file").remove();
         });
         // stencile-form
-        $("#StencileFormswitch").on("change", function() {
+        $("#StencileFormswitch").on("change", function () {
             if ($(this).is(":checked")) {
-              $("#stencile-form").show(); // Show the content
+                $("#stencile-form").show();
             } else {
-              $("#stencile-form").hide(); // Hide the content
+                $("#stencile-form").hide();
+            }
+        });
+        $("#stencile-text").hide();
+        $("#stencile-form-text").on("change", function() {
+        if ($(this).val() === "yes") {
+            $("#stencile-text").show();
+        } else {
+            $("#stencile-text").hide();
+        }
+        });
+
+        // CAMPanelizationswitch
+        $("#CAMPanelizationswitch").on("change", function () {
+            if ($(this).is(":checked")) {
+                $("#cam-panellization-div").show();
+            } else {
+                $("#cam-panellization-div").hide();
+            }
+        });
+        $("#relatedText-cam-div").hide();
+        $("#relatedText-cam").on("change", function() {
+            if ($(this).val() === "yes") {
+                $("#relatedText-cam-div").show();
+            } else {
+                $("#relatedText-cam-div").hide();
             }
         });
 
-        $("#CAMPanelizationswitch").on("change", function (){
-            if ($(this).is(":checked")) {
-                $("#cam-panellization-div").show(); // Show the content
-              } else {
-                $("#cam-panellization-div").hide(); // Hide the content
-              }
-        });
-
-        $("#bomSwitch").on("change", function() {
+        // bom-switch
+        $("#bomSwitch").on("change", function () {
             if ($(this).is(":checked")) {
                 $("#bom-div").show();
             } else {
                 $("#bom-div").hide();
             }
         });
+        $("#bom-text-div").hide();
+        $("#relatedTextOption-bom").on("change", function() {
+            if ($(this).val() === "yes") {
+                $("#bom-text-div").show();
+            } else {
+                $("#bom-text-div").hide();
+            }
+        });
 
         $("#mcpcb-sample-old-file-input").on("change", function () {
             if (this.value === "yes") {
-                $("#mcpcb-sample-old-file-input-upload").show(); // Show the upload div
+                $("#mcpcb-sample-old-file-input-upload").show();
             } else {
-                $("#mcpcb-sample-old-file-input-upload").hide(); // Hide the upload div
+                $("#mcpcb-sample-old-file-input-upload").hide();
             }
         });
         $("#mcpcb-sample-body-input").on("change", function () {
             if (this.value === "yes") {
-                $("#mcpcb-picture-field").show(); // Show the picture field
+                $("#mcpcb-picture-field").show();
             } else {
-                $("#mcpcb-picture-field").hide(); // Hide the picture field
+                $("#mcpcb-picture-field").hide();
             }
         });
-        // if (new URLSearchParams(window.location.search).get("pcb-type")) {
-        //     pcbType = new URLSearchParams(window.location.search).get(
-        //         "pcb-type"
-        //     );
-        //     $("#pcb-type-input")
-        //         .val(pcbType)
-        //         .trigger("change")
-        //         .attr("disabled", true);
-        // }
 
         $("#pcb-size-known").attr("checked", true).trigger("change");
     })();
@@ -325,7 +342,7 @@ const mcpcbNewOrderFormChangeHandler = async function () {
 
 
 //this is for directing payment page 
-document.getElementById("placeOrderButton").addEventListener("click", function() {
+document.getElementById("placeOrderButton").addEventListener("click", function () {
     window.location.href = "/payment"; // Redirect to the /payment route
 });
 

@@ -170,7 +170,7 @@
                   <label for="formFile" class="form-label">Upload File</label>
                   <input class="form-control" type="file" />
                 </div>
-                
+
                 <div class="col">
                   <label for="mcpcb-sample-body-input" class="form-label mb-2">
                     Available Any Sample / Body
@@ -197,7 +197,7 @@
                   </div>
                 </div>
 
-                
+
                 <div class="col" id="mcpcb-led-package">
                   <label for="mcpcb-led-package-input" class="form-label mb-2">
                     LED Package
@@ -366,40 +366,8 @@
                   </div>
                   <div id="stencile-form" style="display: none;">
                     <hr>
-                  <div class="col gerber-file-attachment-file mt-3">
-                    <label class="form-label mb-2" for="gerber-file-attachment-file-input">GERBER FILE ATTACHMENT
-                      <span class="text-danger">*</span>
-                    </label>
-                    <div class="input-group">
-                      <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
-                      <input type="file" class="form-control" name="gerber-file-attachment-file"
-                        id="gerber-file-attachment-file-input" required="">
-                    </div>
-                  </div>
-                  <div class="input-group  mt-3">
-                    <select name="any-related-text" id="any-related-text-input" class="form-select" required>
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                  <div class="input-group  mt-2">
-                    <input type="text" class="form-control" placeholder="Enter Text" id="stencile-text" required />
-                  </div>
-                </div>
-                </div>
-                <!-- CAM/Panelization -->
-                <div class="col col-md-12 switchdiv">
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="CAMPanelizationswitch">
-                    <label class="form-check-label" for="CAMPanelizationswitch">Required CAM/Panelization</label>
-                  </div>
-                  <div id="cam-panellization-div" style="display: none;"> 
-                    <hr>
                     <div class="col gerber-file-attachment-file mt-3">
-                      <label class="form-label mb-2" for="gerber-file-attachment-file-input">GERBER FILE ATTACHMENT
+                      <label class="form-label mb-2" for="gerber-file-attachment-file-input">Gerber File Attachment
                         <span class="text-danger">*</span>
                       </label>
                       <div class="input-group">
@@ -408,115 +376,144 @@
                           id="gerber-file-attachment-file-input" required="">
                       </div>
                     </div>
-                  <div class="form-row mt-2">
-                      <label for="panelization">PANELLIZATION / PANEL UP</label>
+                    <div class="input-group mt-3">
+                      <select name="stencile-form-text" id="stencile-form-text" class="form-select" required>
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                    <div class="input-group mt-2">
+                      <input type="text" class="form-control" placeholder="Enter Text" id="stencile-text" required />
+                    </div>
+                  </div>
+                </div>
+                <!-- CAM/Panelization -->
+                <div class="col col-md-12 switchdiv">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="CAMPanelizationswitch">
+                    <label class="form-check-label" for="CAMPanelizationswitch">Required CAM/Panelization</label>
+                  </div>
+                  <div id="cam-panellization-div" style="display: none;">
+                    <hr>
+                    <div class="col gerber-file-attachment-file mt-3">
+                      <label class="form-label mb-2" for="gerber-file-attachment-file-input">Gerber File Attachment
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
+                        <input type="file" class="form-control" name="gerber-file-attachment-file"
+                          id="gerber-file-attachment-file-input" required="">
+                      </div>
+                    </div>
+                    <div class="form-row mt-2">
+                      <label for="panelization">Panelization / Panel Up</label>
                       <select name="PANELLIZATION /PANEL UP" id="any-related-text-input" class="form-select" required>
                         <option value="" disabled selected>
                           Select an option
                         </option>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
-                      </select>                    
-                    <div class="row mt-2">
-                      <div class="col-md-3">
-                        <label for="xWidth">X-WIDTH SIDE</label>
-                        <input type="number" class="form-control" id="xWidth">
+                      </select>
+                      <div class="row mt-2">
+                        <div class="col-md-3">
+                          <label for="xWidth">X-Width Side</label>
+                          <input type="number" class="form-control" id="xWidth">
+                        </div>
+                        <div class="col-md-3">
+                          <label for="yLength">Y-Length Side</label>
+                          <input type="number" class="form-control" id="yLength">
+                        </div>
                       </div>
-                      <div class="col-md-3">
-                        <label for="yLength">Y-LENGTH SIDE</label>
-                        <input type="number" class="form-control" id="yLength">
+                    </div>
+                    <div class="form-group mt-3">
+                      <label for="pcbGap">PCB Between Gap / Clearance</label>
+                      <input type="number" class="form-control" id="pcbGap">
+                    </div>
+                    <div class="form-group">
+                      <label for="trackClearance">In PCB Track to Track Clearance</label>
+                      <input type="number" class="form-control" id="trackClearance">
+                    </div>
+                    <div class="form-group">
+                      <label for="relatedText-cam">Any Related Text</label>
+                      <select class="form-control" id="relatedText-cam">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                    <div class="form-group" id="relatedText-cam-div">
+                      <label for="relatedText-cam-longText">Long Text</label>
+                      <input class="form-control" id="relatedText-cam-longText" rows="3" />
+                    </div>
+                    <div class="col file-attachment-file mt-3">
+                      <label class="form-label mb-2" for="cam-file-input">File Upload
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
+                        <input type="file" class="form-control" name="file-attachment-file" id="cam-file-input"
+                          required="">
                       </div>
                     </div>
                   </div>
-                  <div class="form-group mt-3">
-                    <label for="pcbGap">PCB BETWEEN GAP / CLEARANCE</label>
-                    <input type="number" class="form-control" id="pcbGap">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="trackClearance">IN PCB TRACK TO TRACK CLEARANCE</label>
-                    <input type="number" class="form-control" id="trackClearance">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="relatedText">ANY RELATED TEXT</label>
-                    <select class="form-control" id="relatedText">
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="longText">LONG TEXT</label>
-                    <input class="form-control" id="longText" rows="3"/>
-                  </div>
-            
-                  <div class="col gerber-file-attachment-file mt-3">
-                    <label class="form-label mb-2" for="cam-file-input">File Upload
-                      <span class="text-danger">*</span>
-                    </label>
-                    <div class="input-group">
-                      <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
-                      <input type="file" class="form-control" name="gerber-file-attachment-file"
-                        id="cam-file-input" required="">
-                    </div>
-                  </div>                  
                 </div>
-                </div>
-                <!-- Bill Of Material -->
+                <!-- Bill of Material -->
                 <div class="col col-md-12 switchdiv">
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="bomSwitch">
                     <label class="form-check-label" for="bomSwitch">Required BOM</label>
                   </div>
-                  <div id="bom-div"  style="display: none;"> 
+                  <div id="bom-div" style="display: none;">
                     <hr>
-                    <!-- PCB IMAGE -->
+                    <!-- PCB Image -->
                     <div class="form-group mt-3">
-                      <label for="pcbTopImage">TOP SIDE IMAGE ATTACHMENT</label>
+                      <label for="pcbTopImage">Top Side Image Attachment</label>
                       <input type="file" class="form-control" id="pcbTopImage">
                     </div>
-                    
+
                     <div class="form-group mt-3">
-                      <label for="pcbBottomImage">BOTTOM SIDE IMAGE ATTACHMENT</label>
+                      <label for="pcbBottomImage">Bottom Side Image Attachment</label>
                       <input type="file" class="form-control" id="pcbBottomImage">
                     </div>
-                    
-                    <!-- LAYERS TYPE -->
+
+                    <!-- Layers Type -->
                     <div class="form-group mt-3">
-                      <label for="layersType">LAYERS TYPE IN NUMBERS</label>
+                      <label for="layersType">Layers Type in Numbers</label>
                       <input type="number" class="form-control" id="layersType">
                     </div>
-                    
-                    <!-- ANY RELATED TEXT -->
+
+                    <!-- Any Related Text -->
                     <div class="form-group mt-3">
-                      <label for="relatedTextOption">ANY RELATED TEXT*</label>
-                      <select class="form-control" id="relatedTextOption">
+                      <label for="relatedTextOption-bom">Any Related Text*</label>
+                      <select class="form-control" id="relatedTextOption-bom">
+                        <option value="" disabled selected>Select an option</option>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                       </select>
                     </div>
-                    
-                    <!-- LONG TEXT -->
-                    <div class="form-group mt-3">
-                      <label for="longText">LONG TEXT</label>
-                      <input class="form-control" id="longText" rows="3"/>
+
+                    <!-- Long Text -->
+                    <div class="form-group mt-3" id="bom-text-div">
+                      <label for="longText">Long Text</label>
+                      <input class="form-control" id="longText" rows="3" />
                     </div>
-                    
-                    <!-- CAMERA SHOT -->
+
+                    <!-- Camera Shot -->
                     <div class="form-group mt-3">
-                      <label for="cameraShot">CAMERA SHOT</label>
+                      <label for="cameraShot">Camera Shot</label>
                       <input type="file" class="form-control" id="cameraShot">
                       <b class="form-text text-muted">
-                        1)- IF POSSIBLE PROVIDE FRESH PCB/OLD PCB NOT CAPTURE PROPER COMPONENTS VALUE<br>
-                        2)- BOM FILE ONLY FOR SAMPLE PURPOSE (NOT FOR QUANTITIES)</b>
+                        1) - If Possible Provide Fresh PCB/Old PCB Not Capture Proper Components Value<br>
+                        2) - BOM File Only for Sample Purpose (Not for Quantities)</b>
                     </div>
                   </div>
                 </div>
-                
                 <div class="col col-md-12">
                   <label for="mcpcb-quantity-input" class="form-label mb-2">
-                    ANY DESIGN RELETING NOTE/QUERIES*
+                    Any design releting note/queries*
                   </label>
                   <div class="input-group">
                     <textarea class="form-control" placeholder="Enter Any Other Quires" name="mcpcb-other-quires"
@@ -538,15 +535,19 @@
         </div>
         <div class="col h-100 d-flex flex-column justify-content-between p-3 bg-light rounded">
           <h3 class="text-center">Invoice Section</h3>
+          <hr>
           <div class="my-5 text-danger">price details will appear here</div>
           <div class="">
             <ul class="list-unstyled">
               <li class="mb-2">
-                <i class="fas fa-check-circle text-success"></i>
-                Please review all the filled details carefully before saving.
-                Please note that if any minor changes are requested after the
-                design has been completed, additional charges may apply.
-              </li>
+                <li>
+                  <i class="fas fa-check-circle text-success"></i>
+                  Please review all the filled details carefully before saving.
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success"></i>
+                  Please note that if any minor changes are requested after the design has been completed, additional charges may apply.
+                </li>                
               <li class="mb-2">
                 <i class="fas fa-check-circle text-success"></i>
                 Designs are for samples only and may not work for larger
