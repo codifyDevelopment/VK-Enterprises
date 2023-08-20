@@ -52,23 +52,48 @@ const s2pNewOrderFormChangeHandler = async function () {
             else $("#pcb-size-known-inputs").remove();
         });
 
-        // stencile-form
-        $("#StencileFormswitch").on("change", function() {
+        // stop-layer-form
+        $("#stop-layer-form-switch").on("change", function () {
             if ($(this).is(":checked")) {
-              $("#stencile-form").show(); // Show the content
+                $("#stop-layer-form").show();
             } else {
-              $("#stencile-form").hide(); // Hide the content
+                $("#stop-layer-form").hide();
+            }
+        });
+        $("#stop-layer-text").hide();
+        $("#stop-layer-form-text").on("change", function() {
+        if ($(this).val() === "yes") {
+            $("#stop-layer-text").show();
+        } else {
+            $("#stop-layer-text").hide();
+        }
+        });
+
+        // stop-layer-CAMPanelizationswitch
+        $("#stop-layer-CAMPanelizationswitch").on("change", function () {
+            if ($(this).is(":checked")) {
+                $("#stop-layer-cam-panellization-div").show();
+            } else {
+                $("#stop-layer-cam-panellization-div").hide();
             }
         });
 
-        $("#CAMPanelizationswitch").on("change", function (){
+        // bom-switch
+        $("#stop-layer-bomSwitch").on("change", function () {
             if ($(this).is(":checked")) {
-                $("#cam-panellization-div").show(); // Show the content
-              } else {
-                $("#cam-panellization-div").hide(); // Hide the content
-              }
+                $("#bom-div").show();
+            } else {
+                $("#bom-div").hide();
+            }
         });
-
+        $("#bom-text-div").hide();
+        $("#relatedTextOption-bom").on("change", function() {
+            if ($(this).val() === "yes") {
+                $("#bom-text-div").show();
+            } else {
+                $("#bom-text-div").hide();
+            }
+        });
         $("#schamatic-to-pcb-layer-sample-old-file-input").on("change", function () {
             if (this.value === "yes") {
                 $("#schamatic-to-pcb-layer-sample-old-file-input-upload").show(); // Show the upload div

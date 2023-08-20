@@ -106,6 +106,49 @@ const mcpcbNewOrderFormChangeHandler = async function () {
             }
         });
 
+        // multi-layer-form
+        $("#multi-layer-form-switch").on("change", function () {
+            if ($(this).is(":checked")) {
+                $("#multi-layer-form").show();
+            } else {
+                $("#multi-layer-form").hide();
+            }
+        });
+        $("#multi-layer-text").hide();
+        $("#multi-layer-form-text").on("change", function() {
+        if ($(this).val() === "yes") {
+            $("#multi-layer-text").show();
+        } else {
+            $("#multi-layer-text").hide();
+        }
+        });
+
+        // multi-layer-CAMPanelizationswitch
+        $("#multi-layer-CAMPanelizationswitch").on("change", function () {
+            if ($(this).is(":checked")) {
+                $("#multi-layer-cam-panellization-div").show();
+            } else {
+                $("#multi-layer-cam-panellization-div").hide();
+            }
+        });
+
+        // bom-switch
+        $("#multi-layer-bomSwitch").on("change", function () {
+            if ($(this).is(":checked")) {
+                $("#bom-div").show();
+            } else {
+                $("#bom-div").hide();
+            }
+        });
+        $("#bom-text-div").hide();
+        $("#relatedTextOption-bom").on("change", function() {
+            if ($(this).val() === "yes") {
+                $("#bom-text-div").show();
+            } else {
+                $("#bom-text-div").hide();
+            }
+        });
+
 
 
         // if (new URLSearchParams(window.location.search).get("pcb-type")) {

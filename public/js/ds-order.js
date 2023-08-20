@@ -52,21 +52,47 @@ const dsNewOrderFormChangeHandler = async function () {
             else $("#pcb-size-known-inputs").remove();
         });
 
-        // stencile-form
-        $("#StencileFormswitch").on("change", function() {
+        // double-layer-form
+        $("#double-layer-form-switch").on("change", function () {
             if ($(this).is(":checked")) {
-              $("#stencile-form").show(); // Show the content
+                $("#double-layer-form").show();
             } else {
-              $("#stencile-form").hide(); // Hide the content
+                $("#double-layer-form").hide();
+            }
+        });
+        $("#double-layer-text").hide();
+        $("#double-layer-form-text").on("change", function() {
+        if ($(this).val() === "yes") {
+            $("#double-layer-text").show();
+        } else {
+            $("#double-layer-text").hide();
+        }
+        });
+
+        // double-layer-CAMPanelizationswitch
+        $("#double-layer-CAMPanelizationswitch").on("change", function () {
+            if ($(this).is(":checked")) {
+                $("#double-layer-cam-panellization-div").show();
+            } else {
+                $("#double-layer-cam-panellization-div").hide();
             }
         });
 
-        $("#CAMPanelizationswitch").on("change", function (){
+        // bom-switch
+        $("#double-layer-bomSwitch").on("change", function () {
             if ($(this).is(":checked")) {
-                $("#cam-panellization-div").show(); // Show the content
-              } else {
-                $("#cam-panellization-div").hide(); // Hide the content
-              }
+                $("#bom-div").show();
+            } else {
+                $("#bom-div").hide();
+            }
+        });
+        $("#bom-text-div").hide();
+        $("#relatedTextOption-bom").on("change", function() {
+            if ($(this).val() === "yes") {
+                $("#bom-text-div").show();
+            } else {
+                $("#bom-text-div").hide();
+            }
         });
 
         $("#ds-old-pcb-file-input").on("change", function () {
