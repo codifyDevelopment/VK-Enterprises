@@ -1,4 +1,4 @@
-const ssNewOrderFormChangeHandler = async function () {
+const s2pNewOrderFormChangeHandler = async function () {
     await getNotification();
     // const mpcbbody = document.getElementById("mpcb-body");
     await (async function () {
@@ -69,35 +69,35 @@ const ssNewOrderFormChangeHandler = async function () {
               }
         });
 
-        $("#ss-sample-old-file-input").on("change", function () {
+        $("#schamatic-to-pcb-layer-sample-old-file-input").on("change", function () {
             if (this.value === "yes") {
-                $("#ss-sample-old-file-input-upload").show(); // Show the upload div
+                $("#schamatic-to-pcb-layer-sample-old-file-input-upload").show(); // Show the upload div
             } else {
-                $("#ss-sample-old-file-input-upload").hide(); // Hide the upload div
+                $("#schamatic-to-pcb-layer-sample-old-file-input-upload").hide(); // Hide the upload div
             }
         });
-        $("#ss-sample-body-input").on("change", function () {
+        $("#Schamatic-to-PCB-layer-sample-body-input").on("change", function () {
             if (this.value === "yes") {
-                $("#ss-picture-field").show(); // Show the picture field
+                $("#Schamatic-to-PCB-layer-picture-field").show(); // Show the picture field
             } else {
-                $("#ss-picture-field").hide(); // Hide the picture field
+                $("#Schamatic-to-PCB-layer-picture-field").hide(); // Hide the picture field
             }
         });
-        $("#ss-copper-track-designing-input").on("change", function () {
-            if (this.value === "client-request") {
-                $("#ss-copper-track-designing-filed").show(); // Show the picture field
+        $("#schamatic-to-pcb-track-related-body-input").on("change", function () {
+            if (this.value === "yes") {
+                $("#schamatic-to-pcb-track-related-field").show(); // Show the picture field
             } else {
-                $("#ss-copper-track-designing-filed").hide(); // Hide the picture field
+                $("#schamatic-to-pcb-track-related-field").hide(); // Hide the picture field
             }
         });
-        $("#ss-silk-legend-layer-input").on("change", function () {
-            if (this.value === "require") {
-                $("#ss-silk-legend-layer-field").show(); // Show the picture field
+        $("#schamatic-to-pcb-layer-related-body-input").on("change", function () {
+            if (this.value === "yes") {
+                $("#schamatic-to-pcb-layer-related-field").show(); // Show the picture field
             } else {
-                $("#ss-silk-legend-layer-field").hide(); // Hide the picture field
+                $("#schamatic-to-pcb-layer-related-field").hide(); // Hide the picture field
             }
         });
-
+      
 
 
         // if (new URLSearchParams(window.location.search).get("pcb-type")) {

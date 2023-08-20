@@ -181,55 +181,24 @@
                   </div>
                 </div>
               </div>
+
               <div class="col col-md-12" id="pcb-type-title">
                 <h5 class="text-center text-secondary">
                   You are filling Multilayer PCB order details
                 </h5>
               </div>
-              <div class="col col-md-12" id="mcpcb-details">
+
+              <div class="col col-md-12" id="ms-details">
                 <div class="row row-cols-1 row-cols-md-2 g-3">
                   <div class="col">
-                    <label
-                      for="mcpcb-old-pcb-name-input"
-                      class="form-label mb-2"
-                    >
+                    <label for="ms-old-pcb-name-input" class="form-label mb-2">
                       Any Old/Reference/Dimension File
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <select
-                        name="mcpcb-sample-old-file"
-                        id="mcpcb-sample-old-file-input"
-                        class="form-select"
-                        required
-                      >
-                        <option value="" disabled selected>
-                          Select an option
-                        </option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div
-                    id="mcpcb-sample-old-file-input-upload"
-                    style="display: none"
-                  >
-                    <label for="formFile" class="form-label">Upload File</label>
-                    <input class="form-control" type="file" />
-                  </div>
-                  <div class="col">
-                    <label
-                      for="mcpcb-sample-body-input"
-                      class="form-label mb-2"
-                    >
-                      Available Any Sample / Body
-                      <span class="text-danger">*</span>
-                    </label>
-                    <div class="input-group">
-                      <select
-                        name="mcpcb-sample-body"
-                        id="mcpcb-sample-body-input"
+                        name="ms-sample-old-file"
+                        id="ms-sample-old-file-input"
                         class="form-select"
                         required
                       >
@@ -242,9 +211,38 @@
                     </div>
                   </div>
 
-                  <div id="mcpcb-picture-field" style="display: none">
+                  <div
+                    id="ms-sample-old-file-input-upload"
+                    style="display: none"
+                  >
+                    <label for="formFile" class="form-label">Upload File</label>
+                    <input class="form-control" type="file" />
+                  </div>
+
+                  <div class="col">
+                    <label for="ms-sample-body-input" class="form-label mb-2">
+                      Available Any Sample / Body
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="ms-sample-body"
+                        id="ms-sample-body-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div id="ms-picture-field" style="display: none">
                     <div class="col">
-                      <label for="mcpcb-picture-input" class="form-label mb-2"
+                      <label for="ms-picture-input" class="form-label mb-2"
                         >Take a Picture</label
                       >
                       <div class="input-group">
@@ -253,8 +251,8 @@
                           accept="image/*"
                           capture="camera"
                           class="form-control"
-                          name="mcpcb-picture"
-                          id="mcpcb-picture-input"
+                          name="ms-picture"
+                          id="ms-picture-input"
                           required
                         />
                       </div>
@@ -295,14 +293,14 @@
                       class="form-label mb-2"
                       for="pcb-design-update-description-input"
                     >
-                      PCB DESIGN UPDATE DESCRIPTION
+                      PCB Design Update Description
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="Enter PCB DESIGN UPDATE DESCRIPTION"
+                        placeholder="Enter PCB Design Update Description"
                         name="pcb-design-update-description"
                         id="pcb-design-update-description-input"
                         required
@@ -311,8 +309,8 @@
                   </div>
                   <!-- Attached File -->
                   <div class="col">
-                    <label for="attached-file-input" class="form-label mb-2"
-                      >Attached File</label
+                    <label for="attached-file-input" class="form-label mb-2">
+                      PCB Design Attached File</label
                     >
                     <div class="input-group">
                       <input
@@ -328,52 +326,72 @@
                   <!-- Update in Copper Track Designing -->
                   <div class="col">
                     <label
-                      for="copper-track-designing-input"
+                      for="ms-copper-track-designing-input"
                       class="form-label mb-2"
                     >
                       Any update in copper track designing
                     </label>
                     <div class="input-group">
                       <select
-                        name="copper-track-designing"
-                        id="copper-track-designing-input"
+                        name="ms-copper-track-designing"
+                        id="ms-copper-track-designing-input"
                         class="form-select"
                         required
                       >
+                        <option disabled selected>Select an option</option>
                         <option value="client-request">As per client</option>
                         <option value="your-design">As per yours</option>
                       </select>
                     </div>
                   </div>
-                  <!-- 
-                                Enter Details -->
-                  <!-- <div class="col">
-                                    <label class="form-label mb-2" for="enter-details-input">Enter Details
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Enter Details"
-                                            name="enter-details-input" id="enter-details-input" required>
-                                    </div>
-                                </div> -->
 
-                  <!-- Attached File -->
-                  <!-- <div class="col">
-                                    <label for="attached-file-input" class="form-label mb-2">Attached File</label>
-                                    <div class="input-group">
-                                        <input type="file" class="form-control" name="schamatic-pcb-layer-picture"
-                                            id="attached-file-input" required>
-                                    </div>
-                                </div> -->
+                  <div
+                    id="ms-copper-track-designing-filed"
+                    style="display: none"
+                  >
+                    <!-- 
+                                Enter Details -->
+                    <div class="col">
+                      <label class="form-label mb-2" for="enter-details-input"
+                        >Copper track designing long Text
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter Details"
+                          name="enter-details-input"
+                          id="enter-details-input"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <!-- Attached File -->
+                    <div class="col">
+                      <label for="attached-file-input" class="form-label mb-2"
+                        >Copper track designing attached file</label
+                      >
+                      <div class="input-group">
+                        <input
+                          type="file"
+                          class="form-control"
+                          name="schamatic-pcb-layer-picture"
+                          id="attached-file-input"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
 
                   <!-- Design Updates Number of Points -->
-
                   <div class="col">
                     <label
                       class="form-label mb-2"
                       for="design-updates-points-input"
                     >
-                      IN DESIGNING UPDATES NO. OF POINTS
+                      In Designing Updates NO. Of Points
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
@@ -390,247 +408,263 @@
 
                   <!-- Silk/Legend Layer -->
                   <div class="col">
-                    <label for="silk-legend-layer-input" class="form-label">
-                      SILK/LEGEND LAYER
+                    <label for="ms-silk-legend-layer-input" class="form-label">
+                      SILK/LEGEND Layer
                     </label>
                     <div class="input-group">
                       <select
-                        name="silk-legend-layer"
-                        id="silk-legend-layer-input"
+                        name="ms-silk-legend-layer"
+                        id="ms-silk-legend-layer-input"
                         class="form-select"
                         required
                       >
+                        <option disabled selected>Select an option</option>
                         <option value="require">Require</option>
                         <option value="not-required">Not Required</option>
                       </select>
                     </div>
                   </div>
+                  <div id="ms-silk-legend-layer-field" style="display: none">
+                    <!-- Enter Silk/Legend Text -->
+                    <div class="col">
+                      <label for="ms-silk-legend-text-input" class="form-label">
+                        Enter Silk/LEGEND Text
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Silk/LEGEND Text"
+                        name="ms-silk-legend-text-input"
+                        id="ms-silk-legend-text-input"
+                      />
+                    </div>
 
-                  <!-- Enter Silk/Legend Text -->
-                  <!-- <div class="col">
-                    <label for="silk-legend-text-input" class="form-label">
-                      Enter Silk/LEGEND Text
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter Silk/LEGEND Text"
-                      name="silk-legend-text-input"
-                      id="silk-legend-text-input"
-                    />
-                  </div> -->
-
-                  <!-- Upload Silk/Legend File -->
-                  <!-- <div class="col">
-                    <label for="silk-legend-file-input" class="form-label">
-                      Upload Silk/LEGEND File
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      name="silk-legend-file-input"
-                      id="silk-legend-file-input"
-                    />
-                  </div> -->
+                    <!-- Upload Silk/Legend File -->
+                    <div class="col">
+                      <label for="ms-silk-legend-file-input" class="form-label">
+                        Upload Silk/LEGEND File
+                      </label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="ms-silk-legend-file-input"
+                        id="ms-silk-legend-file-input"
+                      />
+                    </div>
+                  </div>
 
                   <!--TOP SOLDER/MASK LAYER -->
                   <div class="col">
                     <label
-                      for="solder-mask-layer-text-input"
+                      for="ms-solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      TOP SOLDER/MASK LAYER
+                      Top SOLDER/MASK Layer Text
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="TOP SOLDER/MASK LAYER Text"
-                      name="solder-mask-layer-text-input"
-                      id="solder-mask-layer-text-input"
+                      placeholder="Enter top SOLDER/MASK layer text"
+                      name="ms-solder-mask-layer-text-input"
+                      id="ms-solder-mask-layer-text-input"
                     />
                   </div>
 
                   <!--TOP SOLDER/MASK LAYER File -->
                   <div class="col">
                     <label
-                      for="solder-mask-layer-file-input"
+                      for="ms-solder-mask-layer-file-input"
                       class="form-label"
                     >
-                      TOP SOLDER/MASK LAYER File
+                      Top SOLDER/MASK Layer File
                     </label>
                     <input
                       type="file"
                       class="form-control"
-                      name="solder-mask-layer-file-input"
-                      id="solder-mask-layer-file-input"
+                      name="ms-solder-mask-layer-file-input"
+                      id="ms-solder-mask-layer-file-input"
                     />
                   </div>
 
                   <!-- COPPER LAYER -->
                   <div class="col">
-                    <label for="copper-layer-text-input" class="form-label">
-                      COPPER LAYER
+                    <label for="ms-copper-layer-text-input" class="form-label">
+                      COPPER Layer Text
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="COPPER LAYER Text"
-                      name="copper-layer-text-input"
-                      id="copper-layer-text-input"
+                      placeholder="Enter COPPER Layer Text"
+                      name="ms-copper-Layer-text-input"
+                      id="ms-copper-Layer-text-input"
                     />
                   </div>
 
-                  <!-- COPPER LAYER File -->
+                  <!-- COPPER Layer File -->
                   <div class="col">
-                    <label for="copper-layer-file-input" class="form-label">
-                      COPPER LAYER File
+                    <label for="copper-Layer-file-input" class="form-label">
+                      COPPER Layer File
                     </label>
                     <input
                       type="file"
                       class="form-control"
-                      name="copper-layer-file-input"
-                      id="copper-layer-file-input"
+                      name="ms-copper-layer-file-input"
+                      id="ms-copper-layer-file-input"
                     />
                   </div>
 
-                  <!-- BOTTOM  SILK/LEGEND LAYER *
-r -->
+                  <!-- BOTTOM  SILK/LEGEND LAYERr -->
                   <div class="col">
-                    <label for="silk-legend-layer-input" class="form-label">
-                      BOTTOM SILK/LEGEND LAYER
+                    <label
+                      for="ms-bottom-silklegend-layer-input"
+                      class="form-label"
+                    >
+                      Bottom SILK/LEGEND Layer
                     </label>
                     <div class="input-group">
                       <select
-                        name="bottom-silk/legend-layer"
-                        id="bottom-silk/legend-layer"
+                        name="ms-bottom-silklegend-layer"
+                        id="ms-bottom-silklegend-layer-input"
                         class="form-select"
                         required
                       >
+                        <option disabled selected>Select an option</option>
                         <option value="require">Require</option>
                         <option value="not-required">Not Required</option>
                       </select>
                     </div>
                   </div>
 
-                  <!-- EnterBOTTOM SILK/LEGEND LAYER Text -->
-                  <!-- <div class="col">
-                    <label for="bottom-silk/legend-layer" class="form-label">
-                      Enter  BOTTOM SILK/LEGEND LAYER Text
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter  BOTTOM SILK/LEGEND LAYER Text"
-                      name="bottom-silk/legend-layer"
-                      id="bottom-silk/legend-layer"
-                    />
-                  </div> -->
+                  <div
+                    id="ms-bottom-silklegend-layer-field"
+                    style="display: none"
+                  >
+                    <!-- EnterBOTTOM SILK/LEGEND LAYER Text -->
+                    <div class="col">
+                      <label for="bottom-silk/legend-layer" class="form-label">
+                        Bottom SILK/LEGEND Layer Text
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Bottom SILK/LEGEND Layer Text"
+                        name="ms-bottom-silk/legend-layer"
+                        id="ms-bottom-silk/legend-layer"
+                      />
+                    </div>
 
-                  <!-- Upload BOTTOM SILK/LEGEND LAYER File -->
-                  <!-- <div class="col">
-                    <label for="bottom-silk/legend-layer" class="form-label">
-                      Upload BOTTOM SILK/LEGEND LAYER File
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      name="bottom-silk/legend-layer"
-                      id="bottom-silk/legend-layer"
-                    />
-                  </div> -->
+                    <!-- Upload BOTTOM SILK/LEGEND LAYER File -->
+                    <div class="col">
+                      <label
+                        for="ms-bottom-silk/legend-layer"
+                        class="form-label"
+                      >
+                        Upload Bottom SILK/LEGEND Layer File
+                      </label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="ms-bottom-silk/legend-layer"
+                        id="ms-bottom-silk/legend-layer"
+                      />
+                    </div>
+                  </div>
 
                   <!--BOTTOM SOLDER/MASK LAYER -->
                   <div class="col">
                     <label
-                      for="solder-mask-layer-text-input"
+                      for="ms-solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      BOTTOM SOLDER/MASK LAYER
+                      Bottom SOLDER/MASK Layer Text
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="BOTTOM SOLDER/MASK LAYER Text"
-                      name="solder-mask-layer-text-input"
-                      id="solder-mask-layer-text-input"
+                      placeholder="Enter Bottom SOLDER/MASK Layer Text "
+                      name="ms-solder-mask-layer-text-input"
+                      id="ms-solder-mask-layer-text-input"
                     />
                   </div>
 
                   <!--BOTTOM SOLDER/MASK LAYER File -->
                   <div class="col">
                     <label
-                      for="solder-mask-layer-file-input"
+                      for="ms-solder-mask-layer-file-input"
                       class="form-label"
                     >
-                      BOTTOM SOLDER/MASK LAYER File
+                      Upload Bottom SOLDER/MASK Layer File
                     </label>
                     <input
                       type="file"
                       class="form-control"
-                      name="solder-mask-layer-file-input"
-                      id="solder-mask-layer-file-input"
+                      name="ms-solder-mask-layer-file-input"
+                      id="ms-solder-mask-layer-file-input"
                     />
                   </div>
 
                   <!--BOTTOM COPPER LAYER -->
                   <div class="col">
                     <label
-                      for="bottom-copper-layer-text-input"
+                      for="ms-bottom-copper-layer-text-input"
                       class="form-label"
                     >
-                      BOTTOM COPPER LAYER
+                      Bottom COPPER Layer Text
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="BOTTOM COPPER LAYER Text"
-                      name="copper-layer-text-input"
-                      id="copper-layer-text-input"
+                      placeholder="Enter Bottom COPPER Layer text"
+                      name="ms-copper-layer-text-input"
+                      id="ms-copper-layer-text-input"
                     />
                   </div>
 
                   <!--BOTTOM COPPER LAYER File -->
                   <div class="col">
-                    <label for="copper-layer-file-input" class="form-label">
-                      BOTTOM COPPER LAYER File
+                    <label for="ms-copper-layer-file-input" class="form-label">
+                      Upload Bottom COPPER Layer File
                     </label>
                     <input
                       type="file"
                       class="form-control"
-                      name="copper-layer-file-input"
-                      id="copper-layer-file-input"
+                      name="ms-copper-layer-file-input"
+                      id="ms-copper-layer-file-input"
                     />
                   </div>
 
                   <!--INNER COPPER LAYER -->
                   <div class="col">
                     <label
-                      for="inner-copper-layer-text-input"
+                      for="ms-inner-copper-layer-text-input"
                       class="form-label"
                     >
-                      INNER COPPER LAYER
+                      Inner COPPER Layer Text
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="INNER COPPER LAYER Text"
-                      name="copper-layer-text-input"
-                      id="copper-layer-text-input"
+                      placeholder="Enter Inner COPPER Layer Text"
+                      name="ms-copper-layer-text-input"
+                      id="ms-copper-layer-text-input"
                     />
                   </div>
 
                   <!--INNER COPPER LAYER File -->
                   <div class="col">
-                    <label for="copper-layer-file-input" class="form-label">
-                      INNER COPPER LAYER File
+                    <label for="ms-copper-layer-file-input" class="form-label">
+                      Upload Inner COPPER Layer File
                     </label>
                     <input
                       type="file"
                       class="form-control"
-                      name="copper-layer-file-input"
-                      id="copper-layer-file-input"
+                      name="ms-copper-layer-file-input"
+                      id="ms-copper-layer-file-input"
                     />
                   </div>
+
+
+                  
                   <!-- BILL OF MATERIAL (BOM) -->
                   <div class="col">
                     <label for="bom-required-input" class="form-label">
@@ -799,7 +833,7 @@ r -->
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/axios.min.js"></script>
     <script src="../../js/script.js"></script>
-    <script src="../../js/mcpcb-order.js"></script>
+    <script src="../../js/ms-order.js"></script>
     <script>
       window.onload = mcpcbNewOrderFormChangeHandler();
     </script>
