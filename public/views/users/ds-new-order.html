@@ -1,495 +1,881 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>VK Enterprise</title>
-        <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
-    </head>
-    <body>
-        <div class="dashboard_content">
-            <div class="container new-order-form">
-                <form class="row row-cols-1 row-cols-lg-3 g-2 w-100 mb-4">
-                    <div class="col col-lg-8 pe-lg-4">
-                        <h3 class="m-0 mb-3">Enter Order Details</h3>
-                        <p>
-                            (<span class="text-danger">*</span>) marked fields are required
-                        </p>
-    
-                        <!-- Form fields -->
-                        <div class="row row-cols-1 row-cols-md-2 mb-2 g-3">
-                            <!-- PCB Name -->
-                            <div class="col">
-                                <label class="form-label mb-2" for="pcb-name-input">PCB Name
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter PCB Name" name="pcb-name"
-                                        id="pcb-name-input" required autofocus>
-                                </div>
-                            </div>
-    
-                            <!-- PCB Type -->
-                            <div class="col">
-                                <label class="form-label mb-2" for="pcb-type-input">PCB Type
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <div class="input-group">
-                                    <select name="pcb-type" id="pcb-type-input" class="form-select" required disabled>
-                                        <option value="single-layer">Single Layer / Side</option>
-                                    </select>
-                                </div>
-                            </div>
-    
-                            <!-- PCB Size -->
-                            <div class="col col-md-12" id="pcb-size">
-                                <p class="form-label mb-2">PCB Size</p>
-                                <div class="row row-cols-1 row-cols-md-2 g-3">
-                                    <div class="col">
-                                        <input type="radio" class="btn-check" id="pcb-size-known" name="pcb-size"
-                                            autocomplete="off" value="known">
-                                        <label class="btn btn-outline-primary w-100" for="pcb-size-known">
-                                            Known
-                                        </label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="radio" class="btn-check" id="pcb-size-unknown" name="pcb-size"
-                                            value="unknown" autocomplete="off">
-                                        <label class="btn btn-outline-primary w-100" for="pcb-size-unknown">
-                                            As Per Yours
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <!-- PCB Type Title -->
-                            <div class="col col-md-12" id="pcb-type-title">
-                                <h5 class="text-center text-secondary">
-                                    You are filling Double Layer / Side order details
-                                </h5>
-                            </div>
-    
-                            <!-- Schamatic-to-PCB-layer Details -->
-                            <div class="col col-md-12" id="schamatic-pcb-layer-details">
-                                <div class="row row-cols-1 row-cols-md-2 g-3">
-                                    <!-- Old/Reference/Dimension File -->
-                                    <div class="col">
-                                        <label for="old-pcb-file-input" class="form-label mb-2">
-                                            Any Old/Reference/Dimension File
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="sample-old-file" id="old-pcb-file-input" class="form-select"
-                                                required>
-                                                <option value="" disabled selected>
-                                                    Select an option
-                                                </option>
-                                                <option value="yes">Yes</option>
-                                                <option value="no">No</option>
-                                            </select>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Available Sample / Body -->
-                                    <div class="col">
-                                        <label for="sample-body-input" class="form-label mb-2">
-                                            Available Any Sample / Body
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="sample-body" id="sample-body-input" class="form-select" required>
-                                                <option value="" disabled selected>
-                                                    Select an option
-                                                </option>
-                                                <option value="yes">Yes</option>
-                                                <option value="no">No</option>
-                                            </select>
-                                        </div>
-                                    </div>
-    
-                                    <!-- PCB Design Type -->
-                                    <div class="col">
-                                        <label for="pcb-design-type" class="form-label mb-2">
-                                            PCB DESIGN TYPE
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="pcb-design-type" id="pcb-design-type-input"
-                                                class="form-select" required>
-                                                <option value="" disabled selected>
-                                                    Select an option
-                                                </option>
-                                                <option value="same-as-sample">It's same as sample copy</option>
-                                                <option value="sample-with-update">Sample copy with update</option>
-                                            </select>
-                                        </div>
-                                    </div>
-    
-                                    <!-- PCB Design Update Description -->
-                                    <div class="col">
-                                        <label class="form-label mb-2" for="pcb-design-update-description-input">
-                                            PCB DESIGN UPDATE DESCRIPTION
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                placeholder="Enter PCB DESIGN UPDATE DESCRIPTION" name="pcb-design-update-description"
-                                                id="pcb-design-update-description-input" required>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Attached File -->
-                                    <div class="col">
-                                        <label for="attached-file-input" class="form-label mb-2">Attached File For PCB DESIGN UPDATE </label>
-                                        <div class="input-group">
-                                            <input type="file" class="form-control" name="schamatic-pcb-layer-picture"
-                                                id="attached-file-input" required>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Update in Copper Track Designing -->
-                                    <div class="col">
-                                        <label for="copper-track-designing-input" class="form-label mb-2">
-                                            Any update in copper track designing
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="copper-track-designing" id="copper-track-designing-input"
-                                                class="form-select" required>
-                                                <option value="client-request">As per client</option>
-                                                <option value="your-design">As per yours</option>
-                                            </select>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Enter Details -->
-                                    <div class="col">
-                                        <label class="form-label mb-2" for="enter-details-input">Enter Details
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Enter Details"
-                                                name="enter-details-input" id="enter-details-input" required>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Attached File -->
-                                    <div class="col">
-                                        <label for="attached-file-input" class="form-label mb-2">Attached File</label>
-                                        <div class="input-group">
-                                            <input type="file" class="form-control" name="schamatic-pcb-layer-picture"
-                                                id="attached-file-input" required>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Design Updates Number of Points -->
-                                    <div class="col">
-                                        <label class="form-label mb-2" for="design-updates-points-input">
-                                            IN DESIGNING UPDATES NO. OF POINTS
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <input type="number" class="form-control"
-                                                placeholder="Enter Number of Points" name="design-updates-points-input"
-                                                id="design-updates-points-input" required>
-                                        </div>
-                                    </div>
-    
-                                    <!-- TOP Silk/Legend Layer -->
-                                    <div class="col">
-                                        <label for="silk-legend-layer-input" class="form-label">
-                                            TOP SILK/LEGEND LAYER
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="silk-legend-layer" id="silk-legend-layer-input" class="form-select"
-                                                required>
-                                                <option value="require">Require</option>
-                                                <option value="not-required">Not Required</option>
-                                            </select>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Enter TOP Silk/Legend Text -->
-                                    <div class="col">
-                                        <label for="silk-legend-text-input" class="form-label">
-                                            Enter TOP Silk/LEGEND Text
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="Enter TOP Silk/LEGEND Text"
-                                            name="silk-legend-text-input" id="silk-legend-text-input">
-                                    </div>
-    
-                                    <!-- Upload TOP Silk/Legend File -->
-                                    <div class="col">
-                                        <label for="silk-legend-file-input" class="form-label">
-                                            Upload TOP Silk/LEGEND File
-                                        </label>
-                                        <input type="file" class="form-control" name="silk-legend-file-input"
-                                            id="silk-legend-file-input">
-                                    </div>
-    
-                                    <!-- TOP SOLDER/MASK LAYER -->
-                                    <div class="col">
-                                        <label for="solder-mask-layer-text-input" class="form-label">
-                                            TOP SOLDER/MASK LAYER
-                                        </label>
-                                        <span class="text-danger">*</span>
-                                        <input type="text" class="form-control" placeholder="TOP SOLDER/MASK LAYER Text"
-                                            name="solder-mask-layer-text-input" id="solder-mask-layer-text-input">
-                                    </div>
-    
-                                    <!-- TOP SOLDER/MASK LAYER File -->
-                                    <div class="col">
-                                        <label for="solder-mask-layer-file-input" class="form-label">
-                                            TOP SOLDER/MASK LAYER File
-                                        </label>
-                                        <input type="file" class="form-control" name="solder-mask-layer-file-input"
-                                            id="solder-mask-layer-file-input">
-                                    </div>
-    
-                                    <!-- TOP COPPER LAYER -->
-                                    <div class="col">
-                                        <label for="copper-layer-text-input" class="form-label">
-                                            TOP COPPER LAYER
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="TOP COPPER LAYER DETAILS"
-                                            name="copper-layer-text-input" id="copper-layer-text-input">
-                                    </div>
-    
-                                    <!-- COPPER LAYER File -->
-                                    <div class="col">
-                                        <label for="copper-layer-file-input" class="form-label">
-                                            TOP COPPER LAYER File
-                                        </label>
-                                        <input type="file" class="form-control" name="copper-layer-file-input"
-                                            id="copper-layer-file-input">
-                                    </div>
-
-                                    <div class="col">
-                                        <label for="silk-legend-layer-input" class="form-label">
-                                            BOTTOM SILK/LEGEND LAYER
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="silk-legend-layer" id="silk-legend-layer-input" class="form-select"
-                                                required>
-                                                <option value="require">Require</option>
-                                                <option value="not-required">Not Required</option>
-                                            </select>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Enter Silk/Legend Text -->
-                                    <div class="col">
-                                        <label for="silk-legend-text-input" class="form-label">
-                                            Enter BOTTOM Silk/LEGEND Text
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="Enter TOP Silk/LEGEND DETAILS"
-                                            name="silk-legend-text-input" id="silk-legend-text-input">
-                                    </div>
-    
-                                    <!-- Upload Silk/Legend File -->
-                                    <div class="col">
-                                        <label for="silk-legend-file-input" class="form-label">
-                                            Upload BOTTOM Silk/LEGEND File
-                                        </label>
-                                        <input type="file" class="form-control" name="silk-legend-file-input"
-                                            id="silk-legend-file-input">
-                                    </div>
-    
-                                    <!-- SOLDER/MASK LAYER -->
-                                    <div class="col">
-                                        <label for="solder-mask-layer-text-input" class="form-label">
-                                            BOTTOM SOLDER/MASK LAYER
-                                        </label>
-                                        <span class="text-danger">*</span>
-                                        <input type="text" class="form-control" placeholder="TOP SOLDER/MASK LAYER Text"
-                                            name="solder-mask-layer-text-input" id="solder-mask-layer-text-input">
-                                    </div>
-    
-                                    <!-- SOLDER/MASK LAYER File -->
-                                    <div class="col">
-                                        <label for="solder-mask-layer-file-input" class="form-label">
-                                            BOTTOM SOLDER/MASK LAYER File
-                                        </label>
-                                        <input type="file" class="form-control" name="solder-mask-layer-file-input"
-                                            id="solder-mask-layer-file-input">
-                                    </div>
-    
-                                    <!-- COPPER LAYER -->
-                                    <div class="col">
-                                        <label for="copper-layer-text-input" class="form-label">
-                                            BOTTOM COPPER LAYER
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="COPPER LAYER Text"
-                                            name="copper-layer-text-input" id="copper-layer-text-input">
-                                    </div>
-    
-                                    <!-- COPPER LAYER File -->
-                                    <div class="col">
-                                        <label for="copper-layer-file-input" class="form-label">
-                                            BOTTOM COPPER LAYER File
-                                        </label>
-                                        <input type="file" class="form-control" name="copper-layer-file-input"
-                                            id="copper-layer-file-input">
-                                    </div>
-    
-                                    <!-- BILL OF MATERIAL (BOM) -->
-                                    <div class="col">
-                                        <label for="bom-required-input" class="form-label">
-                                            BILL OF MATERIAL (BOM)
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="bom-required" id="bom-required-input" class="form-select"
-                                                required>
-                                                <option value="require">Require</option>
-                                                <option value="not-required">Not Required</option>
-                                            </select>
-                                        </div>
-                                    </div>
-    
-                                    <!-- BOM Billing Amount -->
-                                    <div class="col">
-                                        <label for="bom-billing-amount-input" class="form-label">
-                                            BILL OF MATERIAL (BOM) Billing Amount
-                                        </label>
-                                        <input type="number" class="form-control" placeholder="Billing Amount"
-                                            name="bom-billing-amount-input" id="bom-billing-amount-input">
-                                    </div>
-    
-                                    <!-- PANELIZATION / CAM WORK -->
-                                    <div class="col">
-                                        <label for="panelization-required-input" class="form-label">
-                                            PANELIZATION / CAM WORK
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="panelization-required" id="panelization-required-input"
-                                                class="form-select" required>
-                                                <option value="require">Require</option>
-                                                <option value="not-required">Not Required</option>
-                                            </select>
-                                        </div>
-                                    </div>
-    
-                                    <!-- Panelization Billing Amount -->
-                                    <div class="col">
-                                        <label for="panelization-billing-amount-input" class="form-label">
-                                            PANELIZATION / CAM WORK Billing Amount
-                                        </label>
-                                        <input type="number" class="form-control" placeholder="Billing Amount"
-                                            name="panelization-billing-amount-input"
-                                            id="panelization-billing-amount-input">
-                                    </div>
-    
-                                    <!-- Design Relating Notes/Queries -->
-                                    <div class="col">
-                                        <label for="design-relating-notes-input" class="form-label mb-2">
-                                            ANY DESIGN RELATING NOTE/QUERIES
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="panelization-required" id="panelization-required-input"
-                                                class="form-select" required>
-                                                <option value="require">Yes</option>
-                                                <option value="not-required">No</option>
-                                            </select>
-                                        </div>
-                                    
-                                    </div>
-                                        <!-- SOLDER/MASK LAYER -->
-                                    <div class="col">
-                                        <label for="solder-mask-layer-text-input" class="form-label">
-                                            ANY DESIGN RELATING NOTE/QUERIES DETAILS
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="ANY DESIGN RELATING NOTE/QUERIES DETAILS"
-                                            name="solder-mask-layer-text-input" id="solder-mask-layer-text-input">
-                                    </div>
-    
-                                    <!-- SOLDER/MASK LAYER File -->
-                                    <div class="col">
-                                        <label for="solder-mask-layer-file-input" class="form-label">
-                                            ANY DESIGN RELATING NOTE/QUERIES File
-                                        </label>
-                                        <input type="file" class="form-control" name="solder-mask-layer-file-input"
-                                            id="solder-mask-layer-file-input">
-                                    </div>
-    
-                                    <!-- Terms and condition -->
-                                    <div class="col col-md-12">
-                                        <label for="Terms-and-condition" class="form-label mb-2">
-                                            <input type="checkbox"/>
-                                            Carefully Once check All Fill Details Before Save.
-                                            (After Designing A Simple Changes Charge Will Be A Extra(*550Rs. + Depends On Changes Rate)
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col col-md-12">
-                                        
-                                        <label for="Terms-and-condition" class="form-label mb-2">
-                                            <input type="checkbox"/>
-                                            All Designs Are For Samples only. Never Work For Quantities.
-                                            Not Responsible For Quantities. (After No Further Argument Will Be Heard).
-                                            Also, Check All The Designs From Your Side And Then Proceed.<span class="text-danger">*</span>
-                                                
-                                        </label>
-                                        
-                                    </div>
-
-                                    <!-- Urgent -->
-                                    <div class="col col-md-12">
-                                        <input type="checkbox"/>
-                                        <label for="Terms-and-condition" class="form-label mb-2">
-                                            If Urgent/Instaneous it will charged more 3000Rs
-                                        </label>
-                                    </div>
-
-                            
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <!-- Invoice Section -->
-                    <div class="col h-100 d-flex flex-column justify-content-between p-3 bg-light rounded">
-                        <h3 class="text-center">Invoice Section</h3>
-                        <div class="my-5 text-danger">Price details will appear here</div>
-                        <div class="">
-                            <ul class="list-unstyled">
-                                <li class="mb-2">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    Please review all the filled details carefully before saving.
-                                    Please note that if any minor changes are requested after the
-                                    design has been completed, additional charges may apply.
-                                </li>
-                                <li class="mb-2">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    Designs are for samples only and may not work for larger
-                                    quantities. We are not responsible for quantity issues and
-                                    cannot entertain arguments once designs are approved and
-                                    produced.
-                                </li>
-                                <li class="mb-2">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    Please ensure that you review all designs from your end before
-                                    proceeding.
-                                </li>
-                            </ul>
-                            <p>
-                                Do You Agree With All Above Points?
-                                <span class="text-danger">*</span>
-                            </p>
-                            <input type="checkbox" class="btn-check" id="invoice-verify-all-details-input" required>
-                            <label class="btn btn-outline-primary w-100" for="invoice-verify-all-details-input"
-                                id="acceptTermsLabel">
-                                Yes
-                            </label>
-    
-                            <button type="submit" class="btn btn-primary w-100 mt-3" id="placeOrderButton" disabled>
-                                Place Order
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VK Enterprise</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
+  </head>
+  <body>
+    <nav class="navbar bg-white border-bottom dashboard_header">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center navbar-header">
+          <button class="menu-icon" id="menu-toggler">
+            <i class="fa-solid fa-bars text-black text-secondary"></i>
+          </button>
+          <a href="/" class="navbar-brand">
+            <img src="../img/logo.svg" alt="logo" class="logo" height="35" />
+          </a>
         </div>
-    </body>
+        <div class="d-flex align-items-center justify-content-center gap-3">
+          <div class="">
+            <button
+              class="btn notification-icon"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              onclick="markNotificationAsRead()"
+            >
+              <i class="fa-solid fa-bell text-black"></i>
+              <span class="badge badge-danger bg-danger" id="notification-count"
+                >0</span
+              >
+            </button>
+            <ul class="dropdown-menu" id="notifications">
+              <!-- <li class="border-bottom">
+                                <a class="dropdown-item text-wrap" href="#"
+                                    >Action</a
+                                >
+                            </li> -->
+            </ul>
+          </div>
+          <button
+            style="width: 30px; height: 30px"
+            class="btn bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center"
+          >
+            <i class="fa-solid fa-user text-black"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- <div class="bashboard_main"> -->
+    <!-- sidebar -->
+    <div
+      class="bg-white border-end d-flex flex-column justify-content-between align-items-center dashboard_sidebar"
+      id="menu"
+    >
+      <ul>
+        <li>
+          <a href="/dashboard">
+            <i class="fa-solid fa-house"></i>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/services">
+            <i class="fa-solid fa-toolbox"></i>
+            Services
+          </a>
+        </li>
+        <li>
+          <a href="/orders">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Orders
+          </a>
+        </li>
+        <li>
+          <a href="/transactions">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            Transactions
+          </a>
+        </li>
+        <li>
+          <a href="/inquiries">
+            <i class="fa-solid fa-circle-question"></i>
+            Inquiries
+          </a>
+        </li>
+      </ul>
+      <div class="logout-btn">
+        <button onclick="logout(event)">
+          <i class="fa-solid fa-sign-out"></i>
+          Logout
+        </button>
+      </div>
+    </div>
+    <div class="dashboard_content">
+      <div class="container new-order-form">
+        <form class="row row-cols-1 row-cols-lg-3 g-2 w-100 mb-4">
+          <div class="col col-lg-8 pe-lg-4">
+            <h3 class="m-0 mb-3">Enter Order Details</h3>
+            <p>
+              (<span class="text-danger">*</span>) marked fields are required
+            </p>
+
+            <!-- Form fields -->
+            <div class="row row-cols-1 row-cols-md-2 mb-2 g-3">
+              <!-- PCB Name -->
+              <div class="col">
+                <label class="form-label mb-2" for="pcb-name-input"
+                  >PCB Name
+                  <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter PCB Name"
+                    name="pcb-name"
+                    id="pcb-name-input"
+                    required
+                    autofocus
+                  />
+                </div>
+              </div>
+
+              <!-- PCB Type -->
+              <div class="col">
+                <label class="form-label mb-2" for="pcb-type-input"
+                  >PCB Type
+                  <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                  <select
+                    name="pcb-type"
+                    id="pcb-type-input"
+                    class="form-select"
+                    required
+                    disabled
+                  >
+                    <option value="double-layer">Double Layer / Side</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- PCB Size -->
+              <div class="col col-md-12" id="pcb-size">
+                <p class="form-label mb-2">PCB Size</p>
+                <div class="row row-cols-1 row-cols-md-2 g-3">
+                  <div class="col">
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      id="pcb-size-known"
+                      name="pcb-size"
+                      autocomplete="off"
+                      value="known"
+                    />
+                    <label
+                      class="btn btn-outline-primary w-100"
+                      for="pcb-size-known"
+                    >
+                      Known
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      id="pcb-size-unknown"
+                      name="pcb-size"
+                      value="unknown"
+                      autocomplete="off"
+                    />
+                    <label
+                      class="btn btn-outline-primary w-100"
+                      for="pcb-size-unknown"
+                    >
+                      As Per Yours
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PCB Type Title -->
+              <div class="col col-md-12" id="pcb-type-title">
+                <h5 class="text-center text-secondary">
+                  You are filling Double Layer / Side order details
+                </h5>
+              </div>
+
+              <!--  Double Layer Details -->
+              <div class="col col-md-12" id="schamatic-pcb-layer-details">
+                <div class="row row-cols-1 row-cols-md-2 g-3">
+                  <!-- Old/Reference/Dimension File -->
+                  <div class="col">
+                    <label for="ds-old-pcb-file-input" class="form-label mb-2">
+                      Any Old/Reference/Dimension File
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="sample-old-file"
+                        id="ds-old-pcb-file-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div
+                    id="ds-sample-old-file-input-upload"
+                    style="display: none"
+                  >
+                    <label for="formFile" class="form-label">Upload File</label>
+                    <input class="form-control" type="file" />
+                  </div>
+
+                  <!-- Available Sample / Body -->
+                  <div class="col">
+                    <label for="ds-sample-body-input" class="form-label mb-2">
+                      Available Any Sample / Body
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="ds-sample-body"
+                        id="ds-sample-body-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div id="ds-picture-field" style="display: none">
+                    <div class="col">
+                      <label for="ds-picture-input" class="form-label mb-2"
+                        >Take a Picture</label
+                      >
+                      <div class="input-group">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          capture="camera"
+                          class="form-control"
+                          name="ds-picture"
+                          id="ds-picture-input"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PCB Design Type -->
+                  <div class="col">
+                    <label for="pcb-design-type" class="form-label mb-2">
+                      PCB DESIGN TYPE
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="pcb-design-type"
+                        id="pcb-design-type-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="same-as-sample">
+                          It's same as sample copy
+                        </option>
+                        <option value="sample-with-update">
+                          Sample copy with update
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- PCB Design Update Description -->
+                  <div class="col">
+                    <label
+                      class="form-label mb-2"
+                      for="pcb-design-update-description-input"
+                    >
+                      PCB Design Update Description
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter PCB Design Update Description"
+                        name="pcb-design-update-description"
+                        id="pcb-design-update-description-input"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Attached File -->
+                  <div class="col">
+                    <label for="attached-file-input" class="form-label mb-2"
+                      >Attached File For PCB Design Update
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="ds-pcb-layer-picture"
+                        id="attached-file-input"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Update in Copper Track Designing -->
+                  <div class="col">
+                    <label
+                      for="ds-copper-track-designing-input"
+                      class="form-label mb-2"
+                    >
+                      Any update in copper track designing
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="ds-copper-track-designing"
+                        id="ds-copper-track-designing-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="client-request">As per client</option>
+                        <option value="your-design">As per yours</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Enter Details -->
+                  <div
+                    class="col ss-copper-track-designing-filed"
+                    style="display: none"
+                  >
+                    <label class="form-label mb-2" for="enter-details-input"
+                      >Enter Details
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Details"
+                        name="enter-details-input"
+                        id="enter-details-input"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Attached File -->
+                  <div
+                    class="col ss-copper-track-designing-filed"
+                    style="display: none"
+                  >
+                    <label for="attached-file-input" class="form-label mb-2"
+                      >Attached File</label
+                    >
+                    <div class="input-group">
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="schamatic-pcb-layer-picture"
+                        id="attached-file-input"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Design Updates Number of Points -->
+                  <div class="col">
+                    <label
+                      class="form-label mb-2"
+                      for="design-updates-points-input"
+                    >
+                      In Designing Updates NO. Of Points
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Enter Number of Points"
+                        name="design-updates-points-input"
+                        id="design-updates-points-input"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- //////////////////////////////////////////////////////////////// -->
+
+                  <!-- TOP Silk/Legend Layer -->
+                  <div class="col">
+                    <label for="ds-silk-legend-layer-input" class="form-label">
+                      TOP SILK/LEGEND Layer
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="ds-silk-legend-layer"
+                        id="ds-silk-legend-layer-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="require">Require</option>
+                        <option value="not-required">Not Required</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Enter TOP Silk/Legend Text -->
+                  <div
+                    class="col ds-silk-legend-layer-field"
+                    style="display: none"
+                  >
+                    <label for="silk-legend-text-input" class="form-label">
+                      Enter Top Silk/LEGEND Text
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter TOP Silk/LEGEND Text"
+                      name="silk-legend-text-input"
+                      id="silk-legend-text-input"
+                    />
+                  </div>
+
+                  <!-- Upload TOP Silk/Legend File -->
+                  <div
+                    class="col ds-silk-legend-layer-field"
+                    style="display: none"
+                  >
+                    <label for="silk-legend-file-input" class="form-label">
+                      Upload Top Silk/LEGEND File
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="silk-legend-file-input"
+                      id="silk-legend-file-input"
+                    />
+                  </div>
+
+                  <!-- /////////////////////////////////////////////////////////// -->
+
+                  <!-- TOP SOLDER/MASK LAYER -->
+                  <div class="col">
+                    <label
+                      for="solder-mask-layer-text-input"
+                      class="form-label"
+                    >
+                      Top SOLDER/MASK Layer Text
+                    </label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter Top SOLDER/MASK Layer Text"
+                      name="solder-mask-layer-text-input"
+                      id="solder-mask-layer-text-input"
+                    />
+                  </div>
+
+                  <!-- TOP SOLDER/MASK LAYER File -->
+                  <div class="col">
+                    <label
+                      for="solder-mask-layer-file-input"
+                      class="form-label"
+                    >
+                      Top SOLDER/MASK Layer File
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="solder-mask-layer-file-input"
+                      id="solder-mask-layer-file-input"
+                    />
+                  </div>
+
+                  <!-- TOP COPPER LAYER -->
+                  <div class="col">
+                    <label for="copper-layer-text-input" class="form-label">
+                      Top COPPER Layer Text
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="TOP COPPER LAYER DETAILS"
+                      name="copper-layer-text-input"
+                      id="copper-layer-text-input"
+                    />
+                  </div>
+
+                  <!-- COPPER LAYER File -->
+                  <div class="col">
+                    <label for="copper-layer-file-input" class="form-label">
+                      Top COPPER Layer File
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="copper-layer-file-input"
+                      id="copper-layer-file-input"
+                    />
+                  </div>
+
+                  <!-- /////////////////////////////////////////////////////////////////////// -->
+
+                  <div class="col">
+                    <label
+                      for="ds-bottom-silk-legend-layer-input"
+                      class="form-label"
+                    >
+                      Bottom SILK/LEGEND Layer
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="silk-legend-layer"
+                        id="ds-bottom-silk-legend-layer-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="require">Require</option>
+                        <option value="not-required">Not Required</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Enter Silk/Legend Text -->
+                  <div
+                    class="col ds-bottom-silk-legend-field"
+                    style="display: none"
+                  >
+                    <label for="silk-legend-text-input" class="form-label">
+                      Enter Bottom Silk/LEGEND Text
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter bottom Silk/LEGEND details"
+                      name="ds-bottom-silk-legend-text-input"
+                      id="ds-bottom-silk-legend-text-input"
+                    />
+                  </div>
+
+                  <!-- Upload Silk/Legend File -->
+                  <div
+                    class="col ds-bottom-silk-legend-field"
+                    style="display: none"
+                  >
+                    <label for="silk-legend-file-input" class="form-label">
+                      Upload Bottom Silk/LEGEND File
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="ds-bottom-silk-legend-file-input"
+                      id="ds-bottom-silk-legend-file-input"
+                    />
+                  </div>
+
+                  <!-- //////////////////////////////////////////////////////////////////// -->
+
+                  <!-- SOLDER/MASK LAYER -->
+                  <div class="col">
+                    <label
+                      for="solder-mask-layer-text-input"
+                      class="form-label"
+                    >
+                      Bottom SOLDER/MASK Layer Text
+                    </label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter Bottom SOLDER/MASK Layer Text"
+                      name="ds-bottom-solder-mask-layer-text-input"
+                      id="ds-bottom-solder-mask-layer-text-input"
+                    />
+                  </div>
+
+                  <!-- SOLDER/MASK LAYER File -->
+                  <div class="col">
+                    <label
+                      for="solder-mask-layer-file-input"
+                      class="form-label"
+                    >
+                      Bottom SOLDER/MASK Layer File
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="ds-bottom-solder-mask-layer-file-input"
+                      id="ds-bottom-solder-mask-layer-file-input"
+                    />
+                  </div>
+
+                  <!-- COPPER LAYER -->
+                  <div class="col">
+                    <label for="copper-layer-text-input" class="form-label">
+                      BOTTOM COPPER LAYER
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="COPPER LAYER Text"
+                      name="copper-layer-text-input"
+                      id="copper-layer-text-input"
+                    />
+                  </div>
+
+                  <!-- COPPER LAYER File -->
+                  <div class="col">
+                    <label for="copper-layer-file-input" class="form-label">
+                      BOTTOM COPPER LAYER File
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="copper-layer-file-input"
+                      id="copper-layer-file-input"
+                    />
+                  </div>
+
+                  <!-- BILL OF MATERIAL (BOM) -->
+                  <div class="col">
+                    <label for="bom-required-input" class="form-label">
+                      BILL OF MATERIAL (BOM)
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="bom-required"
+                        id="bom-required-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="require">Require</option>
+                        <option value="not-required">Not Required</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- BOM Billing Amount -->
+                  <div class="col">
+                    <label for="bom-billing-amount-input" class="form-label">
+                      BILL OF MATERIAL (BOM) Billing Amount
+                    </label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Billing Amount"
+                      name="bom-billing-amount-input"
+                      id="bom-billing-amount-input"
+                    />
+                  </div>
+
+                  <!-- PANELIZATION / CAM WORK -->
+                  <div class="col">
+                    <label for="panelization-required-input" class="form-label">
+                      PANELIZATION / CAM WORK
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="panelization-required"
+                        id="panelization-required-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="require">Require</option>
+                        <option value="not-required">Not Required</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Panelization Billing Amount -->
+                  <div class="col">
+                    <label
+                      for="panelization-billing-amount-input"
+                      class="form-label"
+                    >
+                      PANELIZATION / CAM WORK Billing Amount
+                    </label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Billing Amount"
+                      name="panelization-billing-amount-input"
+                      id="panelization-billing-amount-input"
+                    />
+                  </div>
+
+                  <!-- Design Relating Notes/Queries -->
+                  <div class="col">
+                    <label
+                      for="design-relating-notes-input"
+                      class="form-label mb-2"
+                    >
+                      ANY DESIGN RELATING NOTE/QUERIES
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="panelization-required"
+                        id="panelization-required-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="require">Yes</option>
+                        <option value="not-required">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- SOLDER/MASK LAYER -->
+                  <div class="col">
+                    <label
+                      for="solder-mask-layer-text-input"
+                      class="form-label"
+                    >
+                      ANY DESIGN RELATING NOTE/QUERIES DETAILS
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="ANY DESIGN RELATING NOTE/QUERIES DETAILS"
+                      name="solder-mask-layer-text-input"
+                      id="solder-mask-layer-text-input"
+                    />
+                  </div>
+
+                  <!-- SOLDER/MASK LAYER File -->
+                  <div class="col">
+                    <label
+                      for="solder-mask-layer-file-input"
+                      class="form-label"
+                    >
+                      ANY DESIGN RELATING NOTE/QUERIES File
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="solder-mask-layer-file-input"
+                      id="solder-mask-layer-file-input"
+                    />
+                  </div>
+
+                  <!-- Terms and condition -->
+                  <div class="col col-md-12">
+                    <label for="Terms-and-condition" class="form-label mb-2">
+                      <input type="checkbox" />
+                      Carefully Once check All Fill Details Before Save. (After
+                      Designing A Simple Changes Charge Will Be A Extra(*550Rs.
+                      + Depends On Changes Rate)
+                      <span class="text-danger">*</span>
+                    </label>
+                  </div>
+
+                  <div class="col col-md-12">
+                    <label for="Terms-and-condition" class="form-label mb-2">
+                      <input type="checkbox" />
+                      All Designs Are For Samples only. Never Work For
+                      Quantities. Not Responsible For Quantities. (After No
+                      Further Argument Will Be Heard). Also, Check All The
+                      Designs From Your Side And Then Proceed.<span
+                        class="text-danger"
+                        >*</span
+                      >
+                    </label>
+                  </div>
+
+                  <!-- Urgent -->
+                  <div class="col col-md-12">
+                    <input type="checkbox" />
+                    <label for="Terms-and-condition" class="form-label mb-2">
+                      If Urgent/Instaneous it will charged more 3000Rs
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Invoice Section -->
+          <div
+            class="col h-100 d-flex flex-column justify-content-between p-3 bg-light rounded"
+          >
+            <h3 class="text-center">Invoice Section</h3>
+            <div class="my-5 text-danger">Price details will appear here</div>
+            <div class="">
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success"></i>
+                  Please review all the filled details carefully before saving.
+                  Please note that if any minor changes are requested after the
+                  design has been completed, additional charges may apply.
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success"></i>
+                  Designs are for samples only and may not work for larger
+                  quantities. We are not responsible for quantity issues and
+                  cannot entertain arguments once designs are approved and
+                  produced.
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success"></i>
+                  Please ensure that you review all designs from your end before
+                  proceeding.
+                </li>
+              </ul>
+              <p>
+                Do You Agree With All Above Points?
+                <span class="text-danger">*</span>
+              </p>
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="invoice-verify-all-details-input"
+                required
+              />
+              <label
+                class="btn btn-outline-primary w-100"
+                for="invoice-verify-all-details-input"
+                id="acceptTermsLabel"
+              >
+                Yes
+              </label>
+
+              <button
+                type="submit"
+                class="btn btn-primary w-100 mt-3"
+                id="placeOrderButton"
+                disabled
+              >
+                Place Order
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/ds-order.js"></script>
+    <script>
+      window.onload = dsNewOrderFormChangeHandler();
+    </script>
+  </body>
 </html>

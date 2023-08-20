@@ -1,4 +1,4 @@
-const ssNewOrderFormChangeHandler = async function () {
+const dsNewOrderFormChangeHandler = async function () {
     await getNotification();
     // const mpcbbody = document.getElementById("mpcb-body");
     await (async function () {
@@ -69,32 +69,40 @@ const ssNewOrderFormChangeHandler = async function () {
               }
         });
 
-        $("#ss-sample-old-file-input").on("change", function () {
+        $("#ds-old-pcb-file-input").on("change", function () {
             if (this.value === "yes") {
-                $("#ss-sample-old-file-input-upload").show(); // Show the upload div
+                $("#ds-sample-old-file-input-upload").show(); // Show the upload div
             } else {
-                $("#ss-sample-old-file-input-upload").hide(); // Hide the upload div
+                $("#ds-sample-old-file-input-upload").hide(); // Hide the upload div
             }
         });
-        $("#ss-sample-body-input").on("change", function () {
+        $("#ds-sample-body-input").on("change", function () {
             if (this.value === "yes") {
-                $("#ss-picture-field").show(); // Show the picture field
+                $("#ds-picture-field").show(); // Show the picture field
             } else {
-                $("#ss-picture-field").hide(); // Hide the picture field
+                $("#ds-picture-field").hide(); // Hide the picture field
             }
         });
-        $("#ss-copper-track-designing-input").on("change", function () {
+        $("#ds-copper-track-designing-input").on("change", function () {
             if (this.value === "client-request") {
-                $("#ss-copper-track-designing-filed").show(); // Show the picture field
+                $(".ss-copper-track-designing-filed").show(); // Show the picture field
             } else {
-                $("#ss-copper-track-designing-filed").hide(); // Hide the picture field
+                $(".ss-copper-track-designing-filed").hide(); // Hide the picture field
             }
         });
-        $("#ss-silk-legend-layer-input").on("change", function () {
+        $("#ds-silk-legend-layer-input").on("change", function () {
             if (this.value === "require") {
-                $("#ss-silk-legend-layer-field").show(); // Show the picture field
+                $(".ds-silk-legend-layer-field").show(); // Show the picture field
             } else {
-                $("#ss-silk-legend-layer-field").hide(); // Hide the picture field
+                $(".ds-silk-legend-layer-field").hide(); // Hide the picture field
+            }
+        });
+
+        $("#ds-bottom-silk-legend-layer-input").on("change", function () {
+            if (this.value === "require") {
+                $(".ds-bottom-silk-legend-field").show(); // Show the picture field
+            } else {
+                $(".ds-bottom-silk-legend-field").hide(); // Hide the picture field
             }
         });
 
