@@ -4,3 +4,10 @@
       border-radius: 13px;
       border-radius: 13px;
     }
+.noteText{
+    color: #ffffff;
+    font-weight: 500;
+    padding: 3px;
+    border-radius: 5px;
+    background: gray;
+}
