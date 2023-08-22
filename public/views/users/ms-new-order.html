@@ -11,6 +11,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
     <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
+    <link rel="stylesheet" href="../../css/form.css">
   </head>
   <body>
     <nav class="navbar bg-white border-bottom dashboard_header">
@@ -663,60 +664,85 @@
                     />
                   </div>
 
-
-                  
-                  <!-- BILL OF MATERIAL (BOM) -->
-                  <div class="col">
-                    <label for="bom-required-input" class="form-label">
-                      BILL OF MATERIAL (BOM)
-                    </label>
-                    <div class="input-group">
-                      <select
-                        name="bom-required"
-                        id="bom-required-input"
-                        class="form-select"
-                        required
-                      >
-                        <option value="require">Require</option>
-                        <option value="not-required">Not Required</option>
-                      </select>
+                  <div class="col col-md-12 switchdiv">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" id="multi-layer-form-switch">
+                      <label class="form-check-label" for="multi-layer-form-switch">Required Stencile</label>
+                    </div>
+                    <div id="multi-layer-form" style="display: none;">
+                      <hr>
+                      <div class="col gerber-file-attachment-file mt-3">
+                        <label class="form-label mb-2" for="gerber-file-attachment-file-input">Gerber File Attachment
+                          <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                          <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
+                          <input type="file" class="form-control" name="gerber-file-attachment-file"
+                            id="gerber-file-attachment-file-input" required="">
+                        </div>
+                      </div>
+                      <div class="input-group mt-3">
+                        <select name="multi-layer-form-text" id="multi-layer-form-text" class="form-select" required>
+                          <option value="" disabled selected>
+                            Select an option
+                          </option>
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
+                      </div>
+                      <div class="input-group mt-2">
+                        <input type="text" class="form-control" placeholder="Enter Text" id="multi-layer-text" required />
+                      </div>
                     </div>
                   </div>
-
-                  <!-- BOM Billing Amount -->
-                  <div class="col">
-                    <label for="bom-billing-amount-input" class="form-label">
-                      BILL OF MATERIAL (BOM) Billing Amount
-                    </label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="Billing Amount"
-                      name="bom-billing-amount-input"
-                      id="bom-billing-amount-input"
-                    />
+                      <!-- CAM/Panelization -->
+                <div class="col col-md-12 switchdiv">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="multi-layer-CAMPanelizationswitch">
+                    <label class="form-check-label" for="multi-layer-CAMPanelizationswitch">Required CAM/Panelization</label>
                   </div>
-
-                  <!-- PANELIZATION / CAM WORK -->
-                  <div class="col">
-                    <label for="panelization-required-input" class="form-label">
-                      PANELIZATION / CAM WORK
-                    </label>
-                    <div class="input-group">
-                      <select
-                        name="panelization-required"
-                        id="panelization-required-input"
-                        class="form-select"
-                        required
-                      >
-                        <option value="require">Require</option>
-                        <option value="not-required">Not Required</option>
-                      </select>
+                  <div id="multi-layer-cam-panellization-div" style="display: none;">
+                    <hr>
+                    <div class="col gerber-file-attachment-file mt-3">
+                      <label class="form-label mb-2" for="gerber-file-attachment-file-input">Gerber File Attachment
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
+                        <input type="file" class="form-control" name="gerber-file-attachment-file"
+                          id="gerber-file-attachment-file-input" required="">
+                      </div>
                     </div>
-                  </div>
-
-                  <!-- Panelization Billing Amount -->
-                  <div class="col">
+                    <div class="form-row mt-2">
+                      <label for="panelization">Panelization / Panel Up</label>
+                      <select name="PANELLIZATION /PANEL UP" id="any-related-text-input" class="form-select" required>
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                      <div class="row mt-2">
+                        <div class="col-md-3">
+                          <label for="xWidth">X-Width Side</label>
+                          <input type="number" class="form-control" id="xWidth">
+                        </div>
+                        <div class="col-md-3">
+                          <label for="yLength">Y-Length Side</label>
+                          <input type="number" class="form-control" id="yLength">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group mt-3">
+                      <label for="pcbGap">PCB Between Gap / Clearance</label>
+                      <input type="number" class="form-control" id="pcbGap">
+                    </div>
+                    <div class="form-group">
+                      <label for="trackClearance">In PCB Track to Track Clearance</label>
+                      <input type="number" class="form-control" id="trackClearance">
+                    </div>
+                    <!-- Panelization Billing Amount -->
+                  <div class="form-group mt-3">
                     <label
                       for="panelization-billing-amount-input"
                       class="form-label"
@@ -731,7 +757,94 @@
                       id="panelization-billing-amount-input"
                     />
                   </div>
+                    <div class="form-group">
+                      <label for="relatedText-cam">Any Related Text</label>
+                      <select class="form-control" id="relatedText-cam">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                    <div class="form-group" id="relatedText-cam-div">
+                      <label for="relatedText-cam-longText">Long Text</label>
+                      <input class="form-control" id="relatedText-cam-longText" rows="3" />
+                    </div>
+                    <div class="col file-attachment-file mt-3">
+                      <label class="form-label mb-2" for="cam-file-input">File Upload
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
+                        <input type="file" class="form-control" name="file-attachment-file" id="cam-file-input"
+                          required="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <!-- Bill of Material -->
+                 <div class="col col-md-12 switchdiv">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="multi-layer-bomSwitch">
+                    <label class="form-check-label" for="multi-layer-bomSwitch">Required BOM</label>
+                  </div>
+                  <div id="bom-div" style="display: none;">
+                    <hr>
+                    <!-- PCB Image -->
+                    <div class="form-group mt-3">
+                      <label for="pcbTopImage">Top Side Image Attachment</label>
+                      <input type="file" class="form-control" id="pcbTopImage">
+                    </div>
 
+                    <div class="form-group mt-3">
+                      <label for="pcbBottomImage">Bottom Side Image Attachment</label>
+                      <input type="file" class="form-control" id="pcbBottomImage">
+                    </div>
+
+                    <!-- Layers Type -->
+                    <div class="form-group mt-3">
+                      <label for="layersType">Layers Type in Numbers</label>
+                      <input type="number" class="form-control" id="layersType">
+                    </div>
+                    <!-- Any Related Text -->
+                    <div class="form-group mt-3">
+                      <label for="relatedTextOption-bom">Any Related Text*</label>
+                      <select class="form-control" id="relatedTextOption-bom">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+
+                    <!-- Long Text -->
+                    <div class="form-group mt-3" id="bom-text-div">
+                      <label for="longText">Long Text</label>
+                      <input class="form-control" id="longText" rows="3" />
+                    </div>
+
+                      <!-- BOM Billing Amount -->
+                  <div class="form-group mt-3">
+                    <label for="bom-billing-amount-input" class="form-label">
+                      Bill of Material (BOM) Billing Amount
+                    </label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Billing Amount"
+                      name="bom-billing-amount-input"
+                      id="bom-billing-amount-input"
+                    />
+                  </div>
+
+                    <!-- Camera Shot -->
+                    <div class="form-group mt-3">
+                      <label for="cameraShot">Camera Shot</label>
+                      <input type="file" class="form-control" id="cameraShot">
+                      <b class="form-text text-muted">
+                        1) - If Possible Provide Fresh PCB/Old PCB Not Capture Proper Components Value<br>
+                        2) - BOM File Only for Sample Purpose (Not for Quantities)</b>
+                    </div>
+                  </div>
+                </div>
                   <!-- Design Relating Notes/Queries -->
                   <div class="col col-md-12">
                     <label
