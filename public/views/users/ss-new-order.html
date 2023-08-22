@@ -112,23 +112,23 @@
             <!-- Form fields -->
             <div class="row row-cols-1 row-cols-md-2 mb-2 g-3">
               <!-- PCB Name -->
-              <div class="col">
-                <label class="form-label mb-2" for="pcb-name-input"
-                  >PCB Name
-                  <span class="text-danger">*</span>
-                </label>
-                <div class="input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter PCB Name"
-                    name="pcb-name"
-                    id="pcb-name-input"
-                    required
-                    autofocus
-                  />
+                <div class="col">
+                    <label class="form-label mb-2" for="pcb-name-input"
+                    >PCB Name
+                    <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter PCB Name"
+                        name="pcb-name"
+                        id="pcb-name-input"
+                        required
+                        autofocus
+                    />
+                    </div>
                 </div>
-              </div>
 
               <!-- PCB Type -->
               <div class="col">
@@ -169,6 +169,7 @@
                       Known
                     </label>
                   </div>
+                  
                   <div class="col">
                     <input
                       type="radio"
@@ -186,6 +187,45 @@
                     </label>
                   </div>
                 </div>
+              </div>
+            
+
+              <!-- X Dimension -->
+              <div class="col">
+                  <label class="form-label mb-2" for="pcb-name-input"
+                  >X Dimension
+                  <span class="text-danger">*</span>
+                  </label>
+                  <div class="input-group">
+                  <input
+                      type="text"
+                      class="form-control"
+                      placeholder="X Dimension in mm"
+                      name="pcb-name"
+                      id="pcb-name-input"
+                      required
+                      autofocus
+                  />
+                  </div>
+              </div>
+
+              <!-- Y Dimension -->
+              <div class="col">
+                  <label class="form-label mb-2" for="pcb-name-input"
+                  >Y Dimension
+                  <span class="text-danger">*</span>
+                  </label>
+                  <div class="input-group">
+                  <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Y Dimension in mm"
+                      name="pcb-name"
+                      id="pcb-name-input"
+                      required
+                      autofocus
+                  />
+                  </div>
               </div>
 
               <!-- PCB Type Title -->
@@ -220,6 +260,20 @@
                     </div>
                   </div>
 
+                  <!-- File attachment for  any old reference dimension file -->
+                  <div class="col">
+                      <label for="old-pcb-file-input" class="form-label mb-2">
+                          Any Old/Reference/Dimension File Attachement
+                          <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                          <input type="file" class="form-control" name="schamatic-pcb-layer-picture"
+                              id="attached-file-input" required>
+                      </div>
+                  </div>
+
+
+
                   <!-- Available Sample / Body -->
                   <div class="col">
                     <label for="sample-body-input" class="form-label mb-2">
@@ -242,10 +296,23 @@
                     </div>
                   </div>
 
+                  <!-- File attachment for  Available sample body -->
+                  <div class="col">
+                      <label for="old-pcb-file-input" class="form-label mb-2">
+                          Available sample body Attachement
+                          <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                          <input type="file" class="form-control" name="schamatic-pcb-layer-picture"
+                              id="attached-file-input" required>
+                      </div>
+                  </div>
+
                   <!-- PCB Design Type -->
                   <div class="col">
                     <label for="pcb-design-type" class="form-label mb-2">
-                      PCB DESIGN TYPE
+                      PCB Design Type
+                      <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <select
@@ -273,14 +340,14 @@
                       class="form-label mb-2"
                       for="pcb-design-update-description-input"
                     >
-                      PCB DESIGN UPDATE DESCRIPTION
+                      PCB Design Update Description
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="Enter PCB DESIGN UPDATE DESCRIPTION"
+                        placeholder="Enter PCB Design Update Description"
                         name="pcb-design-update-description"
                         id="pcb-design-update-description-input"
                         required
@@ -290,9 +357,10 @@
 
                   <!-- Attached File -->
                   <div class="col">
-                    <label for="attached-file-input" class="form-label mb-2"
-                      >Attached File</label
-                    >
+                    <label for="attached-file-input" class="form-label mb-2">
+                        Attache File For PCB Design Update
+                        <span class="text-danger">*</span>
+                    </label>
                     <div class="input-group">
                       <input
                         type="file"
@@ -310,7 +378,8 @@
                       for="copper-track-designing-input"
                       class="form-label mb-2"
                     >
-                      Any update in copper track designing
+                      Any Update In Copper Track Designing
+                      <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <select
@@ -319,31 +388,35 @@
                         class="form-select"
                         required
                       >
-                        <option value="client-request">As per client</option>
-                        <option value="your-design">As per yours</option>
+                        <option value="client-request">As Per Client</option>
+                        <option value="your-design">As Per Yours</option>
                       </select>
                     </div>
                   </div>
-                  <!-- 
-                                Enter Details -->
-                  <!-- <div class="col">
-                                    <label class="form-label mb-2" for="enter-details-input">Enter Details
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Enter Details"
+                  
+                  <!-- Enter Details -->
+                  <div class="col">
+                      <label class="form-label mb-2" for="enter-details-input">
+                          Enter Details For Update In Copper Track Designing
+                          <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Enter Details"
                                             name="enter-details-input" id="enter-details-input" required>
-                                    </div>
-                                </div> -->
+                      </div>
+                  </div>
 
                   <!-- Attached File -->
-                  <!-- <div class="col">
-                                    <label for="attached-file-input" class="form-label mb-2">Attached File</label>
-                                    <div class="input-group">
-                                        <input type="file" class="form-control" name="schamatic-pcb-layer-picture"
-                                            id="attached-file-input" required>
-                                    </div>
-                                </div> -->
+                  <div class="col">
+                      <label for="attached-file-input" class="form-label mb-2">
+                          Attached File For Update In Copper Track Designing
+                          <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" name="schamatic-pcb-layer-picture"
+                              id="attached-file-input" required>
+                      </div>
+                  </div>
 
                   <!-- Design Updates Number of Points -->
 
@@ -355,7 +428,7 @@
                       class="form-label mb-2"
                       for="design-updates-points-input"
                     >
-                      IN DESIGNING UPDATES NO. OF POINTS
+                      In Designing Updates No. Of Points
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
@@ -373,7 +446,8 @@
                   <!-- Silk/Legend Layer -->
                   <div class="col">
                     <label for="silk-legend-layer-input" class="form-label">
-                      SILK/LEGEND LAYER
+                      Silk/Legend Layer
+                      <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <select
@@ -389,23 +463,26 @@
                   </div>
 
                   <!-- Enter Silk/Legend Text -->
-                  <!-- <div class="col">
+                  <div class="col">
                     <label for="silk-legend-text-input" class="form-label">
-                      Enter Silk/LEGEND Text
+                      Enter Silk/Legend Text
+                      <span class="text-danger">*</span>
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter Silk/LEGEND Text"
+                      placeholder="Enter Silk/Legend Text"
                       name="silk-legend-text-input"
                       id="silk-legend-text-input"
                     />
-                  </div> -->
+                  </div>
 
-                  <!-- Upload Silk/Legend File -->
-                  <!-- <div class="col">
+                  <!-- Upload file for Silk/Legend File -->
+
+                  <div class="col">
                     <label for="silk-legend-file-input" class="form-label">
-                      Upload Silk/LEGEND File
+                      Upload Silk/Legend File
+                      <span class="text-danger">*</span>
                     </label>
                     <input
                       type="file"
@@ -413,32 +490,34 @@
                       name="silk-legend-file-input"
                       id="silk-legend-file-input"
                     />
-                  </div> -->
+                  </div>
 
                   <!-- SOLDER/MASK LAYER -->
+
                   <div class="col">
                     <label
                       for="solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      SOLDER/MASK LAYER
+                      For Any Solder/Mask Layer Information
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="SOLDER/MASK LAYER Text"
+                      placeholder="Solder/Mask Layer Text"
                       name="solder-mask-layer-text-input"
                       id="solder-mask-layer-text-input"
                     />
                   </div>
 
                   <!-- SOLDER/MASK LAYER File -->
+
                   <div class="col">
                     <label
                       for="solder-mask-layer-file-input"
                       class="form-label"
                     >
-                      SOLDER/MASK LAYER File
+                    For Any Solder/Mask Layer Information File
                     </label>
                     <input
                       type="file"
@@ -449,14 +528,15 @@
                   </div>
 
                   <!-- COPPER LAYER -->
+
                   <div class="col">
                     <label for="copper-layer-text-input" class="form-label">
-                      COPPER LAYER
+                      For Any Copper Layer Information
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="COPPER LAYER Text"
+                      placeholder="Copper Layer Text"
                       name="copper-layer-text-input"
                       id="copper-layer-text-input"
                     />
@@ -465,7 +545,7 @@
                   <!-- COPPER LAYER File -->
                   <div class="col">
                     <label for="copper-layer-file-input" class="form-label">
-                      COPPER LAYER File
+                      Copper Layer File
                     </label>
                     <input
                       type="file"
@@ -478,7 +558,7 @@
                   <!-- BILL OF MATERIAL (BOM) -->
                   <div class="col">
                     <label for="bom-required-input" class="form-label">
-                      BILL OF MATERIAL (BOM)
+                      Bill Of Materail (BOM)
                     </label>
                     <div class="input-group">
                       <select
@@ -531,7 +611,7 @@
                       for="panelization-billing-amount-input"
                       class="form-label"
                     >
-                      PANELIZATION / CAM WORK Billing Amount
+                      Panelization / CAM Work Billing Amount
                     </label>
                     <input
                       type="number"
@@ -541,41 +621,76 @@
                       id="panelization-billing-amount-input"
                     />
                   </div>
-
+    
                   <!-- Design Relating Notes/Queries -->
-                  <div class="col col-md-12">
-                    <label
-                      for="design-relating-notes-input"
-                      class="form-label mb-2"
-                    >
-                      ANY DESIGN RELATING NOTE/QUERIES*
-                    </label>
-                    <div class="input-group">
-                      <textarea
-                        class="form-control"
-                        placeholder="Enter Any Other Queries"
-                        name="design-relating-notes-input"
-                        id="design-relating-notes-input"
-                        rows="3"
-                      ></textarea>
-                    </div>
+                  <div class="col">
+                      <label for="design-relating-notes-input" class="form-label mb-2">
+                        Any Design Relating Note/Queries
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                          <select name="panelization-required" id="panelization-required-input"
+                              class="form-select" required>
+                              <option value="require">Yes</option>
+                              <option value="not-required">No</option>
+                          </select>
+                      </div>
+                  
+                  </div>
+                                        
+                  <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS-->
+                  <div class="col">
+                      <label for="solder-mask-layer-text-input" class="form-label">
+                          Any Design Relating Note/Queries Details
+                          <span class="text-danger">*</span>
+                      </label>
+                      <input type="text" class="form-control" placeholder="Enter Details"
+                          name="solder-mask-layer-text-input" id="solder-mask-layer-text-input">
                   </div>
 
-                  <!-- Suggestions -->
-                  <div class="col col-md-12">
-                    <label for="suggestions-input" class="form-label mb-2">
-                      Suggestion
-                    </label>
-                    <div class="input-group">
-                      <textarea
-                        class="form-control"
-                        placeholder="Enter any suggestion"
-                        name="suggestions-input"
-                        id="suggestions-input"
-                        rows="3"
-                      ></textarea>
-                    </div>
+                  
+                  <!-- ANY DESIGN RELATING NOTE/QUERIES File-->
+                  <div class="col">
+                      <label for="solder-mask-layer-file-input" class="form-label">
+                          Any Design Relating Note/Queries File
+                          <span class="text-danger">*</span>
+                      </label>
+                      <input type="file" class="form-control" name="solder-mask-layer-file-input"
+                          id="solder-mask-layer-file-input">
                   </div>
+    
+                  <div class="col-md-12" style="top: 20px;">
+
+                      <!-- Terms and condition -->
+
+                      <div class="col col-md-12" style="margin-bottom: 20px;">
+                          <label for="Terms-and-condition" class="form-label mb-2">
+                              <input type="checkbox" style="margin-right: 10px;"/>
+                              Carefully Once check All Fill Details Before Save.
+                              (After Designing A Simple Changes Charge Will Be A Extra(*550Rs. + Depends On Changes Rate)
+                              <span class="text-danger">*</span>
+                          </label>
+                      </div>
+
+                      <div class="col col-md-12" style="margin-bottom: 20px;">
+                          <label for="Terms-and-condition" class="form-label mb-2">
+                              <input type="checkbox" style="margin-right: 10px;"/>
+                              All Designs Are For Samples only. Never Work For Quantities.
+                              Not Responsible For Quantities. (After No Further Argument Will Be Heard).
+                              Also, Check All The Designs From Your Side And Then Proceed.
+                              <span class="text-danger">*</span>
+                          </label>
+                      </div>
+
+                      <!-- Urgent -->
+                      <div class="col col-md-12" style="margin-bottom: 20px;">
+                          <input type="checkbox" style="margin-right: 10px;"/>
+                          <label for="Terms-and-condition" class="form-label mb-2">
+                              If Urgent/Instaneous it will charged more 3000Rs
+                          </label>
+                      </div>
+                  </div>
+
                 </div>
               </div>
             </div>

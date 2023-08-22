@@ -139,14 +139,14 @@
                         </div>
                         <div class="col col-md-12" id="pcb-type-title">
                             <h5 class="text-center text-secondary">
-                                You are filling Schamatic To PCB order details
+                                You Are Filling Schamatic To PCB Order Details
                             </h5>
                         </div>
                         <div class="col col-md-12" id="Schamatic-to-PCB-layer-details">
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <div class="col">
                                     <label for="Schamatic-to-PCB-layer-old-pcb-name-input" class="form-label mb-2">
-                                        Any Old/Reference/Dimension File
+                                        Any Old/ Reference/ Dimension File
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="input-group">
@@ -160,10 +160,12 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div id="Schamatic-to-PCB-layer-sample-old-file-input-upload" style="display: none">
                                     <label for="formFile" class="form-label">Upload File</label>
                                     <input class="form-control" type="file" />
                                 </div>
+
                                 <div class="col">
                                     <label for="Schamatic-to-PCB-layer-sample-body-input" class="form-label mb-2">
                                         Available Any Sample / Body
@@ -191,20 +193,20 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col">
-                                    <label for="Pcb Name">PCB Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" required />
-                                </div>
-                                <div class="col">
-                                    <label for="Schamtic / Drawing File">Schamtic / Drawing File<span
-                                            class="text-danger">*</span></label>
+                                    <label for="Schamtic / Drawing File">
+                                        Schamtic / Drawing File
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group">
                                         <input type="file" class="form-control" name="Schamtic-Drawing-input"
                                             id="Schamtic-Drawing-input" required />
                                     </div>
                                 </div>
+
                                 <div class="col">
-                                    <label for="Schamtic Bill Of Material">Schamtic Bill Of Material(BOM) File<span
+                                    <label for="Schamtic Bill Of Material">Schamtic Bill Of Material (BOM) File<span
                                             class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input type="file" class="form-control" name="Schamtic-Bill-Of-Material"
@@ -212,9 +214,49 @@
                                     </div>
                                 </div>
 
+
+                                <!-- Schamtic To PCB Layers Options -->
+
                                 <div class="col">
-                                    <label for="trackRelated">TRACK RELATED COMMENTS /GUIDE<span
-                                            class="text-danger">*</span></label>
+                                    <label for="trackRelated">
+                                        Schamtic To PCB Layers
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <select name="trackRelated-body-input" id="trackRelated-body-input"
+                                            class="form-select" required>
+                                            <option value="" disabled selected>Select an option</option>
+                                            <option value="">Single Layer/Side</option>
+                                            <option value="">Double Layer/Side</option>
+                                            <option value="">Four Layers</option>
+                                            <option value="">Six Layers</option>
+                                            <option value="">Eight Layers</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <label for="trackRelated">
+                                        PCB Dimension File
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="copper-layer-file-input" placeholder="X-Length(DIMENSION)-In MM"
+                                            id="copper-layer-file-input">
+                                    </div>
+                                    <div class="input-group" style="margin-top: 5px;">
+                                        <input type="text" class="form-control" name="copper-layer-file-input" placeholder="Y-Length(DIMENSION)-In MM"
+                                            id="copper-layer-file-input">
+                                    </div>
+                                </div>
+
+                                <!-- Track Related Comments/Guide -->
+                                
+                                <div class="col">
+                                    <label for="trackRelated">
+                                        Track Related Comments/Guide
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group">
                                         <select name="trackRelated-body-input" id="trackRelated-body-input"
                                             class="form-select" required>
@@ -224,20 +266,34 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <!-- Text for Track Related Text -->
                                 <div class="col">
-                                    <label for="text">TRACK RELATE TEXT</label>
-                                    <input type="text" class="form-control" required />
+                                    <label for="text">
+                                        Track Related Comments/Guide Text
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Track Related Comments/Guide Text" />
                                 </div>
+
+                                <!-- File Upload for Track Related text -->
                                 <div class="col">
                                     <div class="input-group">
-                                        <label for="file upload">File Upload</label>
+                                        <label for="file upload">
+                                            File Upload For Track Related Comments/Guide
+                                            <span class="text-danger">*</span>
+                                        </label>
                                     </div>
                                     <input type="file" class="form-control" name="trackRelated-input"
                                         id="trackRelated-input" required />
                                 </div>
+
+
                                 <div class="col">
-                                    <label for="layersRelated">LAYERS RELATED ANY COMMENTS/GUIDE<span
-                                            class="text-danger">*</span></label>
+                                    <label for="layersRelated">
+                                        Layers Related Any Comments/Guide
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group">
                                         <select name="layersRelated-body-input" id="layersRelated-body-input"
                                             class="form-select" required>
@@ -247,26 +303,83 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col col-md-12">
-                                    <label for="Schamatic-to-PCB-layer-quantity-input" class="form-label mb-2">
-                                        ANY DESIGN RELETING NOTE/QUERIES*
+
+                                <!-- Text for Track Related Text -->
+                                <div class="col">
+                                    <label for="text">
+                                        Layers Related Any Comments/Guide Text
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Layers Related Comments/Guide Text"  />
+                                </div>
+
+                                <!-- File Upload for Track Related text -->
+                                <div class="col">
+                                    <div class="input-group">
+                                        <label for="file upload">
+                                            File Upload For Layers Related Any Comments/Guide
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                    <input type="file" class="form-control" name="trackRelated-input"
+                                        id="trackRelated-input"  />
+                                </div>
+
+                                <!-- Any Layout / Referance / Arreagemnt File -->
+                                <div class="col">
+                                    <div class="input-group">
+                                        <label for="file upload">
+                                            Any Layout / Referance / Arrangement File
+                                        </label>
+                                    </div>
+                                    <input type="file" class="form-control" name="trackRelated-input"
+                                        id="trackRelated-input"  />
+                                </div>
+
+                                <div class="col">
+                                    <label for="layersRelated">
+                                        Any Related Any Type Of Comment
+                                        <span class="text-danger">*</span>
                                     </label>
                                     <div class="input-group">
-                                        <textarea class="form-control" placeholder="Enter Any Other Quires"
-                                            name="Schamatic-to-PCB-layer-other-quires" id="Schamatic-to-PCB-layer-other-quires-input"
-                                            rows="3"></textarea>
+                                        <select name="layersRelated-body-input" id="layersRelated-body-input"
+                                            class="form-select" required>
+                                            <option value="" disabled selected>Select an option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col col-md-12">
-                                    <label for="Schamatic-to-PCB-layer-suggestion-input" class="form-label mb-2">
-                                        Suggestion
+
+                                <!-- Any Related Any Type Of Comment -->
+
+                                <div class="col">
+                                    <label for="text">
+                                        Any Related Any Type Of Comment
+                                        <span class="text-danger">*</span>
                                     </label>
-                                    <div class="input-group">
-                                        <textarea class="form-control" placeholder="Enter any suggestion"
-                                            name="Schamatic-to-PCB-layer-suggestion" id="Schamatic-to-PCB-layer-suggestion-input"
-                                            rows="3"></textarea>
-                                    </div>
+                                    <input type="text" class="form-control" placeholder="Any Related Any Type Of Comment Text"  />
                                 </div>
+
+                                <!-- File Upload for Track Related text -->
+                                <div class="col">
+                                    <div class="input-group">
+                                        <label for="file upload">
+                                            File Upload For Any Related Any Type Of Comment
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                    <input type="file" class="form-control" name="trackRelated-input"
+                                        id="trackRelated-input"  />
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        Order Amount According - <span style="font-weight: bold; margin-left: 5px; margin-right: 5px;"> (NOTE) </span> The Cost Of Design As Per Used Components PADS 
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -219,7 +219,34 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                     <label
                         class="form-label mb-2"
                         for="mcpcb-company-logo-input"
-                        >Silk/Mask For Logo File
+                        >Silk Legend Layer For Logo File
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                        <i
+                            class="fas fa-file-upload input-group-text"
+                            style="font-size: 1.5rem"
+                        ></i>
+                        <input
+                            type="file"
+                            class="form-control"
+                            name="mcpcb-company-logo"
+                            id="mcpcb-company-logo-input"
+                            required
+                        />
+                    </div>
+                </div>
+                `);
+            else $("#mcpcb-company-logo-input").parent().parent().remove();
+        });
+        $("#mcpcb-solder-mask-print-input").on("change", function () {
+            if (this.value === "company-logo")
+                return $("#mcpcb-solder-mask-print").after(`
+                <div class="col">
+                    <label
+                        class="form-label mb-2"
+                        for="mcpcb-company-logo-input"
+                        >Solder Mask Layer For Logo File
                         <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
