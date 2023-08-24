@@ -185,6 +185,7 @@ router.get("/inquiries", isUserAuthenticated, async (req, res, next) => {
     }
 });
 
+
 router.get(
     "/new-order/:serviceId",
     isUserAuthenticated,
@@ -215,3 +216,18 @@ router.get("/redirect", async (req, res, next) => {
 });
 
 module.exports = router;
+
+
+//---------------------- profile---------------------------
+
+router.get("/adminprofileEdit", isUserAuthenticated, async (req, res, next) => {
+    if (req.user.role === "admin") {
+        return res.sendFile("adminprofileEdit.html", {
+            root: "public/views/admin",
+        });
+    } else {
+        return res.sendFile("adminprofileEdit.html", {
+            root: "public/views/admin",
+        });
+    }
+});
