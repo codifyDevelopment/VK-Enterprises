@@ -287,6 +287,7 @@
                       />
                     </div>
                   </div>
+
                   <div class="col">
                     <label for="Schamtic Bill Of Material"
                       >Schamtic Bill Of Material(BOM) File<span
@@ -300,6 +301,61 @@
                         class="form-control"
                         name="Schamtic-Bill-Of-Material"
                         id="Schamtic-Bill-Of-Material"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <label
+                      for="Schamatic-to-PCB-layer-sample-body-input"
+                      class="form-label mb-2"
+                    >
+                      Schamtic To PCB Layers
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="Schamatic-to-PCB-layer-sample-body"
+                        id="Schamatic-to-PCB-layer-sample-body-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Single Layer/Side</option>
+                        <option value="no">Double Layer/Side</option>
+                        <option value="no">Four Layer</option>
+                        <option value="no">Six Layer</option>
+                        <option value="no">Eight Layer</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  
+                  <div class="col">
+                    <label for="Schamtic Bill Of Material">
+                      PCB Dimension File
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="number"
+                        class="form-control"
+                        name="Schamtic-Bill-Of-Material"
+                        id="Schamtic-Bill-Of-Material"
+                        placeholder="X-Length(DIMENSION)-In MM"
+                        required
+                      />
+                    </div>
+                    <div class="input-group" style="margin-top: 5px;">
+                      <input
+                        type="number"
+                        class="form-control"
+                        name="Schamtic-Bill-Of-Material"
+                        id="Schamtic-Bill-Of-Material"
+                        placeholder="Y-Width(DIMENSION)-In MM"
                         required
                       />
                     </div>
@@ -339,7 +395,7 @@
                         required
                       />
                     </div>
-                    <div class="col">
+                    <div class="col" style="margin-top: 10px;">
                       <div class="input-group">
                         <label for="file upload"
                           >Upload Track Related File</label
@@ -391,7 +447,71 @@
                         required
                       />
                     </div>
+                    <div class="col" style="margin-top: 10px;">
+                      <div class="input-group">
+                        <label for="file upload"
+                          >Upload Layers Related File</label
+                        >
+                      </div>
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="layerRelated-input"
+                        id="layerRelated-input"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div id="schamatic-to-pcb-layer-related-field">
                     <div class="col">
+                      <label for="text">Any Layout / Referance / Arreagemnt File</label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="layerRelated-input"
+                        id="layerRelated-input"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  
+
+                  <div class="col">
+                    <label for="schamatic-to-pcb-layer-related-body-input"
+                      >Layers Related Any Comments/Guide<span
+                        class="text-danger"
+                        >*</span
+                      ></label
+                    >
+                    <div class="input-group">
+                      <select
+                        name="layersRelated-body-input"
+                        id="schamatic-to-pcb-layer-related-body-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div id="schamatic-to-pcb-layer-related-field">
+                    <div class="col">
+                      <label for="text">Layers Related Text</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Layers Related Text"
+                        required
+                      />
+                    </div>
+                    <div class="col" style="margin-top: 10px;">
                       <div class="input-group">
                         <label for="file upload"
                           >Upload Layers Related File</label
@@ -591,40 +711,11 @@
                     </div>
                   </div>
                 </div>
-                  <div class="col col-md-12">
-                    <label
-                      for="Schamatic-to-PCB-layer-quantity-input"
-                      class="form-label mb-2"
-                    >
-                      ANY DESIGN RELETING NOTE/QUERIES*
-                    </label>
-                    <div class="input-group">
-                      <textarea
-                        class="form-control"
-                        placeholder="Enter Any Other Quires"
-                        name="Schamatic-to-PCB-layer-other-quires"
-                        id="Schamatic-to-PCB-layer-other-quires-input"
-                        rows="3"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <div class="col col-md-12">
-                    <label
-                      for="Schamatic-to-PCB-layer-suggestion-input"
-                      class="form-label mb-2"
-                    >
-                      Suggestion
-                    </label>
-                    <div class="input-group">
-                      <textarea
-                        class="form-control"
-                        placeholder="Enter any suggestion"
-                        name="Schamatic-to-PCB-layer-suggestion"
-                        id="Schamatic-to-PCB-layer-suggestion-input"
-                        rows="3"
-                      ></textarea>
-                    </div>
-                  </div>
+                </div>
+
+                <div style="margin-top: 20px;"> 
+                  <span style="font-size: 20px;">NOTE</span><br>
+                  Order Amount According : THE COST OF DESIGN AS PER USED COMPONENTS PADS
                 </div>
               </div>
             </div>

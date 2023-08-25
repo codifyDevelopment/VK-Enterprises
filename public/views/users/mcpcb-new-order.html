@@ -221,8 +221,10 @@
                     </select>
                   </div>
                 </div>
+                
                 <div class="col">
-                  <label for="mcpcb-total-leds-input" class="form-label mb-2">Total LEDs
+                  <label for="mcpcb-total-leds-input" class="form-label mb-2">
+                    Total Number Of LED's
                     <span class="text-danger">*</span>
                   </label>
                   <div class="input-group">
@@ -230,36 +232,39 @@
                       id="mcpcb-total-leds-input" required />
                   </div>
                 </div>
+
                 <div class="col">
                   <label for="mcpcb-design-watts-input" class="form-label mb-2">
                     Design Watts
-                    <span class="text-danger">*</span>
                   </label>
                   <div class="input-group">
                     <input type="number" class="form-control" placeholder="Enter Design Watts" name="mcpcb-design-watts"
-                      id="mcpcb-design-watts-input" required />
+                      id="mcpcb-design-watts-input" />
                   </div>
                 </div>
+
                 <div class="col" id="mcpcb-connections">
                   <label for="mcpcb-connections-input" class="form-label mb-2">
-                    Connections
+                    Design Connections Series
                     <span class="text-danger">*</span>
                   </label>
                   <div class="input-group">
-                    <select name="mcpcb-connections" id="mcpcb-connections-input" class="form-select" required>
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <option value="SeriesXParallel">SeriesXParallel</option>
-                      <option value="SeriesXParallelXDrivers">
-                        SeriesXParallelXDrivers
-                      </option>
-                      <option value="other combination">
-                        Any Other Combination
-                      </option>
-                    </select>
+                    <input type="number" class="form-control" placeholder="Series" name="mcpcb-series-connection"
+                      id="series-connection" />
                   </div>
                 </div>
+
+                <div class="col" id="mcpcb-connections">
+                  <label for="mcpcb-connections-input" class="form-label mb-2">
+                    Design Connections Parllel
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="input-group" style="margin-top: 5px;">
+                    <input type="number" class="form-control" placeholder="Parallel" name="mcpcb-parallel-connection"
+                      id="parallel-connection" />
+                  </div>
+                </div>
+
                 <div class="col">
                   <label for="mcpcb-using-driver-no-input" class="form-label mb-2">
                     Using Driver No.
@@ -270,6 +275,7 @@
                       name="mcpcb-using-driver-no" id="mcpcb-using-driver-no-input" required />
                   </div>
                 </div>
+
                 <div class="col" id="mcpcb-led-placement">
                   <label for="mcpcb-led-placement-input" class="form-label mb-2">
                     Led Placement
@@ -288,9 +294,10 @@
                     </select>
                   </div>
                 </div>
+
                 <div class="col" id="mcpcb-silk-layer-print">
                   <label for="mcpcb-silk-layer-print-input" class="form-label mb-2">
-                    Silk Layer Print
+                    Silk/Legend Layer
                     <span class="text-danger">*</span>
                   </label>
                   <div class="input-group">
@@ -302,9 +309,7 @@
                       <!-- Not Require, PCB Name, Powered By OSRAM, Make In India, Lion Logo, CE/RoHS, Company Logo -->
                       <option value="not-require">Not Require</option>
                       <option value="pcb-name">PCB Name</option>
-                      <option value="powered-by-osram">
-                        Powered By OSRAM
-                      </option>
+                      <option value="powered-by-osram">Powered By OSRAM</option>
                       <option value="make-in-india">Make In India</option>
                       <option value="lion-logo">Lion Logo</option>
                       <option value="ce-rohs">CE/RoHS</option>
@@ -312,52 +317,74 @@
                     </select>
                   </div>
                 </div>
-                <div class="col">
-                  <label for="mcpcb-copper-layer-info-input" class="form-label mb-2">
-                    Copper Layer Info.
+
+                <div class="col" id="mcpcb-solder-layer-print">
+                  <label for="mcpcb-solder-layer-print-input" class="form-label mb-2">
+                    Solder/Mask Layer
                     <span class="text-danger">*</span>
                   </label>
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter Copper Layer Info."
-                      name="mcpcb-copper-layer-info" id="mcpcb-copper-layer-info-input" required />
-                  </div>
-                </div>
-                <div class="col">
-                  <label for="mcpcb-mask-layer-info-input" class="form-label mb-2">
-                    Mask Layer Info.
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter Solder Mask Info."
-                      name="mcpcb-mask-layer-info" id="mcpcb-mask-layer-info-input" required />
-                  </div>
-                </div>
-                <div class="col">
-                  <label for="mcpcb-silk-layer-info-input" class="form-label mb-2">
-                    Silk Layer Info.
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter Silk Layer Info."
-                      name="mcpcb-silk-layer-info" id="mcpcb-silk-layer-info-input" required />
-                  </div>
-                </div>
-                <div class="col" id="mcpcb-more-related-attachments">
-                  <label for="mcpcb-more-related-attachments-input" class="form-label mb-2">
-                    If Available Related More Attachments
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <select name="mcpcb-more-related-attachments" id="mcpcb-more-related-attachments-input"
-                      class="form-select" required>
+                    <select name="mcpcb-solder-layer-print" id="mcpcb-solder-layer-print-input" class="form-select"
+                      required>
                       <option value="" disabled selected>
                         Select an option
                       </option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
+                      <!-- Not Require, PCB Name, Powered By OSRAM, Make In India, Lion Logo, CE/RoHS, Company Logo -->
+                      <option value="not-require">Not Require</option>
+                      <option value="pcb-name">PCB Name</option>
+                      <option value="powered-by-osram">Powered By OSRAM</option>
+                      <option value="make-in-india">Make In India</option>
+                      <option value="lion-logo">Lion Logo</option>
+                      <option value="ce-rohs">CE/RoHS</option>
+                      <option value="company-logo">Company Logo</option>
                     </select>
                   </div>
                 </div>
+
+
+                
+                <div class="col">
+                  <label for="mcpcb-total-leds-input" class="form-label mb-2">
+                    For Any Silk Legend Layer Information
+                  </label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Silk Legend Layer Information" name="mcpcb-total-leds"
+                      id="mcpcb-silk-legend-info-text"/>
+                  </div>
+                  <div class="input-group" style="margin-top: 5px;">
+                    <input type="file" class="form-control" name="mcpcb-total-leds"
+                      id="mcpcb-silk-legend-info-file" />
+                  </div>
+                </div>
+
+                <div class="col">
+                  <label for="mcpcb-total-leds-input" class="form-label mb-2">
+                    For Any Solder Mask Layer Information
+                  </label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Solder Mask Layer Information" name="mcpcb-total-leds"
+                      id="mcpcb-solder-mask-info-text"  />
+                  </div>
+                  <div class="input-group" style="margin-top: 5px;">
+                    <input type="file" class="form-control" name="mcpcb-total-leds"
+                      id="mcpcb-solder-mask-info-file" />
+                  </div>
+                </div>
+
+                <div class="col">
+                  <label for="mcpcb-total-leds-input" class="form-label mb-2">
+                    For Any Copper Layer Information
+                  </label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Copper Layer Information" name="mcpcb-total-leds"
+                      id="mcpcb-copper-info-text" />
+                  </div>
+                  <div class="input-group" style="margin-top: 5px;">
+                    <input type="file" class="form-control" name="mcpcb-total-leds"
+                      id="mcpcb-copper-info-file"  />
+                  </div>
+                </div>
+
                 <!-- stencile -->
                 <div class="col col-md-12 switchdiv">
                   <div class="form-check form-switch">
@@ -515,24 +542,99 @@
                     </div>
                   </div>
                 </div>
-                <div class="col col-md-12">
-                  <label for="mcpcb-quantity-input" class="form-label mb-2">
-                    Any design releting note/queries*
+
+                <!-- ANY DESIGN RELATING NOTE/QUERIES -->
+                <div class="col">
+                  <label
+                    for="design-relating-notes-input"
+                    class="form-label mb-2"
+                  >
+                    Any Design Relating Note/Queries
+                    <span class="text-danger">*</span>
                   </label>
                   <div class="input-group">
-                    <textarea class="form-control" placeholder="Enter Any Other Quires" name="mcpcb-other-quires"
-                      id="mcpcb-other-quires-input" rows="3"></textarea>
+                    <select
+                      name="any-design-relating"
+                      id="any-design-relating-input"
+                      class="form-select"
+                      required
+                    >
+                      <option value="require">Yes</option>
+                      <option value="not-required">No</option>
+                    </select>
                   </div>
                 </div>
-                <div class="col col-md-12">
-                  <label for="mcpcb-suggestion-input" class="form-label mb-2">
-                    Suggestion
+
+                <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS -->
+                <div class="col">
+                  <label
+                    for="any-design-relating-input"
+                    class="form-label"
+                  >
+                    Any Design Relating Note/Queries Details
+                    <span class="text-danger">*</span>
                   </label>
-                  <div class="input-group">
-                    <textarea class="form-control" placeholder="Enter any suggestion" name="mcpcb-suggestion"
-                      id="mcpcb-suggestion-input" rows="3"></textarea>
-                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Any Design Relating Note/Queries Details"
+                    name="any-design-relating-input-details"
+                    id="design-relating-input-details"
+                    required
+                  />
                 </div>
+
+                <!-- ANY DESIGN RELATING NOTE/QUERIES File -->
+                <div class="col">
+                  <label
+                    for="solder-mask-layer-file-input"
+                    class="form-label"
+                  >
+                    Any Design Relating Note/Queries File
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="any-design-relating-queries-input"
+                    id="any-design-relating-queries-input-file"
+                    required
+                  />
+                </div>
+
+                  <!-- Terms and condition -->
+                  <div class="col col-md-12">
+                    <label for="Terms-and-condition" class="form-label mb-2">
+                      <input type="checkbox" required/>
+                      Carefully Once check All Fill Details Before Save. (After
+                      Designing A Simple Changes Charge Will Be A Extra(*550Rs.
+                      + Depends On Changes Rate)
+                      <span class="text-danger">*</span>
+                    </label>
+                  </div>
+
+                  <div class="col col-md-12">
+                    <label for="Terms-and-condition" class="form-label mb-2">
+                      <input type="checkbox" required/>
+                      All Designs Are For Samples only. Never Work For
+                      Quantities. Not Responsible For Quantities. (After No
+                      Further Argument Will Be Heard). Also, Check All The
+                      Designs From Your Side And Then Proceed.<span
+                        class="text-danger"
+                        >*</span
+                      >
+                    </label>
+                  </div>
+
+                  <!-- Urgent -->
+                  <div class="col col-md-12">
+                    <input type="checkbox" />
+                    <label for="Terms-and-condition" class="form-label mb-2">
+                      If Urgent/Instaneous it will charged more 3000Rs
+                    </label>
+                  </div>
+
+
               </div>
             </div>
           </div>

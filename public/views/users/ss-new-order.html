@@ -287,10 +287,10 @@
                           Select an option
                         </option>
                         <option value="same-as-sample">
-                          It's same as sample copy
+                          It's Same As Sample Copy
                         </option>
                         <option value="sample-with-update">
-                          Sample copy with update
+                          Sample Copy With Update
                         </option>
                       </select>
                     </div>
@@ -302,14 +302,14 @@
                       class="form-label mb-2"
                       for="pcb-design-update-description-input"
                     >
-                      PCB DESIGN UPDATE DESCRIPTION
+                      PCB Design Update Description
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="Enter PCB DESIGN UPDATE DESCRIPTION"
+                        placeholder="Enter PCB Design Update Description"
                         name="pcb-design-update-description"
                         id="pcb-design-update-description-input"
                         required
@@ -326,7 +326,7 @@
                       <input
                         type="file"
                         class="form-control"
-                        name="schamatic-pcb-layer-picture"
+                        name="pcb-design-description"
                         id="attached-file-input"
                         required
                       />
@@ -339,7 +339,7 @@
                       for="ss-copper-track-designing-input"
                       class="form-label mb-2"
                     >
-                      Any update in copper track designing
+                      Any Update In Copper Track Designing
                     </label>
                     <div class="input-group">
                       <select
@@ -376,10 +376,13 @@
                         />
                       </div>
                     </div>
+
                     <!-- Attached File -->
                     <div class="col">
-                      <label for="attached-file-input" class="form-label mb-2"
-                        >Copper track designing attached file</label
+                      <label for="attached-file-input" class="form-label mb-2">
+                        COPPER track designing attached file
+                        <span class="text-danger">*</span>
+                      </label
                       >
                       <div class="input-group">
                         <input
@@ -400,7 +403,7 @@
                       class="form-label mb-2"
                       for="design-updates-points-input"
                     >
-                      IN DESIGNING UPDATES NO. OF POINTS
+                      In Designing Updates No. Of Points
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
@@ -418,7 +421,8 @@
                   <!-- Silk/Legend Layer -->
                   <div class="col">
                     <label for="ss-silk-legend-layer-input" class="form-label">
-                      SILK/LEGEND LAYER
+                      SILK Legend Layer
+                      <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <select
@@ -438,7 +442,8 @@
                     <!-- Enter Silk/Legend Text -->
                     <div class="col">
                       <label for="ss-silk-legend-text-input" class="form-label">
-                        Enter Silk/LEGEND Text
+                        Enter SILK Legend Text
+                        <span class="text-danger">*</span>
                       </label>
                       <input
                         type="text"
@@ -453,6 +458,7 @@
                     <div class="col">
                       <label for="silk-legend-file-input" class="form-label">
                         Upload Silk/LEGEND File
+                        <span class="text-danger">*</span>
                       </label>
                       <input
                         type="file"
@@ -463,18 +469,18 @@
                     </div>
                   </div>
 
-                  <!-- SOLDER/MASK LAYER -->
+                  <!-- SOLDER MASK LAYER -->
                   <div class="col">
                     <label
                       for="solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      SOLDER/MASK LAYER Long Text
+                      SOLDER MASK Layer Long Text
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="SOLDER/MASK LAYER Text"
+                      placeholder="SOLDER MASK Layer Text"
                       name="solder-mask-layer-text-input"
                       id="solder-mask-layer-text-input"
                     />
@@ -486,7 +492,7 @@
                       for="solder-mask-layer-file-input"
                       class="form-label"
                     >
-                      SOLDER/MASK LAYER file
+                      SOLDER MASK Layer file
                     </label>
                     <input
                       type="file"
@@ -499,12 +505,12 @@
                   <!-- COPPER LAYER -->
                   <div class="col">
                     <label for="copper-layer-text-input" class="form-label">
-                      COPPER LAYER Long Text
+                      COPPER Layer Long Text
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="COPPER LAYER Text"
+                      placeholder="COPPER Layer Text"
                       name="copper-layer-text-input"
                       id="copper-layer-text-input"
                     />
@@ -707,39 +713,96 @@
                     </div>
                   </div>
                 </div>
-                  <!-- Design Relating Notes/Queries -->
-                  <div class="col col-md-12">
-                    <label
-                      for="design-relating-notes-input"
-                      class="form-label mb-2"
+
+                <!-- ANY DESIGN RELATING NOTE/QUERIES -->
+                <div class="col">
+                  <label
+                    for="design-relating-notes-input"
+                    class="form-label mb-2"
+                  >
+                    Any Design Relating Note/Queries
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="input-group">
+                    <select
+                      name="any-design-relating"
+                      id="any-design-relating-input"
+                      class="form-select"
+                      required
                     >
-                    Any design releting note/queries*
+                      <option value="require">Yes</option>
+                      <option value="not-required">No</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS -->
+                <div class="col">
+                  <label
+                    for="any-design-relating-input"
+                    class="form-label"
+                  >
+                    Any Design Relating Note/Queries Details
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Any Design Relating Note/Queries Details"
+                    name="any-design-relating-input-details"
+                    id="design-relating-input-details"
+                    required
+                  />
+                </div>
+
+                <!-- ANY DESIGN RELATING NOTE/QUERIES File -->
+                <div class="col">
+                  <label
+                    for="any-design-relating-input-file"
+                    class="form-label"
+                  >
+                    Any Design Relating Note/Queries File
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="any-design-relating-queries-input"
+                    id="any-design-relating-queries-input-file"
+                    required
+                  />
+                </div>
+
+                  <!-- Terms and condition -->
+                  <div class="col col-md-12" style="margin-top: 30px;">
+                    <label for="Terms-and-condition" class="form-label mb-2">
+                      <input type="checkbox" required/>
+                      Carefully Once check All Fill Details Before Save. (After
+                      Designing A Simple Changes Charge Will Be A Extra(*550Rs.
+                      + Depends On Changes Rate)
+                      <span class="text-danger">*</span>
                     </label>
-                    <div class="input-group">
-                      <textarea
-                        class="form-control"
-                        placeholder="Enter Any Other Queries"
-                        name="design-relating-notes-input"
-                        id="design-relating-notes-input"
-                        rows="3"
-                      ></textarea>
-                    </div>
                   </div>
 
-                  <!-- Suggestions -->
                   <div class="col col-md-12">
-                    <label for="suggestions-input" class="form-label mb-2">
-                      Suggestion
+                    <label for="Terms-and-condition" class="form-label mb-2">
+                      <input type="checkbox" required/>
+                      All Designs Are For Samples only. Never Work For
+                      Quantities. Not Responsible For Quantities. (After No
+                      Further Argument Will Be Heard). Also, Check All The
+                      Designs From Your Side And Then Proceed.<span
+                        class="text-danger"
+                        >*</span
+                      >
                     </label>
-                    <div class="input-group">
-                      <textarea
-                        class="form-control"
-                        placeholder="Enter any suggestion"
-                        name="suggestions-input"
-                        id="suggestions-input"
-                        rows="3"
-                      ></textarea>
-                    </div>
+                  </div>
+
+                  <!-- Urgent -->
+                  <div class="col col-md-12">
+                    <input type="checkbox" />
+                    <label for="Terms-and-condition" class="form-label mb-2">
+                      If Urgent/Instaneous it will charged more 3000Rs
+                    </label>
                   </div>
                 </div>
               </div>

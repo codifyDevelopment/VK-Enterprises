@@ -417,7 +417,7 @@
                   <!-- TOP Silk/Legend Layer -->
                   <div class="col">
                     <label for="ds-silk-legend-layer-input" class="form-label">
-                      TOP SILK/LEGEND Layer
+                      TOP SILK LEGEND Layer
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
@@ -442,7 +442,7 @@
                     style="display: none"
                   >
                     <label for="silk-legend-text-input" class="form-label">
-                      Enter Top Silk/LEGEND Text
+                      Enter Top Silk LEGEND Text
                     </label>
                     <input
                       type="text"
@@ -459,7 +459,7 @@
                     style="display: none"
                   >
                     <label for="silk-legend-file-input" class="form-label">
-                      Upload Top Silk/LEGEND File
+                      Upload Top Silk LEGEND File
                     </label>
                     <input
                       type="file"
@@ -476,9 +476,8 @@
                       for="solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      Top SOLDER/MASK Layer Text
+                      Top SOLDER MASK Layer Information
                     </label>
-                    <span class="text-danger">*</span>
                     <input
                       type="text"
                       class="form-control"
@@ -494,7 +493,7 @@
                       for="solder-mask-layer-file-input"
                       class="form-label"
                     >
-                      Top SOLDER/MASK Layer File
+                      Top SOLDER MASK Layer Information File
                     </label>
                     <input
                       type="file"
@@ -505,14 +504,15 @@
                   </div>
 
                   <!-- TOP COPPER LAYER -->
+
                   <div class="col">
                     <label for="copper-layer-text-input" class="form-label">
-                      Top COPPER Layer Text
+                      Top COPPER Layer Information
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="TOP COPPER LAYER DETAILS"
+                      placeholder="Top COPPER Layer Details"
                       name="copper-layer-text-input"
                       id="copper-layer-text-input"
                     />
@@ -521,7 +521,7 @@
                   <!-- COPPER LAYER File -->
                   <div class="col">
                     <label for="copper-layer-file-input" class="form-label">
-                      Top COPPER Layer File
+                      Top COPPER Layer Information File
                     </label>
                     <input
                       type="file"
@@ -536,7 +536,7 @@
                       for="ds-bottom-silk-legend-layer-input"
                       class="form-label"
                     >
-                      Bottom SILK/LEGEND Layer
+                      BOTTOM SILK Legend Layer
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
@@ -561,7 +561,8 @@
                     style="display: none"
                   >
                     <label for="silk-legend-text-input" class="form-label">
-                      Enter Bottom Silk/LEGEND Text
+                      Enter BOTTOM SILK Legend Text
+                      <span class="text-danger">*</span>
                     </label>
                     <input
                       type="text"
@@ -569,6 +570,7 @@
                       placeholder="Enter bottom Silk/LEGEND details"
                       name="ds-bottom-silk-legend-text-input"
                       id="ds-bottom-silk-legend-text-input"
+                      required
                     />
                   </div>
 
@@ -578,13 +580,15 @@
                     style="display: none"
                   >
                     <label for="silk-legend-file-input" class="form-label">
-                      Upload Bottom Silk/LEGEND File
+                      Upload Bottom Silk LEGEND File
+                      <span class="text-danger">*</span>
                     </label>
                     <input
                       type="file"
                       class="form-control"
                       name="ds-bottom-silk-legend-file-input"
                       id="ds-bottom-silk-legend-file-input"
+                      required
                     />
                   </div>
 
@@ -594,13 +598,12 @@
                       for="solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      Bottom SOLDER/MASK Layer Text
+                      Bottom SOLDER MASK Layer Information
                     </label>
-                    <span class="text-danger">*</span>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter Bottom SOLDER/MASK Layer Text"
+                      placeholder="Enter Bottom SOLDER MASK Layer Text"
                       name="ds-bottom-solder-mask-layer-text-input"
                       id="ds-bottom-solder-mask-layer-text-input"
                     />
@@ -612,7 +615,7 @@
                       for="solder-mask-layer-file-input"
                       class="form-label"
                     >
-                      Bottom SOLDER/MASK Layer File
+                      Bottom SOLDER MASK Layer Information File
                     </label>
                     <input
                       type="file"
@@ -625,12 +628,12 @@
                   <!-- COPPER LAYER -->
                   <div class="col">
                     <label for="copper-layer-text-input" class="form-label">
-                      BOTTOM COPPER LAYER
+                      BOTTOM Copper Layer Information
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="COPPER LAYER Text"
+                      placeholder="COPPER Layer Text"
                       name="copper-layer-text-input"
                       id="copper-layer-text-input"
                     />
@@ -639,7 +642,7 @@
                   <!-- COPPER LAYER File -->
                   <div class="col">
                     <label for="copper-layer-file-input" class="form-label">
-                      BOTTOM COPPER LAYER File
+                      BOTTOM COPPER Layer Information File
                     </label>
                     <input
                       type="file"
@@ -763,7 +766,7 @@
                       <div class="input-group">
                         <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
                         <input type="file" class="form-control" name="file-attachment-file" id="cam-file-input"
-                          required="">
+                          required>
                       </div>
                     </div>
                   </div>
@@ -833,18 +836,20 @@
                     </div>
                   </div>
                   </div>
+
                   <!-- Design Relating Notes/Queries -->
                   <div class="col">
                     <label
                       for="design-relating-notes-input"
                       class="form-label mb-2"
                     >
-                      ANY DESIGN RELATING NOTE/QUERIES
+                      Any Design Relating Note/Queries
+                      <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                       <select
-                        name="panelization-required"
-                        id="panelization-required-input"
+                        name="any-design-relating"
+                        id="any-design-relating-input"
                         class="form-select"
                         required
                       >
@@ -853,36 +858,41 @@
                       </select>
                     </div>
                   </div>
-                  <!-- SOLDER/MASK LAYER -->
+
+                  <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS -->
                   <div class="col">
                     <label
-                      for="solder-mask-layer-text-input"
+                      for="any-design-relating-input"
                       class="form-label"
                     >
-                      ANY DESIGN RELATING NOTE/QUERIES DETAILS
+                      Any Design Relating Note/Queries Details
+                      <span class="text-danger">*</span>
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="ANY DESIGN RELATING NOTE/QUERIES DETAILS"
-                      name="solder-mask-layer-text-input"
-                      id="solder-mask-layer-text-input"
+                      placeholder="Any Design Relating Note/Queries Details"
+                      name="any-design-relating-input-details"
+                      id="design-relating-input-details"
+                      required
                     />
                   </div>
 
-                  <!-- SOLDER/MASK LAYER File -->
+                  <!-- ANY DESIGN RELATING NOTE/QUERIES File -->
                   <div class="col">
                     <label
-                      for="solder-mask-layer-file-input"
+                      for="any-design-relating-input-file"
                       class="form-label"
                     >
-                      ANY DESIGN RELATING NOTE/QUERIES File
+                      Any Design Relating Note/Queries File
+                      <span class="text-danger">*</span>
                     </label>
                     <input
                       type="file"
                       class="form-control"
-                      name="solder-mask-layer-file-input"
-                      id="solder-mask-layer-file-input"
+                      name="any-design-relating-queries-input"
+                      id="any-design-relating-queries-input-file"
+                      required
                     />
                   </div>
 
