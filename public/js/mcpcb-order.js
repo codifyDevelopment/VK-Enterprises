@@ -79,25 +79,6 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                         />
                     </div>
                 </div>
-                <div class="col other-led-package">
-                    <label
-                        class="form-label mb-2"
-                        for="mcpcb-led-package-2-input"
-                        >LED Package 2
-                    </label>
-                    <div class="input-group">
-                        <i
-                            class="fas fa-file-upload input-group-text"
-                            style="font-size: 1.5rem"
-                        ></i>
-                        <input
-                            type="file"
-                            class="form-control"
-                            name="mcpcb-led-package-2"
-                            id="mcpcb-led-package-2-input"
-                        />
-                    </div>
-                </div>
                 `);
             } else $(".other-led-package").remove();
         });
@@ -204,7 +185,34 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                     <label
                         class="form-label mb-2"
                         for="mcpcb-company-logo-input"
-                        >Silk/Mask For Logo File
+                        >File For Company Logo of Silk/Legend Layer
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                        <i
+                            class="fas fa-file-upload input-group-text"
+                            style="font-size: 1.5rem"
+                        ></i>
+                        <input
+                            type="file"
+                            class="form-control"
+                            name="mcpcb-company-logo"
+                            id="mcpcb-company-logo-input"
+                            required
+                        />
+                    </div>
+                </div>
+                `);
+            else $("#mcpcb-company-logo-input").parent().parent().remove();
+        });
+        $("#mcpcb-solder-layer-print-input").on("change", function () {
+            if (this.value === "company-logo")
+                return $("#mcpcb-solder-layer-print").after(`
+                <div class="col">
+                    <label
+                        class="form-label mb-2"
+                        for="mcpcb-company-logo-input"
+                        >File For Company Logo of Solder Mask Layer
                         <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
