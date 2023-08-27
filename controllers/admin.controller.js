@@ -52,23 +52,23 @@ const verifyUser = async (req, res) => {
         // Update user role
         user.role = role;
         // TODO: Send email to user only in production
-        if (
-            process.env.NODE_ENV === "production" ||
-            process.env.env === "production"
-        ) {
-            const transporter = nodemailer.createTransport(
-                config.get("nodemailer")
-            );
-            const ClientMailOptions = {
-                from: config.get("nodemailer").auth.user,
-                to: email,
-                subject: "Your account has been verified - VK ENTERPRISES",
-                text: `your account is now verified, you can now go to https://vktech.info and login to your account. Thank you for your patience and loyalty. If you have any questions, please contact us at ${config.get(
-                    "adminEmail"
-                )} or 1-800-123-4567.`,
-            };
-            await transporter.sendMail(ClientMailOptions);
-        }
+        // if (
+        //     process.env.NODE_ENV === "production" ||
+        //     process.env.env === "production"
+        // ) {
+        //     const transporter = nodemailer.createTransport(
+        //         config.get("nodemailer")
+        //     );
+        //     const ClientMailOptions = {
+        //         from: config.get("nodemailer").auth.user,
+        //         to: email,
+        //         subject: "Your account has been verified - VK ENTERPRISES",
+        //         text: `your account is now verified, you can now go to https://vktech.info and login to your account. Thank you for your patience and loyalty. If you have any questions, please contact us at ${config.get(
+        //             "adminEmail"
+        //         )} or 1-800-123-4567.`,
+        //     };
+        //     await transporter.sendMail(ClientMailOptions);
+        // }
 
         await user.save();
 
@@ -140,23 +140,23 @@ const addUser = async (req, res) => {
             });
         }
         const password = Math.random().toString(36).slice(-8);
-        if (
-            process.env.NODE_ENV === "production" ||
-            process.env.env === "production"
-        ) {
-            const transporter = nodemailer.createTransport(
-                config.get("nodemailer")
-            );
-            const ClientMailOptions = {
-                from: config.get("nodemailer").auth.user,
-                to: email,
-                subject: "Your account has been created - VK ENTERPRISES",
-                text: `your account has been created, you can now go to https://vktech.info and login to your account. Your password is ${password}. Thank you for your patience and loyalty. If you have any questions, please contact us at ${config.get(
-                    "adminEmail"
-                )} or 1-800-123-4567.`,
-            };
-            await transporter.sendMail(ClientMailOptions);
-        }
+        // if (
+        //     process.env.NODE_ENV === "production" ||
+        //     process.env.env === "production"
+        // ) {
+        //     const transporter = nodemailer.createTransport(
+        //         config.get("nodemailer")
+        //     );
+        //     const ClientMailOptions = {
+        //         from: config.get("nodemailer").auth.user,
+        //         to: email,
+        //         subject: "Your account has been created - VK ENTERPRISES",
+        //         text: `your account has been created, you can now go to https://vktech.info and login to your account. Your password is ${password}. Thank you for your patience and loyalty. If you have any questions, please contact us at ${config.get(
+        //             "adminEmail"
+        //         )} or 1-800-123-4567.`,
+        //     };
+        //     await transporter.sendMail(ClientMailOptions);
+        // }
         await User.create({
             email,
             password,

@@ -9,11 +9,12 @@
         }
     },
     "db": {
-        "database": "vktechin_vkenterprise",
-        "username": "vktechin_admin",
-        "password": "codify@123",
-        "host": "localhost",
-        "dialect": "mariadb"
+        "database": "vk-enterprise",
+        "username": "root",
+        "password": "4?mEq{}'KaDzYv{l",
+        "host": "35.244.30.136",
+        "dialect": "mysql",
+        "connection_name": "virtual-firefly-394816:asia-south1:vk-enterprise"
     },
     "adminEmail": "admin@vktech.info"
 }

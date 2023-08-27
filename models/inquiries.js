@@ -38,7 +38,7 @@ const Inquiries = db.define(
         //     replyAt: "date"
         // }]
         reply: {
-            type: DataTypes.TEXT("long"),
+            type: DataTypes.STRING,
             allowNull: true,
             defaultValue: "[]",
             get() {

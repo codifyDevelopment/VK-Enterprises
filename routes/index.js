@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const User = require("../models/user");
 const isAdmin = require("../middleware/isAdmin");
-const stripe = require("stripe")(config.get("strip_secret_key"));
 
 var router = express.Router();
 
@@ -121,15 +120,15 @@ router.get("/orders", isUserAuthenticated, async (req, res, next) => {
 
 // payment route
 router.get("/payment", isUserAuthenticated, async (req, res, next) => {
-  if (req.user.role === "admin") {
-    return res.sendFile("orders.html", {
-      root: "public/views/admin",
-    });
-  } else {
-    return res.sendFile("user-payments.html", {
-      root: "public/views/users",
-    });
-  }
+    if (req.user.role === "admin") {
+        return res.sendFile("orders.html", {
+            root: "public/views/admin",
+        });
+    } else {
+        return res.sendFile("user-payments.html", {
+            root: "public/views/users",
+        });
+    }
     if (req.user.role === "admin") {
         return res.sendFile("orders.html", {
             root: "public/views/admin",
@@ -185,7 +184,6 @@ router.get("/inquiries", isUserAuthenticated, async (req, res, next) => {
     }
 });
 
-
 router.get(
     "/new-order/:serviceId",
     isUserAuthenticated,
@@ -216,7 +214,6 @@ router.get("/redirect", async (req, res, next) => {
 });
 
 module.exports = router;
-
 
 //---------------------- profile---------------------------
 

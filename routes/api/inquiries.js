@@ -55,18 +55,18 @@ router.post("/create-inquiry", isUserAuthenticated, async (req, res) => {
 
     try {
         if (req.user.role !== "admin") {
-            const transporter = nodemailer.createTransport(
-                config.get("nodemailer")
-            );
-            const AdminMailOptions = {
-                from: config.get("nodemailer").auth.user,
-                to: config.get("adminEmail"),
-                subject: "New inquiry created",
-                text: `A new inquiry has been created by ${req.user.email}. Please check the admin panel for more details. Thank you!`,
-            };
-            (process.env.NODE_ENV === "production" ||
-                process.env.env === "production") &&
-                (await transporter.sendMail(AdminMailOptions));
+            // const transporter = nodemailer.createTransport(
+            //     config.get("nodemailer")
+            // );
+            // const AdminMailOptions = {
+            //     from: config.get("nodemailer").auth.user,
+            //     to: config.get("adminEmail"),
+            //     subject: "New inquiry created",
+            //     text: `A new inquiry has been created by ${req.user.email}. Please check the admin panel for more details. Thank you!`,
+            // };
+            // (process.env.NODE_ENV === "production" ||
+            //     process.env.env === "production") &&
+            //     (await transporter.sendMail(AdminMailOptions));
             await Notifications.create({
                 notificationFor: config.get("adminEmail"),
                 notificationText: `A new inquiry has been created by ${req.user.email}`,
@@ -160,18 +160,18 @@ router.post("/close-inquiry", isUserAuthenticated, async (req, res) => {
         ) {
             if (req.user.role === "admin") {
                 // send user a mail that the inquiry has been closed
-                const transporter = nodemailer.createTransport(
-                    config.get("nodemailer")
-                );
-                const UserMailOptions = {
-                    from: config.get("nodemailer").auth.user,
-                    to: inquiry.createdBy,
-                    subject: "Inquiry closed",
-                    text: `Your inquiry has been closed by the admin. Please check your dashboard for more details. If you have any further queries, please create a new inquiry. Thank you!`,
-                };
-                (process.env.NODE_ENV === "production" ||
-                    process.env.env === "production") &&
-                    (await transporter.sendMail(UserMailOptions));
+                // const transporter = nodemailer.createTransport(
+                //     config.get("nodemailer")
+                // );
+                // const UserMailOptions = {
+                //     from: config.get("nodemailer").auth.user,
+                //     to: inquiry.createdBy,
+                //     subject: "Inquiry closed",
+                //     text: `Your inquiry has been closed by the admin. Please check your dashboard for more details. If you have any further queries, please create a new inquiry. Thank you!`,
+                // };
+                // (process.env.NODE_ENV === "production" ||
+                //     process.env.env === "production") &&
+                //     (await transporter.sendMail(UserMailOptions));
                 await Notifications.create({
                     notificationFor: inquiry.createdBy,
                     notificationText: `Your inquiry has been closed by the admin`,
@@ -224,36 +224,36 @@ router.post("/reply", isUserAuthenticated, async (req, res) => {
             });
         }
         if (req.user.role === "admin") {
-            const transporter = nodemailer.createTransport(
-                config.get("nodemailer")
-            );
-            const userMailOptions = {
-                from: config.get("nodemailer").auth.user,
-                to: inquiry.createdBy,
-                subject: "Reply to your inquiry",
-                text: `A reply has been sent to your inquiry. Please check the dashboard for more details. Thank you!`,
-            };
-            (process.env.NODE_ENV === "production" ||
-                process.env.env === "production") &&
-                (await transporter.sendMail(userMailOptions));
+            // const transporter = nodemailer.createTransport(
+            //     config.get("nodemailer")
+            // );
+            // const userMailOptions = {
+            //     from: config.get("nodemailer").auth.user,
+            //     to: inquiry.createdBy,
+            //     subject: "Reply to your inquiry",
+            //     text: `A reply has been sent to your inquiry. Please check the dashboard for more details. Thank you!`,
+            // };
+            // (process.env.NODE_ENV === "production" ||
+            //     process.env.env === "production") &&
+            //     (await transporter.sendMail(userMailOptions));
             await Notifications.create({
                 notificationFor: inquiry.createdBy,
                 notificationText: `A reply has been sent to your inquiry`,
                 type: "inquiry",
             });
         } else {
-            const transporter = nodemailer.createTransport(
-                config.get("nodemailer")
-            );
-            const AdminMailOptions = {
-                from: config.get("nodemailer").auth.user,
-                to: config.get("adminEmail"),
-                subject: "Reply to an inquiry",
-                text: `A reply has been sent to an inquiry. Please check the admin panel for more details. Thank you!`,
-            };
-            (process.env.NODE_ENV === "production" ||
-                process.env.env === "production") &&
-                (await transporter.sendMail(AdminMailOptions));
+            // const transporter = nodemailer.createTransport(
+            //     config.get("nodemailer")
+            // );
+            // const AdminMailOptions = {
+            //     from: config.get("nodemailer").auth.user,
+            //     to: config.get("adminEmail"),
+            //     subject: "Reply to an inquiry",
+            //     text: `A reply has been sent to an inquiry. Please check the admin panel for more details. Thank you!`,
+            // };
+            // (process.env.NODE_ENV === "production" ||
+            //     process.env.env === "production") &&
+            //     (await transporter.sendMail(AdminMailOptions));
             await Notifications.create({
                 notificationFor: config.get("adminEmail"),
                 notificationText: `A reply has been sent to an inquiry`,

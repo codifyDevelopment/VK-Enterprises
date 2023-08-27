@@ -9,6 +9,9 @@ const sequelize = new Sequelize(
         host: config.get("db.host"),
         dialect: config.get("db.dialect"),
         logging: false,
+        // dialectOptions: {
+        //     socketPath: `/cloudsql/${config.get("db.connection_name")}`,
+        // },
     }
 );
 

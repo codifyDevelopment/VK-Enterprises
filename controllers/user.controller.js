@@ -26,31 +26,31 @@ const registerController = async (req, res, next) => {
                 message: "User already exists",
             });
         }
-        if (
-            process.env.NODE_ENV === "production" ||
-            process.env.env === "production"
-        ) {
-            const transporter = nodemailer.createTransport(
-                config.get("nodemailer")
-            );
-            const ClientMailOptions = {
-                from: config.get("nodemailer").auth.user,
-                to: email,
-                subject:
-                    "We're in the process of verifying your account. Sit back and relax for a bit!",
-                text: `You're one step closer! You've created an account with us, but we need to verify your account and identity. It may take up to 24 hours, but we'll get back to you as soon as possible. Thank you for your patience and loyalty. If you have any questions, please contact us at ${config.get(
-                    "adminEmail"
-                )} or 1-800-123-4567.`,
-            };
-            await transporter.sendMail(ClientMailOptions);
-            const AdminMailOptions = {
-                from: config.get("nodemailer").auth.user,
-                to: config.get("adminEmail"),
-                subject: "New user registered",
-                text: `A new user has registered with the email ${email}. Please verify their account and identity. Thank you!`,
-            };
-            await transporter.sendMail(AdminMailOptions);
-        }
+        // if (
+        //     process.env.NODE_ENV === "production" ||
+        //     process.env.env === "production"
+        // ) {
+        //     const transporter = nodemailer.createTransport(
+        //         config.get("nodemailer")
+        //     );
+        //     const ClientMailOptions = {
+        //         from: config.get("nodemailer").auth.user,
+        //         to: email,
+        //         subject:
+        //             "We're in the process of verifying your account. Sit back and relax for a bit!",
+        //         text: `You're one step closer! You've created an account with us, but we need to verify your account and identity. It may take up to 24 hours, but we'll get back to you as soon as possible. Thank you for your patience and loyalty. If you have any questions, please contact us at ${config.get(
+        //             "adminEmail"
+        //         )} or 1-800-123-4567.`,
+        //     };
+        //     await transporter.sendMail(ClientMailOptions);
+        //     const AdminMailOptions = {
+        //         from: config.get("nodemailer").auth.user,
+        //         to: config.get("adminEmail"),
+        //         subject: "New user registered",
+        //         text: `A new user has registered with the email ${email}. Please verify their account and identity. Thank you!`,
+        //     };
+        //     await transporter.sendMail(AdminMailOptions);
+        // }
         const user = await User.create({
             email,
             password,
