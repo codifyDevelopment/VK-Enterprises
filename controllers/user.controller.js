@@ -126,6 +126,23 @@ const loginController = async (req, res, next) => {
     }
 };
 
+const userCount = async (req, res, next) => {
+    // console.log(req.body);
+    try {
+        const user = await User.findAll();
+        return res.status(200).json({
+            success: true,
+            data: user.length,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+            success: false,
+            error: "Server Error",
+        });
+    }
+};
+
 const logoutController = async (req, res, next) => {
     res.clearCookie("token");
     return res.status(200).json({
@@ -138,4 +155,5 @@ module.exports = {
     registerController,
     loginController,
     logoutController,
+    userCount
 };
