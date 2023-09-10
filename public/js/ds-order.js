@@ -131,6 +131,13 @@ const dsNewOrderFormChangeHandler = async function () {
                 $(".ds-bottom-silk-legend-field").hide(); // Hide the picture field
             }
         });
+        $("#ds-any-design-relating-input").on("change", function () {
+            if (this.value === "yes") {
+                $(".ds-any-design-relating-field").show(); // Show the picture field
+            } else {
+                $(".ds-any-design-relating-field").hide(); // Hide the picture field
+            }
+        });
 
 
 

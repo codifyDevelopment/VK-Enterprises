@@ -856,7 +856,7 @@
                 <!-- Design Relating Notes/Queries -->
                 <div class="col">
                   <label
-                    for="design-relating-notes-input"
+                    for="ms-any-design-relating-input"
                     class="form-label mb-2"
                   >
                     Any Design Relating Note/Queries
@@ -864,21 +864,24 @@
                   </label>
                   <div class="input-group">
                     <select
-                      name="any-design-relating"
-                      id="any-design-relating-input"
+                      name="ms-any-design-relating"
+                      id="ms-any-design-relating-input"
                       class="form-select"
                       required
                     >
-                      <option value="require">Yes</option>
-                      <option value="not-required">No</option>
+                    <option value="" disabled selected>
+                      Select an option
+                    </option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
                     </select>
                   </div>
                 </div>
 
-                <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS -->
-                <div class="col">
+                <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS  -->
+                <div class="col ms-any-design-relating-field"  style="display: none">
                   <label
-                    for="any-design-relating-input"
+                    for="msany-design-relating-input"
                     class="form-label"
                   >
                     Any Design Relating Note/Queries Details
@@ -888,14 +891,14 @@
                     type="text"
                     class="form-control"
                     placeholder="Any Design Relating Note/Queries Details"
-                    name="any-design-relating-input-details"
-                    id="design-relating-input-details"
+                    name="ms-any-design-relating-input-details"
+                    id="ms-design-relating-input-details"
                     required
                   />
                 </div>
 
                 <!-- ANY DESIGN RELATING NOTE/QUERIES File -->
-                <div class="col">
+                <div class="col ms-any-design-relating-field"  style="display: none">
                   <label
                     for="any-design-relating-input-file"
                     class="form-label"
@@ -906,8 +909,8 @@
                   <input
                     type="file"
                     class="form-control"
-                    name="any-design-relating-queries-input"
-                    id="any-design-relating-queries-input-file"
+                    name="ms-any-design-relating-queries-input"
+                    id="ms-any-design-relating-queries-input-file"
                     required
                   />
                 </div>

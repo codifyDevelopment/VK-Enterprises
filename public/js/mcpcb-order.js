@@ -336,11 +336,20 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                 $("#mcpcb-sample-old-file-input-upload").hide();
             }
         });
+        
         $("#mcpcb-sample-body-input").on("change", function () {
             if (this.value === "yes") {
                 $("#mcpcb-picture-field").show();
             } else {
                 $("#mcpcb-picture-field").hide();
+            }
+        });
+
+        $("#mcpcb-any-design-relating-input").on("change", function () {
+            if (this.value === "yes") {
+                $(".mcpcb-any-design-relating-field").show();
+            } else {
+                $(".mcpcb-any-design-relating-field").hide();
             }
         });
 

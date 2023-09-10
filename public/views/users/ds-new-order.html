@@ -840,7 +840,7 @@
                   <!-- Design Relating Notes/Queries -->
                   <div class="col">
                     <label
-                      for="design-relating-notes-input"
+                      for="ds-any-design-relating-input"
                       class="form-label mb-2"
                     >
                       Any Design Relating Note/Queries
@@ -848,21 +848,24 @@
                     </label>
                     <div class="input-group">
                       <select
-                        name="any-design-relating"
-                        id="any-design-relating-input"
+                        name="ds-any-design-relating"
+                        id="ds-any-design-relating-input"
                         class="form-select"
                         required
                       >
-                        <option value="require">Yes</option>
-                        <option value="not-required">No</option>
+                      <option value="" disabled selected>
+                        Select an option
+                      </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
                       </select>
                     </div>
                   </div>
 
                   <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS -->
-                  <div class="col">
+                  <div class="col ds-any-design-relating-field" style="display: none">
                     <label
-                      for="any-design-relating-input"
+                      for="ds-any-design-relating-input"
                       class="form-label"
                     >
                       Any Design Relating Note/Queries Details
@@ -872,16 +875,16 @@
                       type="text"
                       class="form-control"
                       placeholder="Any Design Relating Note/Queries Details"
-                      name="any-design-relating-input-details"
-                      id="design-relating-input-details"
+                      name="ds-any-design-relating-input-details"
+                      id="ds-design-relating-input-details"
                       required
                     />
                   </div>
 
                   <!-- ANY DESIGN RELATING NOTE/QUERIES File -->
-                  <div class="col">
+                  <div class="col ds-any-design-relating-field" style="display: none">
                     <label
-                      for="any-design-relating-input-file"
+                      for="ds-any-design-relating-input-file"
                       class="form-label"
                     >
                       Any Design Relating Note/Queries File
@@ -890,8 +893,8 @@
                     <input
                       type="file"
                       class="form-control"
-                      name="any-design-relating-queries-input"
-                      id="any-design-relating-queries-input-file"
+                      name="ds-any-design-relating-queries-input"
+                      id="ds-any-design-relating-queries-input-file"
                       required
                     />
                   </div>

@@ -141,13 +141,21 @@ const mcpcbNewOrderFormChangeHandler = async function () {
             }
         });
         $("#bom-text-div").hide();
+
         $("#relatedTextOption-bom").on("change", function() {
             if ($(this).val() === "yes") {
                 $("#bom-text-div").show();
             } else {
                 $("#bom-text-div").hide();
             }
+        });  $("#ms-any-design-relating-input").on("change", function() {
+            if ($(this).val() === "yes") {
+                $(".ms-any-design-relating-field").show();
+            } else {
+                $(".ms-any-design-relating-field").hide();
+            }
         });
+      
 
 
 
