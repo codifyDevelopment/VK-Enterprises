@@ -1,611 +1,904 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Order - VK Enterprise</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
+    <link rel="stylesheet" href="../../css/form.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>New Order - VK Enterprise</title>
-  <link rel="stylesheet" href="../../css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
-  <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
-  <link rel="stylesheet" href="../../css/form.css">
-</head>
-
-<body>
-  <nav class="navbar bg-white border-bottom dashboard_header">
-    <div class="container-fluid">
-      <div class="d-flex align-items-center navbar-header">
-        <button class="menu-icon" id="menu-toggler">
-          <i class="fa-solid fa-bars text-black text-secondary"></i>
-        </button>
-        <a href="/" class="navbar-brand">
-          <img src="../img/logo.svg" alt="logo" class="logo" height="35" />
-        </a>
-      </div>
-      <div class="d-flex align-items-center justify-content-center gap-3">
-        <div class="">
-          <button class="btn notification-icon" data-bs-toggle="dropdown" aria-expanded="false"
-            onclick="markNotificationAsRead()">
-            <i class="fa-solid fa-bell text-black"></i>
-            <span class="badge badge-danger bg-danger" id="notification-count">0</span>
+  <body>
+    <nav class="navbar bg-white border-bottom dashboard_header">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center navbar-header">
+          <button class="menu-icon" id="menu-toggler">
+            <i class="fa-solid fa-bars text-black text-secondary"></i>
           </button>
-          <ul class="dropdown-menu" id="notifications">
-            <!-- <li class="border-bottom">
+          <a href="/" class="navbar-brand">
+            <img src="../img/logo.svg" alt="logo" class="logo" height="35" />
+          </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-center gap-3">
+          <div class="">
+            <button
+              class="btn notification-icon"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              onclick="markNotificationAsRead()"
+            >
+              <i class="fa-solid fa-bell text-black"></i>
+              <span class="badge badge-danger bg-danger" id="notification-count"
+                >0</span
+              >
+            </button>
+            <ul class="dropdown-menu" id="notifications">
+              <!-- <li class="border-bottom">
                                 <a class="dropdown-item text-wrap" href="#"
                                     >Action</a
                                 >
                             </li> -->
-          </ul>
+            </ul>
+          </div>
+          <button
+            style="width: 30px; height: 30px"
+            class="btn bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center"
+            id="profilebutton"
+          >
+            <i class="fa-solid fa-user text-black"></i>
+          </button>
         </div>
-        <button style="width: 30px; height: 30px"
-          class="btn bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center" id="profilebutton">
-          <i class="fa-solid fa-user text-black"></i>
+      </div>
+    </nav>
+    <!-- <div class="bashboard_main"> -->
+    <!-- sidebar -->
+    <div
+      class="bg-white border-end d-flex flex-column justify-content-between align-items-center dashboard_sidebar"
+      id="menu"
+    >
+      <ul>
+        <li>
+          <a href="/dashboard">
+            <i class="fa-solid fa-house"></i>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/services">
+            <i class="fa-solid fa-toolbox"></i>
+            Services
+          </a>
+        </li>
+        <li>
+          <a href="/orders">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Orders
+          </a>
+        </li>
+        <li>
+          <a href="/transactions">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            Transactions
+          </a>
+        </li>
+        <li>
+          <a href="/inquiries">
+            <i class="fa-solid fa-circle-question"></i>
+            Inquiries
+          </a>
+        </li>
+      </ul>
+      <div class="logout-btn">
+        <button onclick="logout(event)">
+          <i class="fa-solid fa-sign-out"></i>
+          Logout
         </button>
       </div>
     </div>
-  </nav>
-  <!-- <div class="bashboard_main"> -->
-  <!-- sidebar -->
-  <div class="bg-white border-end d-flex flex-column justify-content-between align-items-center dashboard_sidebar"
-    id="menu">
-    <ul>
-      <li>
-        <a href="/dashboard">
-          <i class="fa-solid fa-house"></i>
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="/services">
-          <i class="fa-solid fa-toolbox"></i>
-          Services
-        </a>
-      </li>
-      <li>
-        <a href="/orders">
-          <i class="fa-solid fa-cart-shopping"></i>
-          Orders
-        </a>
-      </li>
-      <li>
-        <a href="/transactions">
-          <i class="fa-solid fa-money-bill-transfer"></i>
-          Transactions
-        </a>
-      </li>
-      <li>
-        <a href="/inquiries">
-          <i class="fa-solid fa-circle-question"></i>
-          Inquiries
-        </a>
-      </li>
-    </ul>
-    <div class="logout-btn">
-      <button onclick="logout(event)">
-        <i class="fa-solid fa-sign-out"></i>
-        Logout
-      </button>
-    </div>
-  </div>
-  <!-- main content -->
-  <div class="dashboard_content">
-    <div class="container new-order-form">
-      <form class="row row-cols-1 row-cols-lg-3 g-2 w-100 mb-4">
-        <div class="col col-lg-8 pe-lg-4">
-          <h3 class="m-0 mb-3">Enter Order Details</h3>
-          <p>
-            (<span class="text-danger">*</span>) marked fields are required
-          </p>
+    <!-- main content -->
+    <div class="dashboard_content">
+      <div class="container new-order-form">
+        <form class="row row-cols-1 row-cols-lg-3 g-2 w-100 mb-4">
+          <div class="col col-lg-8 pe-lg-4">
+            <h3 class="m-0 mb-3">Enter Order Details</h3>
+            <p>
+              (<span class="text-danger">*</span>) marked fields are required
+            </p>
 
-          <!-- ! form fields -->
-          <div class="row row-cols-1 row-cols-md-2 mb-2 g-3">
-            <div class="col">
-              <label class="form-label mb-2" for="pcb-name-input">PCB Name
-                <span class="text-danger">*</span>
-              </label>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter PCB Name" name="pcb-name" id="pcb-name-input"
-                  required autofocus />
-              </div>
-            </div>
-            <div class="col">
-              <label class="form-label mb-2" for="pcb-type-input">PCB Type
-                <span class="text-danger">*</span>
-              </label>
-              <div class="input-group">
-                <select name="pcb-type" id="pcb-type-input" class="form-select" required disabled>
-                  <option value="MCPCB">LEDs / MCPCBs</option>
-                </select>
-              </div>
-            </div>
-
-
-            <div class="col col-md-12" id="pcb-size">
-              <p class="form-label mb-2">PCB Size</p>
-              <div class="row row-cols-1 row-cols-md-2 g-3">
-                <div class="col">
-                  <input type="radio" class="btn-check" id="pcb-size-known" name="pcb-size" autocomplete="off"
-                    value="known" />
-                  <label class="btn btn-outline-primary w-100" for="pcb-size-known">
-                    known
-                  </label>
-                </div>
-                <div class="col">
-                  <input type="radio" class="btn-check" id="pcb-size-unknown" name="pcb-size" value="unknown"
-                    autocomplete="off" />
-                  <label class="btn btn-outline-primary w-100" for="pcb-size-unknown">
-                    As Per Yours
-                  </label>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col col-md-12" id="pcb-type-title">
-              <h5 class="text-center text-secondary">
-                You are filling LEDs / MCPCBs order details
-              </h5>
-            </div>
-            <div class="col col-md-12" id="mcpcb-details">
-              <div class="row row-cols-1 row-cols-md-2 g-3">
-
-                <div class="col">
-                  <label for="mcpcb-old-pcb-name-input" class="form-label mb-2">
-                    Any Old/Reference/Dimension File
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <select name="mcpcb-sample-old-file" id="mcpcb-sample-old-file-input" class="form-select" required>
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div id="mcpcb-sample-old-file-input-upload" style="display: none">
-                  <label for="formFile" class="form-label">Upload File</label>
-                  <input class="form-control" type="file" />
-                </div>
-
-                <div class="col">
-                  <label for="mcpcb-sample-body-input" class="form-label mb-2">
-                    Available Any Sample / Body
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <select name="mcpcb-sample-body" id="mcpcb-sample-body-input" class="form-select" required>
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div id="mcpcb-picture-field" style="display: none">
-                  <div class="col">
-                    <label for="mcpcb-picture-input" class="form-label mb-2">Take a Picture</label>
-                    <div class="input-group">
-                      <input type="file" accept="image/*" capture="camera" class="form-control" name="mcpcb-picture"
-                        id="mcpcb-picture-input" required />
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col" id="mcpcb-led-package">
-                  <label for="mcpcb-led-package-input" class="form-label mb-2">
-                    LED Package
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <select name="mcpcb-led-package" id="mcpcb-led-package-input" class="form-select" required>
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <option value="2828">2828</option>
-                      <option value="2835 SAME PAD">2835 SAME PAD</option>
-                      <option value="3030">3030</option>
-                      <option value="5050">5050</option>
-                      <option value="2835/3030 MIX PAD">
-                        2835/3030 MIX PAD
-                      </option>
-                      <option value="other led">
-                        Other LED (Data Sheet)
-                      </option>
-                    </select>
-                  </div>
-                </div>
-                
-                <div class="col">
-                  <label for="mcpcb-total-leds-input" class="form-label mb-2">
-                    Total Number Of LED's
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Enter Total LEDs" name="mcpcb-total-leds"
-                      id="mcpcb-total-leds-input" required />
-                  </div>
-                </div>
-
-                <div class="col">
-                  <label for="mcpcb-design-watts-input" class="form-label mb-2">
-                    Design Watts
-                  </label>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Enter Design Watts" name="mcpcb-design-watts"
-                      id="mcpcb-design-watts-input" />
-                  </div>
-                </div>
-
-                <div class="col" id="mcpcb-connections">
-                  <label for="mcpcb-connections-input" class="form-label mb-2">
-                    Design Connections Series
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Series" name="mcpcb-series-connection"
-                      id="series-connection" />
-                  </div>
-                </div>
-
-                <div class="col" id="mcpcb-connections">
-                  <label for="mcpcb-connections-input" class="form-label mb-2">
-                    Design Connections Parllel
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group" style="margin-top: 5px;">
-                    <input type="number" class="form-control" placeholder="Parallel" name="mcpcb-parallel-connection"
-                      id="parallel-connection" />
-                  </div>
-                </div>
-
-                <div class="col">
-                  <label for="mcpcb-using-driver-no-input" class="form-label mb-2">
-                    Using Driver No.
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Enter Using Driver No."
-                      name="mcpcb-using-driver-no" id="mcpcb-using-driver-no-input" required />
-                  </div>
-                </div>
-
-                <div class="col" id="mcpcb-led-placement">
-                  <label for="mcpcb-led-placement-input" class="form-label mb-2">
-                    Led Placement
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <select name="led-placement" id="mcpcb-led-placement-input" class="form-select" required>
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <option value="round">Round</option>
-                      <option value="vertical">
-                        Vertical (Same Direction)
-                      </option>
-                      <option value="lens-file">Lens</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col" id="mcpcb-silk-layer-print">
-                  <label for="mcpcb-silk-layer-print-input" class="form-label mb-2">
-                    Silk/Legend Layer
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <select name="mcpcb-silk-layer-print" id="mcpcb-silk-layer-print-input" class="form-select"
-                      required>
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <!-- Not Require, PCB Name, Powered By OSRAM, Make In India, Lion Logo, CE/RoHS, Company Logo -->
-                      <option value="not-require">Not Require</option>
-                      <option value="pcb-name">PCB Name</option>
-                      <option value="powered-by-osram">Powered By OSRAM</option>
-                      <option value="make-in-india">Make In India</option>
-                      <option value="lion-logo">Lion Logo</option>
-                      <option value="ce-rohs">CE/RoHS</option>
-                      <option value="company-logo">Company Logo</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col" id="mcpcb-solder-layer-print">
-                  <label for="mcpcb-solder-layer-print-input" class="form-label mb-2">
-                    Solder/Mask Layer
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <select name="mcpcb-solder-layer-print" id="mcpcb-solder-layer-print-input" class="form-select"
-                      required>
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <!-- Not Require, PCB Name, Powered By OSRAM, Make In India, Lion Logo, CE/RoHS, Company Logo -->
-                      <option value="not-require">Not Require</option>
-                      <option value="pcb-name">PCB Name</option>
-                      <option value="powered-by-osram">Powered By OSRAM</option>
-                      <option value="make-in-india">Make In India</option>
-                      <option value="lion-logo">Lion Logo</option>
-                      <option value="ce-rohs">CE/RoHS</option>
-                      <option value="company-logo">Company Logo</option>
-                    </select>
-                  </div>
-                </div>
-
-
-                
-                <div class="col">
-                  <label for="mcpcb-total-leds-input" class="form-label mb-2">
-                    For Any Silk Legend Layer Information
-                  </label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Silk Legend Layer Information" name="mcpcb-total-leds"
-                      id="mcpcb-silk-legend-info-text"/>
-                  </div>
-                  <div class="input-group" style="margin-top: 5px;">
-                    <input type="file" class="form-control" name="mcpcb-total-leds"
-                      id="mcpcb-silk-legend-info-file" />
-                  </div>
-                </div>
-
-                <div class="col">
-                  <label for="mcpcb-total-leds-input" class="form-label mb-2">
-                    For Any Solder Mask Layer Information
-                  </label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Solder Mask Layer Information" name="mcpcb-total-leds"
-                      id="mcpcb-solder-mask-info-text"  />
-                  </div>
-                  <div class="input-group" style="margin-top: 5px;">
-                    <input type="file" class="form-control" name="mcpcb-total-leds"
-                      id="mcpcb-solder-mask-info-file" />
-                  </div>
-                </div>
-
-                <div class="col">
-                  <label for="mcpcb-total-leds-input" class="form-label mb-2">
-                    For Any Copper Layer Information
-                  </label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Copper Layer Information" name="mcpcb-total-leds"
-                      id="mcpcb-copper-info-text" />
-                  </div>
-                  <div class="input-group" style="margin-top: 5px;">
-                    <input type="file" class="form-control" name="mcpcb-total-leds"
-                      id="mcpcb-copper-info-file"  />
-                  </div>
-                </div>
-
-                <!-- stencile -->
-                <div class="col col-md-12 switchdiv">
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="StencileFormswitch" >
-                    <label class="form-check-label" for="StencileFormswitch">Required Stencile</label>
-                    <br>
-                    <span class="noteText">Note: Rs. 250 (Minimum Size) will be added.</span>
-                  </div>
-                  <div id="stencile-form" style="display: none;">
-                    <hr>
-                    <div class="col gerber-file-attachment-file mt-3">
-                      <label class="form-label mb-2" for="gerber-file-attachment-file-input">Gerber File Attachment
-                        <span class="text-danger">*</span>
-                      </label>
-                      <div class="input-group">
-                        <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
-                        <input type="file" class="form-control" name="gerber-file-attachment-file"
-                          id="gerber-file-attachment-file-input" required="">
-                      </div>
-                    </div>
-                    <div class="input-group mt-3">
-                      <select name="stencile-form-text" id="stencile-form-text" class="form-select" required>
-                        <option value="" disabled selected>
-                          Select an option
-                        </option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                      </select>
-                    </div>
-                    <div class="input-group mt-2">
-                      <input type="text" class="form-control" placeholder="Enter Text" id="stencile-text" required />
-                    </div>
-                  </div>
-                </div>
-                <!-- CAM/Panelization -->
-                <div class="col col-md-12 switchdiv">
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="CAMPanelizationswitch">
-                    <label class="form-check-label" for="CAMPanelizationswitch">Required CAM/Panelization</label><br>
-                    <span class="noteText">Note: Rs. 250 (Minimum Size) will be added.</span>
-                  </div>
-                  <div id="cam-panellization-div" style="display: none;">
-                    <hr>
-                    <div class="col gerber-file-attachment-file mt-3">
-                      <label class="form-label mb-2" for="gerber-file-attachment-file-input">Gerber File Attachment
-                        <span class="text-danger">*</span>
-                      </label>
-                      <div class="input-group">
-                        <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
-                        <input type="file" class="form-control" name="gerber-file-attachment-file"
-                          id="gerber-file-attachment-file-input" required="">
-                      </div>
-                    </div>
-                    <div class="form-row mt-2">
-                      <label for="panelization">Panelization / Panel Up</label>
-                      <select name="PANELLIZATION /PANEL UP" id="any-related-text-input" class="form-select" required>
-                        <option value="" disabled selected>
-                          Select an option
-                        </option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                      </select>
-                      <div class="row mt-2">
-                        <div class="col-md-3">
-                          <label for="xWidth">X-Width Side</label>
-                          <input type="number" class="form-control" id="xWidth">
-                        </div>
-                        <div class="col-md-3">
-                          <label for="yLength">Y-Length Side</label>
-                          <input type="number" class="form-control" id="yLength">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group mt-3">
-                      <label for="pcbGap">PCB Between Gap / Clearance</label>
-                      <input type="number" class="form-control" id="pcbGap">
-                    </div>
-                    <div class="form-group">
-                      <label for="trackClearance">In PCB Track to Track Clearance</label>
-                      <input type="number" class="form-control" id="trackClearance">
-                    </div>
-                    <div class="form-group">
-                      <label for="relatedText-cam">Any Related Text</label>
-                      <select class="form-control" id="relatedText-cam">
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                      </select>
-                    </div>
-                    <div class="form-group" id="relatedText-cam-div">
-                      <label for="relatedText-cam-longText">Long Text</label>
-                      <input class="form-control" id="relatedText-cam-longText" rows="3" />
-                    </div>
-                    <div class="col file-attachment-file mt-3">
-                      <label class="form-label mb-2" for="cam-file-input">File Upload
-                        <span class="text-danger">*</span>
-                      </label>
-                      <div class="input-group">
-                        <i class="fas fa-file-upload input-group-text" style="font-size: 1.5rem"></i>
-                        <input type="file" class="form-control" name="file-attachment-file" id="cam-file-input"
-                          required="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Bill of Material -->
-                <div class="col col-md-12 switchdiv">
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="bomSwitch">
-                    <label class="form-check-label" for="bomSwitch">Required BOM</label><br>
-                    <span class="noteText">Note: Rs. 450 (Minimum Size) will be added.</span>
-                  </div>
-                  <div id="bom-div" style="display: none;">
-                    <hr>
-                    <!-- PCB Image -->
-                    <div class="form-group mt-3">
-                      <label for="pcbTopImage">Top Side Image Attachment</label>
-                      <input type="file" class="form-control" id="pcbTopImage">
-                    </div>
-
-                    <div class="form-group mt-3">
-                      <label for="pcbBottomImage">Bottom Side Image Attachment</label>
-                      <input type="file" class="form-control" id="pcbBottomImage">
-                    </div>
-
-                    <!-- Layers Type -->
-                    <div class="form-group mt-3">
-                      <label for="layersType">Layers Type in Numbers</label>
-                      <input type="number" class="form-control" id="layersType">
-                    </div>
-
-                    <!-- Any Related Text -->
-                    <div class="form-group mt-3">
-                      <label for="relatedTextOption-bom">Any Related Text*</label>
-                      <select class="form-control" id="relatedTextOption-bom">
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                      </select>
-                    </div>
-
-                    <!-- Long Text -->
-                    <div class="form-group mt-3" id="bom-text-div">
-                      <label for="longText">Long Text</label>
-                      <input class="form-control" id="longText" rows="3" />
-                    </div>
-
-                    <!-- Camera Shot -->
-                    <div class="form-group mt-3">
-                      <label for="cameraShot">Camera Shot</label>
-                      <input type="file" class="form-control" id="cameraShot">
-                      <b class="form-text text-muted">
-                        1) - If Possible Provide Fresh PCB/Old PCB Not Capture Proper Components Value<br>
-                        2) - BOM File Only for Sample Purpose (Not for Quantities)</b>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- ANY DESIGN RELATING NOTE/QUERIES -->
-                <div class="col">
-                  <label
-                    for="design-relating-notes-input"
-                    class="form-label mb-2"
-                  >
-                    Any Design Relating Note/Queries
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="input-group">
-                    <select
-                      name="any-design-relating"
-                      id="any-design-relating-input"
-                      class="form-select"
-                      required
-                    >
-                      <option value="require">Yes</option>
-                      <option value="not-required">No</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS -->
-                <div class="col">
-                  <label
-                    for="any-design-relating-input"
-                    class="form-label"
-                  >
-                    Any Design Relating Note/Queries Details
-                    <span class="text-danger">*</span>
-                  </label>
+            <!-- ! form fields -->
+            <div class="row row-cols-1 row-cols-md-2 mb-2 g-3">
+              <div class="col">
+                <label class="form-label mb-2" for="pcb-name-input"
+                  >PCB Name
+                  <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Any Design Relating Note/Queries Details"
-                    name="any-design-relating-input-details"
-                    id="design-relating-input-details"
+                    placeholder="Enter PCB Name"
+                    name="pcb-name"
+                    id="pcb-name-input"
                     required
+                    autofocus
                   />
                 </div>
-
-                <!-- ANY DESIGN RELATING NOTE/QUERIES File -->
-                <div class="col">
-                  <label
-                    for="solder-mask-layer-file-input"
-                    class="form-label"
+              </div>
+              <div class="col">
+                <label class="form-label mb-2" for="pcb-type-input"
+                  >PCB Type
+                  <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                  <select
+                    name="pcb-type"
+                    id="pcb-type-input"
+                    class="form-select"
+                    required
+                    disabled
                   >
-                    Any Design Relating Note/Queries File
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    name="any-design-relating-queries-input"
-                    id="any-design-relating-queries-input-file"
-                    required
-                  />
+                    <option value="MCPCB">LEDs / MCPCBs</option>
+                  </select>
                 </div>
+              </div>
+
+              <div class="col col-md-12" id="pcb-size">
+                <p class="form-label mb-2">PCB Size</p>
+                <div class="row row-cols-1 row-cols-md-2 g-3">
+                  <div class="col">
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      id="pcb-size-known"
+                      name="pcb-size"
+                      autocomplete="off"
+                      value="known"
+                    />
+                    <label
+                      class="btn btn-outline-primary w-100"
+                      for="pcb-size-known"
+                    >
+                      known
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      id="pcb-size-unknown"
+                      name="pcb-size"
+                      value="unknown"
+                      autocomplete="off"
+                    />
+                    <label
+                      class="btn btn-outline-primary w-100"
+                      for="pcb-size-unknown"
+                    >
+                      As Per Yours
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col-md-12" id="pcb-type-title">
+                <h5 class="text-center text-secondary">
+                  You are filling LEDs / MCPCBs order details
+                </h5>
+              </div>
+              <div class="col col-md-12" id="mcpcb-details">
+                <div class="row row-cols-1 row-cols-md-2 g-3">
+                  <div class="col">
+                    <label
+                      for="mcpcb-old-pcb-name-input"
+                      class="form-label mb-2"
+                    >
+                      Any Old/Reference/Dimension File
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="mcpcb-sample-old-file"
+                        id="mcpcb-sample-old-file-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div
+                    id="mcpcb-sample-old-file-input-upload"
+                    style="display: none"
+                  >
+                    <label for="formFile" class="form-label">Upload File</label>
+                    <input class="form-control" type="file" />
+                  </div>
+
+                  <div class="col">
+                    <label
+                      for="mcpcb-sample-body-input"
+                      class="form-label mb-2"
+                    >
+                      Available Any Sample / Body
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="mcpcb-sample-body"
+                        id="mcpcb-sample-body-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div id="mcpcb-picture-field" style="display: none">
+                    <div class="col">
+                      <label for="mcpcb-picture-input" class="form-label mb-2"
+                        >Take a Picture</label
+                      >
+                      <div class="input-group">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          capture="camera"
+                          class="form-control"
+                          name="mcpcb-picture"
+                          id="mcpcb-picture-input"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col" id="mcpcb-led-package">
+                    <label
+                      for="mcpcb-led-package-input"
+                      class="form-label mb-2"
+                    >
+                      LED Package
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="mcpcb-led-package"
+                        id="mcpcb-led-package-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="2828">2828</option>
+                        <option value="2835 SAME PAD">2835 SAME PAD</option>
+                        <option value="3030">3030</option>
+                        <option value="5050">5050</option>
+                        <option value="2835/3030 MIX PAD">
+                          2835/3030 MIX PAD
+                        </option>
+                        <option value="other led">
+                          Other LED (Data Sheet)
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <label for="mcpcb-total-leds-input" class="form-label mb-2">
+                      Total Number Of LED's
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Enter Total LEDs"
+                        name="mcpcb-total-leds"
+                        id="mcpcb-total-leds-input"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <label
+                      for="mcpcb-design-watts-input"
+                      class="form-label mb-2"
+                    >
+                      Design Watts
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Enter Design Watts"
+                        name="mcpcb-design-watts"
+                        id="mcpcb-design-watts-input"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col" id="mcpcb-connections">
+                    <label
+                      for="mcpcb-connections-input"
+                      class="form-label mb-2"
+                    >
+                      Design Connections Series
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Series"
+                        name="mcpcb-series-connection"
+                        id="series-connection"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col" id="mcpcb-connections">
+                    <label
+                      for="mcpcb-connections-input"
+                      class="form-label mb-2"
+                    >
+                      Design Connections Parllel
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group" style="margin-top: 5px">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Parallel"
+                        name="mcpcb-parallel-connection"
+                        id="parallel-connection"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <label
+                      for="mcpcb-using-driver-no-input"
+                      class="form-label mb-2"
+                    >
+                      Using Driver No.
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Enter Using Driver No."
+                        name="mcpcb-using-driver-no"
+                        id="mcpcb-using-driver-no-input"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col" id="mcpcb-led-placement">
+                    <label
+                      for="mcpcb-led-placement-input"
+                      class="form-label mb-2"
+                    >
+                      Led Placement
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="led-placement"
+                        id="mcpcb-led-placement-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="round">Round</option>
+                        <option value="vertical">
+                          Vertical (Same Direction)
+                        </option>
+                        <option value="lens-file">Lens</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col" id="mcpcb-silk-layer-print">
+                    <label
+                      for="mcpcb-silk-layer-print-input"
+                      class="form-label mb-2"
+                    >
+                      Silk/Legend Layer
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="mcpcb-silk-layer-print"
+                        id="mcpcb-silk-layer-print-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <!-- Not Require, PCB Name, Powered By OSRAM, Make In India, Lion Logo, CE/RoHS, Company Logo -->
+                        <option value="not-require">Not Require</option>
+                        <option value="pcb-name">PCB Name</option>
+                        <option value="powered-by-osram">
+                          Powered By OSRAM
+                        </option>
+                        <option value="make-in-india">Make In India</option>
+                        <option value="lion-logo">Lion Logo</option>
+                        <option value="ce-rohs">CE/RoHS</option>
+                        <option value="company-logo">Company Logo</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col" id="mcpcb-solder-layer-print">
+                    <label
+                      for="mcpcb-solder-layer-print-input"
+                      class="form-label mb-2"
+                    >
+                      Solder/Mask Layer
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="mcpcb-solder-layer-print"
+                        id="mcpcb-solder-layer-print-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <!-- Not Require, PCB Name, Powered By OSRAM, Make In India, Lion Logo, CE/RoHS, Company Logo -->
+                        <option value="not-require">Not Require</option>
+                        <option value="pcb-name">PCB Name</option>
+                        <option value="powered-by-osram">
+                          Powered By OSRAM
+                        </option>
+                        <option value="make-in-india">Make In India</option>
+                        <option value="lion-logo">Lion Logo</option>
+                        <option value="ce-rohs">CE/RoHS</option>
+                        <option value="company-logo">Company Logo</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <label for="mcpcb-total-leds-input" class="form-label mb-2">
+                      For Any Silk Legend Layer Information
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Silk Legend Layer Information"
+                        name="mcpcb-total-leds"
+                        id="mcpcb-silk-legend-info-text"
+                      />
+                    </div>
+                    <div class="input-group" style="margin-top: 5px">
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="mcpcb-total-leds"
+                        id="mcpcb-silk-legend-info-file"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <label for="mcpcb-total-leds-input" class="form-label mb-2">
+                      For Any Solder Mask Layer Information
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Solder Mask Layer Information"
+                        name="mcpcb-total-leds"
+                        id="mcpcb-solder-mask-info-text"
+                      />
+                    </div>
+                    <div class="input-group" style="margin-top: 5px">
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="mcpcb-total-leds"
+                        id="mcpcb-solder-mask-info-file"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <label for="mcpcb-total-leds-input" class="form-label mb-2">
+                      For Any Copper Layer Information
+                    </label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Copper Layer Information"
+                        name="mcpcb-total-leds"
+                        id="mcpcb-copper-info-text"
+                      />
+                    </div>
+                    <div class="input-group" style="margin-top: 5px">
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="mcpcb-total-leds"
+                        id="mcpcb-copper-info-file"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- stencile -->
+                  <div class="col col-md-12 switchdiv">
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="StencileFormswitch"
+                      />
+                      <label class="form-check-label" for="StencileFormswitch"
+                        >Required Stencile</label
+                      >
+                      <br />
+                      <span class="noteText"
+                        >Note: Rs. 250 (Minimum Size) will be added.</span
+                      >
+                    </div>
+                    <div id="stencile-form" style="display: none">
+                      <hr />
+                      <div class="col gerber-file-attachment-file mt-3">
+                        <label
+                          class="form-label mb-2"
+                          for="gerber-file-attachment-file-input"
+                          >Gerber File Attachment
+                          <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                          <i
+                            class="fas fa-file-upload input-group-text"
+                            style="font-size: 1.5rem"
+                          ></i>
+                          <input
+                            type="file"
+                            class="form-control"
+                            name="gerber-file-attachment-file"
+                            id="gerber-file-attachment-file-input"
+                            required=""
+                          />
+                        </div>
+                      </div>
+                      <div class="input-group mt-3">
+                        <select
+                          name="stencile-form-text"
+                          id="stencile-form-text"
+                          class="form-select"
+                          required
+                        >
+                          <option value="" disabled selected>
+                            Select an option
+                          </option>
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
+                      </div>
+                      <div class="input-group mt-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter Text"
+                          id="stencile-text"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAM/Panelization -->
+                  <div class="col col-md-12 switchdiv">
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="CAMPanelizationswitch"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="CAMPanelizationswitch"
+                        >Required CAM/Panelization</label
+                      ><br />
+                      <span class="noteText"
+                        >Note: Rs. 250 (Minimum Size) will be added.</span
+                      >
+                    </div>
+                    <div id="cam-panellization-div" style="display: none">
+                      <hr />
+                      <div class="col gerber-file-attachment-file mt-3">
+                        <label
+                          class="form-label mb-2"
+                          for="gerber-file-attachment-file-input"
+                          >Gerber File Attachment
+                          <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                          <i
+                            class="fas fa-file-upload input-group-text"
+                            style="font-size: 1.5rem"
+                          ></i>
+                          <input
+                            type="file"
+                            class="form-control"
+                            name="gerber-file-attachment-file"
+                            id="gerber-file-attachment-file-input"
+                            required=""
+                          />
+                        </div>
+                      </div>
+                      <div class="form-row mt-2">
+                        <label for="panelization"
+                          >Panelization / Panel Up</label
+                        >
+                        <select
+                          name="PANELLIZATION /PANEL UP"
+                          id="any-related-text-input"
+                          class="form-select"
+                          required
+                        >
+                          <option value="" disabled selected>
+                            Select an option
+                          </option>
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
+                        <div class="row mt-2">
+                          <div class="col-md-3">
+                            <label for="xWidth">X-Width Side</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="xWidth"
+                            />
+                          </div>
+                          <div class="col-md-3">
+                            <label for="yLength">Y-Length Side</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="yLength"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group mt-3">
+                        <label for="pcbGap">PCB Between Gap / Clearance</label>
+                        <input type="number" class="form-control" id="pcbGap" />
+                      </div>
+                      <div class="form-group">
+                        <label for="trackClearance"
+                          >In PCB Track to Track Clearance</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="trackClearance"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="relatedText-cam">Any Related Text</label>
+                        <select class="form-control" id="relatedText-cam">
+                          <option value="" disabled selected>
+                            Select an option
+                          </option>
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
+                      </div>
+                      <div class="form-group" id="relatedText-cam-div">
+                        <label for="relatedText-cam-longText">Long Text</label>
+                        <input
+                          class="form-control"
+                          id="relatedText-cam-longText"
+                          rows="3"
+                        />
+                      </div>
+                      <div class="col file-attachment-file mt-3">
+                        <label class="form-label mb-2" for="cam-file-input"
+                          >File Upload
+                          <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                          <i
+                            class="fas fa-file-upload input-group-text"
+                            style="font-size: 1.5rem"
+                          ></i>
+                          <input
+                            type="file"
+                            class="form-control"
+                            name="file-attachment-file"
+                            id="cam-file-input"
+                            required=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Bill of Material -->
+                  <div class="col col-md-12 switchdiv">
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="bomSwitch"
+                      />
+                      <label class="form-check-label" for="bomSwitch"
+                        >Required BOM</label
+                      ><br />
+                      <span class="noteText"
+                        >Note: Rs. 450 (Minimum Size) will be added.</span
+                      >
+                    </div>
+                    <div id="bom-div" style="display: none">
+                      <hr />
+                      <!-- PCB Image -->
+                      <div class="form-group mt-3">
+                        <label for="pcbTopImage"
+                          >Top Side Image Attachment</label
+                        >
+                        <input
+                          type="file"
+                          class="form-control"
+                          id="pcbTopImage"
+                        />
+                      </div>
+
+                      <div class="form-group mt-3">
+                        <label for="pcbBottomImage"
+                          >Bottom Side Image Attachment</label
+                        >
+                        <input
+                          type="file"
+                          class="form-control"
+                          id="pcbBottomImage"
+                        />
+                      </div>
+
+                      <!-- Layers Type -->
+                      <div class="form-group mt-3">
+                        <label for="layersType">Layers Type in Numbers</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="layersType"
+                        />
+                      </div>
+
+                      <!-- Any Related Text -->
+                      <div class="form-group mt-3">
+                        <label for="relatedTextOption-bom"
+                          >Any Related Text*</label
+                        >
+                        <select class="form-control" id="relatedTextOption-bom">
+                          <option value="" disabled selected>
+                            Select an option
+                          </option>
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
+                      </div>
+
+                      <!-- Long Text -->
+                      <div class="form-group mt-3" id="bom-text-div">
+                        <label for="longText">Long Text</label>
+                        <input class="form-control" id="longText" rows="3" />
+                      </div>
+
+                      <!-- Camera Shot -->
+                      <div class="form-group mt-3">
+                        <label for="cameraShot">Camera Shot</label>
+                        <input
+                          type="file"
+                          class="form-control"
+                          id="cameraShot"
+                        />
+                        <b class="form-text text-muted">
+                          1) - If Possible Provide Fresh PCB/Old PCB Not Capture
+                          Proper Components Value<br />
+                          2) - BOM File Only for Sample Purpose (Not for
+                          Quantities)</b
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ANY DESIGN RELATING NOTE/QUERIES -->
+                  <div class="col">
+                    <label
+                      for="mcpcb-any-design-relating-input"
+                      class="form-label mb-2"
+                    >
+                      Any Design Relating Note/Queries
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <select
+                        name="mcpcb-any-design-relating"
+                        id="mcpcb-any-design-relating-input"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select an option
+                        </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS -->
+                  <div class="col mcpcb-any-design-relating-field" style="display: none">
+                    <label for="any-design-relating-input" class="form-label">
+                      Any Design Relating Note/Queries Details
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Any Design Relating Note/Queries Details"
+                      name="mcpcb-any-design-relating-input-details"
+                      id="mcpcb-design-relating-input-details"
+                      required
+                    />
+                  </div>
+
+                  <!-- ANY DESIGN RELATING NOTE/QUERIES File -->
+                  <div class="col mcpcb-any-design-relating-field" style="display: none">
+                    <label
+                      for="solder-mask-layer-file-input"
+                      class="form-label"
+                    >
+                      Any Design Relating Note/Queries File
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="mcpcb-any-design-relating-queries-input"
+                      id="mcpcb-any-design-relating-queries-input-file"
+                      required
+                    />
+                  </div>
 
                   <!-- Terms and condition -->
                   <div class="col col-md-12">
                     <label for="Terms-and-condition" class="form-label mb-2">
-                      <input type="checkbox" required/>
+                      <input type="checkbox" required />
                       Carefully Once check All Fill Details Before Save. (After
                       Designing A Simple Changes Charge Will Be A Extra(*550Rs.
                       + Depends On Changes Rate)
@@ -615,7 +908,7 @@
 
                   <div class="col col-md-12">
                     <label for="Terms-and-condition" class="form-label mb-2">
-                      <input type="checkbox" required/>
+                      <input type="checkbox" required />
                       All Designs Are For Samples only. Never Work For
                       Quantities. Not Responsible For Quantities. (After No
                       Further Argument Will Be Heard). Also, Check All The
@@ -633,67 +926,81 @@
                       If Urgent/Instaneous it will charged more 3000Rs
                     </label>
                   </div>
-
-
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col h-100 d-flex flex-column justify-content-between p-3 bg-light rounded">
-          <h3 class="text-center">Invoice Section</h3>
-          <hr>
-          <div class="my-5 text-danger">price details will appear here</div>
-          <div class="">
-            <ul class="list-unstyled">
-              <li class="mb-2">
+          <div
+            class="col h-100 d-flex flex-column justify-content-between p-3 bg-light rounded"
+          >
+            <h3 class="text-center">Invoice Section</h3>
+            <hr />
+            <div class="my-5 text-danger">price details will appear here</div>
+            <div class="">
+              <ul class="list-unstyled">
+                <li class="mb-2"></li>
                 <li>
                   <i class="fas fa-check-circle text-success"></i>
                   Please review all the filled details carefully before saving.
                 </li>
                 <li>
                   <i class="fas fa-check-circle text-success"></i>
-                  Please note that if any minor changes are requested after the design has been completed, additional charges may apply.
-                </li>                
-              <li class="mb-2">
-                <i class="fas fa-check-circle text-success"></i>
-                Designs are for samples only and may not work for larger
-                quantities. We are not responsible for quantity issues and
-                cannot entertain arguments once designs are approved and
-                produced.
-              </li>
-              <li class="mb-2">
-                <i class="fas fa-check-circle text-success"></i>
-                Please ensure that you review all designs from your end before
-                proceeding.
-              </li>
-            </ul>
-            <p>
-              Do You Agree With All Above Points?
-              <span class="text-danger">*</span>
-            </p>
-            <input type="checkbox" class="btn-check" id="invoice-verify-all-details-input" required
-              autocomplete="off" />
-            <label class="btn btn-outline-primary w-100" for="invoice-verify-all-details-input" id="acceptTermsLabel">
-              Yes
-            </label>
+                  Please note that if any minor changes are requested after the
+                  design has been completed, additional charges may apply.
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success"></i>
+                  Designs are for samples only and may not work for larger
+                  quantities. We are not responsible for quantity issues and
+                  cannot entertain arguments once designs are approved and
+                  produced.
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success"></i>
+                  Please ensure that you review all designs from your end before
+                  proceeding.
+                </li>
+              </ul>
+              <p>
+                Do You Agree With All Above Points?
+                <span class="text-danger">*</span>
+              </p>
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="invoice-verify-all-details-input"
+                required
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary w-100"
+                for="invoice-verify-all-details-input"
+                id="acceptTermsLabel"
+              >
+                Yes
+              </label>
 
-            <button type="submit" class="btn btn-primary w-100 mt-3" id="placeOrderButton" disabled>
-              Place Order
-            </button>
+              <button
+                type="submit"
+                class="btn btn-primary w-100 mt-3"
+                id="placeOrderButton"
+                disabled
+              >
+                Place Order
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
-  <script src="../../js/jquery.min.js"></script>
-  <script src="../../js/popper.min.js"></script>
-  <script src="../../js/bootstrap.min.js"></script>
-  <script src="../../js/axios.min.js"></script>
-  <script src="../../js/script.js"></script>
-  <script src="../../js/mcpcb-order.js"></script>
-  <script>
-    window.onload = mcpcbNewOrderFormChangeHandler();
-  </script>
-</body>
-
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/mcpcb-order.js"></script>
+    <script>
+      window.onload = mcpcbNewOrderFormChangeHandler();
+    </script>
+  </body>
 </html>

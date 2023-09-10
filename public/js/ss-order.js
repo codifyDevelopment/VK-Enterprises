@@ -131,6 +131,13 @@ const ssNewOrderFormChangeHandler = async function () {
                 $("#ss-silk-legend-layer-field").hide(); // Hide the picture field
             }
         });
+        $("#ss-any-design-relating-input").on("change", function () {
+            if (this.value === "yes") {
+                $(".ss-any-design-relating-field").show(); // Show the picture field
+            } else {
+                $(".ss-any-design-relating-field").hide(); // Hide the picture field
+            }
+        });
 
 
 
