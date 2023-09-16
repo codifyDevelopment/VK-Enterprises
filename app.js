@@ -74,6 +74,8 @@ app.use("/api/admin", require("./routes/api/admin"));
 app.use("/api/services", require("./routes/api/services"));
 app.use("/api/notification", require("./routes/api/notifications"));
 app.use("/api/inquiries", require("./routes/api/inquiries"));
+app.use("/api/orders", require("./routes/api/orders"));
+
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "public/views/404.html"));
 });

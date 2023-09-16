@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const config = require("config");
+const db = require('../db')
 const nodemailer = require("nodemailer");
 const Notifications = require("../models/notifications");
 
@@ -129,7 +130,13 @@ const loginController = async (req, res, next) => {
 const userCount = async (req, res, next) => {
     // console.log(req.body);
     try {
-        const user = await User.findAll();
+        const user = await User.findAll({
+            where: {
+                role: {
+                    [db.Sequelize.Op.ne]: 'pending'
+                }
+            }
+        });
         return res.status(200).json({
             success: true,
             data: user.length,

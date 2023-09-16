@@ -1003,3 +1003,10 @@ const getAllDetailsCount = async () => {
   var uCount = await axios.get("/api/user/user-count")
   usersCount.textContent = uCount.data.data;
 }
+
+const getAllQueryCount = async () => {
+  var queryCount = document.querySelector("#all-queries")
+  var uCount = await axios.get("/api/inquiries/get-inquiries")
+  console.log(uCount.data.inquiries.length);
+  queryCount.textContent = uCount.data.inquiries.length;
+}
