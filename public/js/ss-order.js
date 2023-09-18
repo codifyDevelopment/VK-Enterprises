@@ -119,16 +119,16 @@ const ssNewOrderFormChangeHandler = async function () {
         });
         $("#ss-copper-track-designing-input").on("change", function () {
             if (this.value === "client-request") {
-                $("#ss-copper-track-designing-filed").show(); // Show the picture field
+                $(".ss-copper-track-designing-filed").show(); // Show the picture field
             } else {
-                $("#ss-copper-track-designing-filed").hide(); // Hide the picture field
+                $(".ss-copper-track-designing-filed").hide(); // Hide the picture field
             }
         });
         $("#ss-silk-legend-layer-input").on("change", function () {
             if (this.value === "require") {
-                $("#ss-silk-legend-layer-field").show(); // Show the picture field
+                $(".select-2").show(); // Show the picture field
             } else {
-                $("#ss-silk-legend-layer-field").hide(); // Hide the picture field
+                $(".select-2").hide(); // Hide the picture field
             }
         });
         $("#ss-any-design-relating-input").on("change", function () {
@@ -136,6 +136,13 @@ const ssNewOrderFormChangeHandler = async function () {
                 $(".ss-any-design-relating-field").show(); // Show the picture field
             } else {
                 $(".ss-any-design-relating-field").hide(); // Hide the picture field
+            }
+        });
+        $("#pcb-design-type-input").on("change", function () {
+            if (this.value === "sample-with-update") {
+                $(".select-1").show(); // Show the picture field
+            } else {
+                $(".select-1").hide(); // Hide the picture field
             }
         });
 
