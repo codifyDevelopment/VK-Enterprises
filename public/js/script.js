@@ -968,7 +968,7 @@ const showOnlyClosedInquiries = async function (e) {
   let filteredInquiries = allInquiries.filter(
     (inquiry) => inquiry.inquiryStatus === "closed"
   );
-  console.log(filteredInquiries.length);
+  // console.log(filteredInquiries.length);
   await showInquiriesInTable(filteredInquiries);
 };
 
@@ -994,7 +994,7 @@ var editButton = document.getElementById('profilebutton');
 // Add a click event listener to the button
 editButton.addEventListener('click', function () {
   // Redirect to adminprofileEdit.html
-  console.log("prakhar");
+  // console.log("prakhar");
   window.location.href = '/adminprofileEdit';
 });
 
@@ -1007,6 +1007,6 @@ const getAllDetailsCount = async () => {
 const getAllQueryCount = async () => {
   var queryCount = document.querySelector("#all-queries")
   var uCount = await axios.get("/api/inquiries/get-inquiries")
-  console.log(uCount.data.inquiries.length);
+  // console.log(uCount.data.inquiries.length);
   queryCount.textContent = uCount.data.inquiries.length;
 }
