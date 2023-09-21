@@ -110,16 +110,23 @@ const s2pNewOrderFormChangeHandler = async function () {
         });
         $("#schamatic-to-pcb-track-related-body-input").on("change", function () {
             if (this.value === "yes") {
-                $("#schamatic-to-pcb-track-related-field").show(); // Show the picture field
+                $(".select-1").show(); // Show the picture field
             } else {
-                $("#schamatic-to-pcb-track-related-field").hide(); // Hide the picture field
+                $(".select-1").hide(); // Hide the picture field
             }
         });
         $("#schamatic-to-pcb-layer-related-body-input").on("change", function () {
             if (this.value === "yes") {
-                $("#schamatic-to-pcb-layer-related-field").show(); // Show the picture field
+                $(".select-2").show(); // Show the picture field
             } else {
-                $("#schamatic-to-pcb-layer-related-field").hide(); // Hide the picture field
+                $(".select-2").hide(); // Hide the picture field
+            }
+        });
+        $("#schamatic-to-type-layer-related-body-input").on("change", function () {
+            if (this.value === "yes") {
+                $(".select-3").show(); // Show the picture field
+            } else {
+                $(".select-3").hide(); // Hide the picture field
             }
         });
       

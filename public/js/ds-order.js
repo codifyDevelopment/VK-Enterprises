@@ -138,6 +138,13 @@ const dsNewOrderFormChangeHandler = async function () {
                 $(".ds-any-design-relating-field").hide(); // Hide the picture field
             }
         });
+        $("#pcb-design-type-input").on("change", function () {
+            if (this.value === "sample-with-update") {
+                $(".select-1").show(); // Show the picture field
+            } else {
+                $(".select-1").hide(); // Hide the picture field
+            }
+        });
 
 
 

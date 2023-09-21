@@ -106,6 +106,22 @@ const mcpcbNewOrderFormChangeHandler = async function () {
             }
         });
 
+        $("#ms-design-type-input").on("change", function () {
+            if (this.value === "Sample-copy-with-update") {
+                $(".select-1").show(); // Show the picture field
+            } else {
+                $(".select-1").hide(); // Hide the picture field
+            }
+        });
+
+        $("#ms-copper-track-designing-input").on("change", function () {
+            if (this.value === "client-request") {
+                $(".select-2").show(); // Show the picture field
+            } else {
+                $(".select-2").hide(); // Hide the picture field
+            }
+        });
+
         // multi-layer-form
         $("#multi-layer-form-switch").on("change", function () {
             if ($(this).is(":checked")) {
