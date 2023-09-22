@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" type="text/css" href="../../css/style.min.css" />
     <link rel="stylesheet" href="../../css/form.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
   </head>
 
   <body>
@@ -277,15 +278,16 @@
                       <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
+
+
+
                       <select
                         name="mcpcb-led-package"
                         id="mcpcb-led-package-input"
                         class="form-select"
                         required
+                        multiple
                       >
-                        <option value="" disabled selected>
-                          Select an option
-                        </option>
                         <option value="2828">2828</option>
                         <option value="2835 SAME PAD">2835 SAME PAD</option>
                         <option value="3030">3030</option>
@@ -942,6 +944,10 @@
     <script src="../../js/axios.min.js"></script>
     <script src="../../js/script.js"></script>
     <script src="../../js/mcpcb-order.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+    <script>
+      new MultiSelectTag('mcpcb-led-package-input')  // id
+  </script>
     <script>
       window.onload = mcpcbNewOrderFormChangeHandler();
     </script>
