@@ -1,11 +1,11 @@
 const mcpcbNewOrderFormChangeHandler = async function () {
-    await getNotification();
-    // const mpcbbody = document.getElementById("mpcb-body");
-    await (async function () {
-        let pcbSize, pcbType;
-        $("input[name=pcb-size]").on("change", function () {
-            if (this.value === "known")
-                $("#pcb-size").after(`
+  await getNotification();
+  // const mpcbbody = document.getElementById("mpcb-body");
+  await (async function () {
+    let pcbSize, pcbType;
+    $("input[name=pcb-size]").on("change", function () {
+      if (this.value === "known")
+        $("#pcb-size").after(`
                 <div
                     class="col col-md-12"
                     id="pcb-size-known-inputs"
@@ -49,15 +49,13 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                         </div>
                     </div>
                 </div>`);
-            else $("#pcb-size-known-inputs").remove();
-        });
+      else $("#pcb-size-known-inputs").remove();
+    });
 
-
-
-        $("#mcpcb-led-package-input").on("change", function () {
-            // console.log(this.val());
-            if (this.value === "other led") {
-                $("#mcpcb-led-package").after(`
+    $("#mcpcb-led-package-input").on("change", function () {
+      // console.log(this.val());
+      if (this.value === "other led") {
+        $("#mcpcb-led-package").after(`
                 <div class="col other-led-package">
                     <label
                         class="form-label mb-2"
@@ -80,12 +78,12 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                     </div>
                 </div>
                 `);
-            } else $(".other-led-package").remove();
-        });
-        $("#mcpcb-connections-input").on("change", function () {
-            $("#mcpcb-connections-details").remove();
-            if (this.value === "SeriesXParallel") {
-                return $("#mcpcb-connections").after(`
+      } else $(".other-led-package").remove();
+    });
+    $("#mcpcb-connections-input").on("change", function () {
+      $("#mcpcb-connections-details").remove();
+      if (this.value === "SeriesXParallel") {
+        return $("#mcpcb-connections").after(`
                     <div className="col" id="mcpcb-connections-details">
                         <label
                             for="mcpcb-SeriesXParallel-input"
@@ -106,9 +104,9 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                         </div>
                     </div>
                 `);
-            }
-            if (this.value === "SeriesXParallelXDrivers") {
-                return $("#mcpcb-connections").after(`
+      }
+      if (this.value === "SeriesXParallelXDrivers") {
+        return $("#mcpcb-connections").after(`
                     <div className="col" id="mcpcb-connections-details">
                         <label
                             for="mcpcb-SeriesXParallelXDrivers-input"
@@ -129,9 +127,9 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                         </div>
                     </div>
                 `);
-            }
-            if (this.value === "other combination") {
-                return $("#mcpcb-connections").after(`
+      }
+      if (this.value === "other combination") {
+        return $("#mcpcb-connections").after(`
                     <div className="col" id="mcpcb-connections-details">
                         <label
                             for="mcpcb-other-connections-input"
@@ -152,11 +150,11 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                         </div>
                     </div>
                 `);
-            }
-        });
-        $("#mcpcb-led-placement-input").on("change", function () {
-            if (this.value === "lens-file")
-                return $("#mcpcb-led-placement").after(`
+      }
+    });
+    $("#mcpcb-led-placement-input").on("change", function () {
+      if (this.value === "lens-file")
+        return $("#mcpcb-led-placement").after(`
                 <div class="col mcpcb-other-led-placement">
                     <label
                         class="form-label mb-2"
@@ -176,11 +174,11 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                         />
                     </div>
                 </div>`);
-            else $(".mcpcb-other-led-placement").remove();
-        });
-        $("#mcpcb-silk-layer-print-input").on("change", function () {
-            if (this.value === "company-logo")
-                return $("#mcpcb-silk-layer-print").after(`
+      else $(".mcpcb-other-led-placement").remove();
+    });
+    $("#mcpcb-silk-layer-print-input").on("change", function () {
+      if (this.value === "company-logo")
+        return $("#mcpcb-silk-layer-print").after(`
                 <div class="col">
                     <label
                         class="form-label mb-2"
@@ -203,11 +201,11 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                     </div>
                 </div>
                 `);
-            else $("#mcpcb-company-logo-input").parent().parent().remove();
-        });
-        $("#mcpcb-solder-layer-print-input").on("change", function () {
-            if (this.value === "company-logo")
-                return $("#mcpcb-solder-layer-print").after(`
+      else $("#mcpcb-company-logo-input").parent().parent().remove();
+    });
+    $("#mcpcb-solder-layer-print-input").on("change", function () {
+      if (this.value === "company-logo")
+        return $("#mcpcb-solder-layer-print").after(`
                 <div class="col">
                     <label
                         class="form-label mb-2"
@@ -230,11 +228,11 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                     </div>
                 </div>
                 `);
-            else $("#mcpcb-company-logo-input").parent().parent().remove();
-        });
-        $("#mcpcb-more-related-attachments-input").on("change", function () {
-            if (this.value === "yes")
-                return $("#mcpcb-more-related-attachments").after(`
+      else $("#mcpcb-company-logo-input").parent().parent().remove();
+    });
+    $("#mcpcb-more-related-attachments-input").on("change", function () {
+      if (this.value === "yes")
+        return $("#mcpcb-more-related-attachments").after(`
                 <div class="col mcpcb-more-related-attachments-file">
                     <label
                         class="form-label mb-2"
@@ -276,116 +274,108 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                     </div>
                 </div>
                 `);
-            else $(".mcpcb-more-related-attachments-file").remove();
-        });
-        // stencile-form
-        $("#StencileFormswitch").on("change", function () {
-            if ($(this).is(":checked")) {
-                $("#stencile-form").show();
-            } else {
-                $("#stencile-form").hide();
-            }
-        });
+      else $(".mcpcb-more-related-attachments-file").remove();
+    });
+    // stencile-form
+    $("#StencileFormswitch").on("change", function () {
+      if ($(this).is(":checked")) {
+        $("#stencile-form").show();
+      } else {
+        $("#stencile-form").hide();
+      }
+    });
+    $("#stencile-text").hide();
+    $("#stencile-form-text").on("change", function () {
+      if ($(this).val() === "yes") {
+        $("#stencile-text").show();
+      } else {
         $("#stencile-text").hide();
-        $("#stencile-form-text").on("change", function() {
-        if ($(this).val() === "yes") {
-            $("#stencile-text").show();
-        } else {
-            $("#stencile-text").hide();
-        }
-        });
+      }
+    });
 
-        // CAMPanelizationswitch
-        $("#CAMPanelizationswitch").on("change", function () {
-            if ($(this).is(":checked")) {
-                $("#cam-panellization-div").show();
-            } else {
-                $("#cam-panellization-div").hide();
-            }
-        });
+    // CAMPanelizationswitch
+    $("#CAMPanelizationswitch").on("change", function () {
+      if ($(this).is(":checked")) {
+        $("#cam-panellization-div").show();
+      } else {
+        $("#cam-panellization-div").hide();
+      }
+    });
+    $("#relatedText-cam-div").hide();
+    $("#relatedText-cam").on("change", function () {
+      if ($(this).val() === "yes") {
+        $("#relatedText-cam-div").show();
+      } else {
         $("#relatedText-cam-div").hide();
-        $("#relatedText-cam").on("change", function() {
-            if ($(this).val() === "yes") {
-                $("#relatedText-cam-div").show();
-            } else {
-                $("#relatedText-cam-div").hide();
-            }
-        });
+      }
+    });
 
-        // bom-switch
-        $("#bomSwitch").on("change", function () {
-            if ($(this).is(":checked")) {
-                $("#bom-div").show();
-            } else {
-                $("#bom-div").hide();
-            }
-        });
+    // bom-switch
+    $("#bomSwitch").on("change", function () {
+      if ($(this).is(":checked")) {
+        $("#bom-div").show();
+      } else {
+        $("#bom-div").hide();
+      }
+    });
+    $("#bom-text-div").hide();
+    $("#relatedTextOption-bom").on("change", function () {
+      if ($(this).val() === "yes") {
+        $("#bom-text-div").show();
+      } else {
         $("#bom-text-div").hide();
-        $("#relatedTextOption-bom").on("change", function() {
-            if ($(this).val() === "yes") {
-                $("#bom-text-div").show();
-            } else {
-                $("#bom-text-div").hide();
-            }
-        });
+      }
+    });
 
-        $("#mcpcb-sample-old-file-input").on("change", function () {
-            if (this.value === "yes") {
-                $("#mcpcb-sample-old-file-input-upload").show();
-            } else {
-                $("#mcpcb-sample-old-file-input-upload").hide();
-            }
-        });
-        
-        $("#mcpcb-sample-body-input").on("change", function () {
-            if (this.value === "yes") {
-                $("#mcpcb-picture-field").show();
-            } else {
-                $("#mcpcb-picture-field").hide();
-            }
-        });
+    $("#mcpcb-sample-old-file-input").on("change", function () {
+      if (this.value === "yes") {
+        $("#mcpcb-sample-old-file-input-upload").show();
+      } else {
+        $("#mcpcb-sample-old-file-input-upload").hide();
+      }
+    });
 
-        $("#mcpcb-any-design-relating-input").on("change", function () {
-            if (this.value === "yes") {
-                $(".mcpcb-any-design-relating-field").show();
-            } else {
-                $(".mcpcb-any-design-relating-field").hide();
-            }
-        });
+    $("#mcpcb-sample-body-input").on("change", function () {
+      if (this.value === "yes") {
+        $("#mcpcb-picture-field").show();
+      } else {
+        $("#mcpcb-picture-field").hide();
+      }
+    });
 
-        $("#pcb-size-known").attr("checked", true).trigger("change");
-    })();
+    $("#mcpcb-any-design-relating-input").on("change", function () {
+      if (this.value === "yes") {
+        $(".mcpcb-any-design-relating-field").show();
+      } else {
+        $(".mcpcb-any-design-relating-field").hide();
+      }
+    });
+
+    $("#pcb-size-known").attr("checked", true).trigger("change");
+  })();
 };
 
-
-//this is for directing payment page 
-document.getElementById("placeOrderButton").addEventListener("click", function () {
+//this is for directing payment page
+document
+  .getElementById("placeOrderButton")
+  .addEventListener("click", function () {
     window.location.href = "/payment"; // Redirect to the /payment route
-});
+  });
 
-
-
-
-// this is for accept tearm and condition 
+// this is for accept tearm and condition
 const acceptTermsLabel = document.getElementById("acceptTermsLabel");
 const placeOrderButton = document.getElementById("placeOrderButton");
 
 let termsAccepted = false;
 
 acceptTermsLabel.addEventListener("click", () => {
-    termsAccepted = !termsAccepted;
+  termsAccepted = !termsAccepted;
 
-    if (termsAccepted) {
-        acceptTermsLabel.classList.add("active");
-        placeOrderButton.removeAttribute("disabled");
-    } else {
-        acceptTermsLabel.classList.remove("active");
-        placeOrderButton.setAttribute("disabled", "true");
-    }
+  if (termsAccepted) {
+    acceptTermsLabel.classList.add("active");
+    placeOrderButton.removeAttribute("disabled");
+  } else {
+    acceptTermsLabel.classList.remove("active");
+    placeOrderButton.setAttribute("disabled", "true");
+  }
 });
-
-
-
-
-
-
