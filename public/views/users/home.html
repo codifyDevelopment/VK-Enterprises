@@ -117,7 +117,7 @@
                 <p>Welcome to the dashboard.</p>
                 <div
                     class="row row-cols-1 row-cols-lg-4 g-2 gx-lg-3 w-100 m-auto d-flex justify-content-center"
-                >
+                  >
                     <div class="col">
                         <a
                             href="/services"
@@ -146,122 +146,15 @@
                         </a>
                     </div>
                     <div class="col">
-                        <button
-                            class="btn btn-primary w-100 m-0 d-flex align-items-center p-3 gap-3 justify-content-center rounded"
-                            data-bs-toggle="modal"
-                            data-bs-target="#create-inquiry-modal"
+                        <a
+                            href="/inquiries"
+                            class="bg-primary m-0 link-light d-flex align-items-center p-3 gap-3 justify-content-center rounded"
                         >
-                            <i class="fa-solid fa-comment h2 m-0"></i>
-                            New Inquiry
-                        </button>
-                        <div
-                            class="modal fade modal-xl"
-                            id="create-inquiry-modal"
-                            tabindex="-1"
-                            aria-labelledby="create-inquiry-modal-label"
-                            aria-hidden="true"
-                        >
-                            <div class="modal-dialog">
-                                <form
-                                    class="modal-content"
-                                    id="create-inquiry-form"
-                                    onsubmit="createInquiry(event)"
-                                >
-                                    <div class="modal-header">
-                                        <h5
-                                            class="modal-title"
-                                            id="create-inquiry-modal-label"
-                                        >
-                                            Create Inquiry
-                                        </h5>
-                                        <button
-                                            type="button"
-                                            class="btn-close"
-                                            data-bs-dismiss="modal"
-                                            aria-label="Close"
-                                        ></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            <label
-                                                for="inquiry-about "
-                                                class="form-label"
-                                                >Inquiry About
-                                                <span class="text-danger"
-                                                    >*</span
-                                                >
-                                            </label>
-                                            <select
-                                                class="form-select"
-                                                aria-label="Default select example"
-                                                id="inquiry-about"
-                                                name="inquiryAbout"
-                                                required
-                                            >
-                                                <option selected value="">
-                                                    Select a service
-                                                </option>
-                                                <option value="collect sample">
-                                                    Collect Sample
-                                                </option>
-                                                <option value="discussion">
-                                                    Discussion
-                                                </option>
-                                                <option value="place new order">
-                                                    Place New Order
-                                                </option>
-                                                <option value="cancel order">
-                                                    Cancel Order
-                                                </option>
-                                                <option
-                                                    value="send gerber file"
-                                                >
-                                                    Send Gerber File
-                                                </option>
-                                                <option value="other">
-                                                    Other
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <!-- // textarea for inquiry text -->
-                                        <div class="mt-3">
-                                            <label
-                                                for="inquiry-text"
-                                                class="form-label"
-                                                >Inquiry Message
-                                                <span class="text-danger"
-                                                    >*</span
-                                                >
-                                            </label>
-                                            <textarea
-                                                class="form-control"
-                                                id="inquiry-text"
-                                                rows="3"
-                                                required
-                                            ></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button
-                                            type="button"
-                                            class="btn btn-secondary"
-                                            data-bs-dismiss="modal"
-                                            onclick="resetCreateInquiryForm()"
-                                        >
-                                            Close
-                                        </button>
-                                        <button
-                                            type="submit"
-                                            class="btn btn-primary"
-                                            id="create-inquiry-btn"
-                                        >
-                                            Create Inquiry
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                        <i class="fa-solid fa-comment h2 m-0"></i>
+                            All Inquiries
+                        </a>
                     </div>
+                   
                 </div>
                 <h5 class="text-secondary mt-3">Recent Orders</h5>
                 <div class="mt-3 p-2 rounded orders-table overflow-x-auto area">
