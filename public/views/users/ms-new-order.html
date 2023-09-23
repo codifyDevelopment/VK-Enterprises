@@ -261,7 +261,7 @@
                     </div>
                   </div>
 
-                  <div class="col" id="mcpcb-led-package">
+                  <div class="col" id="ms-pcb-design-type">
                     <label
                       for="mcpcb-led-package-input"
                       class="form-label mb-2"
@@ -272,7 +272,7 @@
                     <div class="input-group">
                       <select
                         name="mcpcb-led-package"
-                        id="mcpcb-led-package-input"
+                        id="ms-design-type-input"
                         class="form-select"
                         required
                       >
@@ -282,7 +282,7 @@
                         <option value="its same as sample copy">
                           its same as sample copy
                         </option>
-                        <option value="Sample copy with update">
+                        <option value="Sample-copy-with-update">
                           Sample copy with update
                         </option>
                       </select>
@@ -290,7 +290,7 @@
                   </div>
 
                   <!-- PCB Design Update Description -->
-                  <div class="col">
+                  <div class="col select-1" style="display: none;">
                     <label
                       class="form-label mb-2"
                       for="pcb-design-update-description-input"
@@ -309,8 +309,9 @@
                       />
                     </div>
                   </div>
+
                   <!-- Attached File -->
-                  <div class="col">
+                  <div class="col select-1" style="display: none;">
                     <label for="attached-file-input" class="form-label mb-2">
                       PCB Design Update Attached File</label
                     >
@@ -326,7 +327,7 @@
                   </div>
 
                   <!-- Update in Copper Track Designing -->
-                  <div class="col">
+                  <div class="col select-1" style="display: none;">
                     <label
                       for="ms-copper-track-designing-input"
                       class="form-label mb-2"
@@ -346,14 +347,9 @@
                       </select>
                     </div>
                   </div>
-
-                  <div
-                    id="ms-copper-track-designing-filed"
-                    style="display: none"
-                  >
-                    <!-- 
-                                Enter Details -->
-                    <div class="col">
+                    
+                  <!-- Enter Details -->
+                    <div class="col select-2" style="display: none;">
                       <label class="form-label mb-2" for="enter-details-input"
                         >Copper track designing long Text
                         <span class="text-danger">*</span>
@@ -371,7 +367,7 @@
                     </div>
 
                     <!-- Attached File -->
-                    <div class="col">
+                    <div class="col select-2" style="display: none;">
                       <label for="attached-file-input" class="form-label mb-2"
                         >Copper track designing attached file</label
                       >
@@ -385,10 +381,9 @@
                         />
                       </div>
                     </div>
-                  </div>
 
                   <!-- Design Updates Number of Points -->
-                  <div class="col">
+                  <div class="col select-1" style="display: none;">
                     <label
                       class="form-label mb-2"
                       for="design-updates-points-input"
@@ -457,66 +452,6 @@
                     </div>
                   </div>
 
-                  <!--TOP SOLDER/MASK LAYER -->
-                  <div class="col">
-                    <label
-                      for="ms-solder-mask-layer-text-input"
-                      class="form-label"
-                    >
-                      Top SOLDER/MASK Layer Information
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter top SOLDER/MASK Layer text"
-                      name="ms-solder-mask-layer-text-input"
-                      id="ms-solder-mask-layer-text-input"
-                    />
-                  </div>
-
-                  <!--TOP SOLDER/MASK LAYER File -->
-                  <div class="col">
-                    <label
-                      for="ms-solder-mask-layer-file-input"
-                      class="form-label"
-                    >
-                      Top SOLDER/MASK Layer Information File
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      name="ms-solder-mask-layer-file-input"
-                      id="ms-solder-mask-layer-file-input"
-                    />
-                  </div>
-
-                  <!-- COPPER LAYER -->
-                  <div class="col">
-                    <label for="ms-copper-layer-text-input" class="form-label">
-                      COPPER Layer Information Text
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter COPPER Layer Text"
-                      name="ms-copper-Layer-text-input"
-                      id="ms-copper-Layer-text-input"
-                    />
-                  </div>
-
-                  <!-- COPPER Layer File -->
-                  <div class="col">
-                    <label for="copper-Layer-file-input" class="form-label">
-                      COPPER Layer Information File
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      name="ms-copper-layer-file-input"
-                      id="ms-copper-layer-file-input"
-                    />
-                  </div>
-
                   <!-- BOTTOM  SILK/LEGEND LAYERr -->
                   <div class="col">
                     <label
@@ -544,7 +479,7 @@
                     id="ms-bottom-silklegend-layer-field"
                     style="display: none"
                   >
-                    <!-- EnterBOTTOM SILK/LEGEND LAYER Text -->
+                    <!-- Enter BOTTOM SILK/LEGEND LAYER Text -->
                     <div class="col">
                       <label for="bottom-silk/legend-layer" class="form-label">
                         Bottom SILK LEGEND Layer Information
@@ -575,13 +510,66 @@
                     </div>
                   </div>
 
-                  <!--BOTTOM SOLDER/MASK LAYER -->
+
+                  <!--TOP SILK LEGEND LAYER -->
                   <div class="col">
                     <label
                       for="ms-solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      Bottom SOLDER/MASK Layer Information
+                      For Any TOP Silk Legend Layer Information
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter top SOLDER/MASK Layer text"
+                      name="ms-solder-mask-layer-text-input"
+                      id="ms-solder-mask-layer-text-input"
+                    />
+                  </div>
+
+                  <!--TOP SOLDER/MASK LAYER -->
+                  <div class="col">
+                    <label
+                      for="ms-solder-mask-layer-text-input"
+                      class="form-label"
+                    >
+                      For Any TOP Solder Mask Layer Information
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter top SOLDER/MASK Layer text"
+                      name="ms-solder-mask-layer-text-input"
+                      id="ms-solder-mask-layer-text-input"
+                    />
+                  </div>
+
+                  <!-- TOP COPPER LAYER -->
+                  <div class="col">
+                    <label for="ms-copper-layer-text-input" class="form-label">
+                      For Any TOP Copper Layer Information
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter COPPER Layer Text"
+                      name="ms-copper-Layer-text-input"
+                      id="ms-copper-Layer-text-input"
+                    />
+                  </div>
+
+                  <!--BOTTOM SILK LEGEND LAYER -->
+                  <div class="col">
+                    <label
+                      for="ms-solder-mask-layer-text-input"
+                      class="form-label"
+                    >
+                      For Any BOTTOM Silk Legend Layer Information
+                      <span class="text-danger">*</span>
                     </label>
                     <input
                       type="text"
@@ -592,19 +580,21 @@
                     />
                   </div>
 
-                  <!--BOTTOM SOLDER/MASK LAYER File -->
+                  <!--BOTTOM SOLDER/MASK LAYER -->
                   <div class="col">
                     <label
-                      for="ms-solder-mask-layer-file-input"
+                      for="ms-solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      Upload Bottom SOLDER/MASK Layer File
+                      For Any BOTTOM Solder Mask Layer Information
+                      <span class="text-danger">*</span>
                     </label>
                     <input
-                      type="file"
+                      type="text"
                       class="form-control"
-                      name="ms-solder-mask-layer-file-input"
-                      id="ms-solder-mask-layer-file-input"
+                      placeholder="Enter Bottom SOLDER/MASK Layer Text "
+                      name="ms-solder-mask-layer-text-input"
+                      id="ms-solder-mask-layer-text-input"
                     />
                   </div>
 
@@ -614,7 +604,8 @@
                       for="ms-bottom-copper-layer-text-input"
                       class="form-label"
                     >
-                      Bottom COPPER Layer Information
+                      For Any BOTTOM Copper Layer Information
+                      <span class="text-danger">*</span>
                     </label>
                     <input
                       type="text"
@@ -625,26 +616,14 @@
                     />
                   </div>
 
-                  <!--BOTTOM COPPER LAYER File -->
-                  <div class="col">
-                    <label for="ms-copper-layer-file-input" class="form-label">
-                      Upload Bottom COPPER Layer Information File
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      name="ms-copper-layer-file-input"
-                      id="ms-copper-layer-file-input"
-                    />
-                  </div>
-
                   <!--INNER COPPER LAYER -->
                   <div class="col">
                     <label
                       for="ms-inner-copper-layer-text-input"
                       class="form-label"
                     >
-                      Inner COPPER Layer Information Text
+                      For Any Inner Copper Layer Information
+                      <span class="text-danger">*</span>
                     </label>
                     <input
                       type="text"
@@ -655,24 +634,11 @@
                     />
                   </div>
 
-                  <!--INNER COPPER LAYER File -->
-                  <div class="col">
-                    <label for="ms-copper-layer-file-input" class="form-label">
-                      Upload Inner COPPER Layer Information File
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      name="ms-copper-layer-file-input"
-                      id="ms-copper-layer-file-input"
-                    />
-                  </div>
-
                   <div class="col col-md-12 switchdiv">
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" role="switch" id="multi-layer-form-switch">
                       <label class="form-check-label" for="multi-layer-form-switch">Required Stencile</label><br>
-                      <span class="noteText">Note: Rs. 250 (Minimum Size) will be added.</span>
+                      <span class="noteText">Note: Rs. 250 (Minimum Rates/Charges) will be added.</span>
                     </div>
                     <div id="multi-layer-form" style="display: none;">
                       <hr>
@@ -705,7 +671,7 @@
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="multi-layer-CAMPanelizationswitch">
                     <label class="form-check-label" for="multi-layer-CAMPanelizationswitch">Required CAM/Panelization</label><br>
-                    <span class="noteText">Note: Rs. 250 (Minimum Size) will be added.</span>
+                    <span class="noteText">Note: Rs. 250 (Minimum Rates/Charges) will be added.</span>
                   </div>
                   <div id="multi-layer-cam-panellization-div" style="display: none;">
                     <hr>
@@ -792,7 +758,7 @@
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="multi-layer-bomSwitch">
                     <label class="form-check-label" for="multi-layer-bomSwitch">Required BOM</label><br>
-                    <span class="noteText">Note: Rs. 450 (Minimum Size) will be added.</span>
+                    <span class="noteText">Note: Rs. 450 (Minimum 20 Components) will be added.</span>
                   </div>
                   <div id="bom-div" style="display: none;">
                     <hr>
@@ -856,7 +822,7 @@
                 <!-- Design Relating Notes/Queries -->
                 <div class="col">
                   <label
-                    for="design-relating-notes-input"
+                    for="ms-any-design-relating-input"
                     class="form-label mb-2"
                   >
                     Any Design Relating Note/Queries
@@ -864,21 +830,24 @@
                   </label>
                   <div class="input-group">
                     <select
-                      name="any-design-relating"
-                      id="any-design-relating-input"
+                      name="ms-any-design-relating"
+                      id="ms-any-design-relating-input"
                       class="form-select"
                       required
                     >
-                      <option value="require">Yes</option>
-                      <option value="not-required">No</option>
+                    <option value="" disabled selected>
+                      Select an option
+                    </option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
                     </select>
                   </div>
                 </div>
 
-                <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS -->
-                <div class="col">
+                <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS  -->
+                <div class="col ms-any-design-relating-field"  style="display: none">
                   <label
-                    for="any-design-relating-input"
+                    for="msany-design-relating-input"
                     class="form-label"
                   >
                     Any Design Relating Note/Queries Details
@@ -888,14 +857,14 @@
                     type="text"
                     class="form-control"
                     placeholder="Any Design Relating Note/Queries Details"
-                    name="any-design-relating-input-details"
-                    id="design-relating-input-details"
+                    name="ms-any-design-relating-input-details"
+                    id="ms-design-relating-input-details"
                     required
                   />
                 </div>
 
                 <!-- ANY DESIGN RELATING NOTE/QUERIES File -->
-                <div class="col">
+                <div class="col ms-any-design-relating-field"  style="display: none">
                   <label
                     for="any-design-relating-input-file"
                     class="form-label"
@@ -906,8 +875,8 @@
                   <input
                     type="file"
                     class="form-control"
-                    name="any-design-relating-queries-input"
-                    id="any-design-relating-queries-input-file"
+                    name="ms-any-design-relating-queries-input"
+                    id="ms-any-design-relating-queries-input-file"
                     required
                   />
                 </div>
@@ -940,7 +909,7 @@
                 <div class="col col-md-12">
                   <input type="checkbox" />
                   <label for="Terms-and-condition" class="form-label mb-2">
-                    If Urgent/Instaneous it will charged more 3000Rs
+                    If Urgent/Instaneous it will charged more 3000Rs + As Per Designs Charge/Rates.
                   </label>
                 </div>
                 </div>
@@ -966,11 +935,6 @@
                   quantities. We are not responsible for quantity issues and
                   cannot entertain arguments once designs are approved and
                   produced.
-                </li>
-                <li class="mb-2">
-                  <i class="fas fa-check-circle text-success"></i>
-                  Please ensure that you review all designs from your end before
-                  proceeding.
                 </li>
               </ul>
               <p>

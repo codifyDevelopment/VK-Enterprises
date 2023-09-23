@@ -10,10 +10,10 @@
     },
     "db": {
         "database": "vktech",
-        "username": "codifydev",
-        "password": "nihd-K8@6ydkDdEl",
+        "username": "root",
+        "password": "",
         "host": "127.0.0.1",
-        "dialect": "mariadb"
+        "dialect": "mysql"
     },
     "adminEmail": "sudiptapradhan58271@gmail.com",
     "stripe_public_key": "pk_test_51MqGGWSGwrq6Pb3IVPbnSrJwAwQzt379mf1dp6zRrgzbyR0uOac2bNwdgGo66jemarsNDeGgXuML1F7PclTBwdzZ00eQvwwsjL",

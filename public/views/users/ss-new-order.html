@@ -297,7 +297,7 @@
                   </div>
 
                   <!-- PCB Design Update Description -->
-                  <div class="col">
+                  <div class="col select-1" style="display: none;">
                     <label
                       class="form-label mb-2"
                       for="pcb-design-update-description-input"
@@ -318,9 +318,9 @@
                   </div>
 
                   <!-- Attached File -->
-                  <div class="col">
+                  <div class="col select-1" style="display: none;">
                     <label for="attached-file-input" class="form-label mb-2"
-                      >Attached File</label
+                      >Attached File For PCB Design Update</label
                     >
                     <div class="input-group">
                       <input
@@ -334,7 +334,7 @@
                   </div>
 
                   <!-- Update in Copper Track Designing -->
-                  <div class="col">
+                  <div class="col select-1" style="display: none;">
                     <label
                       for="ss-copper-track-designing-input"
                       class="form-label mb-2"
@@ -356,11 +356,11 @@
                   </div>
                   <!-- 
                              Update in Copper Track Designing fields-->
-                  <div
-                    id="ss-copper-track-designing-filed"
-                    style="display: none"
-                  >
-                    <div class="col">
+                  <!-- <div
+                    id=""
+                    style="display: none;"
+                  > -->
+                    <div class="col ss-copper-track-designing-filed" style="display: none;">
                       <label class="form-label mb-2" for="enter-details-input"
                         >Copper track designing long Text
                         <span class="text-danger">*</span>
@@ -378,7 +378,7 @@
                     </div>
 
                     <!-- Attached File -->
-                    <div class="col">
+                    <div class="col ss-copper-track-designing-filed" style="display: none;">
                       <label for="attached-file-input" class="form-label mb-2">
                         COPPER track designing attached file
                         <span class="text-danger">*</span>
@@ -394,11 +394,11 @@
                         />
                       </div>
                     </div>
-                  </div>
+                  <!-- </div> -->
 
                   <!-- Design Updates Number of Points -->
 
-                  <div class="col">
+                  <div class="col select-1" style="display: none;">
                     <label
                       class="form-label mb-2"
                       for="design-updates-points-input"
@@ -437,12 +437,11 @@
                       </select>
                     </div>
                   </div>
-
-                  <div id="ss-silk-legend-layer-field" style="display: none">
+                    
                     <!-- Enter Silk/Legend Text -->
-                    <div class="col">
+                    <div class="col select-2" style="display: none;">
                       <label for="ss-silk-legend-text-input" class="form-label">
-                        Enter SILK Legend Text
+                        Enter SILK Legend Layer Text
                         <span class="text-danger">*</span>
                       </label>
                       <input
@@ -455,9 +454,9 @@
                     </div>
 
                     <!-- Upload Silk/Legend File -->
-                    <div class="col">
+                    <div class="col select-2" style="display: none;">
                       <label for="silk-legend-file-input" class="form-label">
-                        Upload Silk/LEGEND File
+                        Upload SILK Legend Layer File
                         <span class="text-danger">*</span>
                       </label>
                       <input
@@ -467,7 +466,23 @@
                         id="silk-legend-file-input"
                       />
                     </div>
-                  </div>
+
+                    <!-- SILK LEGEND LAYER -->
+                    <div class="col">
+                      <label
+                        for="solder-mask-layer-text-input"
+                        class="form-label"
+                      >
+                        For Any Silk Legend Layer Information
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="SOLDER MASK Layer Text"
+                        name="solder-mask-layer-text-input"
+                        id="solder-mask-layer-text-input"
+                      />
+                    </div>
 
                   <!-- SOLDER MASK LAYER -->
                   <div class="col">
@@ -475,7 +490,7 @@
                       for="solder-mask-layer-text-input"
                       class="form-label"
                     >
-                      SOLDER MASK Layer Long Text
+                      For Any Solder Mask Layer Information
                     </label>
                     <input
                       type="text"
@@ -484,28 +499,12 @@
                       name="solder-mask-layer-text-input"
                       id="solder-mask-layer-text-input"
                     />
-                  </div>
-
-                  <!-- SOLDER/MASK LAYER File -->
-                  <div class="col">
-                    <label
-                      for="solder-mask-layer-file-input"
-                      class="form-label"
-                    >
-                      SOLDER MASK Layer file
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      name="solder-mask-layer-file-input"
-                      id="solder-mask-layer-file-input"
-                    />
-                  </div>
+                  </div> 
 
                   <!-- COPPER LAYER -->
                   <div class="col">
                     <label for="copper-layer-text-input" class="form-label">
-                      COPPER Layer Long Text
+                      For Any Copper Layer Information
                     </label>
                     <input
                       type="text"
@@ -516,24 +515,12 @@
                     />
                   </div>
 
-                  <!-- COPPER LAYER File -->
-                  <div class="col">
-                    <label for="copper-layer-file-input" class="form-label">
-                      COPPER LAYER File
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      name="copper-layer-file-input"
-                      id="copper-layer-file-input"
-                    />
-                  </div>
                   <!-- single-layer -->
                   <div class="col col-md-12 switchdiv">
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" role="switch" id="single-layer-form-switch">
                       <label class="form-check-label" for="single-layer-form-switch">Required Stencile</label><br>
-                      <span class="noteText">Note: Rs. 250 (Minimum Size) will be added.</span>
+                      <span class="noteText">Note: Rs. 250 (Minimum Rates/Charges) will be added.</span>
                     </div>
                     <div id="single-layer-form" style="display: none;">
                       <hr>
@@ -566,7 +553,7 @@
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="single-layer-CAMPanelizationswitch">
                     <label class="form-check-label" for="single-layer-CAMPanelizationswitch">Required CAM/Panelization</label><br>
-                    <span class="noteText">Note: Rs. 250 (Minimum Size) will be added.</span>
+                    <span class="noteText">Note: Rs. 250 (Minimum Rates/Charges) will be added.</span>
                   </div>
                   <div id="single-layer-cam-panellization-div" style="display: none;">
                     <hr>
@@ -653,7 +640,7 @@
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="single-layer-bomSwitch">
                     <label class="form-check-label" for="single-layer-bomSwitch">Required BOM</label><br>
-                    <span class="noteText">Note: Rs. 450 (Minimum Size) will be added.</span>
+                    <span class="noteText">Note: Rs. 450 (Minimum 20 Components) will be added.</span>
                   </div>
                   <div id="bom-div" style="display: none;">
                     <hr>
@@ -717,7 +704,7 @@
                 <!-- ANY DESIGN RELATING NOTE/QUERIES -->
                 <div class="col">
                   <label
-                    for="design-relating-notes-input"
+                    for="ss-any-design-relating-inputt"
                     class="form-label mb-2"
                   >
                     Any Design Relating Note/Queries
@@ -725,19 +712,22 @@
                   </label>
                   <div class="input-group">
                     <select
-                      name="any-design-relating"
-                      id="any-design-relating-input"
+                      name="ss-any-design-relating"
+                      id="ss-any-design-relating-input"
                       class="form-select"
                       required
                     >
-                      <option value="require">Yes</option>
-                      <option value="not-required">No</option>
+                    <option value="" disabled selected>
+                      Select an option
+                    </option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
                     </select>
                   </div>
                 </div>
 
                 <!-- ANY DESIGN RELATING NOTE/QUERIES DETAILS -->
-                <div class="col">
+                <div class="col ss-any-design-relating-field" style="display: none">
                   <label
                     for="any-design-relating-input"
                     class="form-label"
@@ -749,16 +739,16 @@
                     type="text"
                     class="form-control"
                     placeholder="Any Design Relating Note/Queries Details"
-                    name="any-design-relating-input-details"
-                    id="design-relating-input-details"
+                    name="ss-any-design-relating-input-details"
+                    id="ss-design-relating-input-details"
                     required
                   />
                 </div>
 
                 <!-- ANY DESIGN RELATING NOTE/QUERIES File -->
-                <div class="col">
+                <div class="col ss-any-design-relating-field" style="display: none">
                   <label
-                    for="any-design-relating-input-file"
+                    for="ss-any-design-relating-input-file"
                     class="form-label"
                   >
                     Any Design Relating Note/Queries File
@@ -767,8 +757,8 @@
                   <input
                     type="file"
                     class="form-control"
-                    name="any-design-relating-queries-input"
-                    id="any-design-relating-queries-input-file"
+                    name="ss-any-design-relating-queries-input"
+                    id="ss-any-design-relating-queries-input-file"
                     required
                   />
                 </div>
@@ -801,7 +791,7 @@
                   <div class="col col-md-12">
                     <input type="checkbox" />
                     <label for="Terms-and-condition" class="form-label mb-2">
-                      If Urgent/Instaneous it will charged more 3000Rs
+                      If Urgent/Instaneous it will charged more 3000Rs + As Per Designs Charge/Rates.
                     </label>
                   </div>
                 </div>
@@ -826,13 +816,6 @@
                     <i class="fas fa-check-circle text-success"></i>
                     Please note that if any minor changes are requested after the design has been completed, additional charges may apply.
                   </li>   
-                </li>
-                <li class="mb-2">
-                  <i class="fas fa-check-circle text-success"></i>
-                  Designs are for samples only and may not work for larger
-                  quantities. We are not responsible for quantity issues and
-                  cannot entertain arguments once designs are approved and
-                  produced.
                 </li>
                 <li class="mb-2">
                   <i class="fas fa-check-circle text-success"></i>

@@ -382,11 +382,8 @@
                       </select>
                     </div>
                   </div>
-                  <div
-                    id="schamatic-to-pcb-track-related-field"
-                    style="display: none"
-                  >
-                    <div class="col">
+
+                    <div class="col select-1" style="display: none;">
                       <label for="text">Track Related Text</label>
                       <input
                         type="text"
@@ -395,7 +392,8 @@
                         required
                       />
                     </div>
-                    <div class="col" style="margin-top: 10px;">
+
+                    <div class="col select-1"  style="display: none;">
                       <div class="input-group">
                         <label for="file upload"
                           >Upload Track Related File</label
@@ -409,7 +407,6 @@
                         required
                       />
                     </div>
-                  </div>
 
                   <div class="col">
                     <label for="schamatic-to-pcb-layer-related-body-input"
@@ -434,11 +431,7 @@
                     </div>
                   </div>
 
-                  <div
-                    id="schamatic-to-pcb-layer-related-field"
-                    style="display: none"
-                  >
-                    <div class="col">
+                    <div class="col select-2" style="display: none;">
                       <label for="text">Layers Related Text</label>
                       <input
                         type="text"
@@ -447,23 +440,17 @@
                         required
                       />
                     </div>
-                    <div class="col" style="margin-top: 10px;">
-                      <div class="input-group">
-                        <label for="file upload"
-                          >Upload Layers Related File</label
-                        >
-                      </div>
+
+                    <div class="col select-2" style="display: none;">
+                      <label for="text">Layers Related File</label>
                       <input
                         type="file"
                         class="form-control"
-                        name="layerRelated-input"
-                        id="layerRelated-input"
                         required
                       />
                     </div>
-                  </div>
 
-                  <div id="schamatic-to-pcb-layer-related-field">
+                  <div id="schamatic-to-pcb-layer-related-field" >
                     <div class="col">
                       <label for="text">Any Layout / Referance / Arreagemnt File</label>
                       <input
@@ -476,19 +463,16 @@
                     </div>
                   </div>
 
-                  
-
                   <div class="col">
-                    <label for="schamatic-to-pcb-layer-related-body-input"
-                      >Layers Related Any Comments/Guide<span
-                        class="text-danger"
-                        >*</span
+                    <label for="schamatic-to-type-layer-related-body-input"
+                      >Any Related Any Type Comments/Guide
+                      <span class="text-danger">*</span
                       ></label
                     >
                     <div class="input-group">
                       <select
                         name="layersRelated-body-input"
-                        id="schamatic-to-pcb-layer-related-body-input"
+                        id="schamatic-to-type-layer-related-body-input"
                         class="form-select"
                         required
                       >
@@ -501,20 +485,20 @@
                     </div>
                   </div>
 
-                  <div id="schamatic-to-pcb-layer-related-field">
-                    <div class="col">
-                      <label for="text">Layers Related Text</label>
+                    <div class="col select-3" style="display: none;">
+                      <label for="text">Any Related Any Type Comments/Guide Text</label>
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="Enter Layers Related Text"
+                        placeholder="Enter Any Related Any Type Comments/Guide Text"
                         required
                       />
                     </div>
-                    <div class="col" style="margin-top: 10px;">
+
+                    <div class="col select-3" style="display: none;">
                       <div class="input-group">
                         <label for="file upload"
-                          >Upload Layers Related File</label
+                          >Any Related Any Type Comments/Guide File</label
                         >
                       </div>
                       <input
@@ -525,7 +509,8 @@
                         required
                       />
                     </div>
-                  </div>
+
+                  
                   <!-- stencile -->
                   <div class="col col-md-12 switchdiv">
                     <div class="form-check form-switch">
@@ -646,75 +631,42 @@
                     </div>
                   </div>
                 </div>
-                  <!-- Bill of Material -->
-                 <div class="col col-md-12 switchdiv">
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="stop-layer-bomSwitch">
-                    <label class="form-check-label" for="stop-layer-bomSwitch">Required BOM</label> <br>
-                    <span class="noteText">Note: Rs. 450 (Minimum Size) will be added.</span>
-                  </div>
-                  <div id="bom-div" style="display: none;">
-                    <hr>
-                    <!-- PCB Image -->
-                    <div class="form-group mt-3">
-                      <label for="pcbTopImage">Top Side Image Attachment</label>
-                      <input type="file" class="form-control" id="pcbTopImage">
-                    </div>
+                <!-- Terms and condition -->
+             <div class="col col-md-12">
+               <label for="Terms-and-condition" class="form-label mb-2">
+                 <input type="checkbox" />
+                 Carefully Once check All Fill Details Before Save. (After
+                 Designing A Simple Changes Charge Will Be A Extra(*550Rs.
+                 + Depends On Changes Rate)
+                 <span class="text-danger">*</span>
+               </label>
+             </div>
 
-                    <div class="form-group mt-3">
-                      <label for="pcbBottomImage">Bottom Side Image Attachment</label>
-                      <input type="file" class="form-control" id="pcbBottomImage">
-                    </div>
+             <div class="col col-md-12">
+               <label for="Terms-and-condition" class="form-label mb-2">
+                 <input type="checkbox" />
+                 All Designs Are For Samples only. Never Work For
+                 Quantities. Not Responsible For Quantities. (After No
+                 Further Argument Will Be Heard). Also, Check All The
+                 Designs From Your Side And Then Proceed.<span
+                   class="text-danger"
+                   >*</span
+                 >
+               </label>
+             </div>
 
-                    <!-- Layers Type -->
-                    <div class="form-group mt-3">
-                      <label for="layersType">Layers Type in Numbers</label>
-                      <input type="number" class="form-control" id="layersType">
-                    </div>
-                    <!-- Any Related Text -->
-                    <div class="form-group mt-3">
-                      <label for="relatedTextOption-bom">Any Related Text*</label>
-                      <select class="form-control" id="relatedTextOption-bom">
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                      </select>
-                    </div>
-
-                    <!-- Long Text -->
-                    <div class="form-group mt-3" id="bom-text-div">
-                      <label for="longText">Long Text</label>
-                      <input class="form-control" id="longText" rows="3" />
-                    </div>
-
-                      <!-- BOM Billing Amount -->
-                  <div class="form-group mt-3">
-                    <label for="bom-billing-amount-input" class="form-label">
-                      Bill of Material (BOM) Billing Amount
-                    </label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="Billing Amount"
-                      name="bom-billing-amount-input"
-                      id="bom-billing-amount-input"
-                    />
-                  </div>
-
-                    <!-- Camera Shot -->
-                    <div class="form-group mt-3">
-                      <label for="cameraShot">Camera Shot</label>
-                      <input type="file" class="form-control" id="cameraShot">
-                      <b class="form-text text-muted">
-                        1) - If Possible Provide Fresh PCB/Old PCB Not Capture Proper Components Value<br>
-                        2) - BOM File Only for Sample Purpose (Not for Quantities)</b>
-                    </div>
-                  </div>
+             <!-- Urgent -->
+             <div class="col col-md-12">
+               <input type="checkbox" />
+               <label for="Terms-and-condition" class="form-label mb-2">
+                 If Urgent/Instaneous it will charged more 3000Rs + As Per Designs Charge/Rates.
+               </label>
+             </div>
+                  
                 </div>
-                </div>
-
+                
                 <div style="margin-top: 20px;"> 
-                  <span style="font-size: 20px;">NOTE</span><br>
+                  <span style="font-size: 20px; font-weight: bold;">NOTE:-</span>
                   Order Amount According : THE COST OF DESIGN AS PER USED COMPONENTS PADS
                 </div>
               </div>

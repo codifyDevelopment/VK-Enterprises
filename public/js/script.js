@@ -163,17 +163,16 @@ const getNotification = async function () {
         const notificationElement = document.createElement("li");
         notificationElement.classList.add("border-bottom");
         notificationElement.innerHTML = `
-                    <a href="${
-                      notification.type === "user"
-                        ? "/users"
-                        : notification.type === "order"
-                        ? "/orders"
-                        : notification.type === "transaction"
-                        ? "/transactions"
-                        : notification.type === "inquiry"
-                        ? "/inquiries"
-                        : "/dashboard"
-                    }" class="mb-0 dropdown-item text-wrap">
+                    <a href="${notification.type === "user"
+            ? "/users"
+            : notification.type === "order"
+              ? "/orders"
+              : notification.type === "transaction"
+                ? "/transactions"
+                : notification.type === "inquiry"
+                  ? "/inquiries"
+                  : "/dashboard"
+          }" class="mb-0 dropdown-item text-wrap">
                         ${notification.notificationText}
                     </a>
                 `;
@@ -231,10 +230,9 @@ const showUsersInTable = function (users) {
             <td>${user.role}</td>
             <td>${user.role === "pending" ? "N/A" : "₹5000"}</td>
             <td>
-                ${
-                  user.role !== "pending"
-                    ? `<button class="btn btn-danger" onclick="resetUser(event, '${user.email}')">Reset</button>`
-                    : `
+                ${user.role !== "pending"
+        ? `<button class="btn btn-danger" onclick="resetUser(event, '${user.email}')">Reset</button>`
+        : `
                         <button class="btn btn-primary" onclick="verifyAsGold(event, '${user.email}')">
                             Gold
                         </button>
@@ -242,7 +240,7 @@ const showUsersInTable = function (users) {
                             Platinum
                         </button>
                     `
-                }
+      }
             </td>
         `;
     userListTable.appendChild(tr);
@@ -429,11 +427,10 @@ const showServices = async function () {
                             >Price ( ₹ / cm<sup>2</sup> ):</span
                         >
                         <span class="text-success fw-bold"
-                            >${
-                              service.pricePerUnit
-                                ? service.pricePerUnit
-                                : "N/A"
-                            }</span>
+                            >${service.pricePerUnit
+          ? service.pricePerUnit
+          : "N/A"
+        }</span>
                     </p>
                     <p>
                         <span class="text-secondary"
@@ -448,11 +445,10 @@ const showServices = async function () {
                             >Minimum Size ( cm<sup>2</sup> ):</span
                         >
                         <span class="text-success fw-bold"
-                            >${
-                              service.minimumSquareCm
-                                ? service.minimumSquareCm
-                                : "N/A"
-                            }</span>
+                            >${service.minimumSquareCm
+          ? service.minimumSquareCm
+          : "N/A"
+        }</span>
                     </p>
                     <p>
                         <span class="text-secondary"
@@ -462,9 +458,8 @@ const showServices = async function () {
                             >${service.timeToDeliver}</span
                         >
                     </p>
-                    <button class="btn btn-primary w-100" onclick="window.location.href='/new-order/${
-                      service.id
-                    }'">
+                    <button class="btn btn-primary w-100" onclick="window.location.href='/new-order/${service.id
+        }'">
                         Order Now
                     </button>
                 </div>
@@ -511,22 +506,19 @@ const showInquiries = async function () {
             <th scope="row">${inquiry.id}</th>
             <td>${new Date(inquiry.createdAt).toLocaleDateString()}</td>
             <td>${inquiry.inquiryAbout}</td>
-            <td>${
-              inquiry.inquiryText
-                ? inquiry.inquiryText.slice(0, 20) + "..."
-                : "N/A"
-            }</td>
-            <td class="text-center">${
-              inquiry.inquiryStatus === "opened"
-                ? "<span class='badge bg-danger'>Opened</span>"
-                : inquiry.inquiryStatus === "closed"
-                ? "<span class='badge bg-success'>Closed</span>"
-                : "<span class='badge bg-warning'>Replied</span>"
-            }</td>
+            <td>${inquiry.inquiryText
+          ? inquiry.inquiryText.slice(0, 20) + "..."
+          : "N/A"
+        }</td>
+            <td class="text-center">${inquiry.inquiryStatus === "opened"
+          ? "<span class='badge bg-danger'>Opened</span>"
+          : inquiry.inquiryStatus === "closed"
+            ? "<span class='badge bg-success'>Closed</span>"
+            : "<span class='badge bg-warning'>Replied</span>"
+        }</td>
             <td class="text-center">
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#inquiry-details-modal" onclick="showInquiryDetails('${
-                  inquiry.id
-                }')">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#inquiry-details-modal" onclick="showInquiryDetails('${inquiry.id
+        }')">
                     <i
                         class="fa-solid fa-eye text-white"
                     ></i>
@@ -580,24 +572,22 @@ const showInquiryDetails = async function (id) {
                                 <h6
                                     class="mb-0"
                                 >
-                                    ${
-                                      inquiry.createdBy === reply.replyBy
-                                        ? "You"
-                                        : "Admin"
-                                    }
+                                    ${inquiry.createdBy === reply.replyBy
+          ? "You"
+          : "Admin"
+        }
                                 </h6>
                                 <small
                                     class="text-secondary"
                                     >
-                                    ${
-                                      new Date(
-                                        reply.replyAt
-                                      ).toLocaleDateString() +
-                                      " " +
-                                      new Date(
-                                        reply.replyAt
-                                      ).toLocaleTimeString()
-                                    }
+                                    ${new Date(
+          reply.replyAt
+        ).toLocaleDateString() +
+        " " +
+        new Date(
+          reply.replyAt
+        ).toLocaleTimeString()
+        }
                                     </small
                                 >
                             </div>
@@ -756,17 +746,15 @@ const showInquiriesInTable = async function (data) {
             <td>${new Date(inquiry.createdAt).toLocaleDateString()}</td>
             <td>${inquiry.inquiryAbout}</td>
             <td>${inquiry.createdBy}</td>
-            <td class="text-center">${
-              inquiry.inquiryStatus === "opened"
-                ? "<span class='badge bg-danger'>Opened</span>"
-                : inquiry.inquiryStatus === "closed"
-                ? "<span class='badge bg-success'>Closed</span>"
-                : "<span class='badge bg-warning'>Replied</span>"
-            }</td>
+            <td class="text-center">${inquiry.inquiryStatus === "opened"
+          ? "<span class='badge bg-danger'>Opened</span>"
+          : inquiry.inquiryStatus === "closed"
+            ? "<span class='badge bg-success'>Closed</span>"
+            : "<span class='badge bg-warning'>Replied</span>"
+        }</td>
             <td class="text-center">
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#inquiry-details-modal" onclick="showInquiryDetailsAdmin('${
-                  inquiry.id
-                }')">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#inquiry-details-modal" onclick="showInquiryDetailsAdmin('${inquiry.id
+        }')">
                     <i
                         class="fa-solid fa-eye text-white"
                     ></i>
@@ -834,24 +822,22 @@ const showInquiryDetailsAdmin = async function (id) {
                                 <h6
                                     class="mb-0"
                                 >
-                                    ${
-                                      inquiry.createdBy === reply.replyBy
-                                        ? reply.replyBy
-                                        : "You"
-                                    }
+                                    ${inquiry.createdBy === reply.replyBy
+          ? reply.replyBy
+          : "You"
+        }
                                 </h6>
                                 <small
                                     class="text-secondary"
                                     >
-                                    ${
-                                      new Date(
-                                        reply.replyAt
-                                      ).toLocaleDateString() +
-                                      " " +
-                                      new Date(
-                                        reply.replyAt
-                                      ).toLocaleTimeString()
-                                    }
+                                    ${new Date(
+          reply.replyAt
+        ).toLocaleDateString() +
+        " " +
+        new Date(
+          reply.replyAt
+        ).toLocaleTimeString()
+        }
                                     </small
                                 >
                             </div>
@@ -1004,10 +990,23 @@ const showAllInquiries = async function (e) {
 
 
 //---------------------------profile section----------------------------
-var editButton = document.getElementById('profilebutton');     
+var editButton = document.getElementById('profilebutton');
 // Add a click event listener to the button
-editButton.addEventListener('click', function() {
-    // Redirect to adminprofileEdit.html
-    console.log("prakhar");
-    window.location.href = '/adminprofileEdit';
+editButton.addEventListener('click', function () {
+  // Redirect to adminprofileEdit.html
+  console.log("prakhar");
+  window.location.href = '/adminprofileEdit';
 });
+
+const getAllDetailsCount = async () => {
+  var usersCount = document.querySelector("#all-users")
+  var uCount = await axios.get("/api/user/user-count")
+  usersCount.textContent = uCount.data.data;
+}
+
+const getAllQueryCount = async () => {
+  var queryCount = document.querySelector("#all-queries")
+  var uCount = await axios.get("/api/inquiries/get-inquiries")
+  console.log(uCount.data.inquiries.length);
+  queryCount.textContent = uCount.data.inquiries.length;
+}
