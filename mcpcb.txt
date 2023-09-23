@@ -1,0 +1,59 @@
+user email
+service name
+order date
+total amount
+amount due
+
+------------------------
+
+PCB Name
+X Dimension
+Y Dimension
+Any Old/Reference/Dimension File
+Available Any Sample / Body
+LED Package
+	if other lED (data sheet) is selected
+		LED Package 1
+
+Total Number Of LED's
+Design Watts
+Design Connections Series
+Design Connections Parllel
+Using Driver No.
+Led Placement
+	if lens
+		LED Package
+
+Silk/Legend Layer
+	if company logo
+		File For Company Logo of Silk/Legend Layer
+
+Solder/Mask Layer
+	if company logo
+		File For Company Logo of Silk/Legend Layer
+
+
+For Any Silk Legend Layer Information
+	with file
+
+For Any Solder Mask Layer Information
+	with file
+
+For Any Copper Layer Information
+	with file
+
+Required Stencile
+
+Required CAM/Panelization
+
+Required BOM
+
+Any Design Relating Note/Queries
+	Any Design Relating Note/Queries Details
+	Any Design Relating Note/Queries File
+
+Carefully Once check All Fill Details Before Save. (After Designing A Simple Changes Charge Will Be A Extra(*550Rs. + Depends On Changes Rate)
+
+All Designs Are For Samples only. Never Work For Quantities. Not Responsible For Quantities. (After No Further Argument Will Be Heard). Also, Check All The Designs From Your Side And Then Proceed.
+
+If Urgent/Instaneous it will charged more 3000Rs
