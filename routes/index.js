@@ -183,6 +183,17 @@ router.get("/inquiries", isUserAuthenticated, async (req, res, next) => {
         });
     }
 });
+router.get("/transactions", isUserAuthenticated, async (req, res, next) => {
+    if (req.user.role === "admin") {
+        return res.sendFile("transactionhistory.html", {
+            root: "public/views/users",
+        });
+    } else {
+        return res.sendFile("transactionhistory.html", {
+            root: "public/views/users",
+        });
+    }
+});
 
 router.get(
     "/new-order/:serviceId",
