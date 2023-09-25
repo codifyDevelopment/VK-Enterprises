@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
 
-const MCPCB = db.define(
-    "MCPCB",
+const MS = db.define(
+    "MS",
     {
         id: {
             type: DataTypes.INTEGER,
@@ -33,41 +33,45 @@ const MCPCB = db.define(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        LEDPackage: {
+        PCBDesignType: {
             type: DataTypes.TEXT("long"),
-            allowNull: false,
-        },
-        DesignConnectionsSeries: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        DesignConnectionsParllel: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        LedPlacement: {
-            type: DataTypes.STRING,
             allowNull: false,
         },
         SilkLegendLayer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        SolderMaskLayer: {
+        BottomSilkLegendLayer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        ForAnySilkLegendLayerInformation: {
+        ForAnyTopSilkLegendLayerInformation: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
-        ForAnySolderMaskLayerInformation: {
+        ForAnyTopSolderMaskLayerInformation: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
-        ForAnyCopperLayerInformation: {
+        ForAnyTopCopperLayerInformation: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
+        },
+        ForAnyBottomSilkLegendLayerInformation: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        ForAnyBottomSolderMaskLayerInformation: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        ForAnyBottomCopperLayerInformation: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        ForAnyInnerCopperLayerInformation: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         RequiredStencile: {
             type: DataTypes.STRING,
@@ -100,4 +104,4 @@ const MCPCB = db.define(
     }
 );
 
-module.exports = MCPCB;
+module.exports = MS;

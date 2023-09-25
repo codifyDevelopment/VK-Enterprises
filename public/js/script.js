@@ -1010,3 +1010,29 @@ const getAllQueryCount = async () => {
   // console.log(uCount.data.inquiries.length);
   queryCount.textContent = uCount.data.inquiries.length;
 }
+
+/* MCPCB order Manager */
+
+// var pcbYDimensionInput = document.querySelector("#pcb-y-dimension-input");
+// var pcbXDimensionInput = document.querySelector("#pcb-x-dimension-input");
+
+// pcbYDimensionInput.addEventListener("change", function() {
+//   console.log(pcbYDimensionInput);
+// })
+
+// pcbXDimensionInput.addEventListener("change", function() {
+//   console.log(pcbXDimensionInput);
+// })
+
+// var pcbYDimensionInput = $("#pcb-y-dimension-input");
+// var pcbXDimensionInput = $("#pcb-x-dimension-input");
+
+// pcbYDimensionInput.on("change", function () {
+//   console.log(pcbYDimensionInput.val());
+// });
+
+// pcbXDimensionInput.on("change", function () {
+//   console.log(pcbXDimensionInput.val());
+// });
+
+// $("#pcb-x-dimension-input").change(function(){ console.log("hello") })

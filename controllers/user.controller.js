@@ -128,12 +128,11 @@ const loginController = async (req, res, next) => {
 };
 
 const userCount = async (req, res, next) => {
-    // console.log(req.body);
     try {
         const user = await User.findAll({
             where: {
                 role: {
-                    [db.Sequelize.Op.ne]: 'pending'
+                    [db.Sequelize.Op.not]: ['pending', 'admin']
                 }
             }
         });

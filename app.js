@@ -76,6 +76,10 @@ app.use("/api/notification", require("./routes/api/notifications"));
 app.use("/api/inquiries", require("./routes/api/inquiries"));
 app.use("/api/orders", require("./routes/api/orders"));
 app.use("/api/mcpcb", require("./routes/api/mcpcbService"));
+app.use("/api/ss", require("./routes/api/ss"));
+app.use("/api/ds", require("./routes/api/ds"));
+app.use("/api/ms", require("./routes/api/ms"));
+app.use("/api/s2p", require("./routes/api/s2p"));
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "public/views/404.html"));

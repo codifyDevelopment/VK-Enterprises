@@ -21,6 +21,7 @@ const ssNewOrderFormChangeHandler = async function () {
                             <div class="input-group">
                                 <input
                                     type="number"
+                                    onchange="getupdatedPrice()"
                                     class="form-control"
                                     placeholder="X Dimension in mm"
                                     name="pcb-x-dimension"
@@ -40,6 +41,7 @@ const ssNewOrderFormChangeHandler = async function () {
                                 <input
                                     type="number"
                                     class="form-control"
+                                    onchange="getupdatedPrice()"
                                     placeholder="Y Dimension in mm"
                                     name="pcb-y-dimension"
                                     id="pcb-y-dimension-input"

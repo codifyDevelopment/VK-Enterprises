@@ -2,7 +2,8 @@ const mcpcbNewOrderFormChangeHandler = async function () {
   await getNotification();
   // const mpcbbody = document.getElementById("mpcb-body");
   await (async function () {
-    let pcbSize, pcbType;
+    var pcbType;
+    var pcbSize;
     $("input[name=pcb-size]").on("change", function () {
       if (this.value === "known")
         $("#pcb-size").after(`
@@ -379,3 +380,9 @@ acceptTermsLabel.addEventListener("click", () => {
     placeOrderButton.setAttribute("disabled", "true");
   }
 });
+
+$("#pcb-x-dimension-input").change(function(){ console.log("hello") })
+
+// document.getElementById("pcb-x-dimension-input").addEventListener("keyup", () => {
+//   console.log(document.getElementById("pcb-x-dimension-input"));
+// })
