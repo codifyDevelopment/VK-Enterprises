@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
 
-const MCPCB = db.define(
-    "MCPCB",
+const DS = db.define(
+    "DS",
     {
         id: {
             type: DataTypes.INTEGER,
@@ -33,41 +33,41 @@ const MCPCB = db.define(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        LEDPackage: {
+        PCBDesignType: {
             type: DataTypes.TEXT("long"),
             allowNull: false,
         },
-        DesignConnectionsSeries: {
+        TopSilkLegendLayer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        DesignConnectionsParllel: {
+        BottomSilkLegendLayer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        LedPlacement: {
+        ForAnyTopSilkLegendLayerInformation: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        SilkLegendLayer: {
+        ForAnyTopSolderMaskLayerInformation: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        SolderMaskLayer: {
+        ForAnyTopCopperLayerInformation: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        ForAnySilkLegendLayerInformation: {
+        ForAnyBottomSilkLegendLayerInformation: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
-        ForAnySolderMaskLayerInformation: {
+        ForAnyBottomSolderMaskLayerInformation: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
-        ForAnyCopperLayerInformation: {
+        ForAnyBottomCopperLayerInformation: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         RequiredStencile: {
             type: DataTypes.STRING,
@@ -100,4 +100,4 @@ const MCPCB = db.define(
     }
 );
 
-module.exports = MCPCB;
+module.exports = DS;

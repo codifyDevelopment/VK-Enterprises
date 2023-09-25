@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
 
-const MCPCB = db.define(
-    "MCPCB",
+const S2P = db.define(
+    "S2P",
     {
         id: {
             type: DataTypes.INTEGER,
@@ -33,55 +33,43 @@ const MCPCB = db.define(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        LEDPackage: {
+        SchamticDrawingFile: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        SchamticBillOfMaterialFile: {
             type: DataTypes.TEXT("long"),
             allowNull: false,
         },
-        DesignConnectionsSeries: {
+        SchamticToPCBLayers: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        DesignConnectionsParllel: {
+        PCBDimensionFile: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        LedPlacement: {
+        TrackRelatedCommentsGuide: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        SilkLegendLayer: {
+        LayersRelatedAnyCommentsGuide: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        SolderMaskLayer: {
+        AnyLayoutReferanceArreagemntFile: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        ForAnySilkLegendLayerInformation: {
+        AnyRelatedAnyTypeCommentsGuide: {
             type: DataTypes.STRING,
-            allowNull: true,
-        },
-        ForAnySolderMaskLayerInformation: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        ForAnyCopperLayerInformation: {
-            type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         RequiredStencile: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         RequiredCAMPanelization: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        RequiredBOM: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        AnyDesignRelatingNoteQueries: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -100,4 +88,4 @@ const MCPCB = db.define(
     }
 );
 
-module.exports = MCPCB;
+module.exports = S2P;

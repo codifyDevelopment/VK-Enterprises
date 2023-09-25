@@ -22,6 +22,7 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                                 <input
                                     type="number"
                                     class="form-control"
+                                    onchange="getupdatedPrice()"
                                     placeholder="X Dimension in mm"
                                     name="pcb-x-dimension"
                                     id="pcb-x-dimension-input"
@@ -40,6 +41,7 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                                 <input
                                     type="number"
                                     class="form-control"
+                                    onchange="getupdatedPrice()"
                                     placeholder="Y Dimension in mm"
                                     name="pcb-y-dimension"
                                     id="pcb-y-dimension-input"
