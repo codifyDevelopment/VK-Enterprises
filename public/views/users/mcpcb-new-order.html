@@ -849,8 +849,8 @@
 
                   <!-- Terms and condition -->
                   <div class="col col-md-12">
-                    <label for="Terms-and-condition" class="form-label mb-2">
-                      <input type="checkbox" required />
+                    <label for="CarefullyOncecheckAll" class="form-label mb-2">
+                      <input type="checkbox" required id="CarefullyOncecheckAll" />
                       Carefully Once check All Fill Details Before Save. (After
                       Designing A Simple Changes Charge Will Be A Extra(*550Rs.
                       + Depends On Changes Rate)
@@ -859,8 +859,8 @@
                   </div>
 
                   <div class="col col-md-12">
-                    <label for="Terms-and-condition" class="form-label mb-2">
-                      <input type="checkbox" required />
+                    <label for="AllDesignsAreForSamples" class="form-label mb-2">
+                      <input type="checkbox" required id="AllDesignsAreForSamples" />
                       All Designs Are For Samples only. Never Work For
                       Quantities. Not Responsible For Quantities. (After No
                       Further Argument Will Be Heard). Also, Check All The
@@ -873,8 +873,8 @@
 
                   <!-- Urgent -->
                   <div class="col col-md-12">
-                    <input type="checkbox" />
-                    <label for="Terms-and-condition" class="form-label mb-2">
+                    <input type="checkbox" id="urgentOrNot" />
+                    <label for="urgentOrNot" class="form-label mb-2">
                       If Urgent/Instaneous it will charged more 3000Rs + As Per Designs Charge/Rates.
                     </label>
                   </div>
@@ -887,7 +887,9 @@
           >
             <h3 class="text-center">Invoice Section</h3>
             <hr />
-            <div class="my-5 text-danger" id="total-service-price-count">price details will appear here</div>
+            <div class="my-5 text-danger" id="total-service-price-count">
+              price details will appear here
+            </div>
             <div class="">
               <ul class="list-unstyled">
                 <li class="mb-2"></li>

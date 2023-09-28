@@ -1,11 +1,15 @@
+var price = 0;
+printPrice(price);
+var price2 = 0;
+
 const mcpcbNewOrderFormChangeHandler = async function () {
   await getNotification();
   // const mpcbbody = document.getElementById("mpcb-body");
   await (async function () {
-    var pcbType;
-    var pcbSize;
+    var xDimVal = 1;
+    var yDimVal = 1;
     $("input[name=pcb-size]").on("change", function () {
-      if (this.value === "known")
+      if (this.value === "known") {
         $("#pcb-size").after(`
                 <div
                     class="col col-md-12"
@@ -25,6 +29,7 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                                     class="form-control"
                                     placeholder="X Dimension in mm"
                                     name="pcb-x-dimension"
+                                    value="${xDimVal > 1 ? xDimVal : 0}"
                                     id="pcb-x-dimension-input"
                                     required
                                 />
@@ -44,13 +49,42 @@ const mcpcbNewOrderFormChangeHandler = async function () {
                                     placeholder="Y Dimension in mm"
                                     name="pcb-y-dimension"
                                     id="pcb-y-dimension-input"
+                                    value="${yDimVal > 1 ? yDimVal : 0}"
                                     required
                                 />
                             </div>
                         </div>
                     </div>
                 </div>`);
-      else $("#pcb-size-known-inputs").remove();
+        var xDim = $("#pcb-x-dimension-input");
+        var yDim = $("#pcb-y-dimension-input");
+        var square = 0;
+        xDim.on("change", () => {
+          if (xDim.val() <= 0) {
+            xDimVal = 1;
+          } else {
+            xDimVal = xDim.val();
+          }
+          square = xDimVal * yDimVal;
+          price2 = square * 2.50;
+          printPrice2(price, price2);
+        })
+
+        yDim.on("change", () => {
+          if (yDim.val() <= 0) {
+            yDimVal = 1;
+          } else {
+            yDimVal = yDim.val();
+          }
+          square = xDimVal * yDimVal;
+          price2 = square * 2.50;
+          printPrice2(price, price2);
+        })
+
+      }
+      else {
+        $("#pcb-size-known-inputs").remove();
+      }
     });
 
     $("#mcpcb-led-package-input").on("change", function () {
@@ -357,11 +391,11 @@ const mcpcbNewOrderFormChangeHandler = async function () {
 };
 
 //this is for directing payment page
-document
-  .getElementById("placeOrderButton")
-  .addEventListener("click", function () {
-    window.location.href = "/payment"; // Redirect to the /payment route
-  });
+// document
+//   .getElementById("placeOrderButton")
+//   .addEventListener("click", function () {
+//     window.location.href = "/payment";
+//   });
 
 // this is for accept tearm and condition
 const acceptTermsLabel = document.getElementById("acceptTermsLabel");
@@ -381,8 +415,62 @@ acceptTermsLabel.addEventListener("click", () => {
   }
 });
 
-$("#pcb-x-dimension-input").change(function(){ console.log("hello") })
+/* price printing and service api work */
+var StencileFormswitch = $("#StencileFormswitch");
+StencileFormswitch.on("change", () => {
+  if (StencileFormswitch.is(':checked')) {
+    price = price + 250;
+  } else {
+    price = price - 250;
+  }
+  printPrice(price);
+})
 
-// document.getElementById("pcb-x-dimension-input").addEventListener("keyup", () => {
-//   console.log(document.getElementById("pcb-x-dimension-input"));
-// })
+var CAMPanelizationswitch = $("#CAMPanelizationswitch");
+CAMPanelizationswitch.on("change", () => {
+  if (CAMPanelizationswitch.is(':checked')) {
+    price = price + 250;
+  } else {
+    price = price - 250;
+  }
+  printPrice(price);
+})
+
+var bomSwitch = $("#bomSwitch");
+bomSwitch.on("change", () => {
+  if (bomSwitch.is(':checked')) {
+    price = price + 450;
+  } else {
+    price = price - 450;
+  }
+  printPrice(price);
+})
+
+var urgentOrNot = $("#urgentOrNot");
+urgentOrNot.on("change", () => {
+  // console.log("before " + price);
+  if (urgentOrNot.is(':checked')) {
+    price = price + 3000;
+  } else {
+    price = price - 3000;
+  }
+  // console.log("after " + price);
+  printPrice(price);
+})
+
+function printPrice2(price, price2) {
+  if (price2 <= 0) { price2 = 0 }
+  price = price + price2;
+  printPrice(price);
+}
+
+function printPrice(price) {
+  if (price <= 450) { price = 450 }
+  $("#total-service-price-count").html(`<h2>Rs. ${price} /-</h2>`)
+}
+
+
+$("#placeOrderButton").on("click", (e) => {
+  e.preventDefault();
+  axios.post("/api/mcpcb/add-mcpcb-order", { data: "testing" }).then(res => console.log(res.data))
+})
